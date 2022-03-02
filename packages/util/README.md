@@ -1,0 +1,42 @@
+# @fortissimo/util
+
+前端工具函数库
+
+```shell script
+npm i @fortissimo/util
+```
+
+### 使用示例
+
+```typescript
+import { sleep } from '@fortissimo/util'
+
+async function getFile(file, env, token) {
+  console.log(1)
+  await sleep(5)
+  console.log(2)
+}
+```
+
+### API
+
+|函数名/类名|功能|返回值|备注|
+|---|---|---|---|
+|detectIE|检查是否为ie|boolean|
+|getIEVersion|获取ie版本|number|
+|getBrowserType|获取浏览器种类|string|
+|CustomEventTarget|自定义事件中心|CustomEventTargetInstance|
+|parseJson|解析JSON串（自带try，catch）|any|
+|sleep|休眠函数|void|
+|createProxyStorage|在localstorage中创建代理对象|{ [propName: string]: any }|
+|getRandomString|获取随机字符串|string|
+|getBlob|获取二进制文件内容|Promise<Blob>  |
+|saveBlob|保存二进制文件内容|void|
+|downloadFile|下载文件|void|
+|imageFormatList|受支持的图片格式列表|string[]|
+|videoFormatList|受支持的视频格式列表|string[]|
+|linkFileFormatList|受支持的文件外链格式列表|string[]|
+|checkFileFormat|检查文件是否符合格式|boolean|
+|blobToBase64|blob二进制转base64|string|
+|watermarkConfig|返回base64|string|
+|readFile|读取文件返回text内容|string|
