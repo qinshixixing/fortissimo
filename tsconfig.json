@@ -1,0 +1,3 @@
+{
+  "extends": "@ebullience/web-project-config/typescript-node/tsconfig.json"
+}

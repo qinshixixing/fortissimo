@@ -1,0 +1,34 @@
+{
+  "name": "fortissimo",
+  "author": "qinshixixing",
+  "version": "1.0.0",
+  "license": "Apache",
+  "scripts": {
+    "new": "eb-dev-scripts new --project web",
+    "build": "eb-dev-scripts build",
+    "commit": "eb-dev-scripts commit",
+    "release": "eb-dev-scripts release",
+    "commit-all": "eb-dev-scripts commit-all",
+    "release-all": "eb-dev-scripts release-all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qinshixixing/fortissimo.git"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@ebullience/dev-scripts": "^0.1.0",
+    "@ebullience/web-project-config": "^0.1.0",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.12",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
