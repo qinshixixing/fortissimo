@@ -1,0 +1,29 @@
+{
+  "name": "@fortissimo/request",
+  "author": "qinshixixing",
+  "version": "0.5.0",
+  "license": "Apache",
+  "description": "请求库",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qinshixixing/fortissimo.git",
+    "directory": "packages/request"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "main": "dist/index.js",
+  "types": "src/index.ts",
+  "files": [
+    "dist",
+    "src",
+    "type"
+  ],
+  "dependencies": {
+    "axios": "^0.21.4"
+  }
+}
