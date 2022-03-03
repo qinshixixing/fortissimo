@@ -1,4 +1,13 @@
-# 0.1.0 (2022-03-02)
+## [0.1.1](https://github.com/qinshixixing/fortissimo/compare/fortissimo/v0.1.0...fortissimo/0.1.1) (2022-03-03)
+
+
+### Features
+
+* **更新依赖和npm脚本:** 更新依赖和npm脚本 ([2a6ed3d](https://github.com/qinshixixing/fortissimo/commit/2a6ed3de463ed62cbc34a56d100f3f7ad8734b25))
+
+
+
+# [v0.1.0](https://github.com/qinshixixing/fortissimo/compare/44aae9a467ae509084a9c2d2444fb921402d356e...fortissimo/v0.1.0) (2022-03-02)
 
 
 ### Features
