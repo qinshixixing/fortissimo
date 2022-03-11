@@ -4,8 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 
 export interface Route {
   path: string;
-  component: React.ReactNode;
-  layout?: React.ReactNode;
+  component: ReactNode;
+  layout?: ReactNode;
   routes?: Route[];
   childRoutes?: boolean;
   root?: boolean;
