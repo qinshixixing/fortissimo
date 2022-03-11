@@ -1,4 +1,13 @@
-## 0.0.1 (2022-03-02)
+## [0.0.2](https://github.com/qinshixixing/fortissimo/compare/request/v0.0.1...request/0.0.2) (2022-03-11)
+
+
+### Bug Fixes
+
+* **修改readme.md:** 修改README.MD ([fdd322d](https://github.com/qinshixixing/fortissimo/commit/fdd322de832a1b5d00b82715445b2fa8ba6ac1df))
+
+
+
+## [v0.0.1](https://github.com/qinshixixing/fortissimo/compare/e4b939a5198a4255a1807e625f1baa2d3ff88a55...request/v0.0.1) (2022-03-02)
 
 
 ### Features
