@@ -1,0 +1,26 @@
+{
+  "name": "@fortissimo/component",
+  "author": "qinshixixing",
+  "version": "0.0.0",
+  "license": "Apache",
+  "description": "react纯ts(js)组件库",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qinshixixing/fortissimo.git",
+    "directory": "packages/component"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "main": "dist/index.js",
+  "types": "src/index.ts",
+  "files": [
+    "dist",
+    "src",
+    "type"
+  ]
+}
