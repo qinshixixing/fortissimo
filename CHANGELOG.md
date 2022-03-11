@@ -1,4 +1,21 @@
-## [0.1.1](https://github.com/qinshixixing/fortissimo/compare/fortissimo/v0.1.0...fortissimo/0.1.1) (2022-03-03)
+## [0.1.2](https://github.com/qinshixixing/fortissimo/compare/fortissimo/v0.1.1...fortissimo/0.1.2) (2022-03-11)
+
+
+### Bug Fixes
+
+* **删除多余代码:** 删除多余导入代码 ([e74f6a0](https://github.com/qinshixixing/fortissimo/commit/e74f6a03817c8831219769dd5febf8dcfbe57929))
+* **修改readme.md:** 修改README.MD ([fdd322d](https://github.com/qinshixixing/fortissimo/commit/fdd322de832a1b5d00b82715445b2fa8ba6ac1df))
+
+
+### Features
+
+* **初始化项目:** 初始化项目 ([9327766](https://github.com/qinshixixing/fortissimo/commit/9327766b526596302ad0440a96b61db92dd2a09b))
+* **更新依赖:** 增加react-router和react-router-dom ([51fa2c3](https://github.com/qinshixixing/fortissimo/commit/51fa2c34d4e354bbcc43fdfd0f8cf2225fd23df8))
+* **修改readme.md:** 修改README.md ([fab8ec8](https://github.com/qinshixixing/fortissimo/commit/fab8ec8933c0889337843d4b0e498ab0ec7b8539))
+
+
+
+## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/fortissimo/v0.1.0...fortissimo/v0.1.1) (2022-03-03)
 
 
 ### Features
