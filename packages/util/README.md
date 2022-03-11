@@ -40,3 +40,5 @@ async function getFile(file, env, token) {
 |blobToBase64|blob二进制转base64|string|
 |watermarkConfig|返回base64|string|
 |readFile|读取文件返回text内容|string|
+|mapToObj|把Map转成对象|{ [key: string]: any }|
+|objToMap|把对象转成Map|Map<string, any>|

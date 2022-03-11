@@ -32,3 +32,5 @@ export { watermarkConfig } from './watermarkConfig';
 export type { WatermarkConfig } from './watermarkConfig';
 
 export { readFile } from './readFile';
+
+export { mapToObj, objToMap } from './mapAndObj';
