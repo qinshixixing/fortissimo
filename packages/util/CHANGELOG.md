@@ -1,4 +1,13 @@
-## [0.1.1](https://github.com/qinshixixing/fortissimo/compare/util/v0.1.0...util/0.1.1) (2022-03-11)
+# [0.2.0](https://github.com/qinshixixing/fortissimo/compare/util/v0.1.1...util/0.2.0) (2022-03-11)
+
+
+### Features
+
+* **添加方法:** 添加map和object互相转换方法 ([5690eed](https://github.com/qinshixixing/fortissimo/commit/5690eedc9e8ebfd5c1b2eb0f7e871759878e9dfc))
+
+
+
+## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/util/v0.1.0...util/v0.1.1) (2022-03-11)
 
 
 ### Bug Fixes
