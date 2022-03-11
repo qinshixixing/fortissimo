@@ -1,6 +1,3 @@
-import { CustomEventTargetInstance } from './CustomEventTarget';
-import { createProxyStorage } from './storage';
-
 export { detectIE, getIEVersion, getBrowserType } from './checkBrowser';
 
 export { CustomEventTarget } from './CustomEventTarget';
