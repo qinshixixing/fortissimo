@@ -19,7 +19,7 @@
     "node": ">=16.0.0"
   },
   "devDependencies": {
-    "@ebullience/dev-scripts": "^0.2.0",
+    "@ebullience/dev-scripts": "^0.3.0",
     "@ebullience/web-project-config": "^0.1.0",
     "@tsconfig/recommended": "^1.0.1",
     "@types/react": "^17.0.39",
