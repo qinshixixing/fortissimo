@@ -1,4 +1,13 @@
-# [0.2.0](https://github.com/qinshixixing/fortissimo/compare/util/v0.1.1...util/0.2.0) (2022-03-11)
+# [0.3.0](https://github.com/qinshixixing/fortissimo/compare/util/v0.2.0...util/0.3.0) (2022-03-29)
+
+
+### Features
+
+* **新增方法:** 新增trimString、checkPhoneEnv、transKey方法 ([0110e4a](https://github.com/qinshixixing/fortissimo/commit/0110e4a0c78e453decb91766f68c2252ef30bd2d))
+
+
+
+# [v0.2.0](https://github.com/qinshixixing/fortissimo/compare/util/v0.1.1...util/v0.2.0) (2022-03-11)
 
 
 ### Features
