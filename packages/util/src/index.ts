@@ -34,3 +34,11 @@ export type { WatermarkConfig } from './watermarkConfig';
 export { readFile } from './readFile';
 
 export { mapToObj, objToMap } from './mapAndObj';
+
+export { checkPhoneEnv } from './phoneEnv';
+export type { PhoneEnv } from './phoneEnv';
+
+export { trimString } from './trimString';
+
+export { transKey } from './transKey';
+export type { KeyConfig } from './transKey';

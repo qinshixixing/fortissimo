@@ -42,3 +42,6 @@ async function getFile(file, env, token) {
 |readFile|读取文件返回text内容|string|
 |mapToObj|把Map转成对象|{ [key: string]: any }|
 |objToMap|把对象转成Map|Map<string, any>|
+|checkPhoneEnv|检查移动端页面环境|PhoneEnv|
+|trimString|把对象中字符串字段去除前后空格|{ [key: string]: any }|
+|transKey|转化服务端与本地对象字段名工厂函数|TransKeyData<T>|
