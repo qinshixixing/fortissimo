@@ -1,4 +1,13 @@
-## [0.0.2](https://github.com/qinshixixing/fortissimo/compare/request/v0.0.1...request/0.0.2) (2022-03-11)
+# [0.1.0](https://github.com/qinshixixing/fortissimo/compare/request/v0.0.2...request/0.1.0) (2022-03-30)
+
+
+### Features
+
+* **更新设置token逻辑:** 更新设置token逻辑 ([566bdcc](https://github.com/qinshixixing/fortissimo/commit/566bdcc57375f9a8ac04825be4d8eec45014dda1))
+
+
+
+## [v0.0.2](https://github.com/qinshixixing/fortissimo/compare/request/v0.0.1...request/v0.0.2) (2022-03-11)
 
 
 ### Bug Fixes
