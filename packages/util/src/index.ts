@@ -23,7 +23,10 @@ export {
   imageFormatList,
   videoFormatList,
   linkFileFormatList,
-  checkFileFormat
+  checkFileFormat,
+  checkImage,
+  checkVideo,
+  checkLinkFile
 } from './fileFormat';
 
 export { blobToBase64 } from './blobToBase64';

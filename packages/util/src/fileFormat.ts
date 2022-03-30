@@ -11,3 +11,15 @@ export function checkFileFormat(
   const name = fileUrl.split('?')[0];
   return formatList.some((item) => name.endsWith(item));
 }
+
+export function checkImage(fileUrl: string) {
+  return checkFileFormat(fileUrl, imageFormatList);
+}
+
+export function checkVideo(fileUrl: string) {
+  return checkFileFormat(fileUrl, videoFormatList);
+}
+
+export function checkLinkFile(fileUrl: string) {
+  return checkFileFormat(fileUrl, linkFileFormatList);
+}

@@ -37,6 +37,9 @@ async function getFile(file, env, token) {
 |videoFormatList|受支持的视频格式列表|string[]|
 |linkFileFormatList|受支持的文件外链格式列表|string[]|
 |checkFileFormat|检查文件是否符合格式|boolean|
+|checkImage|检查文件是否为图片|boolean|
+|checkVideo|检查文件是否为视频|boolean|
+|checkLinkFile|检查文件是否为链接可预览文件|boolean|
 |blobToBase64|blob二进制转base64|string|
 |watermarkConfig|返回base64|string|
 |readFile|读取文件返回text内容|string|
