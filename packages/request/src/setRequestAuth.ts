@@ -1,9 +1,9 @@
 import { AxiosInstance } from 'axios';
 import type { ResponseConfig } from './requestBase';
-
 export interface RequestAuthConfig {
   token: string;
   tokenKey: string[];
+  tokenInfo: { [key: string]: string };
   loginUrl: string;
   loginStatusCode: number[];
   loginCode: (string | number)[];
@@ -19,12 +19,17 @@ export function setRequestAuth(
   const defaultConfig: RequestAuthConfig = {
     token: '',
     tokenKey: ['X-Access-Token', 'Authorization'],
+    tokenInfo: {},
     loginUrl: '',
     loginStatusCode: [401, 403, 426],
     loginCode: [],
     withHref: false
   };
   const allConfig: RequestAuthConfig = { ...defaultConfig, ...config };
+
+  Object.keys(allConfig.tokenInfo).forEach((key) => {
+    request.defaults.headers.common[key] = allConfig.tokenInfo[key];
+  });
 
   if (allConfig.tokenKey && allConfig.tokenKey.length) {
     allConfig.tokenKey.forEach((key) => {
