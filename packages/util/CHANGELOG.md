@@ -1,4 +1,13 @@
-## [0.3.1](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.0...util/0.3.1) (2022-03-30)
+## [0.3.2](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.1...util/0.3.2) (2022-03-30)
+
+
+### Features
+
+* **添加检查具体文件格式方法:** 添加检查图片、视频、预览文件方法 ([0f6a924](https://github.com/qinshixixing/fortissimo/commit/0f6a9241b8e3338a78341367c960f442c8c3115c))
+
+
+
+## [v0.3.1](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.0...util/v0.3.1) (2022-03-30)
 
 
 ### Features
