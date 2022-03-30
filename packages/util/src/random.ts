@@ -1,4 +1,4 @@
-const allSymbol = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz';
+const allSymbol = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz1234567890';
 const allSymbolLength = allSymbol.length;
 
 export function getRandomString(length?: number): string {
