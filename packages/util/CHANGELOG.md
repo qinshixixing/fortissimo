@@ -1,4 +1,13 @@
-# [0.3.0](https://github.com/qinshixixing/fortissimo/compare/util/v0.2.0...util/0.3.0) (2022-03-29)
+## [0.3.1](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.0...util/0.3.1) (2022-03-30)
+
+
+### Features
+
+* **修改随机字符串方法:** getRandomString增加数字随机 ([3363ca5](https://github.com/qinshixixing/fortissimo/commit/3363ca5ef08270c0a8569f6a596fb6c3884cbe9b))
+
+
+
+# [v0.3.0](https://github.com/qinshixixing/fortissimo/compare/util/v0.2.0...util/v0.3.0) (2022-03-29)
 
 
 ### Features
