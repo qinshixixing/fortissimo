@@ -1,9 +1,8 @@
 import { AxiosInstance } from 'axios';
 import type { ResponseConfig } from './requestBase';
 export interface RequestAuthConfig {
-  token: string;
-  tokenKey: string[];
   tokenInfo: { [key: string]: string };
+  tokenStorageKey: string[];
   loginUrl: string;
   loginStatusCode: number[];
   loginCode: (string | number)[];
@@ -17,9 +16,8 @@ export function setRequestAuth(
   config: Partial<RequestAuthConfig>
 ): AxiosInstance {
   const defaultConfig: RequestAuthConfig = {
-    token: '',
-    tokenKey: ['X-Access-Token', 'Authorization'],
     tokenInfo: {},
+    tokenStorageKey: [],
     loginUrl: '',
     loginStatusCode: [401, 403, 426],
     loginCode: [],
@@ -27,20 +25,14 @@ export function setRequestAuth(
   };
   const allConfig: RequestAuthConfig = { ...defaultConfig, ...config };
 
-  Object.keys(allConfig.tokenInfo).forEach((key) => {
-    request.defaults.headers.common[key] = allConfig.tokenInfo[key];
+  Object.entries(allConfig.tokenInfo).forEach(([key, value]) => {
+    request.defaults.headers.common[key] = value;
   });
-
-  if (allConfig.tokenKey && allConfig.tokenKey.length) {
-    allConfig.tokenKey.forEach((key) => {
-      request.defaults.headers.common[key] = allConfig.token;
-    });
-  }
 
   const hasLoginCode =
     (allConfig.loginCode && allConfig.loginCode.length) ||
     (allConfig.loginStatusCode && allConfig.loginStatusCode.length);
-  if (allConfig.loginUrl && hasLoginCode) {
+  if (hasLoginCode) {
     if (loginInterceptorMap.has(request)) {
       const interceptor = loginInterceptorMap.get(request) as number;
       loginInterceptorMap.delete(request);
@@ -63,10 +55,16 @@ export function setRequestAuth(
           allConfig.loginCode.length
         )
           isUnLogin = allConfig.loginCode.includes(res.data);
-        if (isUnLogin && allConfig.loginUrl)
-          window.location.href =
-            allConfig.loginUrl +
-            (allConfig.withHref ? window.location.href : '');
+        if (isUnLogin) {
+          allConfig.tokenStorageKey.forEach((key) => {
+            window.localStorage.removeItem(key);
+          });
+          if (allConfig.loginUrl)
+            window.location.href =
+              allConfig.loginUrl +
+              (allConfig.withHref ? window.location.href : '');
+        }
+
         return Promise.reject(res);
       }
     );
