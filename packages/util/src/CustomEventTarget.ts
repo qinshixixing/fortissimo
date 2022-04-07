@@ -1,4 +1,4 @@
-export type CustomEventCallback = () => void;
+export type CustomEventCallback = (...params: any[]) => void;
 export type CustomEventListeners = Set<CustomEventCallback>;
 export type AllCustomEventListeners = Map<string, CustomEventListeners>;
 
@@ -53,7 +53,7 @@ export class CustomEventTarget {
     }
   }
 
-  dispatch(event: string, ...params: []): void {
+  dispatch(event: string, ...params: any[]): void {
     if (!event) return;
     const listeners = this._listeners.get(event);
     if (!listeners) return;
