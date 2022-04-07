@@ -1,4 +1,13 @@
-# [0.1.0](https://github.com/qinshixixing/fortissimo/compare/request/v0.0.2...request/0.1.0) (2022-03-30)
+## [0.1.1](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.0...request/0.1.1) (2022-04-07)
+
+
+### Features
+
+* **简化设置请求token逻辑:** 简化设置请求token逻辑 ([bbc39c5](https://github.com/qinshixixing/fortissimo/commit/bbc39c512c51371795d0ce72fa16b06ee9c0b42c))
+
+
+
+# [v0.1.0](https://github.com/qinshixixing/fortissimo/compare/request/v0.0.2...request/v0.1.0) (2022-03-30)
 
 
 ### Features
