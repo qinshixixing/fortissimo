@@ -1,4 +1,8 @@
-## [0.1.1](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.0...request/0.1.1) (2022-04-07)
+## [0.1.2](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.1...request/0.1.2) (2022-04-07)
+
+
+
+## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.0...request/v0.1.1) (2022-04-07)
 
 
 ### Features
