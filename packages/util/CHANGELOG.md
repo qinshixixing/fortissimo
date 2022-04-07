@@ -1,4 +1,13 @@
-## [0.3.2](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.1...util/0.3.2) (2022-03-30)
+## [0.3.3](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.2...util/0.3.3) (2022-04-07)
+
+
+### Bug Fixes
+
+* **优化事件中心方法:** 优化事件中心方法 ([de03324](https://github.com/qinshixixing/fortissimo/commit/de0332422173dd5aab09da44f55227616f5f7076))
+
+
+
+## [v0.3.2](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.1...util/v0.3.2) (2022-03-30)
 
 
 ### Features
