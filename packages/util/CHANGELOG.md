@@ -1,4 +1,13 @@
-## [0.3.3](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.2...util/0.3.3) (2022-04-07)
+## [0.3.4](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.3...util/0.3.4) (2022-04-26)
+
+
+### Features
+
+* **整合blob方法:** 1、整合blob方法。2】添加blob方法。 ([3250de3](https://github.com/qinshixixing/fortissimo/commit/3250de3c4c8b080d300c0673bed0f12f2d25d60c))
+
+
+
+## [v0.3.3](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.2...util/v0.3.3) (2022-04-07)
 
 
 ### Bug Fixes
