@@ -30,9 +30,12 @@ async function getFile(file, env, token) {
 |sleep|休眠函数|void|
 |createProxyStorage|在localstorage中创建代理对象|{ [propName: string]: any }|
 |getRandomString|获取随机字符串|string|
-|getBlob|获取二进制文件内容|Promise<Blob>  |
-|saveBlob|保存二进制文件内容|void|
-|downloadFile|下载文件|void|
+|getBlob|获取二进制文件|Promise<Blob>  |
+|saveBlob|保存二进制文件|void|
+|readBlob|读取二进制文件|Promise<ReadResult>|
+|readBlobAsDataURL|读取二进制文件为DataURL|Promise<ReadResult>|
+|generateBlob|生成二进制文件|Blob|
+|downloadBlob|下载二进制文件|void|
 |imageFormatList|受支持的图片格式列表|string[]|
 |videoFormatList|受支持的视频格式列表|string[]|
 |linkFileFormatList|受支持的文件外链格式列表|string[]|
@@ -40,9 +43,7 @@ async function getFile(file, env, token) {
 |checkImage|检查文件是否为图片|boolean|
 |checkVideo|检查文件是否为视频|boolean|
 |checkLinkFile|检查文件是否为链接可预览文件|boolean|
-|blobToBase64|blob二进制转base64|string|
 |watermarkConfig|返回base64|string|
-|readFile|读取文件返回text内容|string|
 |mapToObj|把Map转成对象|{ [key: string]: any }|
 |objToMap|把对象转成Map|Map<string, any>|
 |checkPhoneEnv|检查移动端页面环境|PhoneEnv|

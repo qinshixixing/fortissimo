@@ -1,8 +1,11 @@
-export interface DownloadFileParams {
-  url: string;
-  filename: string;
-  token: string;
+declare global {
+  interface Navigator {
+    msSaveOrOpenBlob: any;
+    msSaveBlob: any;
+  }
 }
+
+export type ReadResult = string | ArrayBuffer | null;
 
 export function getBlob(url: string, token?: string): Promise<Blob> {
   return new Promise((resolve) => {
@@ -23,11 +26,7 @@ export function getBlob(url: string, token?: string): Promise<Blob> {
 }
 
 export function saveBlob(blob: Blob, filename: string): void {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   if (window.navigator.msSaveOrOpenBlob) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     window.navigator.msSaveBlob(blob, filename);
   } else {
     const link = document.createElement('a');
@@ -44,7 +43,38 @@ export function saveBlob(blob: Blob, filename: string): void {
   }
 }
 
-export async function downloadFile({
+export function readBlob(file: Blob): Promise<ReadResult> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(reader.error);
+    reader.readAsText(file, 'utf-8');
+  });
+}
+
+export function readBlobAsDataURL(file: Blob): Promise<ReadResult> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+    reader.readAsDataURL(file);
+  });
+}
+
+export function generateBlob(data: string): Blob {
+  const blob = new Blob([data], {
+    type: 'text/plain'
+  });
+  return blob;
+}
+
+export interface DownloadFileParams {
+  url: string;
+  filename: string;
+  token: string;
+}
+
+export async function downloadBlob({
   url = '',
   filename = '',
   token = ''

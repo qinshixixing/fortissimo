@@ -16,8 +16,16 @@ export { createProxyStorage } from './storage';
 
 export { getRandomString } from './random';
 
-export { getBlob, saveBlob, downloadFile } from './download';
-export type { DownloadFileParams } from './download';
+export {
+  getBlob,
+  saveBlob,
+  readBlob,
+  readBlobAsDataURL,
+  generateBlob,
+  downloadBlob
+} from './blob';
+
+export type { ReadResult, DownloadFileParams } from './blob';
 
 export {
   imageFormatList,
@@ -29,12 +37,8 @@ export {
   checkLinkFile
 } from './fileFormat';
 
-export { blobToBase64 } from './blobToBase64';
-
 export { watermarkConfig } from './watermarkConfig';
 export type { WatermarkConfig } from './watermarkConfig';
-
-export { readFile } from './readFile';
 
 export { mapToObj, objToMap } from './mapAndObj';
 
