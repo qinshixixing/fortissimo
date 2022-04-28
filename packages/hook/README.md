@@ -34,3 +34,7 @@ export function Main() {
 |useWatch|在被监听数据变化后执行的操作，可对比前后数据|void|
 |useInitStore|初始化store|Store<T>|
 |useInitSimpleStore|初始化简易store|SimpleStore<T>|
+|useCustomEventTarget|生成或获取自定义事件中心|CustomEventTarget|
+|useCustomEventListener|给自定义事件中心监听事件|void|
+|useEventTarget|生成或获取事件中心|EventTarget|
+|useEventListener|给事件中心监听事件|void|

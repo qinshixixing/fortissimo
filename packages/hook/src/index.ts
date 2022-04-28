@@ -2,8 +2,12 @@ export { useMount } from './useMount';
 
 export { useWatch } from './useWatch';
 
-export { useInitStore } from './useInitStore';
-export type { StoreData, Store } from './useInitStore';
+export { useInitStore, useInitSimpleStore } from './store';
+export type { StoreData, Store, SimpleStore } from './store';
 
-export { useInitSimpleStore } from './useInitSimpleStore';
-export type { SimpleStore } from './useInitSimpleStore';
+export {
+  useCustomEventTarget,
+  useCustomEventListener
+} from './customEventTarget';
+
+export { useEventTarget, useEventListener } from './eventTarget';

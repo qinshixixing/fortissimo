@@ -1,5 +1,5 @@
-import { useCallback, useReducer } from 'react';
-import type { Dispatch } from 'react';
+import { useCallback, useReducer, useState } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 
 export type StoreData<T> = {
   state: T;
@@ -59,5 +59,22 @@ export function useInitStore<T>(storeData: StoreData<T>): Store<T> {
     state: stateData,
     commit: commitAction,
     dispatch: dispatchAction
+  };
+}
+
+export type SimpleStore<T> = T & { dispatch: Dispatch<SetStateAction<T>> };
+
+export function useInitSimpleStore<T>(storeData: T): SimpleStore<T> {
+  const [state, setState] = useState(storeData);
+  return {
+    ...state,
+    dispatch: (param) => {
+      if (typeof param !== 'function')
+        param = {
+          ...state,
+          ...param
+        };
+      return setState(param);
+    }
   };
 }
