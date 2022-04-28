@@ -1,4 +1,26 @@
-## [0.1.3](https://github.com/qinshixixing/fortissimo/compare/fortissimo/v0.1.2...fortissimo/0.1.3) (2022-03-18)
+# [0.2.0](https://github.com/qinshixixing/fortissimo/compare/fortissimo/v0.1.3...fortissimo/0.2.0) (2022-04-28)
+
+
+### Bug Fixes
+
+* **优化事件中心方法:** 优化事件中心方法 ([de03324](https://github.com/qinshixixing/fortissimo/commit/de0332422173dd5aab09da44f55227616f5f7076))
+
+
+### Features
+
+* **更新设置token逻辑:** 更新设置token逻辑 ([566bdcc](https://github.com/qinshixixing/fortissimo/commit/566bdcc57375f9a8ac04825be4d8eec45014dda1))
+* **更新依赖:** 更新依赖 ([b401cdb](https://github.com/qinshixixing/fortissimo/commit/b401cdb4134e567c2a7e13e6acb0208044522fc2))
+* **简化设置请求token逻辑:** 简化设置请求token逻辑 ([bbc39c5](https://github.com/qinshixixing/fortissimo/commit/bbc39c512c51371795d0ce72fa16b06ee9c0b42c))
+* **升级依赖:** 升级依赖 ([d489d51](https://github.com/qinshixixing/fortissimo/commit/d489d5199f9d938e0b7fc4bd7c941f48cdd494f1))
+* **添加检查具体文件格式方法:** 添加检查图片、视频、预览文件方法 ([0f6a924](https://github.com/qinshixixing/fortissimo/commit/0f6a9241b8e3338a78341367c960f442c8c3115c))
+* **添加事件中心方法:** 添加事件中心方法 ([4883671](https://github.com/qinshixixing/fortissimo/commit/488367125850759463e77fc3ef24f5d5802086db))
+* **新增方法:** 新增trimString、checkPhoneEnv、transKey方法 ([0110e4a](https://github.com/qinshixixing/fortissimo/commit/0110e4a0c78e453decb91766f68c2252ef30bd2d))
+* **修改随机字符串方法:** getRandomString增加数字随机 ([3363ca5](https://github.com/qinshixixing/fortissimo/commit/3363ca5ef08270c0a8569f6a596fb6c3884cbe9b))
+* **整合blob方法:** 1、整合blob方法。2】添加blob方法。 ([3250de3](https://github.com/qinshixixing/fortissimo/commit/3250de3c4c8b080d300c0673bed0f12f2d25d60c))
+
+
+
+## [v0.1.3](https://github.com/qinshixixing/fortissimo/compare/fortissimo/v0.1.2...fortissimo/v0.1.3) (2022-03-18)
 
 
 ### Features
