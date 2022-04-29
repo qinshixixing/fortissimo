@@ -1,5 +1,3 @@
-export { detectIE, getIEVersion, getBrowserType } from './checkBrowser';
-
 export { CustomEventTarget } from './CustomEventTarget';
 export type {
   CustomEventCallback,
@@ -14,7 +12,7 @@ export { sleep } from './sleep';
 
 export { createProxyStorage } from './storage';
 
-export { getRandomString } from './random';
+export { trimString, getRandomString } from './string';
 
 export {
   getBlob,
@@ -42,10 +40,13 @@ export type { WatermarkConfig } from './watermarkConfig';
 
 export { mapToObj, objToMap } from './mapAndObj';
 
+export { detectIE, getIEVersion, getBrowserType } from './pcEnv';
+
 export { checkPhoneEnv } from './phoneEnv';
 export type { PhoneEnv } from './phoneEnv';
 
-export { trimString } from './trimString';
-
 export { transKey } from './transKey';
 export type { KeyConfig } from './transKey';
+
+export { getTimeFormat } from './time';
+export type { DatePrecision, TimePrecision, Precision } from './time';
