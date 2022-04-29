@@ -1,4 +1,13 @@
-## [0.3.4](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.3...util/0.3.4) (2022-04-26)
+## [0.3.5](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.4...util/0.3.5) (2022-04-29)
+
+
+### Features
+
+* **增加时间方法:** 增加时间方法 ([954c2eb](https://github.com/qinshixixing/fortissimo/commit/954c2eb4ca92ef78dc1c143a39c000f5bf594daa))
+
+
+
+## [v0.3.4](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.3...util/v0.3.4) (2022-04-26)
 
 
 ### Features
