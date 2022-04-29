@@ -1,4 +1,14 @@
-# [0.2.0](https://github.com/qinshixixing/fortissimo/compare/fortissimo/v0.1.3...fortissimo/0.2.0) (2022-04-28)
+## [0.2.1](https://github.com/qinshixixing/fortissimo/compare/fortissimo/v0.2.0...fortissimo/0.2.1) (2022-04-29)
+
+
+### Features
+
+* **添加项目元信息:** 添加项目元信息 ([b6f175e](https://github.com/qinshixixing/fortissimo/commit/b6f175e1bd931b6831b255fab1d2a15ebbe04184))
+* **增加时间方法:** 增加时间方法 ([954c2eb](https://github.com/qinshixixing/fortissimo/commit/954c2eb4ca92ef78dc1c143a39c000f5bf594daa))
+
+
+
+# [v0.2.0](https://github.com/qinshixixing/fortissimo/compare/fortissimo/v0.1.3...fortissimo/v0.2.0) (2022-04-28)
 
 
 ### Bug Fixes
