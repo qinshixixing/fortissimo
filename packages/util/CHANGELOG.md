@@ -1,4 +1,13 @@
-## [0.3.5](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.4...util/0.3.5) (2022-04-29)
+## [0.3.6](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.5...util/0.3.6) (2022-05-04)
+
+
+### Features
+
+* **优化string方法:** 优化string方法 ([566ef05](https://github.com/qinshixixing/fortissimo/commit/566ef05c998095a37be8e896291f0a8c34538417))
+
+
+
+## [v0.3.5](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.4...util/v0.3.5) (2022-04-29)
 
 
 ### Features
