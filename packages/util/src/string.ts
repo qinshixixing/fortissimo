@@ -1,11 +1,12 @@
-export function trimString(obj: { [key: string]: any }) {
-  const data = {
+type trimStringObj = Record<string, any>;
+export function trimString<T extends trimStringObj = trimStringObj>(obj: T) {
+  const data: trimStringObj = {
     ...obj
   };
   Object.keys(obj).forEach((key) => {
     if (typeof obj[key] === 'string') data[key] = obj[key].trim();
   });
-  return data;
+  return data as T;
 }
 
 const allSymbol = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz1234567890';
