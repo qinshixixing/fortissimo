@@ -60,7 +60,7 @@ export interface DataListProProps<
   S extends FormData = FormData,
   OPTK extends string = string
 > {
-  msgs: DataListTableMsg<D>[];
+  msgs: DataListTableMsg<KeyOf<D>, ValueOf<D>>[];
   rowKey: KeyOf<D>;
   disabledCheckedKey?: ValueOf<D>[];
   opts?: DataListProOptConfig<OPTK, D>[];

@@ -12,12 +12,12 @@ type ValueOf<T> = T[KeyOf<T>];
 
 export type DataListTableSortType = 'ascend' | 'descend' | 'none';
 
-export interface DataListTableMsg<T extends DataListRowData = DataListRowData> {
-  key: KeyOf<T>;
+export interface DataListTableMsg<K extends string = string, V = any> {
+  key: K;
   name?: string;
   width?: number;
   sort?: boolean;
-  render?: (value: ValueOf<T>, record: T, index: number) => ReactNode;
+  render?: (value: V, record: Record<K, V>, index: number) => ReactNode;
 }
 
 export interface DataListTableProps<
@@ -26,7 +26,7 @@ export interface DataListTableProps<
 > {
   data: T[];
   rowKey: KeyOf<T>;
-  msgList: DataListTableMsg<T>[];
+  msgList: DataListTableMsg<KeyOf<T>, ValueOf<T>>[];
   optList?: DataListOptConfig<OPTK, T>[];
   ellipsis?: boolean;
   canSelect?: boolean;
