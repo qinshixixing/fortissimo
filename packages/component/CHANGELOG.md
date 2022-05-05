@@ -1,4 +1,8 @@
-## [0.1.2-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.1...component/0.1.2-0) (2022-05-05)
+## [0.1.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.2-0...component/0.1.2) (2022-05-05)
+
+
+
+## [v0.1.2-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.1...component/v0.1.2-0) (2022-05-05)
 
 
 ### Features
