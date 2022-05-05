@@ -1,4 +1,13 @@
-## [0.1.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.0...component/0.1.1) (2022-03-11)
+## [0.1.2-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.1...component/0.1.2-0) (2022-05-05)
+
+
+### Features
+
+* **增加表格和表单相关组件:** 增加dataListPro和optBoxPro组件及其基础组件 ([a546b91](https://github.com/qinshixixing/fortissimo/commit/a546b91bccdbfd0ee973704dbcfa28fb3dd4cbbd))
+
+
+
+## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.0...component/v0.1.1) (2022-03-11)
 
 
 ### Features
