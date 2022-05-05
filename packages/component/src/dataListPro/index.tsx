@@ -17,60 +17,62 @@ import type {
 } from '../index';
 import { EditFormField } from '../optForm';
 
-type KeyOf<T> = Extract<keyof T, string>;
-type ValueOf<T> = T[KeyOf<T>];
-
 export type DataListProOptPosition = 'header' | 'row' | 'both';
 
 export interface DataListProOptConfig<
   K extends string = string,
-  T = DataListRowData
-> extends DataListOptConfig<K, T> {
+  DK extends string = string,
+  DV = any
+> extends DataListOptConfig<K, DK, DV> {
   position?: DataListProOptPosition;
   needSelect?: boolean;
 }
 
 export interface DataListProOptParams<
   K extends string = string,
-  T = DataListRowData
+  DK extends string = string,
+  DV = any
 > {
   optKey: K;
-  rowKey: ValueOf<T> | ValueOf<T>[];
-  rowData?: T;
+  rowKey: DV | DV[];
+  rowData?: Record<DK, DV>;
 }
 
 export interface DataListProGetDataParams<
-  S extends FormData = FormData,
-  T = DataListRowData
+  SK extends string = string,
+  DK extends string = string,
+  SV = any
 > {
   pageNo?: number;
   pageSize?: number;
-  sortKey?: KeyOf<T>;
+  sortKey?: DK;
   sortType?: DataListTableSortType;
-  searchData?: Partial<S>;
+  searchData?: Partial<Record<SK, SV>>;
 }
 
-export interface DataListProGetDataRes<T = DataListRowData> {
+export interface DataListProGetDataRes<K extends string = string, V = any> {
   total: number;
-  data: T[];
+  data: Record<K, V>[];
 }
 
 export interface DataListProProps<
-  D extends DataListRowData = DataListRowData,
-  S extends FormData = FormData,
-  OPTK extends string = string
+  DK extends string = string,
+  SK extends string = string,
+  OPTK extends string = string,
+  DV = any,
+  SV = any
 > {
-  msgs: DataListTableMsg<KeyOf<D>, ValueOf<D>>[];
-  rowKey: KeyOf<D>;
-  disabledCheckedKey?: ValueOf<D>[];
-  opts?: DataListProOptConfig<OPTK, D>[];
-  search?: EditFormField<KeyOf<S>, ValueOf<S>>[];
+  msgs: DataListTableMsg<DK, DV>[];
+  rowKey: DK;
+  disabledCheckedKey?: DV[];
+  opts?: DataListProOptConfig<OPTK, DK, DV>[];
+  search?: EditFormField<SK, SV>[];
   canSelect?: boolean;
   resetPageNo?: boolean;
   onGetData?: (
-    params: DataListProGetDataParams<S, D>
-  ) => Promise<DataListProGetDataRes<D>>;
-  onOpt?: (params: DataListProOptParams<OPTK, D>) => Promise<void> | void;
+    params: DataListProGetDataParams<SK, DK, SV>
+  ) => Promise<DataListProGetDataRes<DK, DV>>;
+  onOpt?: (params: DataListProOptParams<OPTK, DK, DV>) => Promise<void> | void;
 }
 
 export const DataListPro = forwardRef(function (

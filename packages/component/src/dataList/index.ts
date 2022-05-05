@@ -1,18 +1,19 @@
 import type { OperationItemConfig } from '../index';
-import type { DataListRowData } from './table';
 
 export type DataListOptConfig<
   K extends string = string,
-  T = DataListRowData
-> = Omit<OperationItemConfig<K, T>, 'type' | 'data'>;
+  DK extends string = string,
+  DV = any
+> = Omit<OperationItemConfig<K, Record<DK, DV>>, 'type' | 'data'>;
 
 export interface DataListOptProps<
   K extends string = string,
-  T = DataListRowData
+  DK extends string = string,
+  DV = any
 > {
-  list: DataListOptConfig<K, T>[];
+  list: DataListOptConfig<K, DK, DV>[];
   onOpt?: (key: K) => void;
-  data?: T;
+  data?: Record<DK, DV>;
 }
 
 export { RowOpt } from './rowOpt';

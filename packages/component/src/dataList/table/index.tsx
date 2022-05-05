@@ -7,8 +7,6 @@ import { RowOpt } from '../index';
 import type { DataListOptConfig } from '../index';
 
 export type DataListRowData = Record<string, any>;
-type KeyOf<T> = Extract<keyof T, string>;
-type ValueOf<T> = T[KeyOf<T>];
 
 export type DataListTableSortType = 'ascend' | 'descend' | 'none';
 
@@ -21,20 +19,21 @@ export interface DataListTableMsg<K extends string = string, V = any> {
 }
 
 export interface DataListTableProps<
-  T extends DataListRowData = DataListRowData,
+  K extends string = string,
+  V = any,
   OPTK extends string = string
 > {
-  data: T[];
-  rowKey: KeyOf<T>;
-  msgList: DataListTableMsg<KeyOf<T>, ValueOf<T>>[];
-  optList?: DataListOptConfig<OPTK, T>[];
+  data: Record<K, V>[];
+  rowKey: K;
+  msgList: DataListTableMsg<K, V>[];
+  optList?: DataListOptConfig<OPTK, K, V>[];
   ellipsis?: boolean;
   canSelect?: boolean;
-  selectedValue?: ValueOf<T>[];
-  disabledSelectedValue?: ValueOf<T>[];
-  onSort?: (key: KeyOf<T>, type: DataListTableSortType) => void;
-  onSelect?: (rowKeys?: ValueOf<T>[]) => void;
-  onOpt?: (optKey: OPTK, rowKey: ValueOf<T>, rowData: T) => void;
+  selectedValue?: V[];
+  disabledSelectedValue?: V[];
+  onSort?: (key: K, type: DataListTableSortType) => void;
+  onSelect?: (rowKeys?: V[]) => void;
+  onOpt?: (optKey: OPTK, rowKey: V, rowData: Record<K, V>) => void;
 }
 
 export function Table(props: DataListTableProps) {
