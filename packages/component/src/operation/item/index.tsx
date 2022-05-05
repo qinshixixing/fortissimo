@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Button } from 'antd';
 import type { OperationProps } from '../index';
 
-export function Item<T = any>(props: OperationProps<T>) {
+export function Item(props: OperationProps) {
   const defaultName = useMemo(
     () => (typeof props.defaultName === 'string' ? props.defaultName : '确定'),
     [props.defaultName]

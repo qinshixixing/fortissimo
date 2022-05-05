@@ -3,12 +3,12 @@ import type { OperationItemConfig } from '../index';
 
 export type OptBoxDefaultOpt = 'ok' | 'cancel';
 
-export interface OptBoxProps<K extends string = OptBoxDefaultOpt> {
+export interface OptBoxProps<K extends string = string> {
   show: boolean;
   width?: number | string;
   title?: ReactNode;
   opts?: OperationItemConfig<K>[];
-  onOpt?: (optKey: K | OptBoxDefaultOpt) => void;
+  onOpt?: (optKey: K) => void;
   children?: ReactNode;
   destroyOnClose?: boolean;
   loading?: boolean;

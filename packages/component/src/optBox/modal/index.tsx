@@ -2,11 +2,9 @@ import React, { useMemo } from 'react';
 import { Modal as AntModal } from 'antd';
 
 import { Operation } from '../../index';
-import type { OptBoxProps, OptBoxDefaultOpt } from '../index';
+import type { OptBoxProps } from '../index';
 
-export function Modal<K extends string = OptBoxDefaultOpt>(
-  props: OptBoxProps<K>
-) {
+export function Modal(props: OptBoxProps) {
   const footer = useMemo(() => {
     if (props.opts)
       return (

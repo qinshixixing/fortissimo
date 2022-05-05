@@ -13,10 +13,7 @@ export { OptForm } from './optForm';
 export type {
   FormField,
   EditFormField,
-  FormFieldList,
-  EditFormFieldList,
   FormFieldGroup,
-  FormData,
   FormMode,
   OptFormProps,
   OptFormMethods

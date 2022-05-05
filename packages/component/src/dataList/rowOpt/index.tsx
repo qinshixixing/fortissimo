@@ -2,9 +2,7 @@ import React, { useMemo } from 'react';
 import { Operation } from '../../index';
 import type { DataListOptProps } from '../index';
 
-export function RowOpt<K extends string = string, T = any>(
-  props: DataListOptProps<K, T>
-) {
+export function RowOpt(props: DataListOptProps) {
   const list = useMemo(
     () =>
       props.list &&

@@ -37,12 +37,9 @@ export interface DataListTableProps<
   onOpt?: (optKey: OPTK, rowKey: ValueOf<T>, rowData: T) => void;
 }
 
-export function Table<
-  T extends DataListRowData = DataListRowData,
-  OPTK extends string = string
->(props: DataListTableProps<T, OPTK>) {
-  const colums = useMemo<ColumnsType<T>>(() => {
-    const data: ColumnsType<T> = [];
+export function Table(props: DataListTableProps) {
+  const colums = useMemo<ColumnsType<DataListRowData>>(() => {
+    const data: ColumnsType<DataListRowData> = [];
     if (props.msgList && props.msgList.length)
       props.msgList.forEach((item) => {
         data.push({
@@ -65,14 +62,13 @@ export function Table<
         title: '操作',
         ellipsis: Boolean(props.ellipsis),
         render: (data, record) => {
-          const rowData = record as T;
           return (
             <RowOpt
               list={props.optList || []}
-              data={rowData}
+              data={record}
               onOpt={(optKey) => {
                 props.onOpt &&
-                  props.onOpt(optKey, rowData[props.rowKey], rowData);
+                  props.onOpt(optKey, record[props.rowKey], record);
               }}
             />
           );
@@ -91,7 +87,7 @@ export function Table<
           ? {
               selectedRowKeys: props.selectedValue,
               onChange: (keys) => {
-                props.onSelect && props.onSelect(keys as ValueOf<T>[]);
+                props.onSelect && props.onSelect(keys);
               },
               getCheckboxProps: (record) => {
                 return {
@@ -108,7 +104,7 @@ export function Table<
         const info = Array.isArray(sorter) ? sorter[0] : sorter;
         if (action === 'sort') {
           props.onSort &&
-            props.onSort(info.columnKey as KeyOf<T>, info.order || 'none');
+            props.onSort(info.columnKey as string, info.order || 'none');
         }
       }}
     />

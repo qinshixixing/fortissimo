@@ -5,12 +5,10 @@ import { Operation } from '../../index';
 import type { OperationItemConfig } from '../../index';
 import type { OptBoxProps, OptBoxDefaultOpt } from '../index';
 
-export function Drawer<K extends string = OptBoxDefaultOpt>(
-  props: OptBoxProps<K>
-) {
+export function Drawer(props: OptBoxProps) {
   const opts = useMemo(() => {
     if (props.opts === null) return null;
-    const opts: OperationItemConfig<K | OptBoxDefaultOpt>[] = props.opts || [
+    const defaultOpts: OperationItemConfig<OptBoxDefaultOpt>[] = [
       {
         key: 'cancel',
         name: '取消'
@@ -23,7 +21,13 @@ export function Drawer<K extends string = OptBoxDefaultOpt>(
         disabled: props.disabled
       }
     ];
-    return <Operation.List type={'default'} list={opts} onOpt={props.onOpt} />;
+    return (
+      <Operation.List
+        type={'default'}
+        list={props.opts || defaultOpts}
+        onOpt={props.onOpt}
+      />
+    );
   }, [props]);
 
   return (

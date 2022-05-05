@@ -4,13 +4,13 @@ import React, {
   useCallback,
   useMemo
 } from 'react';
-import type { ReactNode, ForwardedRef } from 'react';
+import type { ReactNode } from 'react';
 import { Form } from 'antd';
 import { trimString } from '@fortissimo/util';
 
 import { DefaultShow } from './defaultShow';
 
-export interface FormField<K = string, V = any> {
+export interface FormField<K extends string = string, V = any> {
   key: K;
   name?: string;
   hide?: boolean;
@@ -28,49 +28,35 @@ export interface FormField<K = string, V = any> {
   labelCol?: number;
 }
 
-export type EditFormField<K = string, V = any> = Omit<
+export type EditFormField<K extends string = string, V = any> = Omit<
   FormField<K, V>,
   'editComponent' | 'showComponent' | 'editValuePropName' | 'showValuePropName'
 >;
 
-export type FormData = Record<string, any>;
-type KeyOf<T> = Extract<keyof T, string>;
-type ValueOf<T> = T[KeyOf<T>];
-
-export type FormFieldList<T extends FormData = FormData> = FormField<
-  KeyOf<T>,
-  ValueOf<T>
->[];
-
-export type EditFormFieldList<T extends FormData = FormData> = EditFormField<
-  KeyOf<T>,
-  ValueOf<T>
->[];
-
-export interface FormFieldGroup<T extends FormData = FormData> {
+export interface FormFieldGroup<K extends string = string, V = any> {
   title: string;
-  fields: FormFieldList<T>;
+  fields: FormField<K, V>[];
 }
 
 export type FormMode = 'edit' | 'show';
 
-export interface OptFormProps<T extends FormData = FormData> {
+export interface OptFormProps<K extends string = string, V = any> {
   className?: string;
-  fields?: FormFieldList<T>;
-  fieldGroups?: FormFieldGroup<T>[];
+  fields?: FormField<K, V>[];
+  fieldGroups?: FormFieldGroup<K, V>[];
   labelCol?: number;
   colNum?: number;
   mode: FormMode;
 }
 
-export interface OptFormMethods<T extends FormData = FormData> {
+export interface OptFormMethods<K extends string = string, V = any> {
   reset: () => void;
   check: () => void;
-  getData: () => Partial<T>;
-  setData: (data: Partial<T>) => void;
+  getData: () => Partial<Record<K, V>>;
+  setData: (data: Partial<Record<K, V>>) => void;
 }
 
-export const OptForm = forwardRef(function <T extends FormData>(
+export const OptForm = forwardRef(function (
   {
     fields = [],
     fieldGroups = [],
@@ -78,8 +64,8 @@ export const OptForm = forwardRef(function <T extends FormData>(
     colNum = 1,
     mode,
     className
-  }: OptFormProps<T>,
-  ref: ForwardedRef<unknown>
+  }: OptFormProps,
+  ref
 ) {
   const [formRef] = Form.useForm();
 
@@ -87,7 +73,7 @@ export const OptForm = forwardRef(function <T extends FormData>(
 
   useImperativeHandle(
     ref,
-    (): OptFormMethods<T> => ({
+    (): OptFormMethods => ({
       reset: () => formRef.resetFields(),
       check: () => formRef.validateFields(),
       getData: () => trimString(formRef.getFieldsValue()),
@@ -96,7 +82,7 @@ export const OptForm = forwardRef(function <T extends FormData>(
   );
 
   const fieldItemContent = useCallback(
-    (item: FormField<KeyOf<T>, ValueOf<T>>) => {
+    (item: FormField) => {
       if (!isShow && item.editComponent) return item.editComponent;
       if (isShow && item.showComponent) return item.showComponent;
       return item.component || <DefaultShow />;
@@ -105,7 +91,7 @@ export const OptForm = forwardRef(function <T extends FormData>(
   );
 
   const valuePropName = useCallback(
-    (item: FormField<KeyOf<T>, ValueOf<T>>) => {
+    (item: FormField) => {
       if (!isShow && item.editValuePropName) return item.editValuePropName;
       if (isShow && item.showValuePropName) return item.showValuePropName;
       return item.valuePropName || 'value';
@@ -114,7 +100,7 @@ export const OptForm = forwardRef(function <T extends FormData>(
   );
 
   const fieldItems = useCallback(
-    (list: FormFieldList<T>) =>
+    (list: FormField[]) =>
       list.map((item, index) => (
         <Form.Item
           className={'ft-opt-form-item'}

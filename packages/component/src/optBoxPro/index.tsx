@@ -6,40 +6,36 @@ import React, {
   useMemo,
   useState
 } from 'react';
-import type { ReactNode, ForwardedRef } from 'react';
+import type { ReactNode } from 'react';
 
 import { OptForm, OptBox } from '../index';
 import type {
   OptFormProps,
   OptBoxProps,
-  FormData,
   OptFormMethods,
   OptBoxDefaultOpt
 } from '../index';
 
 export type OptBoxProType = 'modal' | 'drawer';
 
-type OptBoxProFormProps<T extends FormData = FormData> = Omit<
-  OptFormProps<T>,
+type OptBoxProFormProps<K extends string = string, V = any> = Omit<
+  OptFormProps<K, V>,
   'className'
 >;
 type OptBoxProBoxProps = Pick<OptBoxProps, 'show' | 'width' | 'title'>;
 
-export interface OptBoxProProps<T extends FormData = FormData>
-  extends OptBoxProFormProps<T>,
+export interface OptBoxProProps<K extends string = string, V = any>
+  extends OptBoxProFormProps<K, V>,
     OptBoxProBoxProps {
   content?: ReactNode;
   extraContent?: ReactNode;
   type?: OptBoxProType;
   onClose: () => void;
-  onConfirm: (data: Partial<T>) => Promise<void> | void;
-  onConfirmBefore?: (data: Partial<T>) => Promise<void> | void;
+  onConfirm: (data: Partial<Record<K, V>>) => Promise<void> | void;
+  onConfirmBefore?: (data: Partial<Record<K, V>>) => Promise<void> | void;
 }
 
-export const OptBoxPro = forwardRef(function <T extends FormData = FormData>(
-  props: OptBoxProProps,
-  ref: ForwardedRef<unknown>
-) {
+export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
   const formRef = useRef<OptFormMethods>(null);
 
   const [loading, setLoading] = useState(false);
@@ -69,7 +65,7 @@ export const OptBoxPro = forwardRef(function <T extends FormData = FormData>(
 
   useImperativeHandle(ref, () => ({
     getData: () => formRef.current && formRef.current.getData(),
-    setData: (data: Partial<T>) => {
+    setData: (data: Partial<Record<string, any>>) => {
       if (formRef.current) formRef.current.setData(data);
       else
         setTimeout(() => {
@@ -88,7 +84,7 @@ export const OptBoxPro = forwardRef(function <T extends FormData = FormData>(
       width={props.width || 500}
       opts={isShow ? [{ key: 'cancel', name: '确定', loading }] : undefined}
       onOpt={async (optKey) => {
-        await handleOpt(optKey);
+        await handleOpt(optKey as OptBoxDefaultOpt);
       }}
       loading={loading}
     >

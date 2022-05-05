@@ -13,10 +13,9 @@ import type {
   DataListTableMsg,
   DataListOptConfig,
   DataListRowData,
-  DataListTableSortType,
-  EditFormFieldList,
-  FormData
+  DataListTableSortType
 } from '../index';
+import { EditFormField } from '../optForm';
 
 type KeyOf<T> = Extract<keyof T, string>;
 type ValueOf<T> = T[KeyOf<T>];
@@ -25,7 +24,7 @@ export type DataListProOptPosition = 'header' | 'row' | 'both';
 
 export interface DataListProOptConfig<
   K extends string = string,
-  T extends DataListRowData = DataListRowData
+  T = DataListRowData
 > extends DataListOptConfig<K, T> {
   position?: DataListProOptPosition;
   needSelect?: boolean;
@@ -33,7 +32,7 @@ export interface DataListProOptConfig<
 
 export interface DataListProOptParams<
   K extends string = string,
-  T extends DataListRowData = DataListRowData
+  T = DataListRowData
 > {
   optKey: K;
   rowKey: ValueOf<T> | ValueOf<T>[];
@@ -42,7 +41,7 @@ export interface DataListProOptParams<
 
 export interface DataListProGetDataParams<
   S extends FormData = FormData,
-  T extends DataListRowData = DataListRowData
+  T = DataListRowData
 > {
   pageNo?: number;
   pageSize?: number;
@@ -51,9 +50,7 @@ export interface DataListProGetDataParams<
   searchData?: Partial<S>;
 }
 
-export interface DataListProGetDataRes<
-  T extends DataListRowData = DataListRowData
-> {
+export interface DataListProGetDataRes<T = DataListRowData> {
   total: number;
   data: T[];
 }
@@ -67,7 +64,7 @@ export interface DataListProProps<
   rowKey: KeyOf<D>;
   disabledCheckedKey?: ValueOf<D>[];
   opts?: DataListProOptConfig<OPTK, D>[];
-  search?: EditFormFieldList<S>;
+  search?: EditFormField<KeyOf<S>, ValueOf<S>>[];
   canSelect?: boolean;
   resetPageNo?: boolean;
   onGetData?: (
@@ -76,26 +73,27 @@ export interface DataListProProps<
   onOpt?: (params: DataListProOptParams<OPTK, D>) => Promise<void> | void;
 }
 
-export const DataListPro = forwardRef(function <
-  D extends DataListRowData = DataListRowData,
-  S extends FormData = FormData,
-  OPTK extends string = string
->(props: DataListProProps<D, S, OPTK>, ref: ForwardedRef<unknown>) {
+export const DataListPro = forwardRef(function (
+  props: DataListProProps,
+  ref: ForwardedRef<unknown>
+) {
   const [pageNo, setPageNo] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [total, setTotal] = useState(0);
-  const [data, setData] = useState<D[]>([]);
-  const [selectedValue, setSelectedValue] = useState<ValueOf<D>[]>([]);
+  const [data, setData] = useState<DataListRowData[]>([]);
+  const [selectedValue, setSelectedValue] = useState<any[]>([]);
 
-  const [searchData, setSearchData] = useState<Partial<S>>({});
+  const [searchData, setSearchData] = useState<Partial<Record<string, any>>>(
+    {}
+  );
 
-  const [sortKey, setSortKey] = useState<KeyOf<D>>();
+  const [sortKey, setSortKey] = useState<string>();
   const [sortType, setSortType] = useState<DataListTableSortType>('none');
 
   const opts = useMemo(() => {
     const data: {
-      header: DataListOptConfig<OPTK, D>[];
-      row: DataListOptConfig<OPTK, D>[];
+      header: DataListOptConfig[];
+      row: DataListOptConfig[];
     } = {
       header: [],
       row: []
@@ -119,11 +117,11 @@ export const DataListPro = forwardRef(function <
   }, [props.opts, selectedValue]);
 
   const getData = useCallback(
-    async (params: DataListProGetDataParams<S, D>) => {
+    async (params: DataListProGetDataParams) => {
       setSelectedValue([]);
       const reqPageNo = params.pageNo || pageNo;
       const reqPageSize = params.pageSize || pageSize;
-      const data: DataListProGetDataParams<S, D> = {
+      const data: DataListProGetDataParams = {
         pageNo: reqPageNo,
         pageSize: reqPageSize,
         sortKey: params.sortKey || sortKey,
@@ -146,7 +144,7 @@ export const DataListPro = forwardRef(function <
   );
 
   const opt = useCallback(
-    async (params: DataListProOptParams<OPTK, D>) => {
+    async (params: DataListProOptParams) => {
       const data = params;
       props.onOpt && (await props.onOpt(data));
     },

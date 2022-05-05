@@ -3,12 +3,12 @@ import type { DataListRowData } from './table';
 
 export type DataListOptConfig<
   K extends string = string,
-  T extends DataListRowData = DataListRowData
+  T = DataListRowData
 > = Omit<OperationItemConfig<K, T>, 'type' | 'data'>;
 
 export interface DataListOptProps<
   K extends string = string,
-  T extends DataListRowData = DataListRowData
+  T = DataListRowData
 > {
   list: DataListOptConfig<K, T>[];
   onOpt?: (key: K) => void;
