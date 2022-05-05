@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import type { ReactNode } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ export interface Route {
   root?: boolean;
 }
 
-export const Router = memo((props: { config: Route[] }) => {
+export function Router(props: { config: Route[] }) {
   const routeByLayout = useMemo(() => {
     const getRoute = (routes: Route[], basePath: string) => {
       // 存储本层路由配置
@@ -136,4 +136,4 @@ export const Router = memo((props: { config: Route[] }) => {
     return route;
   }, [props.config]);
   return <Routes>{routeByLayout}</Routes>;
-});
+}

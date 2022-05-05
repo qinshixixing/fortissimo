@@ -3,7 +3,7 @@
   "author": "qinshixixing",
   "version": "0.1.1",
   "license": "Apache",
-  "description": "react纯ts(js)组件库",
+  "description": "react组件库",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -22,5 +22,8 @@
     "dist",
     "src",
     "type"
-  ]
+  ],
+  "dependencies": {
+    "antd": "^4.20.2"
+  }
 }
