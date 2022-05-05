@@ -40,14 +40,16 @@ export function Search(props: DataListSearchProps<string, any>) {
   return (
     <div className={'ft-data-list-search'}>
       <OptForm ref={formRef} mode={'edit'} colNum={3} fields={props.list} />
-      <Operation.List
-        type={'default'}
-        list={opts}
-        onOpt={(optKey) => {
-          if (optKey === 'reset') formRef.current?.reset();
-          searchData();
-        }}
-      />
+      <div className={'ft-data-list-search-opt'}>
+        <Operation.List
+          type={'default'}
+          list={opts}
+          onOpt={(optKey) => {
+            if (optKey === 'reset') formRef.current?.reset();
+            searchData();
+          }}
+        />
+      </div>
     </div>
   );
 }

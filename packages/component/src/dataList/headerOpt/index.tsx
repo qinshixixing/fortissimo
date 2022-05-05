@@ -3,5 +3,11 @@ import { Operation } from '../../index';
 import type { DataListOptProps } from '../index';
 
 export function HeaderOpt(props: DataListOptProps) {
-  return <Operation.List {...props} type={'primary'} />;
+  return (
+    <Operation.List
+      className={'ft-data-list-header-opt'}
+      {...props}
+      type={'primary'}
+    />
+  );
 }

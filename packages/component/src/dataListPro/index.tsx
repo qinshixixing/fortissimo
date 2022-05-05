@@ -111,7 +111,8 @@ export const DataListPro = forwardRef(function (
       }
       if (item.position === 'row' || item.position === 'both') {
         data.row.push({
-          ...item
+          ...item,
+          icon: undefined
         });
       }
     });
