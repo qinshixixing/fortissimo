@@ -10,7 +10,7 @@ import { trimString } from '@fortissimo/util';
 
 import { DefaultShow } from './defaultShow';
 
-export interface FormField<K extends string = string, V = any> {
+export interface OptFormField<K extends string = string, V = any> {
   key: K;
   name?: string;
   hide?: boolean;
@@ -28,25 +28,25 @@ export interface FormField<K extends string = string, V = any> {
   labelCol?: number;
 }
 
-export type EditFormField<K extends string = string, V = any> = Omit<
-  FormField<K, V>,
+export type OptEditFormField<K extends string = string, V = any> = Omit<
+  OptFormField<K, V>,
   'editComponent' | 'showComponent' | 'editValuePropName' | 'showValuePropName'
 >;
 
-export interface FormFieldGroup<K extends string = string, V = any> {
+export interface OptFormFieldGroup<K extends string = string, V = any> {
   title: string;
-  fields: FormField<K, V>[];
+  fields: OptFormField<K, V>[];
 }
 
-export type FormMode = 'edit' | 'show';
+export type OptFormMode = 'edit' | 'show';
 
 export interface OptFormProps<K extends string = string, V = any> {
   className?: string;
-  fields?: FormField<K, V>[];
-  fieldGroups?: FormFieldGroup<K, V>[];
+  fields?: OptFormField<K, V>[];
+  fieldGroups?: OptFormFieldGroup<K, V>[];
   labelCol?: number;
   colNum?: number;
-  mode: FormMode;
+  mode: OptFormMode;
 }
 
 export interface OptFormMethods<K extends string = string, V = any> {
@@ -82,7 +82,7 @@ export const OptForm = forwardRef(function (
   );
 
   const fieldItemContent = useCallback(
-    (item: FormField) => {
+    (item: OptFormField) => {
       if (!isShow && item.editComponent) return item.editComponent;
       if (isShow && item.showComponent) return item.showComponent;
       return item.component || <DefaultShow />;
@@ -91,7 +91,7 @@ export const OptForm = forwardRef(function (
   );
 
   const valuePropName = useCallback(
-    (item: FormField) => {
+    (item: OptFormField) => {
       if (!isShow && item.editValuePropName) return item.editValuePropName;
       if (isShow && item.showValuePropName) return item.showValuePropName;
       return item.valuePropName || 'value';
@@ -100,7 +100,7 @@ export const OptForm = forwardRef(function (
   );
 
   const fieldItems = useCallback(
-    (list: FormField[]) =>
+    (list: OptFormField[]) =>
       list.map((item, index) => (
         <Form.Item
           className={'ft-opt-form-item'}

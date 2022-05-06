@@ -2,13 +2,13 @@ import React, { useCallback, useMemo, useRef } from 'react';
 
 import { OptForm, Operation } from '../../index';
 import type {
-  EditFormField,
+  OptEditFormField,
   OptFormMethods,
   OperationItemConfig
 } from '../../index';
 
 export interface DataListSearchProps<K extends string = string, V = any> {
-  list: EditFormField<K, V>[];
+  list: OptEditFormField<K, V>[];
   onSearch: (data: Partial<Record<K, V>>) => void;
 }
 

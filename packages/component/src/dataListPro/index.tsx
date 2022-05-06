@@ -3,19 +3,19 @@ import React, {
   useImperativeHandle,
   forwardRef,
   useState,
-  useEffect,
   useMemo
 } from 'react';
 import type { ForwardedRef } from 'react';
+import { useMount } from '@fortissimo/hook';
 
 import { DataList } from '../index';
 import type {
   DataListTableMsg,
   DataListOptConfig,
   DataListRowData,
-  DataListTableSortType
+  DataListTableSortType,
+  OptEditFormField
 } from '../index';
-import { EditFormField } from '../optForm';
 
 export type DataListProOptPosition = 'header' | 'row' | 'both';
 
@@ -37,6 +37,16 @@ export interface DataListProOptParams<
   rowKey: DV | DV[];
   rowData?: Record<DK, DV>;
 }
+
+export type DataListProMsgConfig<
+  K extends string = string,
+  V = any
+> = DataListTableMsg<K, V>;
+
+export type DataListProSearchConfig<
+  K extends string = string,
+  V = any
+> = OptEditFormField<K, V>;
 
 export interface DataListProGetDataParams<
   SK extends string = string,
@@ -62,11 +72,11 @@ export interface DataListProProps<
   DV = any,
   SV = any
 > {
-  msgs: DataListTableMsg<DK, DV>[];
+  msgs: DataListProMsgConfig<DK, DV>[];
   rowKey: DK;
   disabledCheckedKey?: DV[];
   opts?: DataListProOptConfig<OPTK, DK, DV>[];
-  search?: EditFormField<SK, SV>[];
+  search?: DataListProSearchConfig<SK, SV>[];
   canSelect?: boolean;
   resetPageNo?: boolean;
   onGetData?: (
@@ -159,9 +169,9 @@ export const DataListPro = forwardRef(function (
     opt
   }));
 
-  useEffect(() => {
-    getData({ pageNo: 1 });
-  }, []);
+  useMount(async () => {
+    await getData({ pageNo: 1 });
+  });
 
   return (
     <>

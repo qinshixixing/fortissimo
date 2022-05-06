@@ -11,10 +11,10 @@ export type {
 
 export { OptForm } from './optForm';
 export type {
-  FormField,
-  EditFormField,
-  FormFieldGroup,
-  FormMode,
+  OptFormField,
+  OptEditFormField,
+  OptFormFieldGroup,
+  OptFormMode,
   OptFormProps,
   OptFormMethods
 } from './optForm';
@@ -33,6 +33,8 @@ export type {
 
 export { DataListPro } from './dataListPro';
 export type {
+  DataListProMsgConfig,
+  DataListProSearchConfig,
   DataListProOptPosition,
   DataListProOptConfig,
   DataListProOptParams,
