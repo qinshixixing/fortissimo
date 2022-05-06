@@ -13,26 +13,27 @@ import type {
   OptFormProps,
   OptBoxProps,
   OptFormMethods,
-  OptBoxDefaultOpt
+  OptBoxDefaultOpt,
+  RecordData
 } from '../index';
 
 export type OptBoxProType = 'modal' | 'drawer';
 
-type OptBoxProFormProps<K extends string = string, V = any> = Omit<
-  OptFormProps<K, V>,
+type OptBoxProFormProps<T extends RecordData = RecordData> = Omit<
+  OptFormProps<T>,
   'className'
 >;
 type OptBoxProBoxProps = Pick<OptBoxProps, 'show' | 'width' | 'title'>;
 
-export interface OptBoxProProps<K extends string = string, V = any>
-  extends OptBoxProFormProps<K, V>,
+export interface OptBoxProProps<T extends RecordData = RecordData>
+  extends OptBoxProFormProps<T>,
     OptBoxProBoxProps {
   content?: ReactNode;
   extraContent?: ReactNode;
   type?: OptBoxProType;
   onClose: () => void;
-  onConfirm: (data: Partial<Record<K, V>>) => Promise<void> | void;
-  onConfirmBefore?: (data: Partial<Record<K, V>>) => Promise<void> | void;
+  onConfirm: (data: Partial<T>) => Promise<void> | void;
+  onConfirmBefore?: (data: Partial<T>) => Promise<void> | void;
 }
 
 export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {

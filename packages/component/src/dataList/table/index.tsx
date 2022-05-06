@@ -5,35 +5,35 @@ import type { ColumnsType } from 'antd/lib/table/interface';
 
 import { RowOpt } from '../index';
 import type { DataListOptConfig } from '../index';
+import type { RecordData, KeyType, ValueType } from '../../index';
 
 export type DataListRowData = Record<string, any>;
 
 export type DataListTableSortType = 'ascend' | 'descend' | 'none';
 
-export interface DataListTableMsg<K extends string = string, V = any> {
-  key: K;
+export interface DataListTableMsg<T extends RecordData = RecordData> {
+  key: KeyType<T>;
   name?: string;
   width?: number;
   sort?: boolean;
-  render?: (value: V, record: Record<K, V>, index: number) => ReactNode;
+  render?: (value: ValueType<T>, record: T, index: number) => ReactNode;
 }
 
 export interface DataListTableProps<
-  K extends string = string,
-  V = any,
+  T extends RecordData = RecordData,
   OPTK extends string = string
 > {
-  data: Record<K, V>[];
-  rowKey: K;
-  msgList: DataListTableMsg<K, V>[];
-  optList?: DataListOptConfig<OPTK, K, V>[];
+  data: T[];
+  rowKey: KeyType<T>;
+  msgList: DataListTableMsg<T>[];
+  optList?: DataListOptConfig<OPTK, T>[];
   ellipsis?: boolean;
   canSelect?: boolean;
-  selectedValue?: V[];
-  disabledSelectedValue?: V[];
-  onSort?: (key: K, type: DataListTableSortType) => void;
-  onSelect?: (rowKeys?: V[]) => void;
-  onOpt?: (optKey: OPTK, rowKey: V, rowData: Record<K, V>) => void;
+  selectedValue?: ValueType<T>[];
+  disabledSelectedValue?: ValueType<T>[];
+  onSort?: (key: KeyType<T>, type: DataListTableSortType) => void;
+  onSelect?: (rowKeys?: ValueType<T>[]) => void;
+  onOpt?: (optKey: OPTK, rowKey: ValueType<T>, rowData: T) => void;
 }
 
 export function Table(props: DataListTableProps) {

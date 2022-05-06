@@ -14,75 +14,69 @@ import type {
   DataListOptConfig,
   DataListRowData,
   DataListTableSortType,
-  OptEditFormField
+  OptEditFormField,
+  RecordData,
+  KeyType,
+  ValueType
 } from '../index';
 
 export type DataListProOptPosition = 'header' | 'row' | 'both';
 
 export interface DataListProOptConfig<
   K extends string = string,
-  DK extends string = string,
-  DV = any
-> extends DataListOptConfig<K, DK, DV> {
+  T extends RecordData = RecordData
+> extends DataListOptConfig<K, T> {
   position?: DataListProOptPosition;
   needSelect?: boolean;
 }
 
 export interface DataListProOptParams<
   K extends string = string,
-  DK extends string = string,
-  DV = any
+  T extends RecordData = RecordData
 > {
   optKey: K;
-  rowKey: DV | DV[];
-  rowData?: Record<DK, DV>;
+  rowKey: ValueType<T> | ValueType<T>[];
+  rowData?: T;
 }
 
-export type DataListProMsgConfig<
-  K extends string = string,
-  V = any
-> = DataListTableMsg<K, V>;
+export type DataListProMsgConfig<T extends RecordData = RecordData> =
+  DataListTableMsg<T>;
 
-export type DataListProSearchConfig<
-  K extends string = string,
-  V = any
-> = OptEditFormField<K, V>;
+export type DataListProSearchConfig<T extends RecordData = RecordData> =
+  OptEditFormField<T>;
 
 export interface DataListProGetDataParams<
-  SK extends string = string,
-  DK extends string = string,
-  SV = any
+  T extends RecordData = RecordData,
+  K extends string = string
 > {
   pageNo?: number;
   pageSize?: number;
-  sortKey?: DK;
+  sortKey?: K;
   sortType?: DataListTableSortType;
-  searchData?: Partial<Record<SK, SV>>;
+  searchData?: Partial<T>;
 }
 
-export interface DataListProGetDataRes<K extends string = string, V = any> {
+export interface DataListProGetDataRes<T extends RecordData = RecordData> {
   total: number;
-  data: Record<K, V>[];
+  data: Partial<T>[];
 }
 
 export interface DataListProProps<
-  DK extends string = string,
-  SK extends string = string,
   OPTK extends string = string,
-  DV = any,
-  SV = any
+  T extends RecordData = RecordData,
+  S extends RecordData = RecordData
 > {
-  msgs: DataListProMsgConfig<DK, DV>[];
-  rowKey: DK;
-  disabledCheckedKey?: DV[];
-  opts?: DataListProOptConfig<OPTK, DK, DV>[];
-  search?: DataListProSearchConfig<SK, SV>[];
+  msgs: DataListProMsgConfig<T>[];
+  rowKey: KeyType<T>;
+  disabledCheckedKey?: ValueType<T>;
+  opts?: DataListProOptConfig<OPTK, T>[];
+  search?: DataListProSearchConfig<S>[];
   canSelect?: boolean;
   resetPageNo?: boolean;
   onGetData?: (
-    params: DataListProGetDataParams<SK, DK, SV>
-  ) => Promise<DataListProGetDataRes<DK, DV>>;
-  onOpt?: (params: DataListProOptParams<OPTK, DK, DV>) => Promise<void> | void;
+    params: DataListProGetDataParams<S, KeyType<T>>
+  ) => Promise<DataListProGetDataRes<T>>;
+  onOpt?: (params: DataListProOptParams<OPTK, T>) => Promise<void> | void;
 }
 
 export const DataListPro = forwardRef(function (

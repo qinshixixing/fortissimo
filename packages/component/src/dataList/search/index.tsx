@@ -4,17 +4,18 @@ import { OptForm, Operation } from '../../index';
 import type {
   OptEditFormField,
   OptFormMethods,
-  OperationItemConfig
+  OperationItemConfig,
+  RecordData
 } from '../../index';
 
-export interface DataListSearchProps<K extends string = string, V = any> {
-  list: OptEditFormField<K, V>[];
-  onSearch: (data: Partial<Record<K, V>>) => void;
+export interface DataListSearchProps<T extends RecordData = RecordData> {
+  list: OptEditFormField<T>[];
+  onSearch: (data: Partial<T>) => void;
 }
 
 type Opt = 'search' | 'reset';
 
-export function Search(props: DataListSearchProps<string, any>) {
+export function Search(props: DataListSearchProps) {
   const formRef = useRef<OptFormMethods>(null);
 
   const searchData = useCallback(() => {

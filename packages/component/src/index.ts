@@ -1,3 +1,7 @@
+export type RecordData = Record<string, any>;
+export type KeyType<T extends RecordData> = Extract<keyof T, string>;
+export type ValueType<T extends RecordData> = T[KeyType<T>];
+
 export { Router } from './router';
 export type { Route } from './router';
 

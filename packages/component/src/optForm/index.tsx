@@ -9,9 +9,10 @@ import { Form } from 'antd';
 import { trimString } from '@fortissimo/util';
 
 import { DefaultShow } from './defaultShow';
+import type { RecordData, KeyType, ValueType } from '../index';
 
-export interface OptFormField<K extends string = string, V = any> {
-  key: K;
+export interface OptFormField<T extends RecordData = RecordData> {
+  key: KeyType<T>;
   name?: string;
   hide?: boolean;
   required?: boolean;
@@ -21,39 +22,39 @@ export interface OptFormField<K extends string = string, V = any> {
   valuePropName?: string;
   editValuePropName?: string;
   showValuePropName?: string;
-  defaultValue?: V;
-  normalize?: (value: V, preValue: V) => V;
-  validator?: (value: V) => string;
+  defaultValue?: ValueType<T>;
+  normalize?: (value: ValueType<T>, preValue: ValueType<T>) => ValueType<T>;
+  validator?: (value: ValueType<T>) => string;
   width?: string | number;
   labelCol?: number;
 }
 
-export type OptEditFormField<K extends string = string, V = any> = Omit<
-  OptFormField<K, V>,
+export type OptEditFormField<T extends RecordData = RecordData> = Omit<
+  OptFormField<T>,
   'editComponent' | 'showComponent' | 'editValuePropName' | 'showValuePropName'
 >;
 
-export interface OptFormFieldGroup<K extends string = string, V = any> {
+export interface OptFormFieldGroup<T extends RecordData = RecordData> {
   title: string;
-  fields: OptFormField<K, V>[];
+  fields: OptFormField<T>[];
 }
 
 export type OptFormMode = 'edit' | 'show';
 
-export interface OptFormProps<K extends string = string, V = any> {
+export interface OptFormProps<T extends RecordData = RecordData> {
   className?: string;
-  fields?: OptFormField<K, V>[];
-  fieldGroups?: OptFormFieldGroup<K, V>[];
+  fields?: OptFormField<T>[];
+  fieldGroups?: OptFormFieldGroup<T>[];
   labelCol?: number;
   colNum?: number;
   mode: OptFormMode;
 }
 
-export interface OptFormMethods<K extends string = string, V = any> {
+export interface OptFormMethods<T extends RecordData = RecordData> {
   reset: () => void;
   check: () => void;
-  getData: () => Partial<Record<K, V>>;
-  setData: (data: Partial<Record<K, V>>) => void;
+  getData: () => Partial<T>;
+  setData: (data: Partial<T>) => void;
 }
 
 export const OptForm = forwardRef(function (
