@@ -15,6 +15,7 @@ export type {
 
 export { OptForm } from './optForm';
 export type {
+  OptFormFieldDetail,
   OptFormField,
   OptEditFormField,
   OptFormFieldGroup,
@@ -22,6 +23,16 @@ export type {
   OptFormProps,
   OptFormMethods
 } from './optForm';
+export type {
+  OptFormField as FormField,
+  OptEditFormField as EditFormField
+} from './optForm';
+
+export * as OptBox from './optBox';
+export type { OptBoxDefaultOpt, OptBoxProps } from './optBox';
+
+export { OptBoxPro } from './optBoxPro';
+export type { OptBoxProType, OptBoxProProps } from './optBoxPro';
 
 export * as DataList from './dataList';
 export type {
@@ -46,9 +57,10 @@ export type {
   DataListProGetDataRes,
   DataListProProps
 } from './dataListPro';
-
-export * as OptBox from './optBox';
-export type { OptBoxDefaultOpt, OptBoxProps } from './optBox';
-
-export { OptBoxPro } from './optBoxPro';
-export type { OptBoxProType, OptBoxProProps } from './optBoxPro';
+export type {
+  DataListProMsgConfig as DataListMsg,
+  DataListProSearchConfig as DataListSearch,
+  DataListProOptConfig as DataListOpt,
+  DataListProOptParams as DataListOptParams,
+  DataListProGetDataRes as GetDataListRes
+} from './dataListPro';
