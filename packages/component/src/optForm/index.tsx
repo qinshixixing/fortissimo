@@ -11,8 +11,8 @@ import { trimString } from '@fortissimo/util';
 import { DefaultShow } from './defaultShow';
 import type { RecordData, KeyType, ValueType } from '../index';
 
-export interface OptFormField<T extends RecordData = RecordData> {
-  key: KeyType<T>;
+export interface OptFormFieldDetail<K extends string = string, V = any> {
+  key: K;
   name?: string;
   hide?: boolean;
   required?: boolean;
@@ -22,17 +22,25 @@ export interface OptFormField<T extends RecordData = RecordData> {
   valuePropName?: string;
   editValuePropName?: string;
   showValuePropName?: string;
-  defaultValue?: ValueType<T>;
-  normalize?: (value: ValueType<T>, preValue: ValueType<T>) => ValueType<T>;
-  validator?: (value: ValueType<T>) => string;
+  defaultValue?: V;
+  normalize?: (value: V, preValue: V) => V;
+  validator?: (value: V) => string;
   width?: string | number;
   labelCol?: number;
 }
 
-export type OptEditFormField<T extends RecordData = RecordData> = Omit<
-  OptFormField<T>,
-  'editComponent' | 'showComponent' | 'editValuePropName' | 'showValuePropName'
->;
+export type OptFormField<T extends RecordData = RecordData> =
+  OptFormFieldDetail<KeyType<T>, ValueType<T>>;
+
+export type OptEditFormField<T extends RecordData = RecordData> = Partial<
+  Omit<
+    OptFormField<T>,
+    | 'editComponent'
+    | 'showComponent'
+    | 'editValuePropName'
+    | 'showValuePropName'
+  >
+> & { key: KeyType<T> };
 
 export interface OptFormFieldGroup<T extends RecordData = RecordData> {
   title: string;

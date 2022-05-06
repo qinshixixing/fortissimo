@@ -40,10 +40,10 @@ export interface DataListProOptParams<
 }
 
 export type DataListProMsgConfig<T extends RecordData = RecordData> =
-  DataListTableMsg<T>;
+  DataListTableMsg<Partial<T>>;
 
 export type DataListProSearchConfig<T extends RecordData = RecordData> =
-  OptEditFormField<T>;
+  OptEditFormField<Partial<T>>;
 
 export interface DataListProGetDataParams<
   T extends RecordData = RecordData,
@@ -66,7 +66,7 @@ export interface DataListProProps<
   T extends RecordData = RecordData,
   S extends RecordData = RecordData
 > {
-  msgs: DataListProMsgConfig<T>[];
+  msgs: DataListProMsgConfig<Partial<T>>[];
   rowKey: KeyType<T>;
   disabledCheckedKey?: ValueType<T>;
   opts?: DataListProOptConfig<OPTK, T>[];
