@@ -25,7 +25,8 @@ export type {
 } from './optForm';
 export type {
   OptFormField as FormField,
-  OptEditFormField as EditFormField
+  OptEditFormField as EditFormField,
+  OptFormFieldGroup as FormFieldGroup
 } from './optForm';
 
 export * as OptBox from './optBox';
