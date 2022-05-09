@@ -1,4 +1,13 @@
-## [0.1.6-9](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-8...component/0.1.6-9) (2022-05-09)
+## [0.1.6-10](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-9...component/0.1.6-10) (2022-05-09)
+
+
+### Features
+
+* **优化表单labelcol参数:** 优化表单labelCol参数 ([9e81814](https://github.com/qinshixixing/fortissimo/commit/9e81814350b0835f0eea0d3b8b08fbbe13a4dea6))
+
+
+
+## [v0.1.6-9](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-8...component/v0.1.6-9) (2022-05-09)
 
 
 ### Features
