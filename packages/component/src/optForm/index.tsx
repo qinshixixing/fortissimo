@@ -72,7 +72,7 @@ export const OptForm = forwardRef(function (
   {
     fields = [],
     fieldGroups = [],
-    labelCol,
+    labelCol = 3,
     colNum = 1,
     mode,
     className
