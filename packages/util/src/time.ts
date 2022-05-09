@@ -1,10 +1,10 @@
 export type DatePrecision = 'year' | 'quarter' | 'month' | 'week' | 'date';
 
-export type TimePrecision = 'hour' | 'minute' | 'second' | 'millisecond';
+export type ClockPrecision = 'hour' | 'minute' | 'second' | 'millisecond';
 
-export type Precision = DatePrecision | TimePrecision;
+export type TimePrecision = DatePrecision | ClockPrecision;
 
-export function getTimeFormat(precision?: Precision): string {
+export function getTimeFormat(precision?: TimePrecision): string {
   switch (precision) {
     case 'year':
       return 'YYYY';

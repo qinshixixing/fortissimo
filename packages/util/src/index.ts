@@ -49,4 +49,4 @@ export { transKey } from './transKey';
 export type { KeyConfig } from './transKey';
 
 export { getTimeFormat } from './time';
-export type { DatePrecision, TimePrecision, Precision } from './time';
+export type { DatePrecision, ClockPrecision, TimePrecision } from './time';
