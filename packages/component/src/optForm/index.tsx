@@ -52,7 +52,10 @@ export type OptFormMode = 'edit' | 'show';
 export interface OptFormProps<T extends RecordData = RecordData> {
   className?: string;
   fields?: OptFormField<T>[];
-  fieldGroups?: OptFormFieldGroup<T>[];
+  fieldGroups?: {
+    title: string;
+    fields: OptFormField<T>[];
+  }[];
   labelCol?: number;
   colNum?: number;
   mode: OptFormMode;
