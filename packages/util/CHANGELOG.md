@@ -1,4 +1,13 @@
-## [0.3.6](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.5...util/0.3.6) (2022-05-04)
+## [0.3.7](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.6...util/0.3.7) (2022-05-09)
+
+
+### Features
+
+* **修改接口声明:** 修改接口声明 ([20ec687](https://github.com/qinshixixing/fortissimo/commit/20ec687c945c2a7827db919e4dd29dc0db085d9a))
+
+
+
+## [v0.3.6](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.5...util/v0.3.6) (2022-05-04)
 
 
 ### Features
