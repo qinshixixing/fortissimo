@@ -59,9 +59,10 @@ export type {
   DataListProProps
 } from './dataListPro';
 export type {
-  DataListProMsgConfig as DataListMsg,
-  DataListProSearchConfig as DataListSearch,
-  DataListProOptConfig as DataListOpt,
-  DataListProOptParams as DataListOptParams,
-  DataListProGetDataRes as GetDataListRes
+  DataListProMsgConfig as DLMsg,
+  DataListProSearchConfig as DLSearch,
+  DataListProOptConfig as DLOpt,
+  DataListProOptParams as DLOptParams,
+  DataListProGetDataParams as DLGetParams,
+  DataListProGetDataRes as DLGetRes
 } from './dataListPro';
