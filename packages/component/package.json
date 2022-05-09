@@ -1,7 +1,7 @@
 {
   "name": "@fortissimo/component",
   "author": "qinshixixing",
-  "version": "0.1.6-8",
+  "version": "0.1.6-9",
   "license": "Apache",
   "description": "react组件库",
   "publishConfig": {
