@@ -1,4 +1,13 @@
-## [0.1.6-14](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-13...component/0.1.6-14) (2022-05-09)
+## [0.1.6-15](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-14...component/0.1.6-15) (2022-05-09)
+
+
+### Features
+
+* **修改样式:** 修改样式 ([9a82667](https://github.com/qinshixixing/fortissimo/commit/9a82667c47219921401df117fecfa26509730da1))
+
+
+
+## [v0.1.6-14](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-13...component/v0.1.6-14) (2022-05-09)
 
 
 ### Features
