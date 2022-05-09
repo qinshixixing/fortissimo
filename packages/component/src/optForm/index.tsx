@@ -56,7 +56,7 @@ export interface OptFormProps<T extends RecordData = RecordData> {
     title: string;
     fields: OptFormField<T>[];
   }[];
-  labelCol?: number;
+  labelCol?: number | null;
   colNum?: number;
   mode: OptFormMode;
 }
@@ -72,7 +72,7 @@ export const OptForm = forwardRef(function (
   {
     fields = [],
     fieldGroups = [],
-    labelCol = 3,
+    labelCol,
     colNum = 1,
     mode,
     className
@@ -171,8 +171,10 @@ export const OptForm = forwardRef(function (
       className={className}
       form={formRef}
       labelWrap
-      labelCol={{ span: labelCol }}
-      wrapperCol={{ span: 24 - labelCol }}
+      labelCol={typeof labelCol === 'number' ? { span: labelCol } : undefined}
+      wrapperCol={
+        typeof labelCol === 'number' ? { span: 24 - labelCol } : undefined
+      }
       preserve={false}
     >
       {fieldItems(fields)}
