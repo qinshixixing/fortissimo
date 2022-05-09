@@ -71,7 +71,7 @@ export interface DataListProProps<
   disabledCheckedKey?: ValueType<T>;
   opts?: DataListProOptConfig<OPTK, T>[];
   search?: DataListProSearchConfig<S>[];
-  searchLabelCol?: number;
+  searchLabelCol?: number | null;
   canSelect?: boolean;
   resetPageNo?: boolean;
   onGetData?: (

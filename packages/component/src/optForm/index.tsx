@@ -114,54 +114,63 @@ export const OptForm = forwardRef(function (
   const fieldItems = useCallback(
     (list: OptFormField[]) =>
       list.map((item, index) => (
-        <Form.Item
-          className={'ft-opt-form-item'}
+        <div
+          className={'ft-opt-form-item' + (item.hide ? ' hide' : '')}
           key={item.key ? String(item.key) : index}
-          name={item.key && String(item.key)}
-          label={item.name || ''}
-          hidden={item.hide}
-          labelCol={
-            typeof item.labelCol === 'number'
-              ? { span: item.labelCol }
-              : undefined
-          }
-          wrapperCol={
-            typeof item.labelCol === 'number'
-              ? { span: 24 - item.labelCol }
-              : undefined
-          }
-          required={isShow ? false : item.required}
-          normalize={isShow ? undefined : item.normalize}
           style={{
             width: item.width || `${100 / colNum}%`
           }}
-          initialValue={item.defaultValue}
-          valuePropName={valuePropName(item)}
-          rules={
-            isShow
-              ? undefined
-              : [
-                  {
-                    validator: (rule: any, checkValue: any) => {
-                      let value = checkValue;
-                      if (typeof value === 'string') value = checkValue.trim();
-                      const isEmpty = !value && value !== 0;
-                      if (item.required) {
-                        if (isEmpty || (Array.isArray(value) && !value.length))
-                          return Promise.reject(`${item.name}不能为空！`);
-                      }
-                      if (item.validator) {
-                        const result = item.validator(value);
-                        if (result) return Promise.reject(result);
-                      }
-                      return Promise.resolve('');
-                    }
-                  }
-                ]
-          }
         >
-          {fieldItemContent(item)}
-        </Form.Item>
+          <Form.Item
+            className='ft-opt-form-item'
+            key={item.key ? String(item.key) : index}
+            name={item.key && String(item.key)}
+            label={item.name || ''}
+            hidden={item.hide}
+            labelCol={
+              typeof item.labelCol === 'number'
+                ? { span: item.labelCol }
+                : undefined
+            }
+            wrapperCol={
+              typeof item.labelCol === 'number'
+                ? { span: 24 - item.labelCol }
+                : undefined
+            }
+            required={isShow ? false : item.required}
+            normalize={isShow ? undefined : item.normalize}
+            initialValue={item.defaultValue}
+            valuePropName={valuePropName(item)}
+            rules={
+              isShow
+                ? undefined
+                : [
+                    {
+                      validator: (rule: any, checkValue: any) => {
+                        let value = checkValue;
+                        if (typeof value === 'string')
+                          value = checkValue.trim();
+                        const isEmpty = !value && value !== 0;
+                        if (item.required) {
+                          if (
+                            isEmpty ||
+                            (Array.isArray(value) && !value.length)
+                          )
+                            return Promise.reject(`${item.name}不能为空！`);
+                        }
+                        if (item.validator) {
+                          const result = item.validator(value);
+                          if (result) return Promise.reject(result);
+                        }
+                        return Promise.resolve('');
+                      }
+                    }
+                  ]
+            }
+          >
+            {fieldItemContent(item)}
+          </Form.Item>
+        </div>
       )),
     [colNum, isShow, fieldItemContent, valuePropName]
   );

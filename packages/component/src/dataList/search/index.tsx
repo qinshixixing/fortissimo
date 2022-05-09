@@ -10,7 +10,7 @@ import type {
 
 export interface DataListSearchProps<T extends RecordData = RecordData> {
   list: OptEditFormField<T>[];
-  labelCol?: number;
+  labelCol?: number | null;
   onSearch: (data: Partial<T>) => void;
 }
 
