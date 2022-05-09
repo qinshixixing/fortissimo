@@ -45,7 +45,7 @@ export function Search(props: DataListSearchProps) {
         ref={formRef}
         mode={'edit'}
         colNum={3}
-        labelCol={props.labelCol}
+        labelCol={props.labelCol || 5}
         fields={props.list}
       />
       <div className={'ft-data-list-search-opt'}>
