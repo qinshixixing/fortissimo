@@ -1,4 +1,13 @@
-## [0.1.6-11](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-10...component/0.1.6-11) (2022-05-09)
+## [0.1.6-12](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-11...component/0.1.6-12) (2022-05-09)
+
+
+### Features
+
+* **修改搜索栏label宽度:** 修改搜索栏label宽度 ([a70f105](https://github.com/qinshixixing/fortissimo/commit/a70f1057ce454a43ace7669e3d803778bb114b98))
+
+
+
+## [v0.1.6-11](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-10...component/v0.1.6-11) (2022-05-09)
 
 
 ### Features
