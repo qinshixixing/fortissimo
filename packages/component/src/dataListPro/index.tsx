@@ -71,6 +71,7 @@ export interface DataListProProps<
   disabledCheckedKey?: ValueType<T>;
   opts?: DataListProOptConfig<OPTK, T>[];
   search?: DataListProSearchConfig<S>[];
+  searchLabelCol?: number;
   canSelect?: boolean;
   resetPageNo?: boolean;
   onGetData?: (
@@ -172,6 +173,7 @@ export const DataListPro = forwardRef(function (
       {props.search && (
         <DataList.Search
           list={props.search}
+          labelCol={props.searchLabelCol}
           onSearch={(data) => {
             setSearchData(data);
             getData({

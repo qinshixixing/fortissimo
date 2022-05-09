@@ -10,6 +10,7 @@ import type {
 
 export interface DataListSearchProps<T extends RecordData = RecordData> {
   list: OptEditFormField<T>[];
+  labelCol?: number;
   onSearch: (data: Partial<T>) => void;
 }
 
@@ -40,7 +41,13 @@ export function Search(props: DataListSearchProps) {
 
   return (
     <div className={'ft-data-list-search'}>
-      <OptForm ref={formRef} mode={'edit'} colNum={3} fields={props.list} />
+      <OptForm
+        ref={formRef}
+        mode={'edit'}
+        colNum={3}
+        labelCol={props.labelCol}
+        fields={props.list}
+      />
       <div className={'ft-data-list-search-opt'}>
         <Operation.List
           type={'default'}
