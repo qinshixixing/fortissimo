@@ -1,4 +1,13 @@
-## [0.1.6-16](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-15...component/0.1.6-16) (2022-05-10)
+## [0.1.6-17](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-16...component/0.1.6-17) (2022-05-10)
+
+
+### Features
+
+* **time、upload组件优化:** 1、优化upload组件声明。2、添加time组件展示方法。 ([8c712de](https://github.com/qinshixixing/fortissimo/commit/8c712dee4d0c7996e466d7904b4622eeeff59006))
+
+
+
+## [v0.1.6-16](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-15...component/v0.1.6-16) (2022-05-10)
 
 
 ### Features
