@@ -1,4 +1,13 @@
-## [0.1.6-17](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-16...component/0.1.6-17) (2022-05-10)
+## [0.1.6-18](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-17...component/0.1.6-18) (2022-05-10)
+
+
+### Features
+
+* **添加新组件:** 添加editor、status、pic组件 ([05940ef](https://github.com/qinshixixing/fortissimo/commit/05940efb5026cf29bfd5f3dc16f1d41191d3c073))
+
+
+
+## [v0.1.6-17](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-16...component/v0.1.6-17) (2022-05-10)
 
 
 ### Features
