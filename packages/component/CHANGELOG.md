@@ -1,4 +1,13 @@
-## [0.1.6-19](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-18...component/0.1.6-19) (2022-05-10)
+## [0.1.6-20](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-19...component/0.1.6-20) (2022-05-10)
+
+
+### Bug Fixes
+
+* **修复类型判断错误:** 修复类型判断错误 ([93210eb](https://github.com/qinshixixing/fortissimo/commit/93210ebc807f1c1fda5a45906b32e291fcc15336))
+
+
+
+## [v0.1.6-19](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-18...component/v0.1.6-19) (2022-05-10)
 
 
 ### Bug Fixes
