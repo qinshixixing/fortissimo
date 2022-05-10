@@ -4,17 +4,17 @@ export { UploadFile };
 export type UploadData = UploadFile | string;
 
 export interface UploadConfig {
-  text: string;
-  progress: boolean;
-  selectAlways: boolean;
-  directory: boolean;
-  format: string[];
-  listType: 'text' | 'picture' | 'picture-card';
+  text?: string;
+  progress?: boolean;
+  selectAlways?: boolean;
+  directory?: boolean;
+  format?: string[];
+  listType?: 'text' | 'picture' | 'picture-card';
 }
 
 export interface UploadListConfig extends UploadConfig {
-  multiple: boolean;
-  maxNum: number;
+  multiple?: boolean;
+  maxNum?: number;
 }
 
 export type UploadFormatKey = 'format' | 'listType';

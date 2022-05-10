@@ -42,12 +42,12 @@ export function FileList(props: UploadListProps) {
       const result: UploadFile[] = [];
       (data || []).forEach((item) => {
         if (typeof item === 'string') result.push(item);
-        else {
+        else if (props.format) {
           const check = props.format.some((format) =>
             item.name.endsWith(format)
           );
           if (check) result.push(item);
-        }
+        } else result.push(item);
       });
       props.onChange(result);
     },

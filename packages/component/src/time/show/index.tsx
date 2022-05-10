@@ -6,7 +6,7 @@ export interface TimeShowProps extends TimeShowConfig {
   value?: moment.Moment;
 }
 
-function showTime(options: TimeShowProps): string {
+export function showTime(options: TimeShowProps): string {
   if (!options.value) return '';
   let format = options.format;
   if (!format) format = getTimeFormat(options.precision);

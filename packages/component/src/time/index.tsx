@@ -24,7 +24,7 @@ export type { TimePointProps } from './point';
 export { Range } from './range';
 export type { TimeRangeProps } from './range';
 
-export { Show } from './show';
+export { Show, showTime } from './show';
 export type { TimeShowProps } from './show';
 
 export { ShowRange } from './showRange';
