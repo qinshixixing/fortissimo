@@ -22,7 +22,7 @@ export function status<T extends Key = string>(config: StatusConfig<T>[]) {
   });
 
   const getStatusText = (status?: T): string => {
-    if (!status) return '未知';
+    if (status === undefined) return '未知';
     return data.get(status) || '未知';
   };
 
@@ -39,7 +39,7 @@ export function status<T extends Key = string>(config: StatusConfig<T>[]) {
   });
 
   const ShowStatus = memo((props: { value?: T }) => {
-    return <>{getStatusText(props.value || undefined)}</>;
+    return <>{getStatusText(props.value)}</>;
   });
 
   return { EditStatus, ShowStatus };
