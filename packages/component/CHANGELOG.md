@@ -1,4 +1,13 @@
-## [0.1.6-18](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-17...component/0.1.6-18) (2022-05-10)
+## [0.1.6-19](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-18...component/0.1.6-19) (2022-05-10)
+
+
+### Bug Fixes
+
+* **修改editor样式引入:** 修改editor样式引入 ([9548ab2](https://github.com/qinshixixing/fortissimo/commit/9548ab2b2dc47d943c099a9b7227fe3fecbd11a6))
+
+
+
+## [v0.1.6-18](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-17...component/v0.1.6-18) (2022-05-10)
 
 
 ### Features
