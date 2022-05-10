@@ -1,4 +1,13 @@
-## [0.1.6-20](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-19...component/0.1.6-20) (2022-05-10)
+# [0.2.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-20...component/0.2.0) (2022-05-10)
+
+
+### Features
+
+* **添加新组件、优化editor组件:** 1、添加typeInput组件。2、优化editor展示样式。 ([8c79bc1](https://github.com/qinshixixing/fortissimo/commit/8c79bc14e266e732fe8c0f8911658ba3afef83d4))
+
+
+
+## [v0.1.6-20](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.6-19...component/v0.1.6-20) (2022-05-10)
 
 
 ### Bug Fixes
