@@ -15,7 +15,7 @@ import type {
 } from '@wangeditor/editor';
 import { transFile } from './transFile';
 
-// import '@wangeditor/editor/dist/css/style.css';
+import '@wangeditor/editor/dist/css/style.css';
 export { transFile };
 export type { EditorTransDataConfig } from './transFile';
 
