@@ -68,6 +68,7 @@ export type {
 } from './dataListPro';
 
 export * as Time from './time';
+export { showTime } from './time';
 export type {
   TimeConfig,
   TimeShowConfig,
@@ -95,3 +96,24 @@ export type {
   UploadImageProps,
   UploadImageListProps
 } from './upload';
+
+export * as Pic from './pic';
+export type {
+  PicConfig,
+  PicAvatarConfig,
+  PicListProps,
+  PicProps,
+  PicAvatarProps
+} from './pic';
+
+export { status } from './status';
+export type { StatusConfig, EditStatusProps } from './status';
+
+export * as Editor from './editor';
+export type {
+  EditorConfig,
+  EditorShowConfig,
+  EditorTransDataConfig,
+  EditorProps,
+  EditorShowProps
+} from './editor';
