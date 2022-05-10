@@ -14,7 +14,16 @@ export function Show(props: EditorShowProps) {
   return (
     <>
       <Divider />
-      <div dangerouslySetInnerHTML={{ __html: props.value || '' }} />
+      <div
+        style={
+          props.scroll
+            ? {
+                height: props.height || '300px'
+              }
+            : undefined
+        }
+        dangerouslySetInnerHTML={{ __html: props.value || '' }}
+      />
     </>
   );
 }

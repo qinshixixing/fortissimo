@@ -117,3 +117,10 @@ export type {
   EditorProps,
   EditorShowProps
 } from './editor';
+
+export { TypeINput } from './typeInput';
+export type {
+  TypeListConfig,
+  TypeInputValue,
+  TypeInputProps
+} from './typeInput';
