@@ -122,8 +122,6 @@ export const OptForm = forwardRef(function (
           }}
         >
           <Form.Item
-            className='ft-opt-form-item'
-            key={item.key ? String(item.key) : index}
             name={item.key && String(item.key)}
             label={item.name || ''}
             hidden={item.hide}

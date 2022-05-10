@@ -66,3 +66,32 @@ export type {
   DataListProGetDataParams as DLGetParams,
   DataListProGetDataRes as DLGetRes
 } from './dataListPro';
+
+export * as Time from './time';
+export type {
+  TimeConfig,
+  TimeShowConfig,
+  TimeData,
+  TimeStrategy,
+  TimePointProps,
+  TimeRangeProps,
+  TimeShowProps,
+  TimeShowRangeProps
+} from './time';
+
+export * as Upload from './upload';
+export type {
+  UploadFile,
+  UploadData,
+  UploadConfig,
+  UploadListConfig,
+  UploadImageConfig,
+  UploadImageListConfig,
+  UploadFormatKey,
+  UploadValueConfig,
+  UploadListValueConfig,
+  UploadProps,
+  UploadListProps,
+  UploadImageProps,
+  UploadImageListProps
+} from './upload';
