@@ -18,7 +18,8 @@ export function Show(props: EditorShowProps) {
         style={
           props.scroll
             ? {
-                height: props.height || '300px'
+                height: props.height || '300px',
+                overflow: 'auto'
               }
             : undefined
         }

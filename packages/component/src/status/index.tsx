@@ -12,6 +12,10 @@ export interface EditStatusProps<T extends Key = string> extends SelectProps {
   keys?: T[];
 }
 
+export interface ShowStatusProps<T extends Key = string> {
+  value?: T;
+}
+
 export function status<T extends Key = string>(config: StatusConfig<T>[]) {
   const data: Map<T, string> = new Map();
   const keys: T[] = [];
@@ -38,7 +42,7 @@ export function status<T extends Key = string>(config: StatusConfig<T>[]) {
     );
   });
 
-  const ShowStatus = memo((props: { value?: T }) => {
+  const ShowStatus = memo((props: ShowStatusProps<T>) => {
     return <>{getStatusText(props.value)}</>;
   });
 
