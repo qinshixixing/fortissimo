@@ -1,4 +1,13 @@
-## [0.2.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.0...component/0.2.1) (2022-05-11)
+## [0.2.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.1...component/0.2.2) (2022-05-17)
+
+
+### Features
+
+* **富文本编辑器支持上传视频:** 富文本编辑器支持上传视频 ([af5e69c](https://github.com/qinshixixing/fortissimo/commit/af5e69c9732b2191e5b10052edc3a5a11df78594))
+
+
+
+## [v0.2.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.0...component/v0.2.1) (2022-05-11)
 
 
 ### Features
