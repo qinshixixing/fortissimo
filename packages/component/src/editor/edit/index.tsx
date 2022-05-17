@@ -25,7 +25,7 @@ export interface EditorConfig {
   disabled?: boolean;
   height?: string | number;
   scroll?: boolean;
-  uploadFn?: (data: Blob, name: string) => Promise<string>;
+  uploadFn?: (data: Blob, name: string, type: string) => Promise<string>;
   uploadOnInsert?: boolean;
 }
 
@@ -39,13 +39,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
   const [toolbar, setToolbar] = useState<IDomToolbar | null>(null);
 
   const toolbarConfig = useMemo<Partial<IToolbarConfig>>(() => {
-    const excludeKeys = [
-      'group-video',
-      'insertVideo',
-      'insertTable',
-      'codeBlock',
-      'todo'
-    ];
+    const excludeKeys = ['insertTable', 'codeBlock', 'todo'];
     if (!props.scroll) excludeKeys.push('fullScreen');
     return {
       excludeKeys
@@ -61,7 +55,17 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
           customUpload: async (file: File, insertFn: (url: string) => void) => {
             const url =
               props.uploadOnInsert && props.uploadFn
-                ? await props.uploadFn(file, file.name)
+                ? await props.uploadFn(file, file.name, 'image')
+                : URL.createObjectURL(file);
+
+            insertFn(url);
+          }
+        },
+        uploadVideo: {
+          customUpload: async (file: File, insertFn: (url: string) => void) => {
+            const url =
+              props.uploadOnInsert && props.uploadFn
+                ? await props.uploadFn(file, file.name, 'video')
                 : URL.createObjectURL(file);
 
             insertFn(url);
