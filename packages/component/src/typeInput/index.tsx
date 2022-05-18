@@ -17,7 +17,7 @@ export interface TypeInputProps<T extends string = string> {
   onChange?: (value: TypeInputValue) => void;
 }
 
-export function TypeINput(props: TypeInputProps) {
+export function TypeInput(props: TypeInputProps) {
   const typeList = useMemo(() => props.typeList || [], [props.typeList]);
 
   const value = useMemo<TypeInputValue>(
