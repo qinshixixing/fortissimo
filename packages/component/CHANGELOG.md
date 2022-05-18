@@ -1,4 +1,13 @@
-## [0.2.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.2...component/0.2.3) (2022-05-18)
+## [0.2.4](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.3...component/0.2.4) (2022-05-18)
+
+
+### Bug Fixes
+
+* **修复类型输入组件初始化数据错误:** 修复类型输入组件初始化数据错误 ([7aef928](https://github.com/qinshixixing/fortissimo/commit/7aef92847f209aff38d63609838cbd6825543dc8))
+
+
+
+## [v0.2.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.2...component/v0.2.3) (2022-05-18)
 
 
 ### Bug Fixes
