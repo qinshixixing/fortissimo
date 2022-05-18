@@ -23,7 +23,7 @@ export function TypeInput(props: TypeInputProps) {
   const value = useMemo<TypeInputValue>(
     () =>
       props.value || {
-        type: typeList.length ? typeList[0].name : '',
+        type: typeList.length ? typeList[0].key : '',
         data: ''
       },
     [props.value, typeList]
