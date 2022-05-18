@@ -1,4 +1,13 @@
-## [0.2.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.1...component/0.2.2) (2022-05-17)
+## [0.2.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.2...component/0.2.3) (2022-05-18)
+
+
+### Bug Fixes
+
+* **修改变量名:** 修改变量名 ([647010a](https://github.com/qinshixixing/fortissimo/commit/647010ad86662aa692f2c9d0403bcd26be27646f))
+
+
+
+## [v0.2.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.1...component/v0.2.2) (2022-05-17)
 
 
 ### Features
