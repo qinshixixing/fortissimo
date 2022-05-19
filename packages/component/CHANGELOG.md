@@ -1,4 +1,13 @@
-## [0.2.4](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.3...component/0.2.4) (2022-05-18)
+## [0.2.5](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.4...component/0.2.5) (2022-05-19)
+
+
+### Features
+
+* **优化富文本编辑器文件上传:** 1、完善富文本内上传媒体文件名。2、限制富文本内上传媒体格式。 ([4a79e44](https://github.com/qinshixixing/fortissimo/commit/4a79e4430ab9386c59ce1f1f0ff9b69224947dae))
+
+
+
+## [v0.2.4](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.3...component/v0.2.4) (2022-05-18)
 
 
 ### Bug Fixes
