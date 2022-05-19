@@ -4,15 +4,12 @@ import type { IDomEditor } from '@wangeditor/editor';
 
 export interface EditorTransDataConfig {
   editor: IDomEditor;
+  mediaInfo: Record<string, string>;
   uploadFn?: (data: Blob, name: string, type: string) => Promise<string>;
 }
 
 export async function transFile(params: EditorTransDataConfig) {
-  const uploadImage = async (
-    elements: any[],
-    parentIndex: number[],
-    editor: IDomEditor
-  ) => {
+  const uploadImage = async (elements: any[], parentIndex: number[]) => {
     if (!params.uploadFn) return;
     return Promise.all(
       elements.map(async (element, index) => {
@@ -24,16 +21,20 @@ export async function transFile(params: EditorTransDataConfig) {
             const blob = await getBlob(src);
             const formatArr = blob.type.split('/');
             const fomart = formatArr[formatArr.length - 1];
-            const url = await params.uploadFn(blob, `.${fomart}`, element.type);
-            SlateTransforms.setNodes(editor, { src: url } as any, {
+            const url = await params.uploadFn(
+              blob,
+              params.mediaInfo[src] || `.${fomart}`,
+              element.type
+            );
+            SlateTransforms.setNodes(params.editor, { src: url } as any, {
               at: indexArr
             });
           }
         } else if (element.children)
-          await uploadImage(element.children, indexArr, editor);
+          await uploadImage(element.children, indexArr);
       })
     );
   };
-  await uploadImage(params.editor.children, [], params.editor);
+  await uploadImage(params.editor.children, []);
   return params.editor;
 }

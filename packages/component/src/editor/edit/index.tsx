@@ -3,7 +3,8 @@ import React, {
   useEffect,
   useImperativeHandle,
   forwardRef,
-  useMemo
+  useMemo,
+  useCallback
 } from 'react';
 import { DomEditor } from '@wangeditor/editor';
 import { Editor, Toolbar } from '@wangeditor/editor-for-react';
@@ -25,6 +26,8 @@ export interface EditorConfig {
   disabled?: boolean;
   height?: string | number;
   scroll?: boolean;
+  imageFormat?: string[];
+  videoFormat?: string[];
   uploadFn?: (data: Blob, name: string, type: string) => Promise<string>;
   uploadOnInsert?: boolean;
 }
@@ -34,9 +37,20 @@ export interface EditorProps extends EditorConfig {
   onChange?: (editor: string) => void;
 }
 
+const defaultImageFormat = ['jpg', 'jpeg', 'png'];
+const defaultVideoFormat = ['mp4'];
+
 export const Edit = forwardRef((props: EditorProps, ref) => {
   const [editor, setEditor] = useState<IDomEditor | null>(null);
   const [toolbar, setToolbar] = useState<IDomToolbar | null>(null);
+
+  const checkFormat = useCallback(
+    (name: string, format: string[]): boolean =>
+      format.some((item) => name.endsWith(`.${item}`)),
+    []
+  );
+
+  const [mediaInfo, setMediaInfo] = useState<Record<string, string>>({});
 
   const toolbarConfig = useMemo<Partial<IToolbarConfig>>(() => {
     const excludeKeys = ['insertTable', 'codeBlock', 'todo'];
@@ -52,22 +66,32 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
       readOnly: props.disabled || false,
       MENU_CONF: {
         uploadImage: {
+          allowedFileTypes: (props.imageFormat || defaultImageFormat).map(
+            (item) => `.${item}`
+          ),
           customUpload: async (file: File, insertFn: (url: string) => void) => {
-            const url =
-              props.uploadOnInsert && props.uploadFn
-                ? await props.uploadFn(file, file.name, 'image')
-                : URL.createObjectURL(file);
-
+            let url: string;
+            if (props.uploadOnInsert && props.uploadFn) {
+              url = await props.uploadFn(file, file.name, 'image');
+            } else {
+              url = URL.createObjectURL(file);
+              setMediaInfo((v) => ({ ...v, [url]: file.name }));
+            }
             insertFn(url);
           }
         },
         uploadVideo: {
+          allowedFileTypes: (props.videoFormat || defaultVideoFormat).map(
+            (item) => `.${item}`
+          ),
           customUpload: async (file: File, insertFn: (url: string) => void) => {
-            const url =
-              props.uploadOnInsert && props.uploadFn
-                ? await props.uploadFn(file, file.name, 'video')
-                : URL.createObjectURL(file);
-
+            let url: string;
+            if (props.uploadOnInsert && props.uploadFn) {
+              url = await props.uploadFn(file, file.name, 'video');
+            } else {
+              url = URL.createObjectURL(file);
+              setMediaInfo((v) => ({ ...v, [url]: file.name }));
+            }
             insertFn(url);
           }
         }
@@ -92,10 +116,12 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
   useImperativeHandle(ref, () => ({
     ...editor,
     getToolbar: () => toolbar,
+    getMediaInfo: () => mediaInfo,
     transData: async () => {
       if (!props.onChange || !editor) return;
       await transFile({
         editor,
+        mediaInfo,
         uploadFn: props.uploadFn
       });
       const html = editor.getHtml();
