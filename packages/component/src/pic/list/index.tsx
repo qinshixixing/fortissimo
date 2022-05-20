@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
 import { Image } from 'antd';
 
+import type { UploadData } from '../../index';
 import type { PicConfig } from '../index';
 
 export interface PicListProps extends PicConfig {
-  value?: string[];
+  value?: UploadData[];
 }
 
 const defaultSrc =
@@ -34,9 +35,22 @@ export function List(props: PicListProps) {
 
   const value = useMemo(() => {
     const data = props.value || [];
-    if (hasEmpty) return data.filter((item) => Boolean(item));
-    if (!data.length) data.push('');
-    return data;
+    const result: string[] = [];
+    data.forEach((item) => {
+      if (!hasEmpty || Boolean(item)) {
+        const url =
+          typeof item === 'string'
+            ? item
+            : item.originFileObj
+            ? URL.createObjectURL(item.originFileObj)
+            : '';
+        result.push(url);
+      }
+    });
+
+    if (hasEmpty) return result;
+    if (!result.length) result.push('');
+    return result;
   }, [props.value, hasEmpty]);
 
   return (

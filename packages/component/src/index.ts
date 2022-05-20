@@ -106,6 +106,9 @@ export type {
   PicAvatarProps
 } from './pic';
 
+export { Download } from './download';
+export type { DownloadProps } from './download';
+
 export { status } from './status';
 export type {
   StatusConfig,
