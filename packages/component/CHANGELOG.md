@@ -1,4 +1,13 @@
-## [0.2.5](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.4...component/0.2.5) (2022-05-19)
+## [0.2.6](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.5...component/0.2.6) (2022-05-20)
+
+
+### Features
+
+* **状态组件添加swtich模式:** 状态组件添加swtich模式 ([b90dbbe](https://github.com/qinshixixing/fortissimo/commit/b90dbbe187d9668bc67ab5dec8b5c149ee34f408))
+
+
+
+## [v0.2.5](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.4...component/v0.2.5) (2022-05-19)
 
 
 ### Features
