@@ -1,4 +1,13 @@
-## [0.2.6](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.5...component/0.2.6) (2022-05-20)
+## [0.2.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.6...component/0.2.7) (2022-05-20)
+
+
+### Features
+
+* **新增download组件、修改pic组件value参数类型:** 1、新增Download组件。2、修改Pic组件value参数类型。 ([1500d64](https://github.com/qinshixixing/fortissimo/commit/1500d647705818c33315e20ceeb95ffa6469a7e2))
+
+
+
+## [v0.2.6](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.5...component/v0.2.6) (2022-05-20)
 
 
 ### Features
