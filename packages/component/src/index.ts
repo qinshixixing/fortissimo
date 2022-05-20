@@ -107,7 +107,11 @@ export type {
 } from './pic';
 
 export { status } from './status';
-export type { StatusConfig, EditStatusProps } from './status';
+export type {
+  StatusConfig,
+  SelectStatusProps,
+  SwitchStatusProps
+} from './status';
 
 export * as Editor from './editor';
 export type {
