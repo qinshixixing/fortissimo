@@ -3,8 +3,7 @@ import React, {
   useEffect,
   useImperativeHandle,
   forwardRef,
-  useMemo,
-  useCallback
+  useMemo
 } from 'react';
 import { DomEditor } from '@wangeditor/editor';
 import { Editor, Toolbar } from '@wangeditor/editor-for-react';
@@ -43,12 +42,6 @@ const defaultVideoFormat = ['mp4'];
 export const Edit = forwardRef((props: EditorProps, ref) => {
   const [editor, setEditor] = useState<IDomEditor | null>(null);
   const [toolbar, setToolbar] = useState<IDomToolbar | null>(null);
-
-  const checkFormat = useCallback(
-    (name: string, format: string[]): boolean =>
-      format.some((item) => name.endsWith(`.${item}`)),
-    []
-  );
 
   const [mediaInfo, setMediaInfo] = useState<Record<string, string>>({});
 
