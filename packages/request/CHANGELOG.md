@@ -1,4 +1,18 @@
-## [0.1.2](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.1...request/0.1.2) (2022-04-07)
+## [0.1.3](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.2...request/0.1.3) (2022-05-26)
+
+
+### Bug Fixes
+
+* **修复判断返回值问题:** 修复判断返回值问题 ([310bd83](https://github.com/qinshixixing/fortissimo/commit/310bd83814d7954b7fbb1ebe30d2f8a422ce9f2e))
+
+
+### Features
+
+* **升级依赖:** 升级依赖 ([d489d51](https://github.com/qinshixixing/fortissimo/commit/d489d5199f9d938e0b7fc4bd7c941f48cdd494f1))
+
+
+
+## [v0.1.2](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.1...request/v0.1.2) (2022-04-07)
 
 
 
