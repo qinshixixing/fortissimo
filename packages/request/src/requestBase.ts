@@ -67,7 +67,7 @@ export function requestBase(
   request.interceptors.response.use(
     (res: AxiosResponse) => {
       if (res.data && res.data[allConfig.codeKey] === allConfig.successCode) {
-        return Promise.resolve(res.data[allConfig.dataKey] || null);
+        return Promise.resolve(res.data[allConfig.dataKey]);
       }
       console.error(res);
       return Promise.reject(setResError(res, false, allConfig));
