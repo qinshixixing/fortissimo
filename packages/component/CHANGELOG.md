@@ -1,4 +1,14 @@
-## [0.2.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.6...component/0.2.7) (2022-05-20)
+## [0.2.8-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.7...component/0.2.8-0) (2022-05-27)
+
+
+### Features
+
+* **删除多余代码:** 删除多余代码 ([0732b5a](https://github.com/qinshixixing/fortissimo/commit/0732b5a4ac79f9a15c80be3b6af8dd38017839fb))
+* **新增selectdata组件:** 新增SelectData组件 ([36ed468](https://github.com/qinshixixing/fortissimo/commit/36ed4686bf610a030bebb69aac427c74e3a08cd8))
+
+
+
+## [v0.2.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.6...component/v0.2.7) (2022-05-20)
 
 
 ### Features
