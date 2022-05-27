@@ -1,4 +1,13 @@
-## [0.2.8-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.7...component/0.2.8-0) (2022-05-27)
+## [0.2.8-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.8-0...component/0.2.8-1) (2022-05-27)
+
+
+### Features
+
+* **调整selectdata组件:** 1、将原有SelectData组件设置为SelectData.Item组件。2、添加SelectData.Link组件。 ([578d233](https://github.com/qinshixixing/fortissimo/commit/578d233ba09160fb66810e1949b6084ba9180e37))
+
+
+
+## [v0.2.8-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.7...component/v0.2.8-0) (2022-05-27)
 
 
 ### Features
