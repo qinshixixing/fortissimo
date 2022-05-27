@@ -132,5 +132,9 @@ export type {
   TypeInputProps
 } from './typeInput';
 
-export { SelectData } from './selectData';
-export type { SelectDataProps } from './selectData';
+export * as SelectData from './selectData';
+export type {
+  SelectDataConfig,
+  SelectDataItemProps,
+  SelectDataLinkProps
+} from './selectData';
