@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Select } from 'antd';
 import type { SelectProps } from 'antd';
 import { useMount } from '@fortissimo/hook';
@@ -13,7 +13,7 @@ export interface SelectDataLinkProps<T extends RecordData = RecordData>
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
-const currentValue: [string, string] = ['', ''];
+const currentValue: [string?, string?] = [undefined, undefined];
 
 export function Link(props: SelectDataLinkProps) {
   const itemKey = useMemo(() => props.itemKey || 'key', [props.itemKey]);
@@ -25,6 +25,23 @@ export function Link(props: SelectDataLinkProps) {
 
   const [list, setList] = useState<RecordData[]>([]);
   const [childList, setChildList] = useState<RecordData[]>([]);
+
+  const showChildList = useMemo<RecordData[]>(() => {
+    if (props.showSearch && props.searchFromServer) return childList;
+    const result = list.find((item) =>
+      props.value ? item[itemKey] === props.value[0] : false
+    );
+    if (result) return result[itemChildren];
+    return [];
+  }, [
+    props.showSearch,
+    props.searchFromServer,
+    childList,
+    props.value,
+    list,
+    itemKey,
+    itemChildren
+  ]);
 
   const getList = useCallback(
     async (value?: string, isFirst?: boolean) => {
@@ -62,7 +79,7 @@ export function Link(props: SelectDataLinkProps) {
 
   useMount(async () => {
     if (props.showSearch && props.searchFromServer) return;
-    await getList();
+    await getList(undefined, true);
   });
 
   const selectConfig: SelectProps = {
@@ -84,26 +101,27 @@ export function Link(props: SelectDataLinkProps) {
         onSearch={async (value) => {
           await onSearch(value, true);
         }}
+        value={props.value ? props.value[0] : undefined}
         onChange={(value) => {
-          if ((!props.showSearch || !props.searchFromServer) && props.value) {
-            const result = list.find((item) =>
-              props.value ? item[itemKey] === props.value[0] : false
-            );
+          props.onChange && props.onChange([value, undefined]);
+          if (props.showSearch && props.searchFromServer) return;
+          if (value) {
+            const result = list.find((item) => item[itemKey] === value);
             setChildList(result ? result[itemChildren] : []);
           } else setChildList([]);
-          props.onChange && props.onChange([value, undefined]);
         }}
       />
       <Select
         {...props}
         {...selectConfig}
-        options={childList.map((item) => ({
+        options={showChildList.map((item) => ({
           label: item[itemText],
           value: item[itemKey]
         }))}
         onSearch={async (value) => {
           await onSearch(value, false);
         }}
+        value={props.value ? props.value[1] : undefined}
         onChange={(value) => {
           props.onChange &&
             props.onChange([props.value ? props.value[0] : undefined, value]);
