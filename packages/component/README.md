@@ -62,3 +62,4 @@ export default function() {
 |Operation.List|多个连续操作按钮|OperationListProps|
 |Editor.Edit|富文本编辑器|EditorProps|
 |Editor.Show|展示富文本编辑器（html字符串）内容|EditorShowProps|
+|SelectData|集成搜索选择器|SelectDataProps|

@@ -131,3 +131,6 @@ export type {
   TypeInputValue,
   TypeInputProps
 } from './typeInput';
+
+export { SelectData } from './selectData';
+export type { SelectDataProps } from './selectData';
