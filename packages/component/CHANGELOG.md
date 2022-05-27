@@ -1,4 +1,13 @@
-## [0.2.8-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.8-0...component/0.2.8-1) (2022-05-27)
+## [0.2.8](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.8-1...component/0.2.8) (2022-05-27)
+
+
+### Features
+
+* **优化表格分页样式:** 优化表格分页样式 ([34b31f3](https://github.com/qinshixixing/fortissimo/commit/34b31f33e44e139112f4fc7b35f5690c3d16b810))
+
+
+
+## [v0.2.8-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.8-0...component/v0.2.8-1) (2022-05-27)
 
 
 ### Features
