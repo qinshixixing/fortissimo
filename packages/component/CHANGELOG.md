@@ -1,4 +1,13 @@
-## [0.2.8](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.8-1...component/0.2.8) (2022-05-27)
+## [0.2.9](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.8...component/0.2.9) (2022-05-31)
+
+
+### Features
+
+* **数据列表分页器支持隐藏每页数据量切换:** 数据列表分页器支持隐藏每页数据量切换 ([243c70d](https://github.com/qinshixixing/fortissimo/commit/243c70dffce5d6d75fd6c75c58f278d2b5f07e62))
+
+
+
+## [v0.2.8](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.8-1...component/v0.2.8) (2022-05-27)
 
 
 ### Features
