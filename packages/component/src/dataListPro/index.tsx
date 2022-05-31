@@ -75,6 +75,7 @@ export interface DataListProProps<
   canSelect?: boolean;
   resetPageNo?: boolean;
   hideSizeChanger?: boolean;
+  emptyText?: string;
   onGetData?: (
     params: DataListProGetDataParams<S, KeyType<T>>
   ) => Promise<DataListProGetDataRes<T>>;
@@ -203,6 +204,7 @@ export const DataListPro = forwardRef(function (
         canSelect={props.canSelect}
         selectedValue={selectedValue}
         disabledSelectedValue={props.disabledCheckedKey}
+        emptyText={props.emptyText}
         onSelect={(keys) => {
           setSelectedValue(keys || []);
         }}

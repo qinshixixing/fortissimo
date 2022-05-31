@@ -31,12 +31,18 @@ export interface DataListTableProps<
   canSelect?: boolean;
   selectedValue?: ValueType<T>[];
   disabledSelectedValue?: ValueType<T>[];
+  emptyText?: string;
   onSort?: (key: KeyType<T>, type: DataListTableSortType) => void;
   onSelect?: (rowKeys?: ValueType<T>[]) => void;
   onOpt?: (optKey: OPTK, rowKey: ValueType<T>, rowData: T) => void;
 }
 
 export function Table(props: DataListTableProps) {
+  const emptyText = useMemo(
+    () => (typeof props.emptyText === 'string' ? props.emptyText : '-'),
+    [props.emptyText]
+  );
+
   const colums = useMemo<ColumnsType<DataListRowData>>(() => {
     const data: ColumnsType<DataListRowData> = [];
     if (props.msgList && props.msgList.length)
@@ -49,7 +55,7 @@ export function Table(props: DataListTableProps) {
           render:
             item.render ||
             ((data) => {
-              return data || data === 0 ? data : '-';
+              return data || data === 0 ? data : emptyText;
             }),
           sorter: item.sort
         });
@@ -65,6 +71,7 @@ export function Table(props: DataListTableProps) {
             <RowOpt
               list={props.optList || []}
               data={record}
+              emptyText={emptyText}
               onOpt={(optKey) => {
                 props.onOpt &&
                   props.onOpt(optKey, record[props.rowKey], record);
@@ -74,7 +81,7 @@ export function Table(props: DataListTableProps) {
         }
       });
     return data;
-  }, [props]);
+  }, [props, emptyText]);
 
   return (
     <AntTable

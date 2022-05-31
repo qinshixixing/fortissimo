@@ -10,6 +10,7 @@ export interface DataListOptProps<
   T extends RecordData = RecordData
 > {
   list: DataListOptConfig<K, T>[];
+  emptyText?: string;
   onOpt?: (key: K) => void;
   data?: T;
 }

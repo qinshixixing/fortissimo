@@ -26,6 +26,7 @@ export interface OperationListProps<K extends string = string, T = any> {
   className?: string;
   type?: ButtonType;
   list?: OperationItemConfig<K, T>[];
+  emptyText?: string;
   data?: T;
   onOpt?: (key: K) => void;
 }

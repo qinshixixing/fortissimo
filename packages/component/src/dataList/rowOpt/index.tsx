@@ -12,5 +12,12 @@ export function RowOpt(props: DataListOptProps) {
       })),
     [props.list]
   );
-  return <Operation.List {...props} list={list} type={'link'} />;
+  return (
+    <Operation.List
+      {...props}
+      emptyText={typeof props.emptyText === 'string' ? props.emptyText : '-'}
+      list={list}
+      type={'link'}
+    />
+  );
 }
