@@ -6,6 +6,8 @@ export interface DataListPageProps {
   pageNo?: number;
   total?: number;
   pageSize?: number;
+  hideSizeChanger?: boolean;
+  hideQuickJumper?: boolean;
   pageSizeOptions?: number[];
   onChange?: (pageNo: number, pageSize: number) => void;
 }
@@ -26,8 +28,8 @@ export function Page(props: DataListPageProps) {
       className: 'ft-data-list-page',
       total: props.total,
       pageSizeOptions,
-      showSizeChanger: true,
-      showQuickJumper: true,
+      showSizeChanger: !props.hideSizeChanger,
+      showQuickJumper: !props.hideQuickJumper,
       onChange: props.onChange
     };
     if (props.pageNo) data.current = props.pageNo;
@@ -38,6 +40,8 @@ export function Page(props: DataListPageProps) {
     props.pageNo,
     props.total,
     props.pageSize,
+    props.hideSizeChanger,
+    props.hideQuickJumper,
     props.onChange
   ]);
 

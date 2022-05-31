@@ -74,6 +74,7 @@ export interface DataListProProps<
   searchLabelCol?: number | null;
   canSelect?: boolean;
   resetPageNo?: boolean;
+  hideSizeChanger?: boolean;
   onGetData?: (
     params: DataListProGetDataParams<S, KeyType<T>>
   ) => Promise<DataListProGetDataRes<T>>;
@@ -228,6 +229,7 @@ export const DataListPro = forwardRef(function (
         pageNo={pageNo}
         pageSize={pageSize}
         total={total}
+        hideSizeChanger={props.hideSizeChanger}
         onChange={(newPageNo, newPageSize) => {
           let pageNoData = newPageNo;
           if (newPageSize !== pageSize && props.resetPageNo) pageNoData = 1;
