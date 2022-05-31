@@ -1,4 +1,13 @@
-## [0.2.9](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.8...component/0.2.9) (2022-05-31)
+## [0.2.10-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.9...component/0.2.10-0) (2022-05-31)
+
+
+### Features
+
+* **操作列和数据表格支持空值自定义:** 操作列和数据表格支持空值自定义 ([cb16586](https://github.com/qinshixixing/fortissimo/commit/cb165865fcc3adfe839ce5aed2eb3f49368adc48))
+
+
+
+## [v0.2.9](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.8...component/v0.2.9) (2022-05-31)
 
 
 ### Features
