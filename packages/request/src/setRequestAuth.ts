@@ -54,7 +54,7 @@ export function setRequestAuth(
           allConfig.loginCode &&
           allConfig.loginCode.length
         )
-          isUnLogin = allConfig.loginCode.includes(res.data);
+          isUnLogin = allConfig.loginCode.includes(res.code);
         if (isUnLogin) {
           allConfig.tokenStorageKey.forEach((key) => {
             window.localStorage.removeItem(key);
