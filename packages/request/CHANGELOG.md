@@ -1,4 +1,13 @@
-## [0.1.3](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.2...request/0.1.3) (2022-05-26)
+## [0.1.4](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.3...request/0.1.4) (2022-06-02)
+
+
+### Bug Fixes
+
+* **修复返回值校验token判断code错误问题:** 修复返回值校验token判断code错误问题 ([a9dff45](https://github.com/qinshixixing/fortissimo/commit/a9dff45d69b0d992332afc8f96d0029afb040a7f))
+
+
+
+## [v0.1.3](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.2...request/v0.1.3) (2022-05-26)
 
 
 ### Bug Fixes
