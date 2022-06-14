@@ -1,4 +1,13 @@
-## [0.1.4](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.3...request/0.1.4) (2022-06-02)
+## [0.1.5](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.4...request/0.1.5) (2022-06-14)
+
+
+### Features
+
+* **优化返回值处理逻辑:** 返回值若没有传dataKey，则返回所有data数据 ([eb7d80b](https://github.com/qinshixixing/fortissimo/commit/eb7d80b4250dac31019e05933f8ba00c8f596ffe))
+
+
+
+## [v0.1.4](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.3...request/v0.1.4) (2022-06-02)
 
 
 ### Bug Fixes
