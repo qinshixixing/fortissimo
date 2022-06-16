@@ -1,4 +1,13 @@
-## [0.2.11-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.10...component/0.2.11-0) (2022-06-16)
+## [0.2.11-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.11-0...component/0.2.11-1) (2022-06-16)
+
+
+### Bug Fixes
+
+* **修复optbox中spin展示错误:** 修复optbox中spin展示错误 ([1036655](https://github.com/qinshixixing/fortissimo/commit/1036655c6284cb060378f6abe4278c050d74ada2))
+
+
+
+## [v0.2.11-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.10...component/v0.2.11-0) (2022-06-16)
 
 
 ### Features
