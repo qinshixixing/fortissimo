@@ -13,6 +13,7 @@ export interface OptBoxProps<K extends string = string> {
   destroyOnClose?: boolean;
   loading?: boolean;
   disabled?: boolean;
+  spin?: boolean;
 }
 
 export { Modal } from './modal';

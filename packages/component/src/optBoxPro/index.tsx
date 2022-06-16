@@ -34,6 +34,7 @@ export interface OptBoxProProps<T extends RecordData = RecordData>
   onClose: () => void;
   onConfirm: (data: Partial<T>) => Promise<void> | void;
   onConfirmBefore?: (data: Partial<T>) => Promise<void> | void;
+  spin?: boolean;
 }
 
 export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
@@ -88,6 +89,7 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
         await handleOpt(optKey as OptBoxDefaultOpt);
       }}
       loading={loading}
+      spin={props.spin && loading}
     >
       {props.content || (
         <OptForm

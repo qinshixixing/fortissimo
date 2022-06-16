@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { Drawer as AntDrawer } from 'antd';
+import { Drawer as AntDrawer, Spin } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 import { Operation } from '../../index';
 import type { OperationItemConfig } from '../../index';
@@ -11,7 +12,8 @@ export function Drawer(props: OptBoxProps) {
     const defaultOpts: OperationItemConfig<OptBoxDefaultOpt>[] = [
       {
         key: 'cancel',
-        name: '取消'
+        name: '取消',
+        disabled: props.loading
       },
       {
         key: 'ok',
@@ -32,6 +34,7 @@ export function Drawer(props: OptBoxProps) {
 
   return (
     <AntDrawer
+      closeIcon={<CloseOutlined disabled={props.loading} />}
       maskClosable={false}
       keyboard={false}
       destroyOnClose={props.destroyOnClose}
@@ -43,7 +46,9 @@ export function Drawer(props: OptBoxProps) {
       }}
       extra={opts}
     >
-      {props.children}
+      <Spin wrapperClassName='ft-opt-box-spin' spinning={props.spin}>
+        {props.children}
+      </Spin>
     </AntDrawer>
   );
 }
