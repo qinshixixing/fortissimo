@@ -1,4 +1,8 @@
-## [0.2.11-3](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.11-2...component/0.2.11-3) (2022-06-16)
+## [0.2.11](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.11-3...component/0.2.11) (2022-06-16)
+
+
+
+## [v0.2.11-3](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.11-2...component/v0.2.11-3) (2022-06-16)
 
 
 ### Bug Fixes
