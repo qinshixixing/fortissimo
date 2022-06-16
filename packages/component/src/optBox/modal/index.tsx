@@ -43,7 +43,10 @@ export function Modal(props: OptBoxProps) {
       }}
       footer={footer}
       modalRender={(node) => (
-        <Spin wrapperClassName='ft-opt-box-spin' spinning={props.spin}>
+        <Spin
+          wrapperClassName='ft-opt-box-spin'
+          spinning={typeof props.spin === 'boolean' ? props.spin : false}
+        >
           {node}
         </Spin>
       )}

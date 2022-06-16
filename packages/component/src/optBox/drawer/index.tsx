@@ -46,7 +46,10 @@ export function Drawer(props: OptBoxProps) {
       }}
       extra={opts}
     >
-      <Spin wrapperClassName='ft-opt-box-spin' spinning={props.spin}>
+      <Spin
+        wrapperClassName='ft-opt-box-spin'
+        spinning={typeof props.spin === 'boolean' ? props.spin : false}
+      >
         {props.children}
       </Spin>
     </AntDrawer>
