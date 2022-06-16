@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Modal as AntModal, Spin } from 'antd';
+import { Modal as AntModal, Spin, Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
 import { Operation } from '../../index';
@@ -21,11 +21,22 @@ export function Modal(props: OptBoxProps) {
 
   return (
     <AntModal
-      closeIcon={<CloseOutlined disabled={props.loading} />}
+      closable={!props.loading}
       maskClosable={false}
       keyboard={false}
       destroyOnClose={props.destroyOnClose}
-      title={props.title}
+      title={
+        props.loading ? (
+          <>
+            <Button type='text' disabled className='ft-opt-box-spin-close'>
+              <CloseOutlined />
+            </Button>
+            {props.title}
+          </>
+        ) : (
+          props.title
+        )
+      }
       visible={props.show}
       width={props.width}
       onCancel={() => {

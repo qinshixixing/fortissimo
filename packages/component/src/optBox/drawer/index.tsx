@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Drawer as AntDrawer, Spin } from 'antd';
+import { Drawer as AntDrawer, Spin, Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
 import { Operation } from '../../index';
@@ -34,11 +34,23 @@ export function Drawer(props: OptBoxProps) {
 
   return (
     <AntDrawer
+      closable={!props.loading}
       closeIcon={<CloseOutlined disabled={props.loading} />}
       maskClosable={false}
       keyboard={false}
       destroyOnClose={props.destroyOnClose}
-      title={props.title}
+      title={
+        props.loading ? (
+          <>
+            <Button type='text' disabled className='ft-opt-box-spin-close'>
+              <CloseOutlined />
+            </Button>
+            {props.title}
+          </>
+        ) : (
+          props.title
+        )
+      }
       visible={props.show}
       width={props.width}
       onClose={() => {
