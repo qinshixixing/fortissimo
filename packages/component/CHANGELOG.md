@@ -1,4 +1,13 @@
-## [0.2.10](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.10-0...component/0.2.10) (2022-05-31)
+## [0.2.11-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.10...component/0.2.11-0) (2022-06-16)
+
+
+### Features
+
+* **optbox增加loading和spin逻辑:** optBox增加loading和spin逻辑 ([695d8c6](https://github.com/qinshixixing/fortissimo/commit/695d8c67dbef17bfeea17ef2cd74f681b5932755))
+
+
+
+## [v0.2.10](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.10-0...component/v0.2.10) (2022-05-31)
 
 
 
