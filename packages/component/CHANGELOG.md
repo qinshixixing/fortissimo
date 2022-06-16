@@ -1,4 +1,13 @@
-## [0.2.11-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.11-1...component/0.2.11-2) (2022-06-16)
+## [0.2.11-3](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.11-2...component/0.2.11-3) (2022-06-16)
+
+
+### Bug Fixes
+
+* **修复optbox关闭按钮逻辑:** 复optbox关闭按钮逻辑 ([0d1e377](https://github.com/qinshixixing/fortissimo/commit/0d1e3775955a282bca59b37db1867f9852ed8e26))
+
+
+
+## [v0.2.11-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.2.11-1...component/v0.2.11-2) (2022-06-16)
 
 
 ### Bug Fixes
