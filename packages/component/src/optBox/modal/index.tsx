@@ -21,25 +21,19 @@ export function Modal(props: OptBoxProps) {
 
   return (
     <AntModal
-      closable={!props.loading}
+      closeIcon={
+        <CloseOutlined
+          className={props.loading ? 'ft-opt-box-close-disabled' : undefined}
+        />
+      }
       maskClosable={false}
       keyboard={false}
       destroyOnClose={props.destroyOnClose}
-      title={
-        props.loading ? (
-          <>
-            <Button type='text' disabled className='ft-opt-box-spin-close'>
-              <CloseOutlined />
-            </Button>
-            {props.title}
-          </>
-        ) : (
-          props.title
-        )
-      }
+      title={props.title}
       visible={props.show}
       width={props.width}
       onCancel={() => {
+        if (props.loading) return;
         props.onOpt && props.onOpt('cancel');
       }}
       onOk={() => {
