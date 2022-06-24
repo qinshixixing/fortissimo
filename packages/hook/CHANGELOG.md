@@ -1,4 +1,13 @@
-## [0.2.1-0](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.0...hook/0.2.1-0) (2022-06-24)
+## [0.2.1](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.1-0...hook/0.2.1) (2022-06-24)
+
+
+### Features
+
+* **优化打包配置:** package.json中添加sideEffects用于配置treeshaking ([0dc6a7d](https://github.com/qinshixixing/fortissimo/commit/0dc6a7dfdb719ef0e666daff6ce13d28ce4043fb))
+
+
+
+## [v0.2.1-0](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.0...hook/v0.2.1-0) (2022-06-24)
 
 
 ### Bug Fixes

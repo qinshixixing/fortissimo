@@ -1,7 +1,7 @@
 {
   "name": "@fortissimo/hook",
   "author": "qinshixixing",
-  "version": "0.2.1-0",
+  "version": "0.2.1",
   "license": "Apache",
   "description": "react hooks函数库",
   "sideEffects": false,
