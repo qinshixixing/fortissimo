@@ -1,4 +1,13 @@
-## [0.1.5](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.4...request/0.1.5) (2022-06-14)
+## [0.1.6](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.5...request/0.1.6) (2022-06-24)
+
+
+### Features
+
+* **优化打包配置:** package.json中添加sideEffects用于配置treeshaking ([b97d843](https://github.com/qinshixixing/fortissimo/commit/b97d843958748591c1da4a323fe86cceafacb770))
+
+
+
+## [v0.1.5](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.4...request/v0.1.5) (2022-06-14)
 
 
 ### Features
