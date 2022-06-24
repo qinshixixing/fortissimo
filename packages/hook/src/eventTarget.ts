@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 
-const eventTarget = new EventTarget();
+let eventTarget: EventTarget;
+try {
+  eventTarget = new EventTarget();
+} catch (e) {
+  eventTarget = window;
+}
 
 export function useEventTarget(isNew?: boolean): EventTarget {
   const ref = useRef(isNew ? new EventTarget() : eventTarget);
