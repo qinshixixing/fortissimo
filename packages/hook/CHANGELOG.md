@@ -1,4 +1,13 @@
-# [0.2.0](https://github.com/qinshixixing/fortissimo/compare/hook/v0.1.0...hook/0.2.0) (2022-04-28)
+## [0.2.1-0](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.0...hook/0.2.1-0) (2022-06-24)
+
+
+### Bug Fixes
+
+* **修复eventtarget在低版本ios兼容性问题:** 修复eventTarget在低版本ios兼容性问题 ([78a7389](https://github.com/qinshixixing/fortissimo/commit/78a738919f9404fb12ddc68b893f17599fc53413))
+
+
+
+# [v0.2.0](https://github.com/qinshixixing/fortissimo/compare/hook/v0.1.0...hook/v0.2.0) (2022-04-28)
 
 
 ### Features
