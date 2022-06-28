@@ -85,6 +85,7 @@ export function Table(props: DataListTableProps) {
 
   return (
     <AntTable
+      className={'ft-data-list-table'}
       columns={colums}
       dataSource={props.data}
       rowKey={props.rowKey}
