@@ -1,4 +1,13 @@
-## [0.3.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.0...component/0.3.1) (2022-06-24)
+## [0.3.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.1...component/0.3.2) (2022-06-28)
+
+
+### Features
+
+* **数据表格增加样式:** 数据表格增加样式 ([a991bcf](https://github.com/qinshixixing/fortissimo/commit/a991bcf4bb99ac203c21b8a7587c11bb0a4ea49e))
+
+
+
+## [v0.3.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.0...component/v0.3.1) (2022-06-24)
 
 
 ### Features
