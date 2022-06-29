@@ -178,8 +178,10 @@ export const DataListPro = forwardRef(function (
           labelCol={props.searchLabelCol}
           onSearch={(data) => {
             setSearchData(data);
+            const resetPageNo = 1;
+            setPageNo(resetPageNo);
             getData({
-              pageNo: 1,
+              pageNo: resetPageNo,
               searchData: data
             });
           }}
