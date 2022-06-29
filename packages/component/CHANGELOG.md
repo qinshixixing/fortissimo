@@ -1,4 +1,13 @@
-## [0.3.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.1...component/0.3.2) (2022-06-28)
+## [0.3.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.2...component/0.3.3) (2022-06-29)
+
+
+### Bug Fixes
+
+* **修复表格数据搜索问题:** 搜索时表格页码重置到1 ([8532fd6](https://github.com/qinshixixing/fortissimo/commit/8532fd64d1c557e891a1b940667be9a657cd2156))
+
+
+
+## [v0.3.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.1...component/v0.3.2) (2022-06-28)
 
 
 ### Features
