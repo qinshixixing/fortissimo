@@ -44,7 +44,7 @@ export function Table(props: DataListTableProps) {
     [props.emptyText]
   );
 
-  const colums = useMemo<ColumnsType<DataListRowData>>(() => {
+  const columns = useMemo<ColumnsType<DataListRowData>>(() => {
     const data: ColumnsType<DataListRowData> = [];
     if (props.msgList && props.msgList.length)
       props.msgList.forEach((item) => {
@@ -88,8 +88,9 @@ export function Table(props: DataListTableProps) {
 
   return (
     <AntTable
+      tableLayout={'fixed'}
       className={'ft-data-list-table'}
-      columns={colums}
+      columns={columns}
       dataSource={props.data}
       rowKey={props.rowKey}
       rowSelection={

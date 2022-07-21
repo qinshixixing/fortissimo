@@ -15,6 +15,7 @@ export function RowOpt(props: DataListOptProps) {
   return (
     <Operation.List
       {...props}
+      className={'ft-data-list-row-opt'}
       emptyText={typeof props.emptyText === 'string' ? props.emptyText : '-'}
       list={list}
       type={'link'}
