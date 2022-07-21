@@ -1,4 +1,13 @@
-## [0.3.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.2...component/0.3.3) (2022-06-29)
+## [0.3.4-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.3...component/0.3.4-0) (2022-07-21)
+
+
+### Features
+
+* **增加表格搜索功能:** 1、允许自定义表格搜索按钮。2、表格搜索默认按钮新增导出。 ([ebbbd56](https://github.com/qinshixixing/fortissimo/commit/ebbbd569db30848095049dd8504a6b58645d1101))
+
+
+
+## [v0.3.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.2...component/v0.3.3) (2022-06-29)
 
 
 ### Bug Fixes
