@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Drawer as AntDrawer, Spin, Button } from 'antd';
+import { Drawer as AntDrawer, Spin } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
 import { Operation } from '../../index';

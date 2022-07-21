@@ -41,6 +41,7 @@ export type {
   DataListOptProps,
   DataListPageProps,
   DataListSearchProps,
+  DataListSearchDefaultOpt,
   DataListRowData,
   DataListTableSortType,
   DataListTableMsg,

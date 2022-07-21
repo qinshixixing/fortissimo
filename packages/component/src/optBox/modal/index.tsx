@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Modal as AntModal, Spin, Button } from 'antd';
+import { Modal as AntModal, Spin } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
 import { Operation } from '../../index';

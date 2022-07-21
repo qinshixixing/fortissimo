@@ -39,7 +39,11 @@ export function status<T extends Key = string>(config: StatusConfig<T>[]) {
 
   const SelectStatus = memo((props: SelectStatusProps<T>) => {
     return (
-      <Select placeholder={'请选择'} {...props}>
+      <Select
+        placeholder={'请选择'}
+        getPopupContainer={(triggerNode) => triggerNode.parentElement}
+        {...props}
+      >
         {(props.keys || keys).map((item) => (
           <Select.Option key={item} value={item}>
             {getStatusText(item)}

@@ -22,7 +22,7 @@ export { Page } from './page';
 export type { DataListPageProps } from './page';
 
 export { Search } from './search';
-export type { DataListSearchProps } from './search';
+export type { DataListSearchProps, DataListSearchDefaultOpt } from './search';
 
 export { Table } from './table';
 export type {

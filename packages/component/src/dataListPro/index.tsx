@@ -8,7 +8,7 @@ import React, {
 import type { ForwardedRef } from 'react';
 import { useMount } from '@fortissimo/hook';
 
-import { DataList } from '../index';
+import { DataList, OperationItemConfig } from '../index';
 import type {
   DataListTableMsg,
   DataListOptConfig,
@@ -63,6 +63,7 @@ export interface DataListProGetDataRes<T extends RecordData = RecordData> {
 
 export interface DataListProProps<
   OPTK extends string = string,
+  SOPTK extends string = string,
   T extends RecordData = RecordData,
   S extends RecordData = RecordData
 > {
@@ -70,7 +71,10 @@ export interface DataListProProps<
   rowKey: KeyType<T>;
   disabledCheckedKey?: ValueType<T>;
   opts?: DataListProOptConfig<OPTK, T>[];
+  optWidth?: number | string;
   search?: DataListProSearchConfig<S>[];
+  canExport?: boolean;
+  searchOpts?: OperationItemConfig<SOPTK>[];
   searchLabelCol?: number | null;
   canSelect?: boolean;
   resetPageNo?: boolean;
@@ -79,6 +83,7 @@ export interface DataListProProps<
   onGetData?: (
     params: DataListProGetDataParams<S, KeyType<T>>
   ) => Promise<DataListProGetDataRes<T>>;
+  onExportData?: (params: Partial<S>) => Promise<void>;
   onOpt?: (params: DataListProOptParams<OPTK, T>) => Promise<void> | void;
 }
 
@@ -153,10 +158,17 @@ export const DataListPro = forwardRef(function (
     [pageNo, pageSize, sortKey, sortType, searchData, props]
   );
 
+  const exportData = useCallback(
+    async (params?: Partial<RecordData>) => {
+      const data = params || searchData;
+      props.onExportData && (await props.onExportData(data));
+    },
+    [searchData, props]
+  );
+
   const opt = useCallback(
     async (params: DataListProOptParams) => {
-      const data = params;
-      props.onOpt && (await props.onOpt(data));
+      props.onOpt && (await props.onOpt(params));
     },
     [props]
   );
@@ -176,22 +188,27 @@ export const DataListPro = forwardRef(function (
         <DataList.Search
           list={props.search}
           labelCol={props.searchLabelCol}
-          onSearch={(data) => {
+          opts={props.searchOpts}
+          hideExport={!props.canExport}
+          onOpt={async (data, optKey) => {
             setSearchData(data);
-            const resetPageNo = 1;
-            setPageNo(resetPageNo);
-            getData({
-              pageNo: resetPageNo,
-              searchData: data
-            });
+            if (optKey === 'export') await exportData(data);
+            else {
+              const resetPageNo = 1;
+              setPageNo(resetPageNo);
+              await getData({
+                pageNo: resetPageNo,
+                searchData: data
+              });
+            }
           }}
         />
       )}
       {opts.header && (
         <DataList.HeaderOpt
           list={opts.header}
-          onOpt={(optKey) => {
-            opt({
+          onOpt={async (optKey) => {
+            await opt({
               optKey,
               rowKey: selectedValue
             });
@@ -203,6 +220,7 @@ export const DataListPro = forwardRef(function (
         msgList={props.msgs}
         rowKey={props.rowKey}
         optList={opts.row}
+        optWidth={props.optWidth}
         canSelect={props.canSelect}
         selectedValue={selectedValue}
         disabledSelectedValue={props.disabledCheckedKey}
@@ -210,19 +228,19 @@ export const DataListPro = forwardRef(function (
         onSelect={(keys) => {
           setSelectedValue(keys || []);
         }}
-        onSort={(key, sort) => {
+        onSort={async (key, sort) => {
           setSortKey(key);
           setSortType(sort);
           const pageNoData = props.resetPageNo ? 1 : pageNo;
           setPageNo(pageNoData);
-          getData({
+          await getData({
             pageNo: pageNoData,
             sortKey: key,
             sortType: sort
           });
         }}
-        onOpt={(optKey, rowKey, rowData) => {
-          opt({
+        onOpt={async (optKey, rowKey, rowData) => {
+          await opt({
             optKey,
             rowKey,
             rowData
@@ -234,12 +252,12 @@ export const DataListPro = forwardRef(function (
         pageSize={pageSize}
         total={total}
         hideSizeChanger={props.hideSizeChanger}
-        onChange={(newPageNo, newPageSize) => {
+        onChange={async (newPageNo, newPageSize) => {
           let pageNoData = newPageNo;
           if (newPageSize !== pageSize && props.resetPageNo) pageNoData = 1;
           setPageNo(pageNoData);
           setPageSize(newPageSize);
-          getData({
+          await getData({
             pageNo: pageNoData,
             pageSize: newPageSize
           });

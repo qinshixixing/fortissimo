@@ -14,7 +14,7 @@ export type DataListTableSortType = 'ascend' | 'descend' | 'none';
 export interface DataListTableMsg<T extends RecordData = RecordData> {
   key: KeyType<T>;
   name?: string;
-  width?: number;
+  width?: number | string;
   sort?: boolean;
   render?: (value: ValueType<T>, record: T, index: number) => ReactNode;
 }
@@ -27,6 +27,7 @@ export interface DataListTableProps<
   rowKey: KeyType<T>;
   msgList: DataListTableMsg<T>[];
   optList?: DataListOptConfig<OPTK, T>[];
+  optWidth?: number | string;
   ellipsis?: boolean;
   canSelect?: boolean;
   selectedValue?: ValueType<T>[];
@@ -50,6 +51,7 @@ export function Table(props: DataListTableProps) {
         data.push({
           key: item.key,
           dataIndex: item.key,
+          width: item.width,
           title: item.name,
           ellipsis: Boolean(props.ellipsis),
           render:
@@ -64,6 +66,7 @@ export function Table(props: DataListTableProps) {
       data.push({
         key: 'optItem',
         dataIndex: 'optItem',
+        width: props.optWidth,
         title: '操作',
         ellipsis: Boolean(props.ellipsis),
         render: (data, record) => {
