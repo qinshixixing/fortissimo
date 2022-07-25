@@ -6,8 +6,8 @@ import type { SelectDataConfig } from '../index';
 
 export interface SelectDataItemProps<T extends RecordData = RecordData>
   extends SelectDataConfig<T> {
-  value?: ValueType<T>;
-  onChange?: (value: ValueType<T>) => void;
+  value?: ValueType<T> | ValueType<T>[];
+  onChange?: (value: ValueType<T>, item?: any) => void;
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;

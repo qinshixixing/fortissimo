@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Select } from 'antd';
 import type { SelectProps } from 'antd';
 import { useMount } from '@fortissimo/hook';
@@ -9,7 +9,7 @@ export interface SelectDataLinkProps<T extends RecordData = RecordData>
   extends SelectDataConfig<T> {
   itemChildren?: KeyType<T>;
   value?: [ValueType<T>, ValueType<T>];
-  onChange?: (value: [ValueType<T>, ValueType<T>]) => void;
+  onChange?: (value: [ValueType<T>, ValueType<T>], item?: [any, any]) => void;
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
@@ -89,6 +89,8 @@ export function Link(props: SelectDataLinkProps) {
     optionFilterProp: 'label'
   };
 
+  const [oneLevelData, setOneLevelData] = useState<any>();
+
   return (
     <>
       <Select
@@ -102,8 +104,10 @@ export function Link(props: SelectDataLinkProps) {
           await onSearch(value, true);
         }}
         value={props.value ? props.value[0] : undefined}
-        onChange={(value) => {
-          props.onChange && props.onChange([value, undefined]);
+        onChange={(value, item) => {
+          setOneLevelData(item);
+          props.onChange &&
+            props.onChange([value, undefined], [item, undefined]);
           if (props.showSearch && props.searchFromServer) return;
           if (value) {
             const result = list.find((item) => item[itemKey] === value);
@@ -122,9 +126,12 @@ export function Link(props: SelectDataLinkProps) {
           await onSearch(value, false);
         }}
         value={props.value ? props.value[1] : undefined}
-        onChange={(value) => {
+        onChange={(value, item) => {
           props.onChange &&
-            props.onChange([props.value ? props.value[0] : undefined, value]);
+            props.onChange(
+              [props.value ? props.value[0] : undefined, value],
+              [props.value ? oneLevelData : undefined, item]
+            );
         }}
       />
     </>
