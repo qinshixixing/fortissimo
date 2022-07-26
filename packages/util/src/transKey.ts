@@ -4,17 +4,17 @@ type ServerData = { [key: string]: any };
 
 interface TransKeyData<LoaclData> {
   toServerMap: Map<keyof LoaclData, string>;
-  tolocalMap: Map<string, keyof LoaclData>;
+  toLocalMap: Map<string, keyof LoaclData>;
   toServer: (local: Partial<LoaclData>) => ServerData;
   toLocal: (server: ServerData) => Partial<LoaclData>;
 }
 
 export function transKey<T>(data: KeyConfig<keyof T>): TransKeyData<T> {
   const toServerMap: Map<keyof T, string> = new Map();
-  const tolocalMap: Map<string, keyof T> = new Map();
+  const toLocalMap: Map<string, keyof T> = new Map();
   data.forEach((item) => {
     toServerMap.set(item[0], item[1]);
-    tolocalMap.set(item[1], item[0]);
+    toLocalMap.set(item[1], item[0]);
   });
   const toServer = (local: Partial<T>): ServerData => {
     const result: ServerData = {};
@@ -27,10 +27,10 @@ export function transKey<T>(data: KeyConfig<keyof T>): TransKeyData<T> {
   const toLocal = (server: ServerData): Partial<T> => {
     const result: Partial<T> = {};
     Object.keys(server).forEach((key) => {
-      if (tolocalMap.has(key))
-        result[<keyof T>tolocalMap.get(key)] = server[key];
+      if (toLocalMap.has(key))
+        result[<keyof T>toLocalMap.get(key)] = server[key];
     });
     return result;
   };
-  return { toServer, toLocal, toServerMap, tolocalMap };
+  return { toServer, toLocal, toServerMap, toLocalMap };
 }
