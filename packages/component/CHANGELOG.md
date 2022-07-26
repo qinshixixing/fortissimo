@@ -1,4 +1,13 @@
-## [0.3.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.6...component/0.3.7) (2022-07-26)
+## [0.3.8](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.7...component/0.3.8) (2022-07-26)
+
+
+### Features
+
+* **优化selectdata组件:** 优化selectdata组件 ([d88aff8](https://github.com/qinshixixing/fortissimo/commit/d88aff82e6a7de77a3b209b1146c06857c2b3880))
+
+
+
+## [v0.3.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.6...component/v0.3.7) (2022-07-26)
 
 
 ### Features
