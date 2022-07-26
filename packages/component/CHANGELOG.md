@@ -1,4 +1,13 @@
-## [0.3.6](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.5...component/0.3.6) (2022-07-25)
+## [0.3.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.6...component/0.3.7) (2022-07-26)
+
+
+### Features
+
+* **selectdata控件添加新特性:** 1、searchFromServerWhileEmpty用于在服务端搜索时第一次渲染也获取数据。2、onInitData用于设置默认下拉列表项。 ([b09bf8b](https://github.com/qinshixixing/fortissimo/commit/b09bf8b1b189c3230b28eafa75808f0b821049ff))
+
+
+
+## [v0.3.6](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.5...component/v0.3.6) (2022-07-25)
 
 
 ### Features
