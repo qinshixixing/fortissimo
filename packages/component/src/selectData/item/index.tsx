@@ -1,4 +1,10 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useMemo,
+  useState,
+  forwardRef,
+  useImperativeHandle
+} from 'react';
 import { Select } from 'antd';
 import { useMount } from '@fortissimo/hook';
 import type { RecordData, ValueType } from '../../index';
@@ -8,13 +14,12 @@ export interface SelectDataItemProps<T extends RecordData = RecordData>
   extends SelectDataConfig<T> {
   value?: ValueType<T> | ValueType<T>[];
   onChange?: (value: ValueType<T>, item?: any) => void;
-  onInitData?: () => T[];
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
 let currentValue: string;
 
-export function Item(props: SelectDataItemProps) {
+export const Item = forwardRef((props: SelectDataItemProps, ref) => {
   const itemKey = useMemo(() => props.itemKey || 'key', [props.itemKey]);
   const itemText = useMemo(() => props.itemText || 'text', [props.itemText]);
 
@@ -46,11 +51,11 @@ export function Item(props: SelectDataItemProps) {
     [props.showSearch, props.searchFromServer, getList]
   );
 
+  useImperativeHandle(ref, () => ({
+    setList
+  }));
+
   useMount(async () => {
-    if (props.onInitData) {
-      const data = props.onInitData();
-      setList(data);
-    }
     if (
       props.showSearch &&
       props.searchFromServer &&
@@ -72,4 +77,4 @@ export function Item(props: SelectDataItemProps) {
       onSearch={onSearch}
     />
   );
-}
+});

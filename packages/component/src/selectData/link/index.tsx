@@ -1,4 +1,10 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useMemo,
+  useState,
+  forwardRef,
+  useImperativeHandle
+} from 'react';
 import { Select } from 'antd';
 import type { SelectProps } from 'antd';
 import { useMount } from '@fortissimo/hook';
@@ -10,13 +16,12 @@ export interface SelectDataLinkProps<T extends RecordData = RecordData>
   itemChildren?: KeyType<T>;
   value?: [ValueType<T>, ValueType<T>];
   onChange?: (value: [ValueType<T>, ValueType<T>], item?: [any, any]) => void;
-  onInitData?: () => [T[], T[]];
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
 const currentValue: [string?, string?] = [undefined, undefined];
 
-export function Link(props: SelectDataLinkProps) {
+export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
   const itemKey = useMemo(() => props.itemKey || 'key', [props.itemKey]);
   const itemText = useMemo(() => props.itemText || 'text', [props.itemText]);
   const itemChildren = useMemo(
@@ -78,12 +83,12 @@ export function Link(props: SelectDataLinkProps) {
     [props.showSearch, props.searchFromServer, getList, props.value]
   );
 
+  useImperativeHandle(ref, () => ({
+    setList,
+    setChildList
+  }));
+
   useMount(async () => {
-    if (props.onInitData) {
-      const data = props.onInitData();
-      setList(data[0]);
-      setChildList(data[1]);
-    }
     if (
       props.showSearch &&
       props.searchFromServer &&
@@ -147,4 +152,4 @@ export function Link(props: SelectDataLinkProps) {
       />
     </>
   );
-}
+});
