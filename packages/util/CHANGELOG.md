@@ -1,4 +1,13 @@
-## [0.3.8](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.7...util/0.3.8) (2022-06-24)
+## [0.3.9](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.8...util/0.3.9) (2022-07-26)
+
+
+### Features
+
+* **规范导出变量名:** 规范导出变量名 ([bc2738c](https://github.com/qinshixixing/fortissimo/commit/bc2738cbb6f8bbdf9c7efbd17cdb94fd6f93c589))
+
+
+
+## [v0.3.8](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.7...util/v0.3.8) (2022-06-24)
 
 
 ### Features
