@@ -10,6 +10,7 @@ export interface SelectDataLinkProps<T extends RecordData = RecordData>
   itemChildren?: KeyType<T>;
   value?: [ValueType<T>, ValueType<T>];
   onChange?: (value: [ValueType<T>, ValueType<T>], item?: [any, any]) => void;
+  onInitData?: () => [T[], T[]];
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
@@ -78,7 +79,17 @@ export function Link(props: SelectDataLinkProps) {
   );
 
   useMount(async () => {
-    if (props.showSearch && props.searchFromServer) return;
+    if (props.onInitData) {
+      const data = props.onInitData();
+      setList(data[0]);
+      setChildList(data[1]);
+    }
+    if (
+      props.showSearch &&
+      props.searchFromServer &&
+      !props.searchFromServerWhileEmpty
+    )
+      return;
     await getList(undefined, true);
   });
 

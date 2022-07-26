@@ -10,6 +10,7 @@ export interface SelectDataConfig<T extends RecordData = RecordData>
   itemText?: KeyType<T>;
   onGetData: (searchValue?: string, firstSelectvalue?: any) => Promise<T[]>;
   searchFromServer?: boolean;
+  searchFromServerWhileEmpty?: boolean;
 }
 
 export { Item } from './item';

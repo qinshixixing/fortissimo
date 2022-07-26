@@ -8,6 +8,7 @@ export interface SelectDataItemProps<T extends RecordData = RecordData>
   extends SelectDataConfig<T> {
   value?: ValueType<T> | ValueType<T>[];
   onChange?: (value: ValueType<T>, item?: any) => void;
+  onInitData?: () => T[];
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
@@ -18,6 +19,7 @@ export function Item(props: SelectDataItemProps) {
   const itemText = useMemo(() => props.itemText || 'text', [props.itemText]);
 
   const [list, setList] = useState<RecordData[]>([]);
+
   const getList = useCallback(
     async (value?: string) => {
       const data = await props.onGetData(value);
@@ -45,7 +47,16 @@ export function Item(props: SelectDataItemProps) {
   );
 
   useMount(async () => {
-    if (props.showSearch && props.searchFromServer) return;
+    if (props.onInitData) {
+      const data = props.onInitData();
+      setList(data);
+    }
+    if (
+      props.showSearch &&
+      props.searchFromServer &&
+      !props.searchFromServerWhileEmpty
+    )
+      return;
     await getList();
   });
 
