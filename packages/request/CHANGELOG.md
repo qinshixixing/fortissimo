@@ -1,4 +1,13 @@
-## [0.1.8](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.7...request/0.1.8) (2022-07-27)
+## [0.1.9](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.8...request/0.1.9) (2022-07-27)
+
+
+### Features
+
+* **优化流传输请求方式:** 1、去除requestStream方法。2、requestBase支持流请求。3、优化requestBase错误处理。 ([f4f18cf](https://github.com/qinshixixing/fortissimo/commit/f4f18cf8637f3e993fd40ea5fc77d1cb57d1cd90))
+
+
+
+## [v0.1.8](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.7...request/v0.1.8) (2022-07-27)
 
 
 
