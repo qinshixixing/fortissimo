@@ -2,14 +2,15 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { basicAjax } from './basicAjax';
 
 export interface RequestConfig {
-  baseUrl?: string;
-  successCode: number;
-  headers?: { [key: string]: string };
-  timeout?: number;
+  baseUrl: string;
+  successCode: number | string;
+  headers: { [key: string]: string };
+  timeout: number;
   codeKey: string;
   msgKey: string;
   errorKey: string;
   dataKey: string;
+  needData: boolean;
 }
 
 export interface ResponseConfig<T = any> {
@@ -49,14 +50,18 @@ function setResError(
 export function requestBase(
   config: Partial<RequestConfig> = {}
 ): AxiosInstance {
-  const defaultConfig: RequestConfig = {
+  const defaultConfig: Partial<RequestConfig> = {
     successCode: 0,
     codeKey: 'code',
     msgKey: 'msg',
     errorKey: 'error',
-    dataKey: 'data'
+    dataKey: 'data',
+    needData: true
   };
-  const allConfig: RequestConfig = { ...defaultConfig, ...config };
+  const allConfig: RequestConfig = {
+    ...defaultConfig,
+    ...config
+  } as RequestConfig;
 
   const axiosConfig: AxiosRequestConfig = {};
   if (allConfig.headers) axiosConfig.headers = allConfig.headers;
@@ -66,7 +71,13 @@ export function requestBase(
 
   request.interceptors.response.use(
     (res: AxiosResponse) => {
-      if (res.data && res.data[allConfig.codeKey] === allConfig.successCode) {
+      if (!allConfig.needData) return Promise.resolve(res.data);
+      if (
+        res.data &&
+        (!allConfig.codeKey ||
+          !['number', 'string'].includes(typeof allConfig.successCode) ||
+          res.data[allConfig.codeKey] === allConfig.successCode)
+      ) {
         return Promise.resolve(
           allConfig.dataKey ? res.data[allConfig.dataKey] : res.data
         );
