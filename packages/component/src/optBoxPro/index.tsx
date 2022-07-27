@@ -31,8 +31,8 @@ export interface OptBoxProProps<T extends RecordData = RecordData>
   content?: ReactNode;
   extraContent?: ReactNode;
   type?: OptBoxProType;
-  onClose: () => void;
-  onConfirm: (data: Partial<T>) => Promise<void> | void;
+  onClose?: () => void;
+  onConfirm?: (data: Partial<T>) => Promise<void> | void;
   onConfirmBefore?: (data: Partial<T>) => Promise<void> | void;
   spin?: boolean;
 }
@@ -47,7 +47,7 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
   const handleOpt = useCallback(
     async (optKey: OptBoxDefaultOpt) => {
       if (optKey === 'cancel') {
-        props.onClose();
+        if (props.onClose) props.onClose();
       }
       if (optKey === 'ok' && formRef.current) {
         await formRef.current.check();
@@ -55,7 +55,7 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
         try {
           if (props.onConfirmBefore)
             await props.onConfirmBefore(formRef.current.getData());
-          await props.onConfirm(formRef.current.getData());
+          if (props.onConfirm) await props.onConfirm(formRef.current.getData());
         } catch (e) {
           // error
         }
