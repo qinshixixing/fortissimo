@@ -1,4 +1,14 @@
-## [0.1.6](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.5...request/0.1.6) (2022-06-24)
+## [0.1.7](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.6...request/0.1.7) (2022-07-27)
+
+
+### Features
+
+* **优化optboxpro传参:** 优化optBoxPro传参 ([eaea8da](https://github.com/qinshixixing/fortissimo/commit/eaea8da0956e937eeb185ea3f27576c64efb08cd))
+* **新增方法:** 新增流请求方法requestStream ([a76cdad](https://github.com/qinshixixing/fortissimo/commit/a76cdade40fcfa2286522163982f71cf16901191))
+
+
+
+## [v0.1.6](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.5...request/v0.1.6) (2022-06-24)
 
 
 ### Features

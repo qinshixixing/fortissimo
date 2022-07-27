@@ -1,7 +1,7 @@
 {
   "name": "@fortissimo/request",
   "author": "qinshixixing",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": "Apache",
   "description": "请求库",
   "sideEffects": false,
