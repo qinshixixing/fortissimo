@@ -1,4 +1,13 @@
-## [0.3.8](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.7...component/0.3.8) (2022-07-26)
+## [0.3.9](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.8...component/0.3.9) (2022-07-27)
+
+
+### Features
+
+* **优化optboxpro传参:** 优化optBoxPro传参 ([eaea8da](https://github.com/qinshixixing/fortissimo/commit/eaea8da0956e937eeb185ea3f27576c64efb08cd))
+
+
+
+## [v0.3.8](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.7...component/v0.3.8) (2022-07-26)
 
 
 ### Features
