@@ -32,44 +32,39 @@ export function setRequestAuth(
   const hasLoginCode =
     (allConfig.loginCode && allConfig.loginCode.length) ||
     (allConfig.loginStatusCode && allConfig.loginStatusCode.length);
-  if (hasLoginCode) {
-    if (loginInterceptorMap.has(request)) {
-      const interceptor = loginInterceptorMap.get(request) as number;
-      loginInterceptorMap.delete(request);
-      request.interceptors.response.eject(interceptor);
-    }
-    const interceptor = request.interceptors.response.use(
-      (data) => Promise.resolve(data),
-      (res: ResponseConfig) => {
-        let isUnLogin = false;
+  if (!hasLoginCode) return request;
 
-        if (
-          res.isHttpError &&
-          allConfig.loginStatusCode &&
-          allConfig.loginStatusCode.length
-        )
-          isUnLogin = allConfig.loginStatusCode.includes(res.status);
-        if (
-          !res.isHttpError &&
-          allConfig.loginCode &&
-          allConfig.loginCode.length
-        )
-          isUnLogin = allConfig.loginCode.includes(res.code);
-        if (isUnLogin) {
-          allConfig.tokenStorageKey.forEach((key) => {
-            window.localStorage.removeItem(key);
-          });
-          if (allConfig.loginUrl)
-            window.location.href =
-              allConfig.loginUrl +
-              (allConfig.withHref ? window.location.href : '');
-        }
-
-        return Promise.reject(res);
-      }
-    );
-    loginInterceptorMap.set(request, interceptor);
+  if (loginInterceptorMap.has(request)) {
+    const interceptor = loginInterceptorMap.get(request) as number;
+    loginInterceptorMap.delete(request);
+    request.interceptors.response.eject(interceptor);
   }
+  const interceptor = request.interceptors.response.use(
+    (data) => Promise.resolve(data),
+    (res: ResponseConfig) => {
+      let isUnLogin = false;
 
+      if (
+        res.isHttpError &&
+        allConfig.loginStatusCode &&
+        allConfig.loginStatusCode.length
+      )
+        isUnLogin = allConfig.loginStatusCode.includes(res.status);
+      if (!res.isHttpError && allConfig.loginCode && allConfig.loginCode.length)
+        isUnLogin = allConfig.loginCode.includes(res.code);
+      if (isUnLogin) {
+        allConfig.tokenStorageKey.forEach((key) => {
+          window.localStorage.removeItem(key);
+        });
+        if (allConfig.loginUrl)
+          window.location.href =
+            allConfig.loginUrl +
+            (allConfig.withHref ? window.location.href : '');
+      }
+
+      return Promise.reject(res);
+    }
+  );
+  loginInterceptorMap.set(request, interceptor);
   return request;
 }
