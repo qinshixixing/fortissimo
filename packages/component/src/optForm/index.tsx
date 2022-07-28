@@ -27,6 +27,8 @@ export interface OptFormFieldDetail<K extends string = string, V = any> {
   validator?: (value: V) => string;
   width?: string | number;
   labelCol?: number;
+  tip?: ReactNode;
+  labelTip?: ReactNode;
 }
 
 export type OptFormField<T extends RecordData = RecordData> =
@@ -139,6 +141,8 @@ export const OptForm = forwardRef(function (
             normalize={isShow ? undefined : item.normalize}
             initialValue={item.defaultValue}
             valuePropName={valuePropName(item)}
+            extra={item.tip}
+            tooltip={item.labelTip}
             rules={
               isShow
                 ? undefined
