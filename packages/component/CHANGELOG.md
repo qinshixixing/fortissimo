@@ -1,4 +1,13 @@
-## [0.3.11](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.10...component/0.3.11) (2022-07-29)
+## [0.3.12](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.11...component/0.3.12) (2022-07-29)
+
+
+### Bug Fixes
+
+* **修复sidebar逻辑错误:** 修复sidebar中rootSubmenuKeys计算错误 ([f4574e7](https://github.com/qinshixixing/fortissimo/commit/f4574e7a64e910a99c5a0294d391e2710dfd7293))
+
+
+
+## [v0.3.11](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.10...component/v0.3.11) (2022-07-29)
 
 
 ### Features
