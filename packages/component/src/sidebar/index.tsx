@@ -54,8 +54,7 @@ export function Sidebar(props: SideBarProps) {
   const rootSubmenuKeys = useMemo(() => {
     const data: string[] = [];
     props.menuList.forEach((item) => {
-      if (item.children && item.children.length)
-        rootSubmenuKeys.push(item.path);
+      if (item.children && item.children.length) data.push(item.path);
     });
     return data;
   }, [props.menuList]);
