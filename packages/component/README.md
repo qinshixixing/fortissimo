@@ -31,35 +31,36 @@ export default function() {
 
 ### API
 
-|组件名|功能|props|备注|
-|---|---|---|---|
-|Router|根据路由配置选项生成路由组件|Route|
-|TypeInput|类型输入框|TypeInputProps|
-|Time.Point|编辑时间|TimePointProps|
-|Time.Range|编辑时间段|TimeRangeProps|
-|Time.Show|展示时间|TimeShowProps|
-|Time.ShowRange|展示时间段|TimeShowRangeProps|
-|Upload.File|上传文件|UploadProps|
-|Upload.FileList|上传多个文件|UploadListProps|
-|Upload.Image|上传图片|UploadImageProps|
-|Upload.FileList|上传多个图片|UploadImageListProps|
-|Pic.Item|展示图片|PicProps|
-|Pic.List|展示多个图片|PicListProps|
-|Pic.Avatar|展示头像|PicAvatarProps|
-|Pic.Avatar|展示头像|PicAvatarProps|
-|status|生成状态组件|StatusConfig|
-|DataListPro|表格展示查询操作|DataListProProps|
-|DataList.HeaderOpt|表格上方操作|DataListOptProps|
-|DataList.RowOpt|表格每行右侧操作|DataListOptProps|
-|DataList.Search|表格搜索栏|DataListSearchProps|
-|DataList.Page|表格页码|DataListPageProps|
-|DataList.Tabel|表格主体|DataListTableProps|
-|OptBoxPro|集成表单操作弹窗|OptBoxProProps|
-|OptBox.Modal|操作弹框|OptBoxProps|
-|OptBox.Drawer|操作弹出抽屉|OptBoxProps|
-|OptForm|操作表单|OptFormProps|
-|Operation.Item|操作按钮|OperationProps|
-|Operation.List|多个连续操作按钮|OperationListProps|
-|Editor.Edit|富文本编辑器|EditorProps|
-|Editor.Show|展示富文本编辑器（html字符串）内容|EditorShowProps|
-|SelectData|集成搜索选择器|SelectDataProps|
+| 组件名                | 功能                  | props                |备注|
+|--------------------|---------------------|----------------------|---|
+| Router             | 根据路由配置选项生成路由组件      | Route                |
+| TypeInput          | 类型输入框               | TypeInputProps       |
+| Time.Point         | 编辑时间                | TimePointProps       |
+| Time.Range         | 编辑时间段               | TimeRangeProps       |
+| Time.Show          | 展示时间                | TimeShowProps        |
+| Time.ShowRange     | 展示时间段               | TimeShowRangeProps   |
+| Upload.File        | 上传文件                | UploadProps          |
+| Upload.FileList    | 上传多个文件              | UploadListProps      |
+| Upload.Image       | 上传图片                | UploadImageProps     |
+| Upload.FileList    | 上传多个图片              | UploadImageListProps |
+| Pic.Item           | 展示图片                | PicProps             |
+| Pic.List           | 展示多个图片              | PicListProps         |
+| Pic.Avatar         | 展示头像                | PicAvatarProps       |
+| Pic.Avatar         | 展示头像                | PicAvatarProps       |
+| status             | 生成状态组件              | StatusConfig         |
+| DataListPro        | 表格展示查询操作            | DataListProProps     |
+| DataList.HeaderOpt | 表格上方操作              | DataListOptProps     |
+| DataList.RowOpt    | 表格每行右侧操作            | DataListOptProps     |
+| DataList.Search    | 表格搜索栏               | DataListSearchProps  |
+| DataList.Page      | 表格页码                | DataListPageProps    |
+| DataList.Tabel     | 表格主体                | DataListTableProps   |
+| OptBoxPro          | 集成表单操作弹窗            | OptBoxProProps       |
+| OptBox.Modal       | 操作弹框                | OptBoxProps          |
+| OptBox.Drawer      | 操作弹出抽屉              | OptBoxProps          |
+| OptForm            | 操作表单                | OptFormProps         |
+| Operation.Item     | 操作按钮                | OperationProps       |
+| Operation.List     | 多个连续操作按钮            | OperationListProps   |
+| Editor.Edit        | 富文本编辑器              | EditorProps          |
+| Editor.Show        | 展示富文本编辑器（html字符串）内容 | EditorShowProps      |
+| SelectData         | 集成搜索选择器             | SelectDataProps      |
+| Sidebar            | 后台管理侧边菜单            | SidebarProps         |

@@ -139,3 +139,6 @@ export type {
   SelectDataItemProps,
   SelectDataLinkProps
 } from './selectData';
+
+export { Sidebar } from './sidebar';
+export type { SideBarMenu, SideBarProps } from './sidebar';

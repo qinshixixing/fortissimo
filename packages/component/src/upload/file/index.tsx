@@ -14,7 +14,7 @@ export function File(props: UploadProps) {
       value={props.value ? [props.value] : []}
       onChange={(data) => {
         if (!props.onChange) return;
-        props.onChange(data[0]);
+        props.onChange(data[0] || '');
       }}
     />
   );

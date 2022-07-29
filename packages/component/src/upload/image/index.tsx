@@ -20,7 +20,7 @@ export function Image(props: UploadImageProps) {
       value={props.value ? [props.value] : []}
       onChange={(data) => {
         if (!props.onChange) return;
-        props.onChange(data[0]);
+        props.onChange(data[0] || '');
       }}
     />
   );
