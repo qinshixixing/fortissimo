@@ -1,4 +1,13 @@
-## [0.3.12](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.11...component/0.3.12) (2022-07-29)
+## [0.3.13](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.12...component/0.3.13) (2022-07-30)
+
+
+### Features
+
+* **新增layout组件:** 1、新增Layout.AdminHeader、Layout.Footer组件。2、移动Sidebar组件到Layout.Sidebar。 ([3823247](https://github.com/qinshixixing/fortissimo/commit/3823247476a8045a613587e67fb6512d35125f1a))
+
+
+
+## [v0.3.12](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.11...component/v0.3.12) (2022-07-29)
 
 
 ### Bug Fixes
@@ -504,20 +513,12 @@
 
 
 
-## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.0...component/v0.1.1) (2022-03-11)
+## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/9327766b526596302ad0440a96b61db92dd2a09b...component/v0.1.1) (2022-03-11)
 
 
 ### Features
 
 * **修改readme.md:** 修改README.md ([fab8ec8](https://github.com/qinshixixing/fortissimo/commit/fab8ec8933c0889337843d4b0e498ab0ec7b8539))
-
-
-
-# [v0.1.0](https://github.com/qinshixixing/fortissimo/compare/9327766b526596302ad0440a96b61db92dd2a09b...component/v0.1.0) (2022-03-11)
-
-
-### Features
-
 * **初始化项目:** 初始化项目 ([9327766](https://github.com/qinshixixing/fortissimo/commit/9327766b526596302ad0440a96b61db92dd2a09b))
 
 
