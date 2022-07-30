@@ -4,14 +4,14 @@ import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 
 import type { LayoutCollapsedConfig } from '../index';
 
-export interface LayoutAdminHeaderMenu {
-  key: string;
+export interface LayoutAdminHeaderMenu<K extends string = string> {
+  key: K;
   name: string;
 }
 
 export interface LayoutAdminHeaderProps<K extends string = string>
   extends LayoutCollapsedConfig {
-  menuList?: LayoutAdminHeaderMenu[];
+  menuList?: LayoutAdminHeaderMenu<K>[];
   onOpt?: (optKey: K) => void;
   logo?: string;
   title: string;
