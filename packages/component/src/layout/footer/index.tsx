@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import moment from 'moment';
 
 export interface LayoutFooterProps {
-  copyrightStart: number;
-  copyrightEnd: number;
-  corpName: string;
+  copyrightStart?: number;
+  copyrightEnd?: number;
+  corpName?: string;
 }
 
 export function Footer(props: LayoutFooterProps) {
