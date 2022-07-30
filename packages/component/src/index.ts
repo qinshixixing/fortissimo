@@ -144,8 +144,13 @@ export * as Layout from './layout';
 export type {
   LayoutCollapsedConfig,
   LayoutAdminHeaderMenu,
-  LayoutSideBarMenu,
+  LayoutSidebarMenu,
+  LayoutAdminHeaderConfig,
+  LayoutSidebarConfig,
   LayoutAdminHeaderProps,
-  LayoutSideBarProps,
+  LayoutSidebarProps,
   LayoutFooterProps
 } from './layout';
+
+export { AdminLayout } from './adminLayout';
+export type { AdminLayoutProps } from './adminLayout';

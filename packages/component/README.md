@@ -66,3 +66,4 @@ export default function() {
 | Layout.AdminHeader | 后台管理页面头部            | LayoutAdminHeaderProps |
 | Layout.Sidebar     | 页面侧边菜单              | LayoutSidebarProps     |
 | Layout.Footer      | 页面底部                | LayoutFooterProps      |
+| AdminLayout        | 后台页面布局模版组件          | LayoutFooterProps      |

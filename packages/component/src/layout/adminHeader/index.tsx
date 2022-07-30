@@ -9,8 +9,7 @@ export interface LayoutAdminHeaderMenu<K extends string = string> {
   name: string;
 }
 
-export interface LayoutAdminHeaderProps<K extends string = string>
-  extends LayoutCollapsedConfig {
+export interface LayoutAdminHeaderConfig<K extends string = string> {
   menuList?: LayoutAdminHeaderMenu<K>[];
   onOpt?: (optKey: K) => void;
   logo?: string;
@@ -20,6 +19,10 @@ export interface LayoutAdminHeaderProps<K extends string = string>
   canCollapsed?: boolean;
   onCollapsed?: () => void;
 }
+
+export interface LayoutAdminHeaderProps<K extends string = string>
+  extends LayoutCollapsedConfig,
+    LayoutAdminHeaderConfig<K> {}
 
 export function AdminHeader(props: LayoutAdminHeaderProps) {
   const menu = (
