@@ -140,5 +140,12 @@ export type {
   SelectDataLinkProps
 } from './selectData';
 
-export { Sidebar } from './sidebar';
-export type { SideBarMenu, SideBarProps } from './sidebar';
+export * as Layout from './layout';
+export type {
+  LayoutCollapsedConfig,
+  LayoutAdminHeaderMenu,
+  LayoutSideBarMenu,
+  LayoutAdminHeaderProps,
+  LayoutSideBarProps,
+  LayoutFooterProps
+} from './layout';

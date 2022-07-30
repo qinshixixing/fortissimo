@@ -2,18 +2,17 @@ import React, { useCallback, useState, useEffect, useMemo } from 'react';
 import { Menu, Layout } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 
-export interface SideBarMenu {
+import type { LayoutCollapsedConfig } from '../index';
+
+export interface LayoutSideBarMenu {
   path: string;
   title: string;
   icon?: React.ReactNode;
-  children?: SideBarMenu[];
+  children?: LayoutSideBarMenu[];
 }
 
-export interface SideBarProps {
-  menuList: SideBarMenu[];
-  expandWidth?: number;
-  collapsedWidth?: number;
-  collapsed?: boolean;
+export interface LayoutSideBarProps extends LayoutCollapsedConfig {
+  menuList: LayoutSideBarMenu[];
   expandOneRootSubmenu?: boolean;
 }
 
@@ -24,11 +23,11 @@ function checkPathInclude(path: string, targetPath: string) {
   return targetPathArr.every((item, index) => pathArr[index] === item);
 }
 
-function getKeysFromLocation(pathname: string, menuList: SideBarMenu[]) {
+function getKeysFromLocation(pathname: string, menuList: LayoutSideBarMenu[]) {
   let selectedKey = '';
   const openKeys: string[] = [];
 
-  const find = (list: SideBarMenu[], parentKey?: string): boolean => {
+  const find = (list: LayoutSideBarMenu[], parentKey?: string): boolean => {
     return list.some((item) => {
       if (item.children && item.children.length) {
         const result = find(item.children, item.path);
@@ -48,7 +47,7 @@ function getKeysFromLocation(pathname: string, menuList: SideBarMenu[]) {
   };
 }
 
-export function Sidebar(props: SideBarProps) {
+export function Sidebar(props: LayoutSideBarProps) {
   const location = useLocation();
 
   const rootSubmenuKeys = useMemo(() => {
@@ -82,7 +81,7 @@ export function Sidebar(props: SideBarProps) {
     else setOpenKeys(Array.from(new Set([...openKeys, ...keys.openKeys])));
   }, [location.pathname, props.menuList, props.expandOneRootSubmenu]);
 
-  const renderMenu = useCallback((list: SideBarMenu[]) => {
+  const renderMenu = useCallback((list: LayoutSideBarMenu[]) => {
     return list.map((item) => {
       if (item.children && item.children.length) {
         return (
@@ -101,7 +100,7 @@ export function Sidebar(props: SideBarProps) {
 
   return (
     <Layout.Sider
-      className={'ft-sidebar'}
+      className={'ft-layout-sidebar'}
       collapsed={props.collapsed}
       width={props.expandWidth || 250}
       collapsedWidth={props.collapsedWidth || 80}
