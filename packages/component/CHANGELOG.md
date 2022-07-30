@@ -1,4 +1,13 @@
-## [0.3.14-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.14-1...component/0.3.14-2) (2022-07-30)
+## [0.3.14](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.14-2...component/0.3.14) (2022-07-30)
+
+
+### Features
+
+* **添加新组件adminlayout:** 添加新组件AdminLayout ([cf0bed1](https://github.com/qinshixixing/fortissimo/commit/cf0bed12ba3343f075eaf41bc9ddde2c0fde2187))
+
+
+
+## [v0.3.14-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.14-1...component/v0.3.14-2) (2022-07-30)
 
 
 ### Features
