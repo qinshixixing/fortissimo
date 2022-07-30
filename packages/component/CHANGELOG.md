@@ -1,4 +1,13 @@
-## [0.3.14-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.14-0...component/0.3.14-1) (2022-07-30)
+## [0.3.14-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.14-1...component/0.3.14-2) (2022-07-30)
+
+
+### Features
+
+* **优化layout.adminheader传参:** 优化Layout.AdminHeader传参 ([a89ed28](https://github.com/qinshixixing/fortissimo/commit/a89ed28e2407626dba3f2823fdace5fa8f027990))
+
+
+
+## [v0.3.14-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.14-0...component/v0.3.14-1) (2022-07-30)
 
 
 ### Features
