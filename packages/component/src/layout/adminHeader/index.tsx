@@ -15,7 +15,7 @@ export interface LayoutAdminHeaderProps<K extends string = string>
   onOpt?: (optKey: K) => void;
   logo?: string;
   title: string;
-  avatar: string;
+  avatar?: string;
   userName: string;
   canCollapsed?: boolean;
   onCollapsed?: () => void;
