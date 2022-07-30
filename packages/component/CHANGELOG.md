@@ -1,4 +1,13 @@
-## [0.3.13](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.12...component/0.3.13) (2022-07-30)
+## [0.3.14-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.13...component/0.3.14-0) (2022-07-30)
+
+
+### Features
+
+* **优化layout.footer传参:** 优化layout.footer传参 ([95645d4](https://github.com/qinshixixing/fortissimo/commit/95645d425316528a31502b4c5fd2b0b515263553))
+
+
+
+## [v0.3.13](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.12...component/v0.3.13) (2022-07-30)
 
 
 ### Features
