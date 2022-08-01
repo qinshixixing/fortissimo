@@ -134,6 +134,7 @@ export const DataListPro = forwardRef(function (
   const getData = useCallback(
     async (params: DataListProGetDataParams) => {
       setSelectedValue([]);
+      if (!props.onGetData) return;
       const reqPageNo = params.pageNo || pageNo;
       const reqPageSize = params.pageSize || pageSize;
       const data: DataListProGetDataParams = {
@@ -143,25 +144,32 @@ export const DataListPro = forwardRef(function (
         sortType: params.sortType || sortType,
         searchData: params.searchData || searchData
       };
-      if (props.onGetData) {
-        const res = await props.onGetData(data);
-        const maxPageNo = Math.ceil(res.total / reqPageSize);
-        if (maxPageNo > 0 && maxPageNo < reqPageNo) {
-          await getData({ pageNo: maxPageNo });
-          setPageNo(maxPageNo);
-        } else {
-          setTotal(res.total);
-          setData(res.data);
-        }
+      const res = await props.onGetData(data);
+      const maxPageNo = Math.ceil(res.total / reqPageSize);
+      if (maxPageNo > 0 && maxPageNo < reqPageNo) {
+        await getData({ pageNo: maxPageNo });
+        setPageNo(maxPageNo);
+      } else {
+        setTotal(res.total);
+        setData(res.data);
       }
     },
     [pageNo, pageSize, sortKey, sortType, searchData, props]
   );
 
+  const [exportLoading, setExportLoading] = useState(false);
+
   const exportData = useCallback(
     async (params?: Partial<RecordData>) => {
+      if (!props.onExportData) return;
       const data = params || searchData;
-      props.onExportData && (await props.onExportData(data));
+      setExportLoading(true);
+      try {
+        await props.onExportData(data);
+        setExportLoading(false);
+      } catch (e) {
+        setExportLoading(false);
+      }
     },
     [searchData, props]
   );
@@ -189,7 +197,10 @@ export const DataListPro = forwardRef(function (
           list={props.search}
           labelCol={props.searchLabelCol}
           opts={props.searchOpts}
-          hideExport={!props.canExport}
+          showExport={props.canExport}
+          loading={{
+            export: exportLoading
+          }}
           onOpt={async (data, optKey) => {
             setSearchData(data);
             if (optKey === 'export') await exportData(data);

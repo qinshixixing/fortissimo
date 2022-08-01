@@ -8,18 +8,31 @@ import type {
   RecordData
 } from '../../index';
 
+export type DataListSearchDefaultOpt = 'search' | 'reset' | 'export';
+
 export interface DataListSearchProps<T extends RecordData = RecordData> {
   list: OptEditFormField<T>[];
   labelCol?: number | null;
-  hideExport?: boolean;
+  showExport?: boolean;
+  loading?: Partial<Record<DataListSearchDefaultOpt, boolean>>;
   opts?: OperationItemConfig[];
   onOpt: (data: Partial<T>, optKey: string) => void;
 }
 
-export type DataListSearchDefaultOpt = 'search' | 'reset' | 'export';
-
 export function Search(props: DataListSearchProps) {
   const formRef = useRef<OptFormMethods>(null);
+
+  const loading = useMemo<Record<DataListSearchDefaultOpt, boolean>>(() => {
+    const defaultLoading: Record<DataListSearchDefaultOpt, boolean> = {
+      search: false,
+      reset: false,
+      export: false
+    };
+    return {
+      ...defaultLoading,
+      ...(props.loading || {})
+    };
+  }, [props.loading]);
 
   const searchData = useCallback(
     (optKey: string) => {
@@ -38,17 +51,20 @@ export function Search(props: DataListSearchProps) {
       {
         key: 'search',
         name: '查询',
-        type: 'primary'
+        type: 'primary',
+        loading: loading.search
       },
       {
         key: 'reset',
-        name: '重置'
+        name: '重置',
+        loading: loading.reset
       }
     ];
-    if (!props.hideExport)
+    if (props.showExport)
       defaultOpts.push({
         key: 'export',
-        name: '导出'
+        name: '导出',
+        loading: props.showExport && loading.export
       });
     return (
       <Operation.List
@@ -60,7 +76,14 @@ export function Search(props: DataListSearchProps) {
         }}
       />
     );
-  }, [props.hideExport, props.opts, searchData]);
+  }, [
+    props.opts,
+    props.showExport,
+    loading.search,
+    loading.reset,
+    loading.export,
+    searchData
+  ]);
 
   return (
     <div className={'ft-data-list-search'}>
