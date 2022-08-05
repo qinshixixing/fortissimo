@@ -44,7 +44,7 @@ export function FileList(props: UploadListProps) {
         if (typeof item === 'string') result.push(item);
         else if (props.format) {
           const check = props.format.some((format) =>
-            item.name.endsWith(format)
+            item.name.toLowerCase().endsWith(format.toLowerCase())
           );
           if (check) result.push(item);
         } else result.push(item);
