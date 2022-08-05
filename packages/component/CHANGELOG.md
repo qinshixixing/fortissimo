@@ -1,4 +1,13 @@
-## [0.3.15](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.14...component/0.3.15) (2022-08-01)
+## [0.3.16](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.15...component/0.3.16) (2022-08-05)
+
+
+### Bug Fixes
+
+* **修复上传时格式校验问题:** 扩展名校验转换为小写再比较 ([ba2d740](https://github.com/qinshixixing/fortissimo/commit/ba2d74040559322bc10f79efd7921e8f6acce227))
+
+
+
+## [v0.3.15](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.14...component/v0.3.15) (2022-08-01)
 
 
 ### Features
