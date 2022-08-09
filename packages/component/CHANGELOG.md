@@ -1,4 +1,13 @@
-## [0.3.17-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.16...component/0.3.17-0) (2022-08-09)
+## [0.3.17](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.17-0...component/0.3.17) (2022-08-09)
+
+
+### Features
+
+* **导出按钮增加使能控制:** 1、表单暴露值变化事件。2、导出按钮增加使能控制。 ([7697f61](https://github.com/qinshixixing/fortissimo/commit/7697f61c455649f43b664a96834a665bd47def51))
+
+
+
+## [v0.3.17-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.16...component/v0.3.17-0) (2022-08-09)
 
 
 ### Bug Fixes
