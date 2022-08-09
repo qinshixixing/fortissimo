@@ -106,7 +106,7 @@ export function Search(props: DataListSearchProps) {
               value[key] === 0 ||
               typeof value[key] === 'boolean'
           );
-          setExportDisabled(checkValue);
+          setExportDisabled(!checkValue);
         }}
       />
       <div className={'ft-data-list-search-opt'}>{opts}</div>
