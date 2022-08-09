@@ -1,29 +1,28 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Modal as AntModal, Spin } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
-import { Operation } from '../../index';
 import type { OptBoxProps } from '../index';
+import { useOpts } from '../useOpts';
 
 export function Modal(props: OptBoxProps) {
-  const footer = useMemo(() => {
-    if (props.opts)
-      return (
-        <Operation.List
-          type={'default'}
-          list={props.opts}
-          onOpt={props.onOpt}
-        />
-      );
-    else if (props.opts === null) return null;
-    return undefined;
-  }, [props]);
+  const { defaultOptsConfig, opts } = useOpts({
+    okOpt: props.okOpt,
+    cancelOpt: props.cancelOpt,
+    opts: props.opts,
+    onOpt: props.onOpt
+  });
 
   return (
     <AntModal
+      closable={Boolean(defaultOptsConfig.cancel)}
       closeIcon={
         <CloseOutlined
-          className={props.loading ? 'ft-opt-box-close-disabled' : undefined}
+          className={
+            defaultOptsConfig.cancel?.disabled
+              ? 'ft-opt-box-close-disabled'
+              : undefined
+          }
         />
       }
       maskClosable={false}
@@ -33,20 +32,10 @@ export function Modal(props: OptBoxProps) {
       visible={props.show}
       width={props.width}
       onCancel={() => {
-        if (props.loading) return;
+        if (defaultOptsConfig.cancel?.disabled) return;
         props.onOpt && props.onOpt('cancel');
       }}
-      onOk={() => {
-        props.onOpt && props.onOpt('ok');
-      }}
-      okButtonProps={{
-        disabled: props.disabled,
-        loading: props.loading
-      }}
-      cancelButtonProps={{
-        disabled: props.loading
-      }}
-      footer={footer}
+      footer={opts}
       modalRender={(node) => (
         <Spin
           wrapperClassName='ft-opt-box-spin'

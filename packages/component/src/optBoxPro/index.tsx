@@ -84,11 +84,11 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
       destroyOnClose
       title={props.title}
       width={props.width || 500}
-      opts={isShow ? [{ key: 'cancel', name: '确定', loading }] : undefined}
       onOpt={async (optKey) => {
         await handleOpt(optKey as OptBoxDefaultOpt);
       }}
-      loading={loading}
+      okOpt={isShow ? null : { loading: loading }}
+      cancelOpt={{ disabled: loading, ...(isShow ? { name: '确定' } : {}) }}
       spin={props.spin && loading}
     >
       {props.content || (

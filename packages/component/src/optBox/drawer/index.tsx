@@ -1,42 +1,28 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Drawer as AntDrawer, Spin } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
-import { Operation } from '../../index';
-import type { OperationItemConfig } from '../../index';
-import type { OptBoxProps, OptBoxDefaultOpt } from '../index';
+import type { OptBoxProps } from '../index';
+import { useOpts } from '../useOpts';
 
 export function Drawer(props: OptBoxProps) {
-  const opts = useMemo(() => {
-    if (props.opts === null) return null;
-    const defaultOpts: OperationItemConfig<OptBoxDefaultOpt>[] = [
-      {
-        key: 'cancel',
-        name: '取消',
-        disabled: props.loading
-      },
-      {
-        key: 'ok',
-        name: '确定',
-        type: 'primary',
-        loading: props.loading,
-        disabled: props.disabled
-      }
-    ];
-    return (
-      <Operation.List
-        type={'default'}
-        list={props.opts || defaultOpts}
-        onOpt={props.onOpt}
-      />
-    );
-  }, [props]);
+  const { defaultOptsConfig, opts } = useOpts({
+    okOpt: props.okOpt,
+    cancelOpt: props.cancelOpt,
+    opts: props.opts,
+    onOpt: props.onOpt
+  });
 
   return (
     <AntDrawer
+      closable={Boolean(defaultOptsConfig.cancel)}
       closeIcon={
         <CloseOutlined
-          className={props.loading ? 'ft-opt-box-close-disabled' : undefined}
+          className={
+            defaultOptsConfig.cancel?.disabled
+              ? 'ft-opt-box-close-disabled'
+              : undefined
+          }
         />
       }
       maskClosable={false}
@@ -46,7 +32,7 @@ export function Drawer(props: OptBoxProps) {
       visible={props.show}
       width={props.width}
       onClose={() => {
-        if (props.loading) return;
+        if (defaultOptsConfig.cancel?.disabled) return;
         props.onOpt && props.onOpt('cancel');
       }}
       extra={opts}

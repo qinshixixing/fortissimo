@@ -7,12 +7,12 @@ export interface OptBoxProps<K extends string = string> {
   show: boolean;
   width?: number | string;
   title?: ReactNode;
-  opts?: OperationItemConfig<K>[];
+  opts?: OperationItemConfig<K>[] | null;
   onOpt?: (optKey: K) => void;
+  okOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
+  cancelOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
   children?: ReactNode;
   destroyOnClose?: boolean;
-  loading?: boolean;
-  disabled?: boolean;
   spin?: boolean;
 }
 
