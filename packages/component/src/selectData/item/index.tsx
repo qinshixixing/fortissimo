@@ -3,7 +3,8 @@ import React, {
   useMemo,
   useState,
   forwardRef,
-  useImperativeHandle
+  useImperativeHandle,
+  useRef
 } from 'react';
 import { Select } from 'antd';
 import { useMount } from '@fortissimo/hook';
@@ -17,18 +18,18 @@ export interface SelectDataItemProps<T extends RecordData = RecordData>
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
-let currentValue: string;
 
 export const Item = forwardRef((props: SelectDataItemProps, ref) => {
   const itemKey = useMemo(() => props.itemKey || 'key', [props.itemKey]);
   const itemText = useMemo(() => props.itemText || 'text', [props.itemText]);
+  const currentValue = useRef<string>('');
 
   const [list, setList] = useState<RecordData[]>([]);
 
   const getList = useCallback(
     async (value?: string) => {
       const data = await props.onGetData(value);
-      if (currentValue === value) setList(data);
+      if (currentValue.current === value) setList(data);
     },
     [props]
   );
@@ -42,7 +43,7 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
           clearTimeout(timeout);
           timeout = null;
         }
-        currentValue = value;
+        currentValue.current = value;
         timeout = setTimeout(() => {
           getList(value);
         }, 300);

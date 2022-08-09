@@ -3,7 +3,8 @@ import React, {
   useMemo,
   useState,
   forwardRef,
-  useImperativeHandle
+  useImperativeHandle,
+  useRef
 } from 'react';
 import { Select } from 'antd';
 import type { SelectProps } from 'antd';
@@ -19,11 +20,11 @@ export interface SelectDataLinkProps<T extends RecordData = RecordData>
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
-const currentValue: [string?, string?] = [undefined, undefined];
 
 export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
   const itemKey = useMemo(() => props.itemKey || 'key', [props.itemKey]);
   const itemText = useMemo(() => props.itemText || 'text', [props.itemText]);
+  const currentValue = useRef<[string, string]>(['', '']);
   const itemChildren = useMemo(
     () => props.itemChildren || 'children',
     [props.itemChildren]
@@ -53,11 +54,11 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
     async (value?: string, isFirst?: boolean) => {
       if (isFirst) {
         const data = await props.onGetData(value);
-        if (currentValue[0] === value) setList(data);
+        if (currentValue.current[0] === value) setList(data);
       } else {
         if (!props.value || !props.value[0]) return;
         const data = await props.onGetData(value, props.value[0]);
-        if (currentValue[1] === value) setChildList(data);
+        if (currentValue.current[1] === value) setChildList(data);
       }
     },
     [props]
@@ -74,7 +75,7 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
           clearTimeout(timeout);
           timeout = null;
         }
-        currentValue[isFirst ? 0 : 1] = value;
+        currentValue.current[isFirst ? 0 : 1] = value;
         timeout = setTimeout(async () => {
           await getList(value, isFirst);
         }, 300);
