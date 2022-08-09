@@ -1,4 +1,13 @@
-## [0.3.16](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.15...component/0.3.16) (2022-08-05)
+## [0.3.17-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.16...component/0.3.17-0) (2022-08-09)
+
+
+### Bug Fixes
+
+* **修复selectdata数据不更新问题:** 修复selectdata数据不更新问题 ([57ad1d4](https://github.com/qinshixixing/fortissimo/commit/57ad1d455cabe02bc9172bbf18a7bee0e0444e45))
+
+
+
+## [v0.3.16](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.15...component/v0.3.16) (2022-08-05)
 
 
 ### Bug Fixes
