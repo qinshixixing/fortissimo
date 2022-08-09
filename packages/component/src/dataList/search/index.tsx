@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 import { OptForm, Operation } from '../../index';
 import type {
@@ -14,6 +14,7 @@ export interface DataListSearchProps<T extends RecordData = RecordData> {
   list: OptEditFormField<T>[];
   labelCol?: number | null;
   showExport?: boolean;
+  allowTotalExport?: boolean;
   loading?: Partial<Record<DataListSearchDefaultOpt, boolean>>;
   opts?: OperationItemConfig[];
   onOpt: (data: Partial<T>, optKey: string) => void;
@@ -42,6 +43,8 @@ export function Search(props: DataListSearchProps) {
     [formRef, props]
   );
 
+  const [exportDisabled, setExportDisabled] = useState(!props.allowTotalExport);
+
   const opts = useMemo(() => {
     if (props.opts === null) return null;
     const defaultOpts: OperationItemConfig<
@@ -64,7 +67,8 @@ export function Search(props: DataListSearchProps) {
       defaultOpts.push({
         key: 'export',
         name: '导出',
-        loading: props.showExport && loading.export
+        loading: props.showExport && loading.export,
+        disabled: exportDisabled
       });
     return (
       <Operation.List
@@ -82,7 +86,8 @@ export function Search(props: DataListSearchProps) {
     loading.search,
     loading.reset,
     loading.export,
-    searchData
+    searchData,
+    exportDisabled
   ]);
 
   return (
@@ -93,6 +98,16 @@ export function Search(props: DataListSearchProps) {
         colNum={3}
         labelCol={props.labelCol}
         fields={props.list}
+        onValueChange={(value) => {
+          if (!props.showExport || props.allowTotalExport) return;
+          const checkValue = Object.keys(value).some(
+            (key) =>
+              Boolean(value[key]) ||
+              value[key] === 0 ||
+              typeof value[key] === 'boolean'
+          );
+          setExportDisabled(checkValue);
+        }}
       />
       <div className={'ft-data-list-search-opt'}>{opts}</div>
     </div>

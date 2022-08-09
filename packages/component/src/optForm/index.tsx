@@ -61,6 +61,7 @@ export interface OptFormProps<T extends RecordData = RecordData> {
   labelCol?: number | null;
   colNum?: number;
   mode: OptFormMode;
+  onValueChange?: (data: Partial<T>) => void;
 }
 
 export interface OptFormMethods<T extends RecordData = RecordData> {
@@ -77,7 +78,8 @@ export const OptForm = forwardRef(function (
     labelCol = 3,
     colNum = 1,
     mode,
-    className
+    className,
+    onValueChange
   }: OptFormProps,
   ref
 ) {
@@ -187,6 +189,9 @@ export const OptForm = forwardRef(function (
         typeof labelCol === 'number' ? { span: 24 - labelCol } : undefined
       }
       preserve={false}
+      onValuesChange={(changedValues, values) => {
+        onValueChange && onValueChange(values);
+      }}
     >
       {fieldItems(fields)}
       {fieldGroups.map((group, index) => (

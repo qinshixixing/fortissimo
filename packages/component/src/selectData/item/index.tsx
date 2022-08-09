@@ -29,7 +29,12 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
   const getList = useCallback(
     async (value?: string) => {
       const data = await props.onGetData(value);
-      if (currentValue.current === value) setList(data);
+      if (
+        !props.showSearch ||
+        !props.searchFromServer ||
+        currentValue.current === value
+      )
+        setList(data);
     },
     [props]
   );
@@ -75,7 +80,7 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
         label: item[itemText],
         value: item[itemKey]
       }))}
-      onSearch={onSearch}
+      onSearch={props.showSearch ? onSearch : undefined}
     />
   );
 });

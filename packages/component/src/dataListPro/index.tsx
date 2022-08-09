@@ -74,6 +74,7 @@ export interface DataListProProps<
   optWidth?: number | string;
   search?: DataListProSearchConfig<S>[];
   canExport?: boolean;
+  canTotalExport?: boolean;
   searchOpts?: OperationItemConfig<SOPTK>[];
   searchLabelCol?: number | null;
   canSelect?: boolean;
@@ -198,6 +199,7 @@ export const DataListPro = forwardRef(function (
           labelCol={props.searchLabelCol}
           opts={props.searchOpts}
           showExport={props.canExport}
+          allowTotalExport={props.canTotalExport}
           loading={{
             export: exportLoading
           }}
