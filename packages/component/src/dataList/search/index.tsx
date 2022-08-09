@@ -44,6 +44,14 @@ export function Search(props: DataListSearchProps) {
   );
 
   const [exportDisabled, setExportDisabled] = useState(!props.allowTotalExport);
+  const checkExportDisabled = useCallback(
+    (data?: RecordData) => {
+      if (!props.showExport || props.allowTotalExport) return;
+      const isEmpty = formRef.current?.checkFormEmpty(data);
+      setExportDisabled(Boolean(isEmpty));
+    },
+    [props.showExport, props.allowTotalExport]
+  );
 
   const opts = useMemo(() => {
     if (props.opts === null) return null;
@@ -75,7 +83,10 @@ export function Search(props: DataListSearchProps) {
         type={'default'}
         list={props.opts || defaultOpts}
         onOpt={(optKey) => {
-          if (optKey === 'reset') formRef.current?.reset();
+          if (optKey === 'reset') {
+            formRef.current?.reset();
+            checkExportDisabled();
+          }
           searchData(optKey);
         }}
       />
@@ -87,7 +98,8 @@ export function Search(props: DataListSearchProps) {
     loading.reset,
     loading.export,
     searchData,
-    exportDisabled
+    exportDisabled,
+    checkExportDisabled
   ]);
 
   return (
@@ -99,14 +111,7 @@ export function Search(props: DataListSearchProps) {
         labelCol={props.labelCol}
         fields={props.list}
         onValueChange={(value) => {
-          if (!props.showExport || props.allowTotalExport) return;
-          const checkValue = Object.keys(value).some(
-            (key) =>
-              Boolean(value[key]) ||
-              value[key] === 0 ||
-              typeof value[key] === 'boolean'
-          );
-          setExportDisabled(!checkValue);
+          checkExportDisabled(value);
         }}
       />
       <div className={'ft-data-list-search-opt'}>{opts}</div>

@@ -69,6 +69,7 @@ export interface OptFormMethods<T extends RecordData = RecordData> {
   check: () => void;
   getData: () => Partial<T>;
   setData: (data: Partial<T>) => void;
+  checkFormEmpty: (data?: Partial<T>) => boolean;
 }
 
 export const OptForm = forwardRef(function (
@@ -87,13 +88,30 @@ export const OptForm = forwardRef(function (
 
   const isShow = useMemo(() => mode === 'show', [mode]);
 
+  const checkEmpty = useCallback((data?: any) => {
+    let value = data;
+    if (typeof value === 'string') value = data.trim();
+    const isEmpty = !value && value !== 0 && value !== false;
+    const isNoLength = Array.isArray(value) && !value.length;
+    return isEmpty || isNoLength;
+  }, []);
+
+  const checkFormEmpty = useCallback(
+    (data?: RecordData) => {
+      const value = data || formRef.getFieldsValue();
+      return Object.keys(value).every((key) => checkEmpty(value[key]));
+    },
+    [formRef, checkEmpty]
+  );
+
   useImperativeHandle(
     ref,
     (): OptFormMethods => ({
       reset: () => formRef.resetFields(),
       check: () => formRef.validateFields(),
       getData: () => trimString(formRef.getFieldsValue()),
-      setData: (data) => formRef.setFieldsValue(data)
+      setData: (data) => formRef.setFieldsValue(data),
+      checkFormEmpty
     })
   );
 
@@ -151,16 +169,9 @@ export const OptForm = forwardRef(function (
                 : [
                     {
                       validator: (rule: any, checkValue: any) => {
-                        let value = checkValue;
-                        if (typeof value === 'string')
-                          value = checkValue.trim();
-                        const isEmpty = !value && value !== 0;
-                        if (item.required) {
-                          if (
-                            isEmpty ||
-                            (Array.isArray(value) && !value.length)
-                          )
-                            return Promise.reject(`${item.name}不能为空！`);
+                        const value = checkValue;
+                        if (item.required && checkEmpty(value)) {
+                          return Promise.reject(`${item.name}不能为空！`);
                         }
                         if (item.validator) {
                           const result = item.validator(value);
@@ -176,7 +187,7 @@ export const OptForm = forwardRef(function (
           </Form.Item>
         </div>
       )),
-    [colNum, isShow, fieldItemContent, valuePropName]
+    [colNum, isShow, fieldItemContent, valuePropName, checkEmpty]
   );
 
   return (
