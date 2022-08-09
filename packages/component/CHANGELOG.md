@@ -1,4 +1,13 @@
-## [0.3.19-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.18...component/0.3.19-0) (2022-08-09)
+## [0.3.19-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-0...component/0.3.19-1) (2022-08-09)
+
+
+### Features
+
+* **优化弹出框操作按钮逻辑:** 优化弹出框操作按钮逻辑 ([6894b14](https://github.com/qinshixixing/fortissimo/commit/6894b14cdcf663735007c5a58317c544348731a5))
+
+
+
+## [v0.3.19-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.18...component/v0.3.19-0) (2022-08-09)
 
 
 ### Features
