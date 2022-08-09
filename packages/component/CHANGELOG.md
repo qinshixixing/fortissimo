@@ -1,4 +1,13 @@
-## [0.3.17](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.17-0...component/0.3.17) (2022-08-09)
+## [0.3.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.17...component/0.3.18) (2022-08-09)
+
+
+### Bug Fixes
+
+* **修复导出表单控制按钮使能错误:** 修复导出表单控制按钮使能错误 ([01a88db](https://github.com/qinshixixing/fortissimo/commit/01a88db57e973c10a51174c5c8cc95cd6add662f))
+
+
+
+## [v0.3.17](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.17-0...component/v0.3.17) (2022-08-09)
 
 
 ### Features
