@@ -1,4 +1,13 @@
-## [0.3.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.17...component/0.3.18) (2022-08-09)
+## [0.3.19-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.18...component/0.3.19-0) (2022-08-09)
+
+
+### Features
+
+* **优化表单校验:** 1、优化表单校验。2、优化导出时数据检查。 ([fb8810a](https://github.com/qinshixixing/fortissimo/commit/fb8810a54797368215908b3ca41e90b6d9ed5a77))
+
+
+
+## [v0.3.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.17...component/v0.3.18) (2022-08-09)
 
 
 ### Bug Fixes
