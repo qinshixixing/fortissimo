@@ -54,11 +54,21 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
     async (value?: string, isFirst?: boolean) => {
       if (isFirst) {
         const data = await props.onGetData(value);
-        if (currentValue.current[0] === value) setList(data);
+        if (
+          !props.showSearch ||
+          !props.searchFromServer ||
+          currentValue.current[0] === value
+        )
+          setList(data);
       } else {
         if (!props.value || !props.value[0]) return;
         const data = await props.onGetData(value, props.value[0]);
-        if (currentValue.current[1] === value) setChildList(data);
+        if (
+          !props.showSearch ||
+          !props.searchFromServer ||
+          currentValue.current[1] === value
+        )
+          setChildList(data);
       }
     },
     [props]
