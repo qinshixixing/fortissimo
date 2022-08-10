@@ -1,4 +1,13 @@
-## [0.3.19-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-1...component/0.3.19-2) (2022-08-10)
+## [0.3.19-3](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-2...component/0.3.19-3) (2022-08-10)
+
+
+### Features
+
+* **优化选择逻辑:** 优化选择逻辑 ([03af1ef](https://github.com/qinshixixing/fortissimo/commit/03af1efe4a109f551a8b0c3dd4dd4c64f319f5ba))
+
+
+
+## [v0.3.19-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-1...component/v0.3.19-2) (2022-08-10)
 
 
 ### Features
