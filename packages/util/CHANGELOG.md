@@ -1,4 +1,13 @@
-## [0.3.12](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.11...util/0.3.12) (2022-08-10)
+## [0.3.13](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.12...util/0.3.13) (2022-08-10)
+
+
+### Features
+
+* **优化sendstoragemessage、新增setstoragemsgkey:** 优化sendStorageMessage、新增setStorageMsgKey ([c60774e](https://github.com/qinshixixing/fortissimo/commit/c60774ec7c2d7069df3505636cfb87eca19b68c5))
+
+
+
+## [v0.3.12](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.11...util/v0.3.12) (2022-08-10)
 
 
 ### Features
