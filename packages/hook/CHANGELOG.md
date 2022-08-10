@@ -1,4 +1,14 @@
-## [0.2.1](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.1-0...hook/0.2.1) (2022-06-24)
+## [0.2.2](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.1...hook/0.2.2) (2022-08-10)
+
+
+### Features
+
+* **新增sendstoragemessage方法:** 新增sendStorageMessage方法 ([b6e7e50](https://github.com/qinshixixing/fortissimo/commit/b6e7e501be4ddac2221803aa550d776973acd2a2))
+* **新增usestoragemessage方法:** 新增useStorageMessage方法 ([24e9bb9](https://github.com/qinshixixing/fortissimo/commit/24e9bb9efe14590095b0a74df4f202da3c04570d))
+
+
+
+## [v0.2.1](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.1-0...hook/v0.2.1) (2022-06-24)
 
 
 ### Features
