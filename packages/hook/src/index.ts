@@ -11,3 +11,5 @@ export {
 } from './customEventTarget';
 
 export { useEventTarget, useEventListener } from './eventTarget';
+
+export { useStorageMessage } from './useStorageMessage';
