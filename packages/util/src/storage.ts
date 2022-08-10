@@ -105,6 +105,6 @@ export function sendStorageMessage(name: string, data: any, key?: string) {
     name,
     data
   };
-  window.localStorage.setItem(key || storageMsgKey, JSON.stringify(value));
+  window.localStorage.setItem(msgKey, JSON.stringify(value));
   window.localStorage.removeItem(msgKey);
 }
