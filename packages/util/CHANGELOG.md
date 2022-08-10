@@ -1,4 +1,13 @@
-## [0.3.11](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.10...util/0.3.11) (2022-08-10)
+## [0.3.12](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.11...util/0.3.12) (2022-08-10)
+
+
+### Features
+
+* **新增sendstoragemessage方法:** 新增sendStorageMessage方法 ([b6e7e50](https://github.com/qinshixixing/fortissimo/commit/b6e7e501be4ddac2221803aa550d776973acd2a2))
+
+
+
+## [v0.3.11](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.10...util/v0.3.11) (2022-08-10)
 
 
 ### Features
