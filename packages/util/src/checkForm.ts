@@ -1,4 +1,4 @@
-export function checkFormItem(data?: any) {
+export function checkFormItemEmpty(data?: any) {
   let value = data;
   if (typeof value === 'string') value = data.trim();
   const isEmpty = !value && value !== 0 && value !== false;
@@ -6,7 +6,7 @@ export function checkFormItem(data?: any) {
   return isEmpty || isNoLength;
 }
 
-export function checkForm(data?: Record<string, any>) {
+export function checkFormEmpty(data?: Record<string, any>) {
   if (!data) return true;
-  return Object.keys(data).every((key) => checkFormItem(data[key]));
+  return Object.keys(data).every((key) => checkFormItemEmpty(data[key]));
 }
