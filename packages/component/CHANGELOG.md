@@ -1,4 +1,13 @@
-## [0.3.19-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-0...component/0.3.19-1) (2022-08-09)
+## [0.3.19-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-1...component/0.3.19-2) (2022-08-10)
+
+
+### Features
+
+* **优化表格表单按钮控制逻辑:** 优化表格表单按钮控制逻辑 ([ff770b6](https://github.com/qinshixixing/fortissimo/commit/ff770b64849c7f8131cd63e61a3b1f5bad7cad67))
+
+
+
+## [v0.3.19-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-0...component/v0.3.19-1) (2022-08-09)
 
 
 ### Features
