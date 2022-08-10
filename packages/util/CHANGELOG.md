@@ -1,4 +1,13 @@
-## [0.3.9](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.8...util/0.3.9) (2022-07-26)
+## [0.3.10](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.9...util/0.3.10) (2022-08-10)
+
+
+### Features
+
+* **添加新方法:** 添加checkFormItem、checkForm方法 ([0c7d3a1](https://github.com/qinshixixing/fortissimo/commit/0c7d3a1756060683820376b9a6a5e826a8fae31a))
+
+
+
+## [v0.3.9](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.8...util/v0.3.9) (2022-07-26)
 
 
 ### Features
