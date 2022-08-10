@@ -1,4 +1,13 @@
-## [0.3.10](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.9...util/0.3.10) (2022-08-10)
+## [0.3.11](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.10...util/0.3.11) (2022-08-10)
+
+
+### Features
+
+* **修改函数名:** checkFormItem、checkForm后加上Empty ([5058cb0](https://github.com/qinshixixing/fortissimo/commit/5058cb0676eec794b74670f3124d683cb9eb22a4))
+
+
+
+## [v0.3.10](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.9...util/v0.3.10) (2022-08-10)
 
 
 ### Features
