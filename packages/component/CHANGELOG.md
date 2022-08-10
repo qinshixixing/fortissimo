@@ -1,4 +1,8 @@
-## [0.3.19-3](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-2...component/0.3.19-3) (2022-08-10)
+## [0.3.19](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-3...component/0.3.19) (2022-08-10)
+
+
+
+## [v0.3.19-3](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-2...component/v0.3.19-3) (2022-08-10)
 
 
 ### Features
