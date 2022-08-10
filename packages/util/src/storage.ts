@@ -87,7 +87,24 @@ export function createProxyStorage(
   }
 }
 
-export function sendStorageMessage(key: string, value: any) {
-  window.localStorage.setItem(key, JSON.stringify(value));
-  window.localStorage.removeItem(key);
+let storageMsgKey = 'storageMsg';
+
+export interface StorageMsgData {
+  name: string;
+  data: any;
+}
+
+export function setStorageMsgKey(key?: string): string {
+  if (key) storageMsgKey = key;
+  return storageMsgKey;
+}
+
+export function sendStorageMessage(name: string, data: any, key?: string) {
+  const msgKey = key || storageMsgKey;
+  const value: StorageMsgData = {
+    name,
+    data
+  };
+  window.localStorage.setItem(key || storageMsgKey, JSON.stringify(value));
+  window.localStorage.removeItem(msgKey);
 }

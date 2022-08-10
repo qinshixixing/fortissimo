@@ -29,6 +29,7 @@ async function getFile(file, env, token) {
 | parseJson          | 解析JSON串（自带try，catch） | any                           |
 | sleep              | 休眠函数                 | void                          |
 | createProxyStorage | 在localstorage中创建代理对象 | { [propName: string]: any }   |
+| setStorageMsgKey | 设置本地存储消息事件存放信息key    | void                          |
 | sendStorageMessage | 发送本地存储消息事件           | void                          |
 | getRandomString    | 获取随机字符串              | string                        |
 | getBlob            | 获取二进制文件              | Promise<Blob>                 |
