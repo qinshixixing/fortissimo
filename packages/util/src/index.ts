@@ -50,3 +50,5 @@ export type { KeyConfig } from './transKey';
 
 export { getTimeFormat } from './time';
 export type { DatePrecision, ClockPrecision, TimePrecision } from './time';
+
+export { checkFormItem, checkForm } from './checkForm';
