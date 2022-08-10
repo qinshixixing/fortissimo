@@ -1,4 +1,13 @@
-## [0.3.13](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.12...util/0.3.13) (2022-08-10)
+## [0.3.14](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.13...util/0.3.14) (2022-08-10)
+
+
+### Features
+
+* **优化sendstoragemessage:** 优化sendStorageMessage ([ac0b644](https://github.com/qinshixixing/fortissimo/commit/ac0b6442474b4005b48bb91cde4e539e7cce4314))
+
+
+
+## [v0.3.13](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.12...util/v0.3.13) (2022-08-10)
 
 
 ### Features

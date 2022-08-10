@@ -1,7 +1,7 @@
 {
   "name": "@fortissimo/util",
   "author": "qinshixixing",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "license": "Apache",
   "description": "前端工具函数库",
   "sideEffects": false,
