@@ -86,3 +86,8 @@ export function createProxyStorage(
     return new Proxy<typeof storage>(storage, handle);
   }
 }
+
+export function sendStorageMessage(key: string, value: any) {
+  window.localStorage.setItem(key, JSON.stringify(value));
+  window.localStorage.removeItem(key);
+}

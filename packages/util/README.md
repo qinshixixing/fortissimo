@@ -29,6 +29,7 @@ async function getFile(file, env, token) {
 | parseJson          | 解析JSON串（自带try，catch） | any                           |
 | sleep              | 休眠函数                 | void                          |
 | createProxyStorage | 在localstorage中创建代理对象 | { [propName: string]: any }   |
+| sendStorageMessage | 发送本地存储消息事件           | void                          |
 | getRandomString    | 获取随机字符串              | string                        |
 | getBlob            | 获取二进制文件              | Promise<Blob>                 |
 | saveBlob           | 保存二进制文件              | void                          |
@@ -51,4 +52,4 @@ async function getFile(file, env, token) {
 | transKey           | 转化服务端与本地对象字段名工厂函数    | TransKeyData<T>               |
 | getTimeFormat      | 根据精度获取时间转换格式         | string                        |
 | checkFormItemEmpty | 检查单个表单是否为空           | boolean                       |
-| checkFormEmpty     | 检查整个表单是否为空           | boolean                        |
+| checkFormEmpty     | 检查整个表单是否为空           | boolean                       |

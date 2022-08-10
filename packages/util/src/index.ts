@@ -10,7 +10,7 @@ export { parseJson } from './parseJson';
 
 export { sleep } from './sleep';
 
-export { createProxyStorage } from './storage';
+export { createProxyStorage, sendStorageMessage } from './storage';
 
 export { trimString, getRandomString } from './string';
 
