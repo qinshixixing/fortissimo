@@ -3,10 +3,12 @@ import React, {
   useImperativeHandle,
   forwardRef,
   useState,
-  useMemo
+  useMemo,
+  useEffect
 } from 'react';
 import type { ForwardedRef } from 'react';
 import { useMount } from '@fortissimo/hook';
+import { checkFormEmpty } from '@fortissimo/util';
 
 import { DataList, OperationItemConfig } from '../index';
 import type {
@@ -75,7 +77,6 @@ export interface DataListProProps<
   search?: DataListProSearchConfig<S>[];
   canExport?: boolean;
   canTotalExport?: boolean;
-  searchOpts?: OperationItemConfig<SOPTK>[];
   searchLabelCol?: number | null;
   canSelect?: boolean;
   resetPageNo?: boolean;
@@ -159,6 +160,10 @@ export const DataListPro = forwardRef(function (
   );
 
   const [exportLoading, setExportLoading] = useState(false);
+  const [exportDisabled, setExportDisabled] = useState(!props.canTotalExport);
+  useEffect(() => {
+    if (props.canTotalExport) setExportDisabled(false);
+  }, [props.canTotalExport]);
 
   const exportData = useCallback(
     async (params?: Partial<RecordData>) => {
@@ -197,16 +202,21 @@ export const DataListPro = forwardRef(function (
         <DataList.Search
           list={props.search}
           labelCol={props.searchLabelCol}
-          opts={props.searchOpts}
-          showExport={props.canExport}
-          allowTotalExport={props.canTotalExport}
-          loading={{
-            export: exportLoading
-          }}
+          exportOpt={
+            props.canExport
+              ? {
+                  loading: exportLoading,
+                  disabled: exportDisabled
+                }
+              : null
+          }
           onOpt={async (data, optKey) => {
             setSearchData(data);
             if (optKey === 'export') await exportData(data);
             else {
+              if (optKey === 'reset' && !props.canTotalExport) {
+                setExportDisabled(checkFormEmpty(data));
+              }
               const resetPageNo = 1;
               setPageNo(resetPageNo);
               await getData({
@@ -214,6 +224,10 @@ export const DataListPro = forwardRef(function (
                 searchData: data
               });
             }
+          }}
+          onValueChange={(value) => {
+            if (props.canTotalExport) return;
+            setExportDisabled(checkFormEmpty(value));
           }}
         />
       )}

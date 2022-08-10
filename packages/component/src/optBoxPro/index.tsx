@@ -4,9 +4,11 @@ import React, {
   forwardRef,
   useImperativeHandle,
   useMemo,
-  useState
+  useState,
+  useEffect
 } from 'react';
 import type { ReactNode } from 'react';
+import { checkFormEmpty } from '@fortissimo/util';
 
 import { OptForm, OptBox } from '../index';
 import type {
@@ -34,6 +36,7 @@ export interface OptBoxProProps<T extends RecordData = RecordData>
   onClose?: () => void;
   onConfirm?: (data: Partial<T>) => Promise<void> | void;
   onConfirmBefore?: (data: Partial<T>) => Promise<void> | void;
+  disableOnEmpty?: boolean;
   spin?: boolean;
 }
 
@@ -43,6 +46,12 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
   const [loading, setLoading] = useState(false);
 
   const isShow = useMemo(() => props.mode === 'show', [props.mode]);
+
+  const [confirmDisabled, setConfirmDisabled] = useState(false);
+  useEffect(() => {
+    if (!props.disableOnEmpty) setConfirmDisabled(false);
+    else setConfirmDisabled(checkFormEmpty(formRef.current?.getData()));
+  }, [props.disableOnEmpty]);
 
   const handleOpt = useCallback(
     async (optKey: OptBoxDefaultOpt) => {
@@ -65,16 +74,28 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
     [props, formRef]
   );
 
-  useImperativeHandle(ref, () => ({
-    getData: () => formRef.current && formRef.current.getData(),
-    setData: (data: Partial<Record<string, any>>) => {
-      if (formRef.current) formRef.current.setData(data);
-      else
-        setTimeout(() => {
-          formRef.current && formRef.current.setData(data);
-        }, 100);
-    }
-  }));
+  useImperativeHandle(
+    ref,
+    () => ({
+      getData: () => {
+        formRef.current && formRef.current.getData();
+      },
+      reset: () => {
+        formRef.current && formRef.current.reset();
+      },
+      check: () => {
+        formRef.current && formRef.current.check();
+      },
+      setData: (data: Partial<Record<string, any>>) => {
+        if (formRef.current) formRef.current.setData(data);
+        else
+          setTimeout(() => {
+            formRef.current && formRef.current.setData(data);
+          }, 100);
+      }
+    }),
+    []
+  );
 
   const Box = props.type === 'drawer' ? OptBox.Drawer : OptBox.Modal;
 
@@ -87,7 +108,7 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
       onOpt={async (optKey) => {
         await handleOpt(optKey as OptBoxDefaultOpt);
       }}
-      okOpt={isShow ? null : { loading: loading }}
+      okOpt={isShow ? null : { loading: loading, disabled: confirmDisabled }}
       cancelOpt={{ disabled: loading, ...(isShow ? { name: '确定' } : {}) }}
       spin={props.spin && loading}
     >
@@ -99,6 +120,10 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
           colNum={props.colNum}
           fields={props.fields}
           fieldGroups={props.fieldGroups}
+          onValueChange={(data) => {
+            if (!props.disableOnEmpty) return;
+            setConfirmDisabled(checkFormEmpty(data));
+          }}
         />
       )}
       {props.extraContent}

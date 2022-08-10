@@ -1,6 +1,12 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useMemo,
+  useRef,
+  useImperativeHandle,
+  forwardRef
+} from 'react';
 
-import { OptForm, Operation } from '../../index';
+import { OptForm, Operation, OptBoxDefaultOpt } from '../../index';
 import type {
   OptEditFormField,
   OptFormMethods,
@@ -13,94 +19,78 @@ export type DataListSearchDefaultOpt = 'search' | 'reset' | 'export';
 export interface DataListSearchProps<T extends RecordData = RecordData> {
   list: OptEditFormField<T>[];
   labelCol?: number | null;
-  showExport?: boolean;
-  allowTotalExport?: boolean;
-  loading?: Partial<Record<DataListSearchDefaultOpt, boolean>>;
-  opts?: OperationItemConfig[];
+  opts?: OperationItemConfig[] | null;
+  searchOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
+  resetOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
+  exportOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
   onOpt: (data: Partial<T>, optKey: string) => void;
+  onValueChange?: (data: Partial<T>) => void;
 }
 
-export function Search(props: DataListSearchProps) {
+export const Search = forwardRef(function (props: DataListSearchProps, ref) {
   const formRef = useRef<OptFormMethods>(null);
 
-  const loading = useMemo<Record<DataListSearchDefaultOpt, boolean>>(() => {
-    const defaultLoading: Record<DataListSearchDefaultOpt, boolean> = {
-      search: false,
-      reset: false,
-      export: false
-    };
-    return {
-      ...defaultLoading,
-      ...(props.loading || {})
-    };
-  }, [props.loading]);
-
-  const searchData = useCallback(
+  const handleOpt = useCallback(
     (optKey: string) => {
+      if (props.opts !== null) {
+        if (optKey === 'reset') formRef.current?.reset();
+      }
       const value = formRef.current?.getData();
       props.onOpt(value || {}, optKey);
     },
-    [formRef, props]
+    [props]
   );
 
-  const [exportDisabled, setExportDisabled] = useState(!props.allowTotalExport);
-  const checkExportDisabled = useCallback(
-    (data?: RecordData) => {
-      if (!props.showExport || props.allowTotalExport) return;
-      const isEmpty = formRef.current?.checkFormEmpty(data);
-      setExportDisabled(Boolean(isEmpty));
+  useImperativeHandle(ref, () => ({
+    getData: () => {
+      formRef.current && formRef.current.getData();
     },
-    [props.showExport, props.allowTotalExport]
-  );
+    reset: () => {
+      formRef.current && formRef.current.reset();
+    },
+    check: () => {
+      formRef.current && formRef.current.check();
+    },
+    setData: (data: Partial<Record<string, any>>) => {
+      if (formRef.current) formRef.current.setData(data);
+      else
+        setTimeout(() => {
+          formRef.current && formRef.current.setData(data);
+        }, 100);
+    }
+  }));
 
   const opts = useMemo(() => {
     if (props.opts === null) return null;
-    const defaultOpts: OperationItemConfig<
-      DataListSearchDefaultOpt,
-      Record<DataListSearchDefaultOpt, any>
-    >[] = [
-      {
+    const data: OperationItemConfig<DataListSearchDefaultOpt>[] = [];
+
+    if (props.searchOpt !== null)
+      data.push({
         key: 'search',
         name: '查询',
         type: 'primary',
-        loading: loading.search
-      },
-      {
+        ...props.searchOpt
+      });
+    if (props.resetOpt !== null)
+      data.push({
         key: 'reset',
         name: '重置',
-        loading: loading.reset
-      }
-    ];
-    if (props.showExport)
-      defaultOpts.push({
+        ...props.resetOpt
+      });
+    if (props.exportOpt !== null)
+      data.push({
         key: 'export',
         name: '导出',
-        loading: props.showExport && loading.export,
-        disabled: exportDisabled
+        ...props.exportOpt
       });
     return (
       <Operation.List
         type={'default'}
-        list={props.opts || defaultOpts}
-        onOpt={(optKey) => {
-          if (optKey === 'reset') {
-            formRef.current?.reset();
-            checkExportDisabled();
-          }
-          searchData(optKey);
-        }}
+        list={props.opts || data}
+        onOpt={handleOpt}
       />
     );
-  }, [
-    props.opts,
-    props.showExport,
-    loading.search,
-    loading.reset,
-    loading.export,
-    searchData,
-    exportDisabled,
-    checkExportDisabled
-  ]);
+  }, [props.opts, props.searchOpt, props.resetOpt, props.exportOpt, handleOpt]);
 
   return (
     <div className={'ft-data-list-search'}>
@@ -110,11 +100,9 @@ export function Search(props: DataListSearchProps) {
         colNum={3}
         labelCol={props.labelCol}
         fields={props.list}
-        onValueChange={(value) => {
-          checkExportDisabled(value);
-        }}
+        onValueChange={props.onValueChange}
       />
       <div className={'ft-data-list-search-opt'}>{opts}</div>
     </div>
   );
-}
+});
