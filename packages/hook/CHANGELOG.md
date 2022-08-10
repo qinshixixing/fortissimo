@@ -1,4 +1,13 @@
-## [0.2.2](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.1...hook/0.2.2) (2022-08-10)
+## [0.2.3](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.2...hook/0.2.3) (2022-08-10)
+
+
+### Features
+
+* **优化setstoragemsgkey:** 优化setStorageMsgKey ([383e6b5](https://github.com/qinshixixing/fortissimo/commit/383e6b5eb4988673dae9a7f6b47ff97329ace5ae))
+
+
+
+## [v0.2.2](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.1...hook/v0.2.2) (2022-08-10)
 
 
 ### Features
