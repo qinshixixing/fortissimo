@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Space } from 'antd';
 import type { OperationListProps, OperationItemConfig } from '../index';
-import { Item } from '../index';
+import { Item } from '../item';
 
 export function List(props: OperationListProps) {
   const list = useMemo(() => {
@@ -24,11 +24,12 @@ export function List(props: OperationListProps) {
   }, [props.list, props.data]);
 
   return (
-    <Space size={'middle'} className={props.className}>
+    <Space size={props.size} className={props.className}>
       {list.length > 0
         ? list.map((item) => (
             <Item
               {...item}
+              size={item.size || props.size}
               type={item.type || props.type}
               key={item.key}
               onOpt={() => {

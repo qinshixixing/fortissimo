@@ -14,6 +14,7 @@ export interface OptBoxProps<K extends string = string> {
   children?: ReactNode;
   destroyOnClose?: boolean;
   spin?: boolean;
+  size?: OperationItemConfig['size'];
 }
 
 export { Modal } from './modal';

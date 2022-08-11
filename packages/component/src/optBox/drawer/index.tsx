@@ -10,7 +10,8 @@ export function Drawer(props: OptBoxProps) {
     okOpt: props.okOpt,
     cancelOpt: props.cancelOpt,
     opts: props.opts,
-    onOpt: props.onOpt
+    onOpt: props.onOpt,
+    size: props.size
   });
 
   return (

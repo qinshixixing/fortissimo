@@ -19,6 +19,7 @@ export function RowOpt(props: DataListOptProps) {
       emptyText={typeof props.emptyText === 'string' ? props.emptyText : '-'}
       list={list}
       type={'link'}
+      size={props.size}
     />
   );
 }

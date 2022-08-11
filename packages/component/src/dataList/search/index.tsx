@@ -8,23 +8,25 @@ import React, {
 
 import { OptForm, Operation, OptBoxDefaultOpt } from '../../index';
 import type {
-  OptEditFormField,
   OptFormMethods,
   OperationItemConfig,
-  RecordData
+  RecordData,
+  OptFormProps
 } from '../../index';
 
 export type DataListSearchDefaultOpt = 'search' | 'reset' | 'export';
 
-export interface DataListSearchProps<T extends RecordData = RecordData> {
-  list: OptEditFormField<T>[];
-  labelCol?: number | null;
+type DataListSearchFormProps<T extends RecordData = RecordData> = Pick<
+  OptFormProps<T>,
+  'labelCol' | 'fields' | 'size' | 'onValueChange'
+>;
+export interface DataListSearchProps<T extends RecordData = RecordData>
+  extends DataListSearchFormProps {
   opts?: OperationItemConfig[] | null;
   searchOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
   resetOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
   exportOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
   onOpt: (data: Partial<T>, optKey: string) => void;
-  onValueChange?: (data: Partial<T>) => void;
 }
 
 export const Search = forwardRef(function (props: DataListSearchProps, ref) {
@@ -99,8 +101,9 @@ export const Search = forwardRef(function (props: DataListSearchProps, ref) {
         mode={'edit'}
         colNum={3}
         labelCol={props.labelCol}
-        fields={props.list}
+        fields={props.fields}
         onValueChange={props.onValueChange}
+        size={props.size}
       />
       <div className={'ft-data-list-search-opt'}>{opts}</div>
     </div>

@@ -41,6 +41,7 @@ export function Item(props: OperationProps) {
       icon={props.icon}
       disabled={disabled}
       loading={loading}
+      size={props.size}
       onClick={() => {
         props.onOpt && props.onOpt();
       }}

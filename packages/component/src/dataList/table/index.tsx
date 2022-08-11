@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import type { ReactNode } from 'react';
 import { Table as AntTable } from 'antd';
 import type { ColumnsType } from 'antd/lib/table/interface';
+import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 
 import { RowOpt } from '../index';
 import type { DataListOptConfig } from '../index';
@@ -30,6 +31,7 @@ export interface DataListTableProps<
   optWidth?: number | string;
   ellipsis?: boolean;
   canSelect?: boolean;
+  size?: SizeType;
   selectedValue?: ValueType<T>[];
   disabledSelectedValue?: ValueType<T>[];
   emptyText?: string;
@@ -72,6 +74,7 @@ export function Table(props: DataListTableProps) {
         render: (data, record) => {
           return (
             <RowOpt
+              size={props.size}
               list={props.optList || []}
               data={record}
               emptyText={emptyText}
@@ -93,6 +96,7 @@ export function Table(props: DataListTableProps) {
       columns={columns}
       dataSource={props.data}
       rowKey={props.rowKey}
+      size={props.size}
       rowSelection={
         props.canSelect
           ? {

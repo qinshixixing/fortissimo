@@ -13,6 +13,7 @@ export interface DataListOptProps<
   emptyText?: string;
   onOpt?: (key: K) => void;
   data?: T;
+  size?: OperationItemConfig['size'];
 }
 
 export { RowOpt } from './rowOpt';

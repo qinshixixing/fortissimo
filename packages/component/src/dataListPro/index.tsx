@@ -9,8 +9,9 @@ import React, {
 import type { ForwardedRef } from 'react';
 import { useMount } from '@fortissimo/hook';
 import { checkFormEmpty } from '@fortissimo/util';
+import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 
-import { DataList, OperationItemConfig } from '../index';
+import { DataList } from '../index';
 import type {
   DataListTableMsg,
   DataListOptConfig,
@@ -81,6 +82,8 @@ export interface DataListProProps<
   canSelect?: boolean;
   resetPageNo?: boolean;
   hideSizeChanger?: boolean;
+  autoHidePage?: boolean;
+  size?: SizeType;
   emptyText?: string;
   onGetData?: (
     params: DataListProGetDataParams<S, KeyType<T>>
@@ -200,8 +203,9 @@ export const DataListPro = forwardRef(function (
     <>
       {props.search && (
         <DataList.Search
-          list={props.search}
+          fields={props.search}
           labelCol={props.searchLabelCol}
+          size={props.size}
           exportOpt={
             props.canExport
               ? {
@@ -234,6 +238,7 @@ export const DataListPro = forwardRef(function (
       {opts.header && (
         <DataList.HeaderOpt
           list={opts.header}
+          size={props.size}
           onOpt={async (optKey) => {
             await opt({
               optKey,
@@ -252,6 +257,7 @@ export const DataListPro = forwardRef(function (
         selectedValue={selectedValue}
         disabledSelectedValue={props.disabledCheckedKey}
         emptyText={props.emptyText}
+        size={props.size}
         onSelect={(keys) => {
           setSelectedValue(keys || []);
         }}
@@ -278,7 +284,9 @@ export const DataListPro = forwardRef(function (
         pageNo={pageNo}
         pageSize={pageSize}
         total={total}
+        size={props.size}
         hideSizeChanger={props.hideSizeChanger}
+        hideOnSinglePage={props.autoHidePage}
         onChange={async (newPageNo, newPageSize) => {
           let pageNoData = newPageNo;
           if (newPageSize !== pageSize && props.resetPageNo) pageNoData = 1;

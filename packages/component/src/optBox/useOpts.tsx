@@ -3,7 +3,7 @@ import { Operation, OperationItemConfig } from '../index';
 import type { OptBoxProps, OptBoxDefaultOpt } from './index';
 
 export function useOpts(
-  params: Pick<OptBoxProps, 'opts' | 'okOpt' | 'cancelOpt' | 'onOpt'>
+  params: Pick<OptBoxProps, 'opts' | 'okOpt' | 'cancelOpt' | 'onOpt' | 'size'>
 ) {
   const defaultOptsConfig = useMemo<
     Partial<Record<OptBoxDefaultOpt, OperationItemConfig<OptBoxDefaultOpt>>>
@@ -40,11 +40,13 @@ export function useOpts(
         type={'default'}
         list={params.opts || defaultOpts}
         onOpt={params.onOpt}
+        size={params.size}
       />
     );
   }, [
     params.opts,
     params.onOpt,
+    params.size,
     defaultOptsConfig.cancel,
     defaultOptsConfig.ok
   ]);

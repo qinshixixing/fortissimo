@@ -7,6 +7,7 @@ import React, {
 import type { ReactNode } from 'react';
 import { Form } from 'antd';
 import { trimString, checkFormItemEmpty } from '@fortissimo/util';
+import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 
 import { DefaultShow } from './defaultShow';
 import type { RecordData, KeyType, ValueType } from '../index';
@@ -62,6 +63,7 @@ export interface OptFormProps<T extends RecordData = RecordData> {
   colNum?: number;
   mode: OptFormMode;
   onValueChange?: (data: Partial<T>) => void;
+  size?: SizeType;
 }
 
 export interface OptFormMethods<T extends RecordData = RecordData> {
@@ -79,7 +81,8 @@ export const OptForm = forwardRef(function (
     colNum = 1,
     mode,
     className,
-    onValueChange
+    onValueChange,
+    size
   }: OptFormProps,
   ref
 ) {
@@ -177,6 +180,7 @@ export const OptForm = forwardRef(function (
       className={className}
       form={formRef}
       labelWrap
+      size={size}
       labelCol={typeof labelCol === 'number' ? { span: labelCol } : undefined}
       wrapperCol={
         typeof labelCol === 'number' ? { span: 24 - labelCol } : undefined

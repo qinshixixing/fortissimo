@@ -8,6 +8,7 @@ export function HeaderOpt(props: DataListOptProps) {
       className={'ft-data-list-header-opt'}
       {...props}
       type={'primary'}
+      size={props.size}
     />
   );
 }
