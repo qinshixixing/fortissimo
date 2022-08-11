@@ -1,4 +1,13 @@
-## [0.3.19](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-3...component/0.3.19) (2022-08-10)
+## [0.3.20](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19...component/0.3.20) (2022-08-11)
+
+
+### Features
+
+* **调整表格样式:** 1、表格表单大小设置。2、表格条目显示。 ([22954e0](https://github.com/qinshixixing/fortissimo/commit/22954e0f6a2e8465acc78e566787ee99324ce537))
+
+
+
+## [v0.3.19](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19-3...component/v0.3.19) (2022-08-10)
 
 
 
