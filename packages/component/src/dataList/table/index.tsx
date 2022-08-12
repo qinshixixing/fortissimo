@@ -32,6 +32,7 @@ export interface DataListTableProps<
   ellipsis?: boolean;
   canSelect?: boolean;
   size?: SizeType;
+  sticky?: boolean;
   selectedValue?: ValueType<T>[];
   disabledSelectedValue?: ValueType<T>[];
   emptyText?: string;
@@ -97,6 +98,8 @@ export function Table(props: DataListTableProps) {
       dataSource={props.data}
       rowKey={props.rowKey}
       size={props.size}
+      sticky={props.sticky}
+      scroll={{ y: '100%' }}
       rowSelection={
         props.canSelect
           ? {

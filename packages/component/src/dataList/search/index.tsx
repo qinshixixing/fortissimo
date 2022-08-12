@@ -88,11 +88,19 @@ export const Search = forwardRef(function (props: DataListSearchProps, ref) {
     return (
       <Operation.List
         type={'default'}
+        size={props.size}
         list={props.opts || data}
         onOpt={handleOpt}
       />
     );
-  }, [props.opts, props.searchOpt, props.resetOpt, props.exportOpt, handleOpt]);
+  }, [
+    props.opts,
+    props.searchOpt,
+    props.resetOpt,
+    props.exportOpt,
+    props.size,
+    handleOpt
+  ]);
 
   return (
     <div className={'ft-data-list-search'}>

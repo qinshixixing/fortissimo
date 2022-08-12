@@ -84,6 +84,7 @@ export interface DataListProProps<
   hideSizeChanger?: boolean;
   autoHidePage?: boolean;
   size?: SizeType;
+  sticky?: boolean;
   emptyText?: string;
   onGetData?: (
     params: DataListProGetDataParams<S, KeyType<T>>
@@ -258,6 +259,7 @@ export const DataListPro = forwardRef(function (
         disabledSelectedValue={props.disabledCheckedKey}
         emptyText={props.emptyText}
         size={props.size}
+        sticky={props.sticky}
         onSelect={(keys) => {
           setSelectedValue(keys || []);
         }}
