@@ -1,4 +1,13 @@
-## [0.3.20](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19...component/0.3.20) (2022-08-11)
+## [0.3.21](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.20...component/0.3.21) (2022-08-12)
+
+
+### Features
+
+* **优化表格展示样式:** 添加sticky属性 ([f7ec291](https://github.com/qinshixixing/fortissimo/commit/f7ec29169fbc9262de0cc11aa8efb15e351e25d6))
+
+
+
+## [v0.3.20](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.19...component/v0.3.20) (2022-08-11)
 
 
 ### Features
