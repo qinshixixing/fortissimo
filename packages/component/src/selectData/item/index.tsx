@@ -78,7 +78,8 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
       optionFilterProp={'label'}
       options={list.map((item) => ({
         label: item[itemText],
-        value: item[itemKey]
+        value: item[itemKey],
+        itemData: item
       }))}
       onSearch={props.showSearch ? onSearch : undefined}
     />

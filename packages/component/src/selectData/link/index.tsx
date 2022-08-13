@@ -125,7 +125,8 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
         {...selectConfig}
         options={list.map((item) => ({
           label: item[itemText],
-          value: item[itemKey]
+          value: item[itemKey],
+          itemData: item
         }))}
         onSearch={async (value) => {
           await onSearch(value, true);
@@ -147,7 +148,8 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
         {...selectConfig}
         options={showChildList.map((item) => ({
           label: item[itemText],
-          value: item[itemKey]
+          value: item[itemKey],
+          itemData: item
         }))}
         onSearch={async (value) => {
           await onSearch(value, false);
