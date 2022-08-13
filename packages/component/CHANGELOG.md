@@ -1,4 +1,13 @@
-## [0.3.22](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.21...component/0.3.22) (2022-08-13)
+# [0.4.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.22...component/0.4.0) (2022-08-13)
+
+
+### Bug Fixes
+
+* **修复表单传值问题:** 修复表单传值问题 ([ba2baa1](https://github.com/qinshixixing/fortissimo/commit/ba2baa17a144fecdf582663f0178a10d13355b36))
+
+
+
+## [v0.3.22](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.21...component/v0.3.22) (2022-08-13)
 
 
 ### Features
