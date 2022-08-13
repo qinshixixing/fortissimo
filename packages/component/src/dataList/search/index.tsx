@@ -44,15 +44,9 @@ export const Search = forwardRef(function (props: DataListSearchProps, ref) {
   );
 
   useImperativeHandle(ref, () => ({
-    getData: () => {
-      formRef.current && formRef.current.getData();
-    },
-    reset: () => {
-      formRef.current && formRef.current.reset();
-    },
-    check: () => {
-      formRef.current && formRef.current.check();
-    },
+    getData: () => formRef.current && formRef.current.getData(),
+    reset: () => formRef.current && formRef.current.reset(),
+    check: () => formRef.current && formRef.current.check(),
     setData: (data: Partial<Record<string, any>>) => {
       if (formRef.current) formRef.current.setData(data);
       else

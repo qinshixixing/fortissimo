@@ -77,15 +77,9 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
   useImperativeHandle(
     ref,
     () => ({
-      getData: () => {
-        formRef.current && formRef.current.getData();
-      },
-      reset: () => {
-        formRef.current && formRef.current.reset();
-      },
-      check: () => {
-        formRef.current && formRef.current.check();
-      },
+      getData: () => formRef.current && formRef.current.getData(),
+      reset: () => formRef.current && formRef.current.reset(),
+      check: () => formRef.current && formRef.current.check(),
       setData: (data: Partial<Record<string, any>>) => {
         if (formRef.current) formRef.current.setData(data);
         else

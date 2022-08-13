@@ -10,13 +10,19 @@ import { Select } from 'antd';
 import type { SelectProps } from 'antd';
 import { useMount } from '@fortissimo/hook';
 import type { RecordData, ValueType, KeyType } from '../../index';
-import type { SelectDataConfig } from '../index';
+import type { SelectDataConfig, SelectDataOptionConfig } from '../index';
 
 export interface SelectDataLinkProps<T extends RecordData = RecordData>
   extends SelectDataConfig<T> {
   itemChildren?: KeyType<T>;
   value?: [ValueType<T>, ValueType<T>];
-  onChange?: (value: [ValueType<T>, ValueType<T>], item?: [any, any]) => void;
+  onChange?: (
+    value: [ValueType<T>, ValueType<T>],
+    item?: [
+      SelectDataOptionConfig | SelectDataOptionConfig[] | undefined,
+      SelectDataOptionConfig | SelectDataOptionConfig[] | undefined
+    ]
+  ) => void;
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
@@ -116,7 +122,9 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
     optionFilterProp: 'label'
   };
 
-  const [oneLevelData, setOneLevelData] = useState<any>();
+  const [oneLevelData, setOneLevelData] = useState<
+    SelectDataOptionConfig | SelectDataOptionConfig[]
+  >();
 
   return (
     <>
@@ -132,7 +140,10 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
           await onSearch(value, true);
         }}
         value={props.value ? props.value[0] : undefined}
-        onChange={(value, item) => {
+        onChange={(
+          value,
+          item: SelectDataOptionConfig | SelectDataOptionConfig[]
+        ) => {
           setOneLevelData(item);
           props.onChange &&
             props.onChange([value, undefined], [item, undefined]);
@@ -155,7 +166,10 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
           await onSearch(value, false);
         }}
         value={props.value ? props.value[1] : undefined}
-        onChange={(value, item) => {
+        onChange={(
+          value,
+          item: SelectDataOptionConfig | SelectDataOptionConfig[]
+        ) => {
           props.onChange &&
             props.onChange(
               [props.value ? props.value[0] : undefined, value],

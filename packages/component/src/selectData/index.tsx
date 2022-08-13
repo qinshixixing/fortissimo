@@ -1,5 +1,11 @@
-import type { RecordData, KeyType } from '../index';
+import type { RecordData, KeyType, ValueType } from '../index';
 import type { SelectProps } from 'antd';
+
+export interface SelectDataOptionConfig<T extends RecordData = RecordData> {
+  label: ValueType<T>;
+  value: ValueType<T>;
+  itemData: Partial<T>;
+}
 
 export interface SelectDataConfig<T extends RecordData = RecordData>
   extends Omit<
@@ -8,7 +14,10 @@ export interface SelectDataConfig<T extends RecordData = RecordData>
   > {
   itemKey?: KeyType<T>;
   itemText?: KeyType<T>;
-  onGetData: (searchValue?: string, firstSelectvalue?: any) => Promise<T[]>;
+  onGetData: (
+    searchValue?: string,
+    firstSelectValue?: ValueType<T>
+  ) => Promise<T[]>;
   searchFromServer?: boolean;
   searchFromServerWhileEmpty?: boolean;
 }
