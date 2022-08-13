@@ -1,4 +1,13 @@
-# [0.4.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.22...component/0.4.0) (2022-08-13)
+## [0.4.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.0...component/0.4.1) (2022-08-13)
+
+
+### Bug Fixes
+
+* **优化选择器类型提示:** 优化选择器类型提示 ([0829812](https://github.com/qinshixixing/fortissimo/commit/082981286fa3c35bf8392ad240bb93d3723cd11b))
+
+
+
+# [v0.4.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.3.22...component/v0.4.0) (2022-08-13)
 
 
 ### Bug Fixes
