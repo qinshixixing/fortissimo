@@ -1,12 +1,6 @@
 import type { RecordData, KeyType, ValueType } from '../index';
 import type { SelectProps } from 'antd';
 
-export interface SelectDataOptionConfig<T extends RecordData = RecordData> {
-  label: ValueType<T>;
-  value: ValueType<T>;
-  itemData: Partial<T>;
-}
-
 export interface SelectDataConfig<T extends RecordData = RecordData>
   extends Omit<
     SelectProps,

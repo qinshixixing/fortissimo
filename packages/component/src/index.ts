@@ -135,7 +135,6 @@ export type {
 
 export * as SelectData from './selectData';
 export type {
-  SelectDataOptionConfig,
   SelectDataConfig,
   SelectDataItemProps,
   SelectDataLinkProps

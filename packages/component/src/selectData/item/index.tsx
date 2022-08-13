@@ -9,15 +9,12 @@ import React, {
 import { Select } from 'antd';
 import { useMount } from '@fortissimo/hook';
 import type { RecordData, ValueType } from '../../index';
-import type { SelectDataConfig, SelectDataOptionConfig } from '../index';
+import type { SelectDataConfig } from '../index';
 
 export interface SelectDataItemProps<T extends RecordData = RecordData>
   extends SelectDataConfig<T> {
   value?: ValueType<T> | ValueType<T>[];
-  onChange?: (
-    value: ValueType<T>,
-    item?: SelectDataOptionConfig | SelectDataOptionConfig[]
-  ) => void;
+  onChange?: (value: ValueType<T>, item?: any) => void;
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
