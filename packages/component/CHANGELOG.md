@@ -1,4 +1,13 @@
-## [0.4.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.1...component/0.4.2) (2022-08-15)
+## [0.4.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.2...component/0.4.3) (2022-08-15)
+
+
+### Features
+
+* **调整表格列伸缩配置:** 调整表格列伸缩配置 ([a6ff2af](https://github.com/qinshixixing/fortissimo/commit/a6ff2afc294f06f60d8efa8c6ea03a943237478a))
+
+
+
+## [v0.4.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.1...component/v0.4.2) (2022-08-15)
 
 
 ### Features
