@@ -117,7 +117,10 @@ export function Table(props: DataListTableProps) {
       data.push({
         key: 'optItem',
         dataIndex: 'optItem',
-        width: props.optWidth,
+        width:
+          (props.resizeable
+            ? props.optWidth || props.resizeBaseWidth
+            : props.optWidth) || 'auto',
         title: '操作',
         ellipsis: Boolean(props.ellipsis),
         render: (data, record) => {
