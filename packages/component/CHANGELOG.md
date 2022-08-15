@@ -1,4 +1,13 @@
-## [0.4.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.0...component/0.4.1) (2022-08-13)
+## [0.4.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.1...component/0.4.2) (2022-08-15)
+
+
+### Features
+
+* **表格增加可伸缩表头配置:** 表格增加可伸缩表头配置 ([a177731](https://github.com/qinshixixing/fortissimo/commit/a17773151a3158aa3eeb6d5997ab8bdca331718e))
+
+
+
+## [v0.4.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.0...component/v0.4.1) (2022-08-13)
 
 
 ### Bug Fixes
@@ -679,12 +688,20 @@
 
 
 
-## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/9327766b526596302ad0440a96b61db92dd2a09b...component/v0.1.1) (2022-03-11)
+## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.0...component/v0.1.1) (2022-03-11)
 
 
 ### Features
 
 * **修改readme.md:** 修改README.md ([fab8ec8](https://github.com/qinshixixing/fortissimo/commit/fab8ec8933c0889337843d4b0e498ab0ec7b8539))
+
+
+
+# [v0.1.0](https://github.com/qinshixixing/fortissimo/compare/9327766b526596302ad0440a96b61db92dd2a09b...component/v0.1.0) (2022-03-11)
+
+
+### Features
+
 * **初始化项目:** 初始化项目 ([9327766](https://github.com/qinshixixing/fortissimo/commit/9327766b526596302ad0440a96b61db92dd2a09b))
 
 
