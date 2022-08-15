@@ -85,6 +85,8 @@ export interface DataListProProps<
   autoHidePage?: boolean;
   size?: SizeType;
   sticky?: boolean;
+  resizeable?: boolean;
+  resizeBaseWidth?: number;
   emptyText?: string;
   onGetData?: (
     params: DataListProGetDataParams<S, KeyType<T>>
@@ -260,6 +262,8 @@ export const DataListPro = forwardRef(function (
         emptyText={props.emptyText}
         size={props.size}
         sticky={props.sticky}
+        resizeable={props.resizeable}
+        resizeBaseWidth={props.resizeBaseWidth}
         onSelect={(keys) => {
           setSelectedValue(keys || []);
         }}

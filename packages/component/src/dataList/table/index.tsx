@@ -1,7 +1,13 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
+import { Resizable } from 'react-resizable';
+import type { ResizableProps } from 'react-resizable';
 import { Table as AntTable } from 'antd';
-import type { ColumnsType } from 'antd/lib/table/interface';
+import type {
+  ColumnsType,
+  ColumnType,
+  ColumnGroupType
+} from 'antd/lib/table/interface';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 
 import { RowOpt } from '../index';
@@ -33,6 +39,8 @@ export interface DataListTableProps<
   canSelect?: boolean;
   size?: SizeType;
   sticky?: boolean;
+  resizeable?: boolean;
+  resizeBaseWidth?: number;
   selectedValue?: ValueType<T>[];
   disabledSelectedValue?: ValueType<T>[];
   emptyText?: string;
@@ -41,11 +49,30 @@ export interface DataListTableProps<
   onOpt?: (optKey: OPTK, rowKey: ValueType<T>, rowData: T) => void;
 }
 
+function ResizeableTitle(props: ResizableProps) {
+  const { onResize, width, ...restProps } = props;
+
+  return typeof width === 'number' && width > 0 ? (
+    <Resizable
+      width={width}
+      height={0}
+      onResize={onResize}
+      draggableOpts={{ enableUserSelectHack: false }}
+    >
+      <th {...restProps} />
+    </Resizable>
+  ) : (
+    <th {...restProps} />
+  );
+}
+
 export function Table(props: DataListTableProps) {
   const emptyText = useMemo(
     () => (typeof props.emptyText === 'string' ? props.emptyText : '-'),
     [props.emptyText]
   );
+
+  const [resizeWidth, setResizeWidth] = useState<Record<string, number>>({});
 
   const columns = useMemo<ColumnsType<DataListRowData>>(() => {
     const data: ColumnsType<DataListRowData> = [];
@@ -54,9 +81,30 @@ export function Table(props: DataListTableProps) {
         data.push({
           key: item.key,
           dataIndex: item.key,
-          width: item.width,
+          width:
+            (props.resizeable
+              ? resizeWidth[item.key] ||
+                (typeof item.width === 'number'
+                  ? item.width
+                  : props.resizeBaseWidth)
+              : item.width) || 'auto',
           title: item.name,
           ellipsis: Boolean(props.ellipsis),
+          onHeaderCell: props.resizeable
+            ? (
+                column:
+                  | ColumnGroupType<DataListRowData>
+                  | ColumnType<DataListRowData>
+              ) => ({
+                width: column.width,
+                onResize: (e: Event, { size }: any) => {
+                  setResizeWidth({
+                    ...resizeWidth,
+                    [item.key]: size.width
+                  });
+                }
+              })
+            : undefined,
           render:
             item.render ||
             ((data) => {
@@ -88,7 +136,7 @@ export function Table(props: DataListTableProps) {
         }
       });
     return data;
-  }, [props, emptyText]);
+  }, [props, resizeWidth, emptyText]);
 
   return (
     <AntTable
@@ -100,6 +148,9 @@ export function Table(props: DataListTableProps) {
       size={props.size}
       sticky={props.sticky}
       scroll={{ y: '100%' }}
+      components={
+        props.resizeable ? { header: { cell: ResizeableTitle } } : undefined
+      }
       rowSelection={
         props.canSelect
           ? {
