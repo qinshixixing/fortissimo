@@ -1,4 +1,13 @@
-## [0.4.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.2...component/0.4.3) (2022-08-15)
+## [0.4.4](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.3...component/0.4.4) (2022-08-16)
+
+
+### Features
+
+* **优化可伸缩表格交互:** 优化可伸缩表格交互 ([01b6b5e](https://github.com/qinshixixing/fortissimo/commit/01b6b5e8fa5d183543f19417af6bf55a6adeacfd))
+
+
+
+## [v0.4.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.2...component/v0.4.3) (2022-08-15)
 
 
 ### Features
