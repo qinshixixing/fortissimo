@@ -7,14 +7,15 @@ import React, {
   useRef
 } from 'react';
 import { Select } from 'antd';
+import type { SelectProps } from 'antd';
 import { useMount } from '@fortissimo/hook';
 import type { RecordData, ValueType } from '../../index';
 import type { SelectDataConfig } from '../index';
 
 export interface SelectDataItemProps<T extends RecordData = RecordData>
   extends SelectDataConfig<T> {
-  value?: ValueType<T> | ValueType<T>[];
-  onChange?: (value: ValueType<T>, item?: any) => void;
+  value?: SelectProps<ValueType<T>, T>['value'];
+  onChange?: SelectProps<ValueType<T>, T>['onChange'];
 }
 
 let timeout: ReturnType<typeof setTimeout> | null;
@@ -28,7 +29,7 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
 
   const getList = useCallback(
     async (value?: string) => {
-      const data = await props.onGetData(value);
+      const data = await props.onGetData(value, props.value);
       if (
         !props.showSearch ||
         !props.searchFromServer ||
