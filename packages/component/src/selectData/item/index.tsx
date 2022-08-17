@@ -1,6 +1,5 @@
 import React, {
   useCallback,
-  useMemo,
   useState,
   forwardRef,
   useImperativeHandle,
@@ -15,21 +14,22 @@ import type { SelectDataConfig } from '../index';
 export interface SelectDataItemProps<T extends RecordData = RecordData>
   extends SelectDataConfig<T> {
   value?: SelectProps<ValueType<T>, T>['value'];
-  onChange?: SelectProps<ValueType<T>, T>['onChange'];
+  onChange?: (
+    value: SelectProps<ValueType<T>, T>['value'],
+    option: T | T[]
+  ) => void;
 }
 
-let timeout: ReturnType<typeof setTimeout> | null;
-
 export const Item = forwardRef((props: SelectDataItemProps, ref) => {
-  const itemKey = useMemo(() => props.itemKey || 'key', [props.itemKey]);
-  const itemText = useMemo(() => props.itemText || 'text', [props.itemText]);
   const currentValue = useRef<string>('');
+  const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [list, setList] = useState<RecordData[]>([]);
 
   const getList = useCallback(
     async (value?: string) => {
-      const data = await props.onGetData(value, props.value);
+      if (!props.onGetData) return;
+      const data = await props.onGetData(value);
       if (
         !props.showSearch ||
         !props.searchFromServer ||
@@ -45,12 +45,12 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
       if (!props.showSearch || !props.searchFromServer) return;
       if (!value) setList([]);
       else {
-        if (timeout) {
-          clearTimeout(timeout);
-          timeout = null;
+        if (timeout.current) {
+          clearTimeout(timeout.current);
+          timeout.current = null;
         }
         currentValue.current = value;
-        timeout = setTimeout(() => {
+        timeout.current = setTimeout(() => {
           getList(value);
         }, 300);
       }
@@ -78,10 +78,19 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
       placeholder={props.placeholder || '请选择'}
       optionFilterProp={'label'}
       options={list.map((item) => ({
-        label: item[itemText],
-        value: item[itemKey],
+        label: item[props.itemText || 'text'],
+        value: item[props.itemKey || 'key'],
         itemData: item
       }))}
+      onChange={(value, item) => {
+        props.onChange &&
+          props.onChange(
+            value,
+            Array.isArray(item)
+              ? item.map((item) => item.itemData)
+              : item.itemData
+          );
+      }}
       onSearch={props.showSearch ? onSearch : undefined}
     />
   );

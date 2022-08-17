@@ -8,10 +8,9 @@ export interface SelectDataConfig<T extends RecordData = RecordData>
   > {
   itemKey?: KeyType<T>;
   itemText?: KeyType<T>;
-  onGetData: (
-    searchValue?: string,
-    selectValue?: SelectProps['value']
-  ) => Promise<T[]>;
+  itemChildren?: KeyType<T>;
+  hasChildren?: boolean;
+  onGetData?: (searchValue?: string, item?: number) => Promise<T[]>;
   searchFromServer?: boolean;
   searchFromServerWhileEmpty?: boolean;
 }
