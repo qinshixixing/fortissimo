@@ -27,13 +27,13 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
   const [list, setList] = useState<RecordData[]>([]);
 
   const getList = useCallback(
-    async (value?: string) => {
+    async (searchValue?: string) => {
       if (!props.onGetData) return;
-      const data = await props.onGetData(value);
+      const data = await props.onGetData(searchValue);
       if (
         !props.showSearch ||
         !props.searchFromServer ||
-        currentValue.current === value
+        currentValue.current === searchValue
       )
         setList(data);
     },
@@ -41,17 +41,17 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
   );
 
   const onSearch = useCallback(
-    async (value: string) => {
+    async (searchValue: string) => {
       if (!props.showSearch || !props.searchFromServer) return;
-      if (!value) setList([]);
+      if (!searchValue) setList([]);
       else {
         if (timeout.current) {
           clearTimeout(timeout.current);
           timeout.current = null;
         }
-        currentValue.current = value;
+        currentValue.current = searchValue;
         timeout.current = setTimeout(() => {
-          getList(value);
+          getList(searchValue);
         }, 300);
       }
     },
@@ -63,12 +63,7 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
   }));
 
   useMount(async () => {
-    if (
-      props.showSearch &&
-      props.searchFromServer &&
-      !props.searchFromServerWhileEmpty
-    )
-      return;
+    if (props.showSearch && props.searchFromServer) return;
     await getList();
   });
 

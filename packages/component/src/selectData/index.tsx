@@ -1,4 +1,4 @@
-import type { RecordData, KeyType } from '../index';
+import type { RecordData, KeyType, ValueType } from '../index';
 import type { SelectProps } from 'antd';
 
 export interface SelectDataConfig<T extends RecordData = RecordData>
@@ -8,11 +8,14 @@ export interface SelectDataConfig<T extends RecordData = RecordData>
   > {
   itemKey?: KeyType<T>;
   itemText?: KeyType<T>;
-  itemChildren?: KeyType<T>;
-  hasChildren?: boolean;
-  onGetData?: (searchValue?: string, item?: number) => Promise<T[]>;
+  // itemChildren?: KeyType<T>;
+  // hasChildren?: boolean;
+  onGetData?: (
+    searchValue?: string,
+    item?: number,
+    parentValue?: ValueType<T>
+  ) => Promise<T[]>;
   searchFromServer?: boolean;
-  searchFromServerWhileEmpty?: boolean;
 }
 
 export { Item } from './item';

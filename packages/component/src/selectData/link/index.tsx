@@ -57,21 +57,22 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
   const [selectList, setSelectList] = useState<RecordData[][]>([]);
 
   const getList = useCallback(
-    async (item: number, value?: string) => {
-      const config = itemConfig[item];
+    async (itemIndex: number, parentValue?: any, searchValue?: string) => {
+      const config = itemConfig[itemIndex];
       const onGetData = config.onGetData;
       if (!onGetData) return;
-      const data = await onGetData(value, item);
+      const data = await onGetData(searchValue, itemIndex, parentValue);
       if (
         !props.showSearch ||
         !props.searchFromServer ||
-        (currentValue.current === value && currentItem.current === item)
+        (currentValue.current === searchValue &&
+          currentItem.current === itemIndex)
       ) {
         const newList = list.map((v, index) => {
-          if (index < item) return v;
+          if (index < itemIndex) return v;
           return [];
         });
-        newList[item] = data; // 不能放在map中，list可能为空
+        newList[itemIndex] = data; // 不能放在map中，list可能为空
         setList(newList);
       }
     },
@@ -79,12 +80,12 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
   );
 
   const onSearch = useCallback(
-    async (item: number, value: string) => {
-      const config = itemConfig[item];
+    async (itemIndex: number, searchValue: string) => {
+      const config = itemConfig[itemIndex];
       if (!config.showSearch || !config.searchFromServer) return;
-      if (!value) {
+      if (!searchValue) {
         const newList = list.map((v, index) => {
-          if (index < item) return v;
+          if (index < itemIndex) return v;
           return [];
         });
         setList(newList);
@@ -93,14 +94,18 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
           clearTimeout(timeout.current);
           timeout.current = null;
         }
-        currentValue.current = value;
-        currentItem.current = item;
+        currentValue.current = searchValue;
+        currentItem.current = itemIndex;
         timeout.current = setTimeout(() => {
-          getList(item, value);
+          getList(
+            itemIndex,
+            itemIndex === 0 ? undefined : valueList[itemIndex - 1],
+            searchValue
+          );
         }, 300);
       }
     },
-    [itemConfig, list, getList]
+    [itemConfig, list, getList, valueList]
   );
 
   useImperativeHandle(ref, () => ({
@@ -108,12 +113,7 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
   }));
 
   useMount(async () => {
-    if (
-      props.showSearch &&
-      props.searchFromServer &&
-      !props.searchFromServerWhileEmpty
-    )
-      return;
+    if (props.showSearch && props.searchFromServer) return;
     await getList(0);
   });
 
@@ -137,46 +137,39 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
             }}
             placeholder={props.placeholder || '请选择'}
             optionFilterProp={'label'}
+            value={valueList[item]}
             options={itemList.map((item) => ({
               label: item[config.itemText || 'text'],
-              value: item[config.itemText || 'key'],
+              value: item[config.itemKey || 'key'],
               itemData: item
             }))}
-            value={valueList[item]}
             onChange={async (valueData, itemData) => {
               if (!props.onChange) return;
-              const newValue = valueList.map((v, index) => {
-                if (index < item) return v;
-                if (index === item) return valueData;
-                return undefined;
-              });
-              const newSelectList = selectList.map((v, index) => {
-                if (index < item) return v;
-                if (index === item)
-                  return Array.isArray(itemData)
-                    ? itemData.map((item) => item.itemData)
-                    : itemData.itemData;
-                return undefined;
-              });
+              const newValue = valueList.slice(0, item);
+              newValue[item] = valueData;
+              const newSelectList = selectList.slice(0, item);
+              newSelectList[item] = Array.isArray(itemData)
+                ? itemData.map((item) => item.itemData)
+                : itemData.itemData;
               setSelectList(newSelectList);
               props.onChange(newValue, newSelectList);
-              if (props.onGetData && item < numList.length - 1) {
-                if (config.hasChildren) {
-                  const data = Array.isArray(itemData) ? itemData : [itemData];
-                  let dataList: RecordData[] = [];
-                  data.forEach((item) => {
-                    dataList = dataList.concat(
-                      item.itemData[config.itemChildren || 'children']
-                    );
-                  });
-                  const newList = list.map((v, index) => {
-                    if (index <= item) return v;
-                    return [];
-                  });
-                  newList[item + 1] = dataList;
-                  setList(newList);
-                } else await getList(item + 1);
-              }
+              if (item === numList.length - 1) return;
+              await getList(item + 1, valueData);
+              // if (config.hasChildren) {
+              //   const data = Array.isArray(itemData) ? itemData : [itemData];
+              //   let dataList: RecordData[] = [];
+              //   data.forEach((item) => {
+              //     dataList = dataList.concat(
+              //       item.itemData[config.itemChildren || 'children']
+              //     );
+              //   });
+              //   const newList = list.map((v, index) => {
+              //     if (index <= item) return v;
+              //     return [];
+              //   });
+              //   newList[item + 1] = dataList;
+              //   setList(newList);
+              // } else await getList(item + 1, valueData);
             }}
             onSearch={
               config.showSearch
