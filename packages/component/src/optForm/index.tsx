@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import type { ReactNode } from 'react';
 import { Form } from 'antd';
+import type { FormInstance } from 'antd';
 import { trimString, checkFormItemEmpty } from '@fortissimo/util';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 
@@ -67,6 +68,7 @@ export interface OptFormProps<T extends RecordData = RecordData> {
 }
 
 export interface OptFormMethods<T extends RecordData = RecordData> {
+  formRef: FormInstance;
   reset: () => void;
   check: () => void;
   getData: () => Partial<T>;
@@ -93,6 +95,7 @@ export const OptForm = forwardRef(function (
   useImperativeHandle(
     ref,
     (): OptFormMethods => ({
+      formRef,
       reset: () => formRef.resetFields(),
       check: () => formRef.validateFields(),
       getData: () => trimString(formRef.getFieldsValue()),

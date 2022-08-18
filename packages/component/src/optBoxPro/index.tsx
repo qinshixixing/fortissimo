@@ -41,7 +41,7 @@ export interface OptBoxProProps<T extends RecordData = RecordData>
 }
 
 export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
-  const formRef = useRef<OptFormMethods>(null);
+  const optFormRef = useRef<OptFormMethods>(null);
 
   const [loading, setLoading] = useState(false);
 
@@ -50,7 +50,7 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
   const [confirmDisabled, setConfirmDisabled] = useState(false);
   useEffect(() => {
     if (!props.disableOnEmpty) setConfirmDisabled(false);
-    else setConfirmDisabled(checkFormEmpty(formRef.current?.getData()));
+    else setConfirmDisabled(checkFormEmpty(optFormRef.current?.getData()));
   }, [props.disableOnEmpty]);
 
   const handleOpt = useCallback(
@@ -58,33 +58,35 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
       if (optKey === 'cancel') {
         if (props.onClose) props.onClose();
       }
-      if (optKey === 'ok' && formRef.current) {
-        await formRef.current.check();
+      if (optKey === 'ok' && optFormRef.current) {
+        await optFormRef.current.check();
         setLoading(true);
         try {
           if (props.onConfirmBefore)
-            await props.onConfirmBefore(formRef.current.getData());
-          if (props.onConfirm) await props.onConfirm(formRef.current.getData());
+            await props.onConfirmBefore(optFormRef.current.getData());
+          if (props.onConfirm)
+            await props.onConfirm(optFormRef.current.getData());
         } catch (e) {
           // error
         }
         setLoading(false);
       }
     },
-    [props, formRef]
+    [props, optFormRef]
   );
 
   useImperativeHandle(
     ref,
     () => ({
-      getData: () => formRef.current && formRef.current.getData(),
-      reset: () => formRef.current && formRef.current.reset(),
-      check: () => formRef.current && formRef.current.check(),
+      formRef: () => optFormRef.current && optFormRef.current.formRef,
+      getData: () => optFormRef.current && optFormRef.current.getData(),
+      reset: () => optFormRef.current && optFormRef.current.reset(),
+      check: () => optFormRef.current && optFormRef.current.check(),
       setData: (data: Partial<Record<string, any>>) => {
-        if (formRef.current) formRef.current.setData(data);
+        if (optFormRef.current) optFormRef.current.setData(data);
         else
           setTimeout(() => {
-            formRef.current && formRef.current.setData(data);
+            optFormRef.current && optFormRef.current.setData(data);
           }, 100);
       }
     }),
@@ -109,7 +111,7 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
     >
       {props.content || (
         <OptForm
-          ref={formRef}
+          ref={optFormRef}
           mode={props.mode}
           labelCol={props.labelCol}
           colNum={props.colNum}
