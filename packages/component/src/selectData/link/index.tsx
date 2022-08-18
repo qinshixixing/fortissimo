@@ -69,9 +69,9 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
       ) {
         const newList = list.map((v, index) => {
           if (index < item) return v;
-          if (index === item) return data;
           return [];
         });
+        newList[item] = data; // 不能放在map中，list可能为空
         setList(newList);
       }
     },
@@ -171,9 +171,9 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
                   });
                   const newList = list.map((v, index) => {
                     if (index <= item) return v;
-                    if (index === item + 1) return dataList;
                     return [];
                   });
+                  newList[item + 1] = dataList;
                   setList(newList);
                 } else await getList(item + 1);
               }
