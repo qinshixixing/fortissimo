@@ -163,15 +163,15 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
               if (props.onGetData && item < numList.length - 1) {
                 if (config.hasChildren) {
                   const data = Array.isArray(itemData) ? itemData : [itemData];
-                  const dataList: RecordData[] = [];
+                  let dataList: RecordData[] = [];
                   data.forEach((item) => {
-                    dataList.concat(
+                    dataList = dataList.concat(
                       item.itemData[config.itemChildren || 'children']
                     );
                   });
                   const newList = list.map((v, index) => {
-                    if (index < item) return v;
-                    if (index === item) return dataList;
+                    if (index <= item) return v;
+                    if (index === item + 1) return dataList;
                     return [];
                   });
                   setList(newList);
