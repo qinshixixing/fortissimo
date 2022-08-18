@@ -1,4 +1,13 @@
-## [0.4.5-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.5-1...component/0.4.5-2) (2022-08-18)
+## [0.4.5-3](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.5-2...component/0.4.5-3) (2022-08-18)
+
+
+### Bug Fixes
+
+* **修复关联选择器赋值问题:** 修复关联选择器赋值问题 ([14359e1](https://github.com/qinshixixing/fortissimo/commit/14359e1f0467bc44c5ce7a7547780b6602c7e4b5))
+
+
+
+## [v0.4.5-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.5-1...component/v0.4.5-2) (2022-08-18)
 
 
 ### Features
