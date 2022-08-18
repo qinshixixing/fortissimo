@@ -1,4 +1,13 @@
-## [0.4.5-3](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.5-2...component/0.4.5-3) (2022-08-18)
+## [0.4.5](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.5-3...component/0.4.5) (2022-08-18)
+
+
+### Features
+
+* **修复选择列表赋值问题:** 修复选择列表赋值问题 ([68b4502](https://github.com/qinshixixing/fortissimo/commit/68b45028ba0800e49c7066c7f37435e68de15f7f))
+
+
+
+## [v0.4.5-3](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.5-2...component/v0.4.5-3) (2022-08-18)
 
 
 ### Bug Fixes
@@ -743,12 +752,20 @@
 
 
 
-## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/9327766b526596302ad0440a96b61db92dd2a09b...component/v0.1.1) (2022-03-11)
+## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.0...component/v0.1.1) (2022-03-11)
 
 
 ### Features
 
 * **修改readme.md:** 修改README.md ([fab8ec8](https://github.com/qinshixixing/fortissimo/commit/fab8ec8933c0889337843d4b0e498ab0ec7b8539))
+
+
+
+# [v0.1.0](https://github.com/qinshixixing/fortissimo/compare/9327766b526596302ad0440a96b61db92dd2a09b...component/v0.1.0) (2022-03-11)
+
+
+### Features
+
 * **初始化项目:** 初始化项目 ([9327766](https://github.com/qinshixixing/fortissimo/commit/9327766b526596302ad0440a96b61db92dd2a09b))
 
 
