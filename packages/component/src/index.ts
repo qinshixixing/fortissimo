@@ -45,7 +45,8 @@ export type {
   DataListRowData,
   DataListTableSortType,
   DataListTableMsg,
-  DataListTableProps
+  DataListTableProps,
+  DataListListProps
 } from './dataList';
 
 export { DataListPro } from './dataListPro';
@@ -67,6 +68,24 @@ export type {
   DataListProGetDataParams as DLGetParams,
   DataListProGetDataRes as DLGetRes
 } from './dataListPro';
+
+export { DataSimpleListPro } from './dataSimpleListPro';
+export type {
+  DataSimpleListProSearchConfig,
+  DataSimpleListProOptPosition,
+  DataSimpleListProOptConfig,
+  DataSimpleListProOptParams,
+  DataSimpleListProGetDataParams,
+  DataSimpleListProGetDataRes,
+  DataSimpleListProProps
+} from './dataSimpleListPro';
+export type {
+  DataSimpleListProSearchConfig as DSLSearch,
+  DataSimpleListProOptConfig as DSLOpt,
+  DataSimpleListProOptParams as DSLOptParams,
+  DataSimpleListProGetDataRes as DSLGetParams,
+  DataSimpleListProProps as DSLGetRes
+} from './dataSimpleListPro';
 
 export * as Time from './time';
 export { showTime } from './time';

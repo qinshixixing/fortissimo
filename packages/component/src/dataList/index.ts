@@ -32,3 +32,6 @@ export type {
   DataListTableMsg,
   DataListTableProps
 } from './table';
+
+export { List } from './list';
+export type { DataListListProps } from './list';

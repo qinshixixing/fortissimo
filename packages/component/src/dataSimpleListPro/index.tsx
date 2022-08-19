@@ -1,115 +1,87 @@
 import React, {
+  ForwardedRef,
+  forwardRef,
+  ReactNode,
   useCallback,
   useImperativeHandle,
-  forwardRef,
-  useState,
   useMemo,
-  useEffect
+  useState
 } from 'react';
-import type { ForwardedRef } from 'react';
 import { useMount } from '@fortissimo/hook';
-import { checkFormEmpty } from '@fortissimo/util';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 
+import type { DataListOptConfig, OptFormField } from '../index';
 import { DataList } from '../index';
-import type {
-  DataListTableMsg,
-  DataListOptConfig,
-  DataListRowData,
-  DataListTableSortType,
-  OptEditFormField,
-  RecordData,
-  KeyType,
-  ValueType
-} from '../index';
 
-export type DataListProOptPosition = 'header' | 'row' | 'both';
+export type DataSimpleListProOptPosition = 'header' | 'row' | 'both';
 
-export interface DataListProOptConfig<
-  K extends string = string,
-  T extends RecordData = RecordData
-> extends DataListOptConfig<K, T> {
-  position?: DataListProOptPosition;
-  needSelect?: boolean;
+export interface DataSimpleListProOptConfig<K extends string = string, T = any>
+  extends DataListOptConfig<K, T> {
+  position?: DataSimpleListProOptPosition;
 }
 
-export interface DataListProOptParams<
+export interface DataSimpleListProOptParams<
   K extends string = string,
-  T extends RecordData = RecordData
+  T = any
 > {
   optKey: K;
-  rowKey: ValueType<T> | ValueType<T>[];
+  rowKey?: number;
   rowData?: T;
 }
 
-export type DataListProMsgConfig<T extends RecordData = RecordData> =
-  DataListTableMsg<Partial<T>>;
-
-export type DataListProSearchConfig<T extends RecordData = RecordData> =
-  OptEditFormField<Partial<T>>;
-
-export interface DataListProGetDataParams<
-  T extends RecordData = RecordData,
-  K extends string = string
-> {
+export type DataSimpleListProSearchConfig<T = any> = Partial<
+  Omit<
+    OptFormField<{ data: T }>,
+    | 'key'
+    | 'name'
+    | 'required'
+    | 'labelCol'
+    | 'labelTip'
+    | 'editComponent'
+    | 'showComponent'
+    | 'editValuePropName'
+    | 'showValuePropName'
+  >
+>;
+export interface DataSimpleListProGetDataParams<T = any> {
   pageNo?: number;
   pageSize?: number;
-  sortKey?: K;
-  sortType?: DataListTableSortType;
-  searchData?: Partial<T>;
+  searchData?: T;
 }
 
-export interface DataListProGetDataRes<T extends RecordData = RecordData> {
+export interface DataSimpleListProGetDataRes<T = any> {
   total: number;
-  data: Partial<T>[];
+  data: T[];
 }
 
-export interface DataListProProps<
-  OPTK extends string = string,
-  T extends RecordData = RecordData,
-  S extends RecordData = RecordData
-> {
-  msgs: DataListProMsgConfig<Partial<T>>[];
-  rowKey: KeyType<T>;
-  disabledCheckedKey?: ValueType<T>;
-  opts?: DataListProOptConfig<OPTK, T>[];
-  optWidth?: number | string;
-  search?: DataListProSearchConfig<S>[];
+export interface DataSimpleListProProps<OPTK extends string = string, T = any> {
+  msgRender?: (value: T, index: number) => ReactNode;
+  search?: DataSimpleListProSearchConfig<T>;
+  opts?: DataSimpleListProOptConfig<OPTK, T>[];
   canExport?: boolean;
   canTotalExport?: boolean;
-  searchLabelCol?: number | null;
-  canSelect?: boolean;
   resetPageNo?: boolean;
   hideSizeChanger?: boolean;
   autoHidePage?: boolean;
   size?: SizeType;
-  sticky?: boolean;
-  resizeable?: boolean;
-  resizeBaseWidth?: number;
   emptyText?: string;
   onGetData?: (
-    params: DataListProGetDataParams<S, KeyType<T>>
-  ) => Promise<DataListProGetDataRes<T>>;
-  onExportData?: (params: Partial<S>) => Promise<void>;
-  onOpt?: (params: DataListProOptParams<OPTK, T>) => Promise<void> | void;
+    params: DataSimpleListProGetDataParams<T>
+  ) => Promise<DataSimpleListProGetDataRes<T>>;
+  onExportData?: (params: T) => Promise<void>;
+  onOpt?: (params: DataSimpleListProOptParams<OPTK, T>) => Promise<void> | void;
 }
 
-export const DataListPro = forwardRef(function (
-  props: DataListProProps,
+export const DataSimpleListPro = forwardRef(function (
+  props: DataSimpleListProProps,
   ref: ForwardedRef<unknown>
 ) {
   const [pageNo, setPageNo] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [total, setTotal] = useState(0);
-  const [data, setData] = useState<DataListRowData[]>([]);
-  const [selectedValue, setSelectedValue] = useState<any[]>([]);
+  const [data, setData] = useState<any[]>([]);
 
-  const [searchData, setSearchData] = useState<Partial<Record<string, any>>>(
-    {}
-  );
-
-  const [sortKey, setSortKey] = useState<string>();
-  const [sortType, setSortType] = useState<DataListTableSortType>('none');
+  const [searchData, setSearchData] = useState<any>({});
 
   const opts = useMemo(() => {
     const data: {
@@ -122,11 +94,7 @@ export const DataListPro = forwardRef(function (
     if (!props.opts) return data;
     props.opts.forEach((item) => {
       if (item.position === 'header' || item.position === 'both') {
-        data.header.push({
-          ...item,
-          disabled:
-            item.disabled || (item.needSelect && selectedValue.length === 0)
-        });
+        data.header.push(item);
       }
       if (item.position === 'row' || item.position === 'both') {
         data.row.push({
@@ -136,19 +104,16 @@ export const DataListPro = forwardRef(function (
       }
     });
     return data;
-  }, [props.opts, selectedValue]);
+  }, [props.opts]);
 
   const getData = useCallback(
-    async (params: DataListProGetDataParams) => {
-      setSelectedValue([]);
+    async (params: DataSimpleListProGetDataParams) => {
       if (!props.onGetData) return;
       const reqPageNo = params.pageNo || pageNo;
       const reqPageSize = params.pageSize || pageSize;
-      const data: DataListProGetDataParams = {
+      const data: DataSimpleListProGetDataParams = {
         pageNo: reqPageNo,
         pageSize: reqPageSize,
-        sortKey: params.sortKey || sortKey,
-        sortType: params.sortType || sortType,
         searchData: params.searchData || searchData
       };
       const res = await props.onGetData(data);
@@ -161,17 +126,14 @@ export const DataListPro = forwardRef(function (
         setData(res.data);
       }
     },
-    [pageNo, pageSize, sortKey, sortType, searchData, props]
+    [pageNo, pageSize, searchData, props]
   );
 
   const [exportLoading, setExportLoading] = useState(false);
   const [exportDisabled, setExportDisabled] = useState(!props.canTotalExport);
-  useEffect(() => {
-    if (props.canTotalExport) setExportDisabled(false);
-  }, [props.canTotalExport]);
 
   const exportData = useCallback(
-    async (params?: Partial<RecordData>) => {
+    async (params?: any) => {
       if (!props.onExportData) return;
       const data = params || searchData;
       setExportLoading(true);
@@ -186,7 +148,7 @@ export const DataListPro = forwardRef(function (
   );
 
   const opt = useCallback(
-    async (params: DataListProOptParams) => {
+    async (params: DataSimpleListProOptParams) => {
       props.onOpt && (await props.onOpt(params));
     },
     [props]
@@ -203,10 +165,16 @@ export const DataListPro = forwardRef(function (
 
   return (
     <>
-      {props.search && props.search.length > 0 && (
+      {props.search && (
         <DataList.Search
-          fields={props.search}
-          labelCol={props.searchLabelCol}
+          fields={[
+            {
+              key: 'data',
+              name: '',
+              ...props.search
+            }
+          ]}
+          labelCol={0}
           size={props.size}
           exportOpt={
             props.canExport
@@ -216,12 +184,13 @@ export const DataListPro = forwardRef(function (
                 }
               : null
           }
-          onOpt={async (data, optKey) => {
+          onOpt={async (formData, optKey) => {
+            const data = formData.data;
             setSearchData(data);
             if (optKey === 'export') await exportData(data);
             else {
               if (optKey === 'reset' && !props.canTotalExport) {
-                setExportDisabled(checkFormEmpty(data));
+                setExportDisabled(!data);
               }
               const resetPageNo = 1;
               setPageNo(resetPageNo);
@@ -231,10 +200,6 @@ export const DataListPro = forwardRef(function (
               });
             }
           }}
-          onValueChange={(value) => {
-            if (props.canTotalExport) return;
-            setExportDisabled(checkFormEmpty(value));
-          }}
         />
       )}
       {opts.header && opts.header.length > 0 && (
@@ -243,40 +208,16 @@ export const DataListPro = forwardRef(function (
           size={props.size}
           onOpt={async (optKey) => {
             await opt({
-              optKey,
-              rowKey: selectedValue
+              optKey
             });
           }}
         />
       )}
-      <DataList.Table
+      <DataList.List
         data={data}
-        msgList={props.msgs}
-        rowKey={props.rowKey}
         optList={opts.row}
-        optWidth={props.optWidth}
-        canSelect={props.canSelect}
-        selectedValue={selectedValue}
-        disabledSelectedValue={props.disabledCheckedKey}
-        emptyText={props.emptyText}
         size={props.size}
-        sticky={props.sticky}
-        resizeable={props.resizeable}
-        resizeBaseWidth={props.resizeBaseWidth || 150}
-        onSelect={(keys) => {
-          setSelectedValue(keys || []);
-        }}
-        onSort={async (key, sort) => {
-          setSortKey(key);
-          setSortType(sort);
-          const pageNoData = props.resetPageNo ? 1 : pageNo;
-          setPageNo(pageNoData);
-          await getData({
-            pageNo: pageNoData,
-            sortKey: key,
-            sortType: sort
-          });
-        }}
+        emptyText={props.emptyText}
         onOpt={async (optKey, rowKey, rowData) => {
           await opt({
             optKey,
@@ -284,6 +225,7 @@ export const DataListPro = forwardRef(function (
             rowData
           });
         }}
+        render={props.msgRender}
       />
       <DataList.Page
         pageNo={pageNo}
