@@ -27,7 +27,7 @@ export interface EditorConfig {
   scroll?: boolean;
   imageFormat?: string[];
   videoFormat?: string[];
-  uploadFn?: (data: Blob, name: string, type: string) => Promise<string>;
+  uploadFn?: (data: File, type: string) => Promise<string>;
   uploadOnInsert?: boolean;
 }
 
@@ -43,7 +43,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
   const [editor, setEditor] = useState<IDomEditor | null>(null);
   const [toolbar, setToolbar] = useState<IDomToolbar | null>(null);
 
-  const [mediaInfo, setMediaInfo] = useState<Record<string, string>>({});
+  const [mediaInfo, setMediaInfo] = useState<Record<string, File>>({});
 
   const toolbarConfig = useMemo<Partial<IToolbarConfig>>(() => {
     const excludeKeys = ['insertTable', 'codeBlock', 'todo'];
@@ -65,10 +65,10 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
           customUpload: async (file: File, insertFn: (url: string) => void) => {
             let url: string;
             if (props.uploadOnInsert && props.uploadFn) {
-              url = await props.uploadFn(file, file.name, 'image');
+              url = await props.uploadFn(file, 'image');
             } else {
               url = URL.createObjectURL(file);
-              setMediaInfo((v) => ({ ...v, [url]: file.name }));
+              setMediaInfo((v) => ({ ...v, [url]: file }));
             }
             insertFn(url);
           }
@@ -80,10 +80,10 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
           customUpload: async (file: File, insertFn: (url: string) => void) => {
             let url: string;
             if (props.uploadOnInsert && props.uploadFn) {
-              url = await props.uploadFn(file, file.name, 'video');
+              url = await props.uploadFn(file, 'video');
             } else {
               url = URL.createObjectURL(file);
-              setMediaInfo((v) => ({ ...v, [url]: file.name }));
+              setMediaInfo((v) => ({ ...v, [url]: file }));
             }
             insertFn(url);
           }
