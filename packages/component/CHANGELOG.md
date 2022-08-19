@@ -1,4 +1,13 @@
-## [0.4.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.6...component/0.4.7) (2022-08-19)
+## [0.4.8-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.7...component/0.4.8-0) (2022-08-19)
+
+
+### Features
+
+* **添加列表查询高级组件:** 添加列表查询高级组件 ([1c252bb](https://github.com/qinshixixing/fortissimo/commit/1c252bb52e1265e1428263af5101e8f732afe8d9))
+
+
+
+## [v0.4.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.6...component/v0.4.7) (2022-08-19)
 
 
 ### Features
