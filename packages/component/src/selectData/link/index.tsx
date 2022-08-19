@@ -72,26 +72,12 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
         if (!item) refMap.current[index + 1]?.setList([]);
         else {
           const childConfig = itemConfig[index + 1];
-          const config = itemConfig[index];
           if (childConfig.showSearch && childConfig.searchFromServer)
             refMap.current[index + 1]?.setList([]);
-          if (config.hasChildren) {
-            const childKey = config.itemChildren || 'children';
-            const selectData = selectOption.current[index];
-            const data = Array.isArray(selectData)
-              ? selectData.reduce(
-                  (previousValue: any[], currentValue) =>
-                    previousValue.concat(currentValue[childKey]),
-                  []
-                )
-              : selectData[childKey];
+          if (!childConfig.onGetData) return;
+          childConfig.onGetData(undefined, index, item).then((data) => {
             refMap.current[index + 1]?.setList(data);
-          } else {
-            if (!childConfig.onGetData) return;
-            childConfig.onGetData(undefined, index, item).then((data) => {
-              refMap.current[index + 1]?.setList(data);
-            });
-          }
+          });
         }
       }
     });
