@@ -1,4 +1,13 @@
-## [0.4.6-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.6-0...component/0.4.6-1) (2022-08-19)
+## [0.4.6](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.6-1...component/0.4.6) (2022-08-19)
+
+
+### Features
+
+* **优化选择器体验:** 优化选择器体验 ([a11a593](https://github.com/qinshixixing/fortissimo/commit/a11a593f7c947b3eb38d282db92da433318718b4))
+
+
+
+## [v0.4.6-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.6-0...component/v0.4.6-1) (2022-08-19)
 
 
 ### Features
