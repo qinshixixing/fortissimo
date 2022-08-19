@@ -1,4 +1,13 @@
-## [0.3.14](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.13...util/0.3.14) (2022-08-10)
+## [0.3.15](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.14...util/0.3.15) (2022-08-19)
+
+
+### Features
+
+* **优化检查格式逻辑:** 优化检查格式逻辑 ([73ed1ff](https://github.com/qinshixixing/fortissimo/commit/73ed1ffdbb361d52c279144d0d56cf4d1931f9eb))
+
+
+
+## [v0.3.14](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.13...util/v0.3.14) (2022-08-10)
 
 
 ### Features
