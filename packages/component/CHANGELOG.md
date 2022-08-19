@@ -1,4 +1,13 @@
-## [0.4.6](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.6-1...component/0.4.6) (2022-08-19)
+## [0.4.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.6...component/0.4.7) (2022-08-19)
+
+
+### Features
+
+* **优化富文本编辑器上传逻辑:** 优化富文本编辑器上传逻辑 ([8e7da94](https://github.com/qinshixixing/fortissimo/commit/8e7da94f94c354db83b02504351d949349a70a63))
+
+
+
+## [v0.4.6](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.6-1...component/v0.4.6) (2022-08-19)
 
 
 ### Features
