@@ -9,7 +9,9 @@ export function checkFileFormat(
   formatList: string[]
 ): boolean {
   const name = fileUrl.split('?')[0];
-  return formatList.some((item) => name.endsWith(item));
+  return formatList.some((item) =>
+    name.toLowerCase().endsWith(`.${item.toLowerCase()}`)
+  );
 }
 
 export function checkImage(fileUrl: string) {
