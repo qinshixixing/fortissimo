@@ -8,8 +8,8 @@ export interface SelectDataConfig<T extends RecordData = RecordData>
   > {
   itemKey?: KeyType<T>;
   itemText?: KeyType<T>;
-  // itemChildren?: KeyType<T>;
-  // hasChildren?: boolean;
+  itemChildren?: KeyType<T>;
+  hasChildren?: boolean;
   onGetData?: (
     searchValue?: string,
     item?: number,

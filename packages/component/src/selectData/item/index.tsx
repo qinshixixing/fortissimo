@@ -59,6 +59,7 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
   );
 
   useImperativeHandle(ref, () => ({
+    getList: () => list,
     setList
   }));
 
