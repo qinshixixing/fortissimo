@@ -1,4 +1,13 @@
-## [0.4.6-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.5...component/0.4.6-0) (2022-08-18)
+## [0.4.6-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.6-0...component/0.4.6-1) (2022-08-19)
+
+
+### Features
+
+* **选择器link方法新实现:** 选择器link方法新实现 ([51cf129](https://github.com/qinshixixing/fortissimo/commit/51cf129367bfc5e4e98daccc466e276575434ffe))
+
+
+
+## [v0.4.6-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.5...component/v0.4.6-0) (2022-08-18)
 
 
 ### Features
@@ -761,20 +770,12 @@
 
 
 
-## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.0...component/v0.1.1) (2022-03-11)
+## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/9327766b526596302ad0440a96b61db92dd2a09b...component/v0.1.1) (2022-03-11)
 
 
 ### Features
 
 * **修改readme.md:** 修改README.md ([fab8ec8](https://github.com/qinshixixing/fortissimo/commit/fab8ec8933c0889337843d4b0e498ab0ec7b8539))
-
-
-
-# [v0.1.0](https://github.com/qinshixixing/fortissimo/compare/9327766b526596302ad0440a96b61db92dd2a09b...component/v0.1.0) (2022-03-11)
-
-
-### Features
-
 * **初始化项目:** 初始化项目 ([9327766](https://github.com/qinshixixing/fortissimo/commit/9327766b526596302ad0440a96b61db92dd2a09b))
 
 
