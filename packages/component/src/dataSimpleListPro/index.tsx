@@ -166,41 +166,43 @@ export const DataSimpleListPro = forwardRef(function (
   return (
     <>
       {props.search && (
-        <DataList.Search
-          fields={[
-            {
-              key: 'data',
-              name: '',
-              ...props.search
-            }
-          ]}
-          labelCol={0}
-          size={props.size}
-          exportOpt={
-            props.canExport
-              ? {
-                  loading: exportLoading,
-                  disabled: exportDisabled
-                }
-              : null
-          }
-          onOpt={async (formData, optKey) => {
-            const data = formData.data;
-            setSearchData(data);
-            if (optKey === 'export') await exportData(data);
-            else {
-              if (optKey === 'reset' && !props.canTotalExport) {
-                setExportDisabled(!data);
+        <div className={'ft-data-simple-list-pro-search'}>
+          <DataList.Search
+            fields={[
+              {
+                key: 'data',
+                name: '',
+                ...props.search
               }
-              const resetPageNo = 1;
-              setPageNo(resetPageNo);
-              await getData({
-                pageNo: resetPageNo,
-                searchData: data
-              });
+            ]}
+            labelCol={0}
+            size={props.size}
+            exportOpt={
+              props.canExport
+                ? {
+                    loading: exportLoading,
+                    disabled: exportDisabled
+                  }
+                : null
             }
-          }}
-        />
+            onOpt={async (formData, optKey) => {
+              const data = formData.data;
+              setSearchData(data);
+              if (optKey === 'export') await exportData(data);
+              else {
+                if (optKey === 'reset' && !props.canTotalExport) {
+                  setExportDisabled(!data);
+                }
+                const resetPageNo = 1;
+                setPageNo(resetPageNo);
+                await getData({
+                  pageNo: resetPageNo,
+                  searchData: data
+                });
+              }
+            }}
+          />
+        </div>
       )}
       {opts.header && opts.header.length > 0 && (
         <DataList.HeaderOpt
