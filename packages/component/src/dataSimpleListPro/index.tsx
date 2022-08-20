@@ -175,6 +175,7 @@ export const DataSimpleListPro = forwardRef(function (
             }
           ]}
           labelCol={0}
+          colNum={2}
           size={props.size}
           inlineOpt
           exportOpt={

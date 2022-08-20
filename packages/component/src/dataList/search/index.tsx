@@ -18,7 +18,7 @@ export type DataListSearchDefaultOpt = 'search' | 'reset' | 'export';
 
 type DataListSearchFormProps<T extends RecordData = RecordData> = Pick<
   OptFormProps<T>,
-  'labelCol' | 'fields' | 'size' | 'onValueChange'
+  'labelCol' | 'colNum' | 'fields' | 'size' | 'onValueChange'
 >;
 export interface DataListSearchProps<T extends RecordData = RecordData>
   extends DataListSearchFormProps {
@@ -116,7 +116,7 @@ export const Search = forwardRef(function (props: DataListSearchProps, ref) {
       <OptForm
         ref={formRef}
         mode={'edit'}
-        colNum={3}
+        colNum={typeof props.colNum === 'number' ? props.colNum : 3}
         labelCol={props.labelCol}
         fields={fields}
         onValueChange={props.onValueChange}
