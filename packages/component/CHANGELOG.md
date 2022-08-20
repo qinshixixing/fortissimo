@@ -1,4 +1,13 @@
-## [0.4.8-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.8-0...component/0.4.8-1) (2022-08-20)
+## [0.4.8-2](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.8-1...component/0.4.8-2) (2022-08-20)
+
+
+### Features
+
+* **优化列表样式:** 优化列表样式 ([f7da934](https://github.com/qinshixixing/fortissimo/commit/f7da9349406fa9b25a495405482c0fce25c2a9de))
+
+
+
+## [v0.4.8-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.8-0...component/v0.4.8-1) (2022-08-20)
 
 
 ### Features
