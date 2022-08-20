@@ -15,6 +15,7 @@ import type { RecordData, KeyType, ValueType } from '../index';
 
 export interface OptFormFieldDetail<K extends string = string, V = any> {
   key: K;
+  isLayout?: boolean;
   name?: string;
   hide?: boolean;
   required?: boolean;
@@ -132,7 +133,7 @@ export const OptForm = forwardRef(function (
           }}
         >
           <Form.Item
-            name={item.key && String(item.key)}
+            name={item.isLayout ? undefined : item.key && String(item.key)}
             label={item.name || ''}
             hidden={item.hide}
             labelCol={

@@ -22,6 +22,7 @@ type DataListSearchFormProps<T extends RecordData = RecordData> = Pick<
 >;
 export interface DataListSearchProps<T extends RecordData = RecordData>
   extends DataListSearchFormProps {
+  inlineOpt?: boolean;
   opts?: OperationItemConfig[] | null;
   searchOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
   resetOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
@@ -96,6 +97,20 @@ export const Search = forwardRef(function (props: DataListSearchProps, ref) {
     handleOpt
   ]);
 
+  const fields = useMemo(() => {
+    if (!props.inlineOpt) return props.fields;
+    return [
+      ...(props.fields || []),
+      {
+        key: 'opt',
+        name: '',
+        labelCol: 0,
+        isLayout: true,
+        component: () => opts
+      }
+    ];
+  }, [opts, props.fields, props.inlineOpt]);
+
   return (
     <div className={'ft-data-list-search'}>
       <OptForm
@@ -103,11 +118,13 @@ export const Search = forwardRef(function (props: DataListSearchProps, ref) {
         mode={'edit'}
         colNum={3}
         labelCol={props.labelCol}
-        fields={props.fields}
+        fields={fields}
         onValueChange={props.onValueChange}
         size={props.size}
       />
-      <div className={'ft-data-list-search-opt'}>{opts}</div>
+      {!props.inlineOpt && (
+        <div className={'ft-data-list-search-opt'}>{opts}</div>
+      )}
     </div>
   );
 });
