@@ -106,7 +106,7 @@ export const Search = forwardRef(function (props: DataListSearchProps, ref) {
         name: '',
         labelCol: 0,
         isLayout: true,
-        component: () => opts
+        component: opts
       }
     ];
   }, [opts, props.fields, props.inlineOpt]);

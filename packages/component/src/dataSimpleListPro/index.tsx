@@ -81,7 +81,7 @@ export const DataSimpleListPro = forwardRef(function (
   const [total, setTotal] = useState(0);
   const [data, setData] = useState<any[]>([]);
 
-  const [searchData, setSearchData] = useState<any>({});
+  const [searchData, setSearchData] = useState<any>();
 
   const opts = useMemo(() => {
     const data: {
@@ -114,7 +114,9 @@ export const DataSimpleListPro = forwardRef(function (
       const data: DataSimpleListProGetDataParams = {
         pageNo: reqPageNo,
         pageSize: reqPageSize,
-        searchData: params.searchData || searchData
+        searchData: Reflect.has(params, 'searchData')
+          ? params.searchData
+          : searchData
       };
       const res = await props.onGetData(data);
       const maxPageNo = Math.ceil(res.total / reqPageSize);
