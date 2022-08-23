@@ -1,4 +1,8 @@
-# [0.4.0-0](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.15...util/0.4.0-0) (2022-08-23)
+# [0.4.0](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.0-0...util/0.4.0) (2022-08-23)
+
+
+
+# [v0.4.0-0](https://github.com/qinshixixing/fortissimo/compare/util/v0.3.15...util/v0.4.0-0) (2022-08-23)
 
 
 
