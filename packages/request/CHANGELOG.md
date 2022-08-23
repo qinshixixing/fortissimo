@@ -1,4 +1,14 @@
-## [0.1.9](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.8...request/0.1.9) (2022-07-27)
+# [0.2.0-0](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.9...request/0.2.0-0) (2022-08-23)
+
+
+### Features
+
+* **修改请求库（非兼容）:** 修改请求库（非兼容） ([58645c8](https://github.com/qinshixixing/fortissimo/commit/58645c8b974ad9a719d722f06aba99990519b64a))
+* **修改请求逻辑:** 修改请求逻辑 ([0e38509](https://github.com/qinshixixing/fortissimo/commit/0e385093a85204330f0cbea32ac5040c587009c2))
+
+
+
+## [v0.1.9](https://github.com/qinshixixing/fortissimo/compare/request/v0.1.8...request/v0.1.9) (2022-07-27)
 
 
 ### Features
