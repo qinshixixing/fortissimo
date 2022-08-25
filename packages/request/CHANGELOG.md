@@ -1,4 +1,13 @@
-# [0.2.0-1](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-0...request/0.2.0-1) (2022-08-25)
+# [0.2.0-2](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-1...request/0.2.0-2) (2022-08-25)
+
+
+### Bug Fixes
+
+* **修复请求传参错误:** 修复请求传参错误 ([2d4601a](https://github.com/qinshixixing/fortissimo/commit/2d4601ade09661a9c793dec4d708dd019843f97f))
+
+
+
+# [v0.2.0-1](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-0...request/v0.2.0-1) (2022-08-25)
 
 
 
