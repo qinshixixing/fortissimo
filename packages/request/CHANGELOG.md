@@ -1,4 +1,13 @@
-# [0.2.0](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-3...request/0.2.0) (2022-08-25)
+## [0.2.1](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0...request/0.2.1) (2022-08-25)
+
+
+### Bug Fixes
+
+* **优化basicajax逻辑:** 优化basicAjax逻辑 ([fd40db6](https://github.com/qinshixixing/fortissimo/commit/fd40db652dd33515c8be60e56b5ce94a8bd54228))
+
+
+
+# [v0.2.0](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-3...request/v0.2.0) (2022-08-25)
 
 
 
