@@ -40,7 +40,7 @@ type RequestAxiosConfig<T = any> = Pick<
 export type RequestConfig<T = any> = RequestAxiosConfig<T> &
   RequestCustomConfig;
 
-export type ResponseType = 'success' | 'dataError' | 'httpError';
+export type ResponseType = 'success' | 'dataError' | 'httpError' | 'authError';
 
 export interface ResponseConfig<T = any, D = any> {
   type: ResponseType;
@@ -261,16 +261,15 @@ export function requestBase(
             )
               isUnLogin = requestConfig.loginCode.includes(data.code);
             if (isUnLogin) {
-              {
-                Object.entries(requestConfig.tokenStorageInfo).forEach(
-                  ([key, storageKey]) => {
-                    window.localStorage.removeItem(storageKey);
-                  }
-                );
-                requestConfig.tokenStorageKeys.forEach((storageKey) => {
+              data.type = 'authError';
+              Object.entries(requestConfig.tokenStorageInfo).forEach(
+                ([key, storageKey]) => {
                   window.localStorage.removeItem(storageKey);
-                });
-              }
+                }
+              );
+              requestConfig.tokenStorageKeys.forEach((storageKey) => {
+                window.localStorage.removeItem(storageKey);
+              });
               if (requestConfig.loginUrl)
                 window.location.href =
                   requestConfig.loginUrl +
