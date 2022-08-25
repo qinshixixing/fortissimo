@@ -8,35 +8,33 @@ import { basicAjax } from './basicAjax';
 
 export type ResponseCode = number | string;
 
-export type RequestCustomConfig = Partial<{
+interface RequestCustomConfig {
   successCode: ResponseCode;
   codeKey: string;
   msgKey: string;
   errorKey: string;
   dataKey: string;
   needData: boolean;
-  checkAuth?: boolean;
-  tokenInfo?: Record<string, string>;
-  tokenStorageKeys?: string[];
-  tokenStorageInfo?: Record<string, string>;
-  loginUrl?: string;
-  loginStatusCode?: number[];
-  loginCode?: ResponseCode[];
-  loginWithHref?: boolean;
-}>;
+  checkAuth: boolean;
+  tokenInfo: Record<string, string>;
+  tokenStorageKeys: string[];
+  tokenStorageInfo: Record<string, string>;
+  loginUrl: string;
+  loginStatusCode: number[];
+  loginCode: ResponseCode[];
+  loginWithHref: boolean;
+}
 
-export type RequestAxiosConfig<T = any> = Partial<
-  Pick<
-    AxiosRequestConfig<T>,
-    | 'baseURL'
-    | 'headers'
-    | 'timeout'
-    | 'url'
-    | 'data'
-    | 'params'
-    | 'method'
-    | 'responseType'
-  >
+type RequestAxiosConfig<T = any> = Pick<
+  AxiosRequestConfig<T>,
+  | 'baseURL'
+  | 'headers'
+  | 'timeout'
+  | 'url'
+  | 'data'
+  | 'params'
+  | 'method'
+  | 'responseType'
 >;
 
 export type RequestConfig<T = any> = RequestAxiosConfig<T> &
@@ -66,10 +64,13 @@ export interface ResponseCallbackConfig {
 }
 
 export interface RequestBaseInstance<S = any, D = any> {
-  (config: RequestConfig, axiosConfig?: AxiosRequestConfig): Promise<
+  (config: Partial<RequestConfig>, axiosConfig?: AxiosRequestConfig): Promise<
     ResponseConfig<D, S>
   >;
-  config: (config?: RequestConfig, axiosConfig?: AxiosRequestConfig) => void;
+  config: (
+    config: Partial<RequestConfig>,
+    axiosConfig?: AxiosRequestConfig
+  ) => void;
   setHeader: (data: AxiosRequestHeaders, type?: keyof HeadersDefaults) => void;
   interceptors: ResponseCallbackConfig[];
 }
@@ -110,11 +111,7 @@ function setResponse({
   return msg;
 }
 
-function transConfig(config: RequestConfig): {
-  customConfig: RequestCustomConfig;
-  axiosConfig: RequestAxiosConfig;
-} {
-  const customConfig: RequestCustomConfig = {};
+function pickAxiosConfig(config: Partial<RequestConfig>): RequestAxiosConfig {
   const axiosConfig: RequestAxiosConfig = {};
   Object.keys(config).forEach((item) => {
     const key = item as keyof RequestConfig;
@@ -128,37 +125,15 @@ function transConfig(config: RequestConfig): {
     else if (key === 'timeout') axiosConfig.timeout = config.timeout;
     else if (key === 'responseType')
       axiosConfig.responseType = config.responseType;
-    else if (key === 'successCode')
-      customConfig.successCode = config.successCode;
-    else if (key === 'codeKey') customConfig.codeKey = config.codeKey;
-    else if (key === 'msgKey') customConfig.msgKey = config.msgKey;
-    else if (key === 'dataKey') customConfig.dataKey = config.dataKey;
-    else if (key === 'errorKey') customConfig.errorKey = config.errorKey;
-    else if (key === 'needData') customConfig.needData = config.needData;
-    else if (key === 'checkAuth') customConfig.checkAuth = config.checkAuth;
-    else if (key === 'tokenInfo') customConfig.tokenInfo = config.tokenInfo;
-    else if (key === 'tokenStorageKeys')
-      customConfig.tokenStorageKeys = config.tokenStorageKeys;
-    else if (key === 'tokenStorageInfo')
-      customConfig.tokenStorageInfo = config.tokenStorageInfo;
-    else if (key === 'loginUrl') customConfig.loginUrl = config.loginUrl;
-    else if (key === 'loginStatusCode')
-      customConfig.loginStatusCode = config.loginStatusCode;
-    else if (key === 'loginCode') customConfig.loginCode = config.loginCode;
-    else if (key === 'loginWithHref')
-      customConfig.loginWithHref = config.loginWithHref;
   });
-  return {
-    customConfig,
-    axiosConfig
-  };
+  return axiosConfig;
 }
 
 export function requestBase(
-  config: RequestConfig = {},
+  config: Partial<RequestConfig> = {},
   axiosConfig?: AxiosRequestConfig
 ): RequestBaseInstance {
-  const allConfig: RequestConfig = {
+  const defaultCustomConfig: RequestCustomConfig = {
     successCode: 0,
     codeKey: 'code',
     msgKey: 'msg',
@@ -172,71 +147,73 @@ export function requestBase(
     loginUrl: '',
     loginStatusCode: [],
     loginCode: [],
-    loginWithHref: false,
+    loginWithHref: false
+  };
+  let requestDefaultConfig: RequestConfig = {
+    ...defaultCustomConfig,
     ...config
   };
-  const configInfo = transConfig(allConfig);
-  let requestCustomConfig: Required<RequestCustomConfig> =
-    configInfo.customConfig as Required<RequestCustomConfig>;
-  let requestAxiosConfig: AxiosRequestConfig = {
+  let requestDefaultAxiosConfig: AxiosRequestConfig = {
     ...axiosConfig,
-    ...configInfo.axiosConfig
+    ...pickAxiosConfig(config)
   };
 
-  const basicRequest = basicAjax(requestAxiosConfig);
+  const basicRequest = basicAjax(requestDefaultAxiosConfig);
 
   const requestInterceptors: ResponseCallbackConfig[] = [];
 
-  const request = (config: RequestConfig, axiosConfig?: AxiosRequestConfig) => {
-    const reqConfigInfo = transConfig(config);
-    const customConfig = {
-      ...requestCustomConfig,
-      ...reqConfigInfo.customConfig
+  const request = (
+    config: Partial<RequestConfig>,
+    axiosConfig?: AxiosRequestConfig
+  ) => {
+    const requestConfig: RequestConfig = {
+      ...requestDefaultConfig,
+      ...config
     };
-    const allAxiosConfig: AxiosRequestConfig = {
+    const requestAxiosConfig: AxiosRequestConfig = {
       ...axiosConfig,
-      ...reqConfigInfo.axiosConfig
+      ...pickAxiosConfig(config)
     };
 
-    if (customConfig.checkAuth) {
-      Object.entries(customConfig.tokenStorageInfo).forEach(
+    if (requestConfig.checkAuth) {
+      Object.entries(requestConfig.tokenStorageInfo).forEach(
         ([key, storageKey]) => {
-          if (!allAxiosConfig.headers) allAxiosConfig.headers = {};
+          if (!requestAxiosConfig.headers) requestAxiosConfig.headers = {};
           const value = window.localStorage.getItem(storageKey);
-          if (value) allAxiosConfig.headers[key] = value;
+          if (value) requestAxiosConfig.headers[key] = value;
         }
       );
-      Object.entries(customConfig.tokenInfo).forEach(([key, value]) => {
-        if (!allAxiosConfig.headers) allAxiosConfig.headers = {};
-        allAxiosConfig.headers[key] = value;
+      Object.entries(requestConfig.tokenInfo).forEach(([key, value]) => {
+        if (!requestAxiosConfig.headers) requestAxiosConfig.headers = {};
+        requestAxiosConfig.headers[key] = value;
       });
     }
 
     let requestPromise: Promise<ResponseConfig> = basicRequest(
-      allAxiosConfig
+      requestAxiosConfig
     ).then(
       (res: AxiosResponse) => {
-        if (!customConfig.needData)
+        if (!requestConfig.needData)
           return Promise.resolve(
             setResponse({
               type: 'success',
               res,
-              config,
-              axiosConfig
+              config: requestConfig,
+              axiosConfig: requestAxiosConfig
             })
           );
         if (
           res.data &&
-          (!customConfig.codeKey ||
-            !['number', 'string'].includes(typeof customConfig.successCode) ||
-            res.data[customConfig.codeKey] === customConfig.successCode)
+          (!requestConfig.codeKey ||
+            !['number', 'string'].includes(typeof requestConfig.successCode) ||
+            res.data[requestConfig.codeKey] === requestConfig.successCode)
         )
           return Promise.resolve(
             setResponse({
               type: 'success',
               res,
-              config,
-              axiosConfig
+              config: requestConfig,
+              axiosConfig: requestAxiosConfig
             })
           );
         console.error(res);
@@ -244,8 +221,8 @@ export function requestBase(
           setResponse({
             type: 'dataError',
             res,
-            config: allConfig,
-            axiosConfig
+            config: requestConfig,
+            axiosConfig: requestAxiosConfig
           })
         );
       },
@@ -254,17 +231,17 @@ export function requestBase(
           setResponse({
             type: 'httpError',
             res,
-            config: allConfig,
-            axiosConfig
+            config: requestConfig,
+            axiosConfig: requestAxiosConfig
           })
         );
       }
     );
 
-    if (customConfig.checkAuth) {
+    if (requestConfig.checkAuth) {
       const hasLoginCode =
-        (customConfig.loginCode && customConfig.loginCode.length) ||
-        (customConfig.loginStatusCode && customConfig.loginStatusCode.length);
+        (requestConfig.loginCode && requestConfig.loginCode.length) ||
+        (requestConfig.loginStatusCode && requestConfig.loginStatusCode.length);
       if (hasLoginCode)
         requestPromise = requestPromise.then(
           (data) => Promise.resolve(data),
@@ -273,31 +250,31 @@ export function requestBase(
 
             if (
               data.type === 'httpError' &&
-              customConfig.loginStatusCode &&
-              customConfig.loginStatusCode.length
+              requestConfig.loginStatusCode &&
+              requestConfig.loginStatusCode.length
             )
-              isUnLogin = customConfig.loginStatusCode.includes(data.status);
+              isUnLogin = requestConfig.loginStatusCode.includes(data.status);
             if (
               data.type === 'dataError' &&
-              customConfig.loginCode &&
-              customConfig.loginCode.length
+              requestConfig.loginCode &&
+              requestConfig.loginCode.length
             )
-              isUnLogin = customConfig.loginCode.includes(data.code);
+              isUnLogin = requestConfig.loginCode.includes(data.code);
             if (isUnLogin) {
               {
-                Object.entries(customConfig.tokenStorageInfo).forEach(
+                Object.entries(requestConfig.tokenStorageInfo).forEach(
                   ([key, storageKey]) => {
                     window.localStorage.removeItem(storageKey);
                   }
                 );
-                customConfig.tokenStorageKeys.forEach((storageKey) => {
+                requestConfig.tokenStorageKeys.forEach((storageKey) => {
                   window.localStorage.removeItem(storageKey);
                 });
               }
-              if (customConfig.loginUrl)
+              if (requestConfig.loginUrl)
                 window.location.href =
-                  customConfig.loginUrl +
-                  (customConfig.loginWithHref ? window.location.href : '');
+                  requestConfig.loginUrl +
+                  (requestConfig.loginWithHref ? window.location.href : '');
             }
             return Promise.reject(data);
           }
@@ -312,28 +289,29 @@ export function requestBase(
   };
 
   request.config = (
-    config: RequestConfig = {},
+    config: Partial<RequestConfig> = {},
     axiosConfig?: AxiosRequestConfig
   ) => {
-    const configInfo = transConfig(config);
-    requestCustomConfig = {
-      ...requestCustomConfig,
-      ...configInfo.customConfig
+    requestDefaultConfig = {
+      ...requestDefaultConfig,
+      ...config
     };
-    requestAxiosConfig = {
-      ...requestAxiosConfig,
+    const newDefaultAxiosConfig: AxiosRequestConfig = {
       ...axiosConfig,
-      ...configInfo.axiosConfig
+      ...pickAxiosConfig(config)
+    };
+    requestDefaultAxiosConfig = {
+      ...requestDefaultAxiosConfig,
+      ...newDefaultAxiosConfig
     };
     basicRequest.defaults = {
       ...basicRequest.defaults,
-      ...axiosConfig,
-      ...configInfo.axiosConfig,
+      ...newDefaultAxiosConfig,
       headers: {
         ...basicRequest.defaults.headers,
         common: {
           ...basicRequest.defaults.headers.common,
-          ...requestAxiosConfig.headers
+          ...newDefaultAxiosConfig.headers
         }
       }
     };

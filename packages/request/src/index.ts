@@ -3,8 +3,6 @@ export { basicAjax } from './basicAjax';
 export { requestBase } from './requestBase';
 export type {
   ResponseCode,
-  RequestCustomConfig,
-  RequestAxiosConfig,
   RequestConfig,
   ResponseType,
   ResponseConfig,

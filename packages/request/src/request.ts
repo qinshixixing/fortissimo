@@ -6,11 +6,11 @@ import type {
 } from './requestBase';
 
 export interface RequestInstance<S = any, D = any> {
-  (config: RequestConfig): Promise<ResponseConfig<D, S>>;
-  config: (config: RequestConfig) => void;
+  (config: Partial<RequestConfig>): Promise<ResponseConfig<D, S>>;
+  config: (config: Partial<RequestConfig>) => void;
 }
 
-export function request(config: RequestConfig = {}): RequestInstance {
+export function request(config: Partial<RequestConfig> = {}): RequestInstance {
   const baseInstance: RequestBaseInstance = requestBase(config);
 
   const baseInstanceMethods = { ...baseInstance };
@@ -21,7 +21,7 @@ export function request(config: RequestConfig = {}): RequestInstance {
   Reflect.deleteProperty(instance, 'setHeader');
   Reflect.deleteProperty(instance, 'interceptors');
 
-  instance.config = (config = {}) => {
+  instance.config = (config: Partial<RequestConfig> = {}) => {
     baseInstanceMethods.config(config);
   };
 
