@@ -1,4 +1,8 @@
-# [0.2.0-3](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-2...request/0.2.0-3) (2022-08-25)
+# [0.2.0](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-3...request/0.2.0) (2022-08-25)
+
+
+
+# [v0.2.0-3](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-2...request/v0.2.0-3) (2022-08-25)
 
 
 ### Features
