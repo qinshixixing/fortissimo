@@ -1,4 +1,13 @@
-# [0.2.0-2](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-1...request/0.2.0-2) (2022-08-25)
+# [0.2.0-3](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-2...request/0.2.0-3) (2022-08-25)
+
+
+### Features
+
+* **优化请求逻辑:** 优化请求逻辑 ([765dd25](https://github.com/qinshixixing/fortissimo/commit/765dd2592bdc5823af501b5bc476dc0c78f80393))
+
+
+
+# [v0.2.0-2](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0-1...request/v0.2.0-2) (2022-08-25)
 
 
 ### Bug Fixes
