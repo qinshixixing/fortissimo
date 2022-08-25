@@ -1,4 +1,13 @@
-## [0.4.8](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.8-4...component/0.4.8) (2022-08-22)
+## [0.4.9](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.8...component/0.4.9) (2022-08-25)
+
+
+### Features
+
+* **修复选择器筛选逻辑:** 修复选择器筛选逻辑 ([150f840](https://github.com/qinshixixing/fortissimo/commit/150f8406217ce09473a026a64a5caa1c96c71689))
+
+
+
+## [v0.4.8](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.8-4...component/v0.4.8) (2022-08-22)
 
 
 ### Features
