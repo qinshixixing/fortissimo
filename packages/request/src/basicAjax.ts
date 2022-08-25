@@ -1,11 +1,8 @@
 import axios, { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 
-export function basicAjax(config?: AxiosRequestConfig): AxiosInstance {
+export function basicAjax(config: AxiosRequestConfig = {}): AxiosInstance {
   const request = axios.create({
-    ...(config || {}),
-    headers: {
-      'X-Client-Type': 'web'
-    }
+    ...config
   });
 
   request.interceptors.request.use(
