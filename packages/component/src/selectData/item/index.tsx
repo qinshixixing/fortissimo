@@ -73,6 +73,7 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
       {...props}
       placeholder={props.placeholder || '请选择'}
       optionFilterProp={'label'}
+      filterOption={!props.showSearch || !props.searchFromServer}
       options={list.map((item) => ({
         label: item[props.itemText || 'text'],
         value: item[props.itemKey || 'key'],
