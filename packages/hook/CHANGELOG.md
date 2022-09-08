@@ -1,4 +1,13 @@
-## [0.2.3](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.2...hook/0.2.3) (2022-08-10)
+## [0.2.4](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.3...hook/0.2.4) (2022-09-08)
+
+
+### Features
+
+* **优化store逻辑:** 优化store逻辑 ([2623071](https://github.com/qinshixixing/fortissimo/commit/2623071478ecb418399133534156f6acdcf577ca))
+
+
+
+## [v0.2.3](https://github.com/qinshixixing/fortissimo/compare/hook/v0.2.2...hook/v0.2.3) (2022-08-10)
 
 
 ### Features
