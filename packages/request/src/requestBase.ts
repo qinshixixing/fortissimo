@@ -9,7 +9,7 @@ import { basicAjax } from './basicAjax';
 export type ResponseCode = number | string;
 
 interface RequestCustomConfig {
-  successCode: ResponseCode;
+  successCode: ResponseCode[];
   codeKey: string;
   msgKey: string;
   errorKey: string;
@@ -129,12 +129,18 @@ function pickAxiosConfig(config: Partial<RequestConfig>): RequestAxiosConfig {
   return axiosConfig;
 }
 
+function checkSuccess(successCode: ResponseCode[], code: ResponseCode) {
+  return successCode
+    .filter((item) => ['number', 'string'].includes(typeof item))
+    .some((item) => item === code);
+}
+
 export function requestBase(
   config: Partial<RequestConfig> = {},
   axiosConfig?: AxiosRequestConfig
 ): RequestBaseInstance {
   const defaultCustomConfig: RequestCustomConfig = {
-    successCode: 0,
+    successCode: [0],
     codeKey: 'code',
     msgKey: 'msg',
     errorKey: 'error',
@@ -205,8 +211,10 @@ export function requestBase(
         if (
           res.data &&
           (!requestConfig.codeKey ||
-            !['number', 'string'].includes(typeof requestConfig.successCode) ||
-            res.data[requestConfig.codeKey] === requestConfig.successCode)
+            checkSuccess(
+              requestConfig.successCode,
+              res.data[requestConfig.codeKey]
+            ))
         )
           return Promise.resolve(
             setResponse({
