@@ -1,4 +1,13 @@
-## [0.2.2](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.1...request/0.2.2) (2022-09-08)
+## [0.2.3](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.2...request/0.2.3) (2022-09-08)
+
+
+### Bug Fixes
+
+* **修复successcode空值问题:** 修复successcode空值问题 ([7305e03](https://github.com/qinshixixing/fortissimo/commit/7305e03e9fdaa5e5d9c64ba8d6650af02763de3a))
+
+
+
+## [v0.2.2](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.1...request/v0.2.2) (2022-09-08)
 
 
 ### Features
