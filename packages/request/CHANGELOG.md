@@ -1,4 +1,13 @@
-## [0.2.1](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0...request/0.2.1) (2022-08-25)
+## [0.2.2](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.1...request/0.2.2) (2022-09-08)
+
+
+### Features
+
+* **成功code设置为列表:** 成功code设置为列表 ([a5768d4](https://github.com/qinshixixing/fortissimo/commit/a5768d46b8417e48f48966989ac00e23ebca5178))
+
+
+
+## [v0.2.1](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.0...request/v0.2.1) (2022-08-25)
 
 
 ### Bug Fixes
