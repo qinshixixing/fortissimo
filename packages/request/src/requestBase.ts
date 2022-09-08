@@ -129,7 +129,11 @@ function pickAxiosConfig(config: Partial<RequestConfig>): RequestAxiosConfig {
   return axiosConfig;
 }
 
-function checkSuccess(successCode: ResponseCode[], code: ResponseCode) {
+function checkSuccess(
+  successCode: ResponseCode[],
+  code: ResponseCode
+): boolean {
+  if (!successCode) return true;
   return successCode
     .filter((item) => ['number', 'string'].includes(typeof item))
     .some((item) => item === code);
