@@ -2,17 +2,17 @@ import React, { useMemo } from 'react';
 import type { Key } from 'react';
 import { Select, Input } from 'antd';
 
-export interface TypeListConfig<T extends Key = string> {
+export interface TypeListConfig<T extends Key = Key> {
   key: T;
   text: string;
 }
 
-export interface TypeInputValue<T extends Key = string> {
+export interface TypeInputValue<T extends Key = Key> {
   type: T;
   data: string;
 }
 
-export interface TypeInputProps<T extends Key = string> {
+export interface TypeInputProps<T extends Key = Key> {
   typeList?: TypeListConfig<T>[];
   value?: TypeInputValue<T>;
   onChange?: (value: TypeInputValue) => void;

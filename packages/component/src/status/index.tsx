@@ -3,27 +3,27 @@ import type { Key } from 'react';
 import { Select, Switch } from 'antd';
 import type { SelectProps, SwitchProps } from 'antd';
 
-export interface StatusConfig<T extends Key = string> {
+export interface StatusConfig<T extends Key = Key> {
   key: T;
   text: string;
 }
 
-export interface SelectStatusProps<T extends Key = string> extends SelectProps {
+export interface SelectStatusProps<T extends Key = Key> extends SelectProps {
   keys?: T[];
 }
 
-export interface SwitchStatusProps<T extends Key = string>
+export interface SwitchStatusProps<T extends Key = Key>
   extends Omit<SwitchProps, 'onChange'> {
   value?: T;
   onChange?: (data: T | undefined) => void;
   keys?: T[];
 }
 
-export interface ShowStatusProps<T extends Key = string> {
+export interface ShowStatusProps<T extends Key = Key> {
   value?: T;
 }
 
-export function status<T extends Key = string>(config: StatusConfig<T>[]) {
+export function status<T extends Key = Key>(config: StatusConfig<T>[]) {
   const data: Map<T, string> = new Map();
   const keys: T[] = [];
 
