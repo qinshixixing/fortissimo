@@ -1,4 +1,13 @@
-## [0.4.10](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.9...component/0.4.10) (2022-09-15)
+## [0.4.11](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.10...component/0.4.11) (2022-09-15)
+
+
+### Features
+
+* **优化typeinput类型说明:** 优化typeinput类型说明 ([054b2b3](https://github.com/qinshixixing/fortissimo/commit/054b2b34ac761a6c7ebbd5b5007b49f17281e427))
+
+
+
+## [v0.4.10](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.9...component/v0.4.10) (2022-09-15)
 
 
 ### Features
