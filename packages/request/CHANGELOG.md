@@ -1,4 +1,13 @@
-## [0.2.3](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.2...request/0.2.3) (2022-09-08)
+## [0.2.4](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.3...request/0.2.4) (2022-09-27)
+
+
+### Features
+
+* **优化返回数据:** 优化返回数据 ([7a8a923](https://github.com/qinshixixing/fortissimo/commit/7a8a9237b4ef2a862324a78d91c02bf3a3104863))
+
+
+
+## [v0.2.3](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.2...request/v0.2.3) (2022-09-08)
 
 
 ### Bug Fixes
