@@ -94,16 +94,21 @@ function setResponse({
     axiosConfig,
     res
   };
-  if (type !== 'httpError' && res.data) {
+  if (res.data) {
     const data = res.data;
     if (!config.needData) msg.data = data;
     else {
-      if (config.codeKey && typeof data[config.codeKey] === 'number')
+      if (
+        config.codeKey &&
+        (typeof data[config.codeKey] === 'number' ||
+          typeof data[config.codeKey] === 'string')
+      )
         msg.code = data[config.codeKey];
-      if (config.errorKey && data[config.errorKey])
+      if (config.errorKey && typeof data[config.errorKey] === 'string')
         msg.error = data[config.errorKey];
-      if (config.msgKey && data[config.msgKey]) msg.msg = data[config.msgKey];
-      if (config.dataKey && data[config.dataKey])
+      if (config.msgKey && typeof data[config.msgKey] === 'string')
+        msg.msg = data[config.msgKey];
+      if (config.dataKey && Reflect.has(data, config.dataKey))
         msg.data = data[config.dataKey];
       else msg.data = data;
     }
