@@ -5,6 +5,7 @@ import {
   AxiosRequestHeaders
 } from 'axios';
 import { basicAjax } from './basicAjax';
+import { parseJson, readBlob } from '@fortissimo/util';
 
 export type ResponseCode = number | string;
 
@@ -23,6 +24,7 @@ interface RequestCustomConfig {
   loginStatusCode: number[];
   loginCode: ResponseCode[];
   loginWithHref: boolean;
+  checkJson: boolean;
 }
 
 type RequestAxiosConfig<T = any> = Pick<
@@ -79,12 +81,14 @@ function setResponse({
   type,
   res,
   config,
-  axiosConfig
+  axiosConfig,
+  handleData
 }: {
   type: ResponseType;
   res: AxiosResponse;
   config: RequestConfig;
   axiosConfig?: AxiosRequestConfig;
+  handleData: boolean;
 }): ResponseConfig {
   const msg: ResponseConfig = {
     type,
@@ -96,7 +100,7 @@ function setResponse({
   };
   if (res.data) {
     const data = res.data;
-    if (!config.needData) msg.data = data;
+    if (!handleData) msg.data = data;
     else {
       if (
         config.codeKey &&
@@ -144,6 +148,23 @@ function checkSuccess(
     .some((item) => item === code);
 }
 
+async function checkHandleData(
+  config: RequestConfig,
+  res: AxiosResponse
+): Promise<boolean> {
+  if (!config.needData) return false;
+  if (!config.responseType || config.responseType === 'json') return true;
+  if (config.checkJson) {
+    if (config.responseType === 'blob' && res.data.type == 'application/json') {
+      const data = await readBlob(res.data);
+      res.data = parseJson(data as string);
+      return true;
+    }
+    return false;
+  }
+  return false;
+}
+
 export function requestBase(
   config: Partial<RequestConfig> = {},
   axiosConfig?: AxiosRequestConfig
@@ -162,7 +183,8 @@ export function requestBase(
     loginUrl: '',
     loginStatusCode: [],
     loginCode: [],
-    loginWithHref: false
+    loginWithHref: false,
+    checkJson: false
   };
   let requestDefaultConfig: RequestConfig = {
     ...defaultCustomConfig,
@@ -207,14 +229,16 @@ export function requestBase(
     let requestPromise: Promise<ResponseConfig> = basicRequest(
       requestAxiosConfig
     ).then(
-      (res: AxiosResponse) => {
-        if (!requestConfig.needData)
+      async (res: AxiosResponse) => {
+        const handleData = await checkHandleData(requestConfig, res);
+        if (!handleData)
           return Promise.resolve(
             setResponse({
               type: 'success',
               res,
               config: requestConfig,
-              axiosConfig: requestAxiosConfig
+              axiosConfig: requestAxiosConfig,
+              handleData
             })
           );
         if (
@@ -230,7 +254,8 @@ export function requestBase(
               type: 'success',
               res,
               config: requestConfig,
-              axiosConfig: requestAxiosConfig
+              axiosConfig: requestAxiosConfig,
+              handleData
             })
           );
         console.error(res);
@@ -239,17 +264,30 @@ export function requestBase(
             type: 'dataError',
             res,
             config: requestConfig,
-            axiosConfig: requestAxiosConfig
+            axiosConfig: requestAxiosConfig,
+            handleData
           })
         );
       },
-      (res: AxiosResponse) => {
+      async (res: AxiosResponse) => {
+        const handleData = await checkHandleData(requestConfig, res);
+        if (!handleData)
+          return Promise.resolve(
+            setResponse({
+              type: 'httpError',
+              res,
+              config: requestConfig,
+              axiosConfig: requestAxiosConfig,
+              handleData
+            })
+          );
         return Promise.reject(
           setResponse({
             type: 'httpError',
             res,
             config: requestConfig,
-            axiosConfig: requestAxiosConfig
+            axiosConfig: requestAxiosConfig,
+            handleData
           })
         );
       }
