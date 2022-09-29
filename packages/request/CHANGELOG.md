@@ -1,4 +1,13 @@
-## [0.2.4](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.3...request/0.2.4) (2022-09-27)
+## [0.2.5](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.4...request/0.2.5) (2022-09-29)
+
+
+### Features
+
+* **优化数据解析逻辑:** 优化数据解析逻辑 ([a4b223b](https://github.com/qinshixixing/fortissimo/commit/a4b223bad3f84f1e64434f935b61e8524f9f9d78))
+
+
+
+## [v0.2.4](https://github.com/qinshixixing/fortissimo/compare/request/v0.2.3...request/v0.2.4) (2022-09-27)
 
 
 ### Features
