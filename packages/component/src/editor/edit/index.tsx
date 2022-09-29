@@ -13,11 +13,11 @@ import type {
   IEditorConfig,
   IToolbarConfig
 } from '@wangeditor/editor';
-import { transFile } from './transFile';
+import { transData } from './transData';
 
 import '@wangeditor/editor/dist/css/style.css';
-export { transFile };
-export type { EditorTransDataConfig } from './transFile';
+export { transData };
+export type { EditorTransDataConfig } from './transData';
 
 export interface EditorConfig {
   mode?: 'default' | 'simple';
@@ -29,6 +29,7 @@ export interface EditorConfig {
   videoFormat?: string[];
   uploadFn?: (data: File, type: string) => Promise<string>;
   uploadOnInsert?: boolean;
+  currentLinkTarget?: boolean;
 }
 
 export interface EditorProps extends EditorConfig {
@@ -112,10 +113,11 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
     getMediaInfo: () => mediaInfo,
     transData: async () => {
       if (!props.onChange || !editor) return;
-      await transFile({
+      await transData({
         editor,
         mediaInfo,
-        uploadFn: props.uploadFn
+        uploadFn: props.uploadFn,
+        currentLinkTarget: props.currentLinkTarget
       });
       const html = editor.getHtml();
       props.onChange(html);
@@ -144,7 +146,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
         onChange={(() => {
           let isFirstChange = true;
           let lastHtml = '';
-          const func = async (editor: IDomEditor) => {
+          return async (editor: IDomEditor) => {
             const html = editor.getHtml();
             if (lastHtml === html) return;
             lastHtml = html;
@@ -154,7 +156,6 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
             }
             props.onChange && props.onChange(html);
           };
-          return func;
         })()}
         style={{
           [props.scroll ? 'height' : 'minHeight']: props.height || '300px'

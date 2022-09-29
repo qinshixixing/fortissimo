@@ -5,16 +5,16 @@ export interface EditorTransDataConfig {
   editor: IDomEditor;
   mediaInfo: Record<string, File>;
   uploadFn?: (data: File, type: string) => Promise<string>;
+  currentLinkTarget?: boolean;
 }
 
-export async function transFile(params: EditorTransDataConfig) {
-  const uploadImage = async (elements: any[], parentIndex: number[]) => {
-    if (!params.uploadFn) return;
+export async function transData(params: EditorTransDataConfig) {
+  const trans = async (elements: any[], parentIndex: number[]) => {
     return Promise.all(
       elements.map(async (element, index) => {
-        if (!params.uploadFn) return;
         const indexArr = [...parentIndex, index];
         if (element.type === 'image' || element.type === 'video') {
+          if (!params.uploadFn) return;
           const src = element.src;
           if (src.startsWith('blob:')) {
             const file = params.mediaInfo[src];
@@ -23,11 +23,16 @@ export async function transFile(params: EditorTransDataConfig) {
               at: indexArr
             });
           }
-        } else if (element.children)
-          await uploadImage(element.children, indexArr);
+        }
+        if (element.type === 'link') {
+          if (!params.currentLinkTarget) return;
+          SlateTransforms.setNodes(params.editor, { target: '' } as any, {
+            at: indexArr
+          });
+        } else if (element.children) await trans(element.children, indexArr);
       })
     );
   };
-  await uploadImage(params.editor.children, []);
+  await trans(params.editor.children, []);
   return params.editor;
 }
