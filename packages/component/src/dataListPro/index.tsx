@@ -78,6 +78,7 @@ export interface DataListProProps<
   canExport?: boolean;
   canTotalExport?: boolean;
   searchLabelCol?: number | null;
+  searchColNum?: number;
   canSelect?: boolean;
   resetPageNo?: boolean;
   hideSizeChanger?: boolean;
@@ -207,6 +208,7 @@ export const DataListPro = forwardRef(function (
         <DataList.Search
           fields={props.search}
           labelCol={props.searchLabelCol}
+          colNum={props.searchColNum}
           size={props.size}
           exportOpt={
             props.canExport
