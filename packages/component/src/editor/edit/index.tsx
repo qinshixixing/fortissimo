@@ -148,7 +148,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
         }}
         onChange={(() => {
           let isFirstChange = true;
-          let lastHtml = '';
+          let lastHtml: string;
           return async (editor: IDomEditor) => {
             const html = editor.isEmpty() ? '' : editor.getHtml();
             if (lastHtml === html) return;
