@@ -1,4 +1,13 @@
-## [0.4.14](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.13...component/0.4.14) (2022-11-10)
+## [0.4.15](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.14...component/0.4.15) (2022-11-10)
+
+
+### Features
+
+* **优化编辑器:** 优化编辑器 ([745bb72](https://github.com/qinshixixing/fortissimo/commit/745bb7222e03ca2c98dd5c52421e2b1cc485cc81))
+
+
+
+## [v0.4.14](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.13...component/v0.4.14) (2022-11-10)
 
 
 ### Features
