@@ -1,7 +1,7 @@
 import { SlateTransforms } from '@wangeditor/editor';
 import type { IDomEditor } from '@wangeditor/editor';
 
-export type MediaInfo = Record<
+export type EditorMediaInfo = Record<
   string,
   {
     file: File;
@@ -11,7 +11,7 @@ export type MediaInfo = Record<
 
 export interface EditorTransDataConfig {
   editor: IDomEditor;
-  mediaInfo: MediaInfo;
+  mediaInfo: EditorMediaInfo;
   uploadFn?: (data: File, type: string) => Promise<string>;
   currentLinkTarget?: boolean;
 }

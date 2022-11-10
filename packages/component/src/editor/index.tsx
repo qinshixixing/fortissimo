@@ -3,7 +3,7 @@ export type {
   EditorConfig,
   EditorProps,
   EditorTransDataConfig,
-  MediaInfo
+  EditorMediaInfo
 } from './edit';
 
 export { Show } from './show';

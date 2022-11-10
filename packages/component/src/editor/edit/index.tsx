@@ -15,11 +15,11 @@ import type {
   IToolbarConfig
 } from '@wangeditor/editor';
 import { transData } from './transData';
-import type { MediaInfo } from './transData';
+import type { EditorMediaInfo } from './transData';
 
 import '@wangeditor/editor/dist/css/style.css';
 export { transData };
-export type { MediaInfo };
+export type { EditorMediaInfo };
 export type { EditorTransDataConfig } from './transData';
 
 export interface EditorConfig {
@@ -37,7 +37,7 @@ export interface EditorConfig {
 
 export interface EditorProps extends EditorConfig {
   value?: string;
-  onChange?: (data: string, media: MediaInfo) => void;
+  onChange?: (data: string, media: EditorMediaInfo) => void;
 }
 
 const defaultImageFormat = ['jpg', 'jpeg', 'png'];
@@ -47,7 +47,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
   const [editor, setEditor] = useState<IDomEditor | null>(null);
   const [toolbar, setToolbar] = useState<IDomToolbar | null>(null);
 
-  const mediaInfoRef = useRef<MediaInfo>({});
+  const mediaInfoRef = useRef<EditorMediaInfo>({});
 
   const toolbarConfig = useMemo<Partial<IToolbarConfig>>(() => {
     const excludeKeys = ['insertTable', 'codeBlock', 'todo'];

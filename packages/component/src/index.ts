@@ -143,7 +143,7 @@ export type {
   EditorTransDataConfig,
   EditorProps,
   EditorShowProps,
-  MediaInfo
+  EditorMediaInfo
 } from './editor';
 
 export { TypeInput } from './typeInput';
