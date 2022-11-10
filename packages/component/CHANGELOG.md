@@ -1,4 +1,13 @@
-## [0.4.20](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.19...component/0.4.20) (2022-11-10)
+## [0.4.21](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.20...component/0.4.21) (2022-11-10)
+
+
+### Bug Fixes
+
+* **修复编辑器校验问题:** 修复编辑器校验问题 ([9ad89b7](https://github.com/qinshixixing/fortissimo/commit/9ad89b7efe327ffce56f33bc93907b5e52cbc694))
+
+
+
+## [v0.4.20](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.19...component/v0.4.20) (2022-11-10)
 
 
 ### Features
