@@ -24,7 +24,7 @@ export function Show(props: EditorShowProps) {
 
   return (
     <div
-      {...props}
+      className={props.className}
       style={{
         ...props.style,
         ...scrollStyle
