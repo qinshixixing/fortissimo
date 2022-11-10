@@ -1,9 +1,17 @@
 import { SlateTransforms } from '@wangeditor/editor';
 import type { IDomEditor } from '@wangeditor/editor';
 
+export type MediaInfo = Record<
+  string,
+  {
+    file: File;
+    type: string;
+  }
+>;
+
 export interface EditorTransDataConfig {
   editor: IDomEditor;
-  mediaInfo: Record<string, File>;
+  mediaInfo: MediaInfo;
   uploadFn?: (data: File, type: string) => Promise<string>;
   currentLinkTarget?: boolean;
 }
@@ -17,8 +25,9 @@ export async function transData(params: EditorTransDataConfig) {
           if (!params.uploadFn) return;
           const src = element.src;
           if (src.startsWith('blob:')) {
-            const file = params.mediaInfo[src];
-            const url = await params.uploadFn(file, element.type);
+            const file = params.mediaInfo[src].file;
+            const type = params.mediaInfo[src].type;
+            const url = await params.uploadFn(file, type);
             SlateTransforms.setNodes(params.editor, { src: url } as any, {
               at: indexArr
             });

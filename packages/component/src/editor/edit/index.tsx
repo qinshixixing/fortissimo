@@ -14,9 +14,11 @@ import type {
   IToolbarConfig
 } from '@wangeditor/editor';
 import { transData } from './transData';
+import type { MediaInfo } from './transData';
 
 import '@wangeditor/editor/dist/css/style.css';
 export { transData };
+export type { MediaInfo };
 export type { EditorTransDataConfig } from './transData';
 
 export interface EditorConfig {
@@ -34,7 +36,7 @@ export interface EditorConfig {
 
 export interface EditorProps extends EditorConfig {
   value?: string;
-  onChange?: (editor: string) => void;
+  onChange?: (data: string, media: MediaInfo) => void;
 }
 
 const defaultImageFormat = ['jpg', 'jpeg', 'png'];
@@ -44,7 +46,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
   const [editor, setEditor] = useState<IDomEditor | null>(null);
   const [toolbar, setToolbar] = useState<IDomToolbar | null>(null);
 
-  const [mediaInfo, setMediaInfo] = useState<Record<string, File>>({});
+  const [mediaInfo, setMediaInfo] = useState<MediaInfo>({});
 
   const toolbarConfig = useMemo<Partial<IToolbarConfig>>(() => {
     const excludeKeys = ['insertTable', 'codeBlock', 'todo'];
@@ -66,10 +68,10 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
           customUpload: async (file: File, insertFn: (url: string) => void) => {
             let url: string;
             if (props.uploadOnInsert && props.uploadFn) {
-              url = await props.uploadFn(file, 'image');
+              url = await props.uploadFn(file, 'img');
             } else {
               url = URL.createObjectURL(file);
-              setMediaInfo((v) => ({ ...v, [url]: file }));
+              setMediaInfo((v) => ({ ...v, [url]: { file, type: 'img' } }));
             }
             insertFn(url);
           }
@@ -84,7 +86,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
               url = await props.uploadFn(file, 'video');
             } else {
               url = URL.createObjectURL(file);
-              setMediaInfo((v) => ({ ...v, [url]: file }));
+              setMediaInfo((v) => ({ ...v, [url]: { file, type: 'video' } }));
             }
             insertFn(url);
           }
@@ -120,7 +122,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
         currentLinkTarget: props.currentLinkTarget
       });
       const html = editor.getHtml();
-      props.onChange(html);
+      props.onChange(html, mediaInfo);
     }
   }));
 
@@ -154,7 +156,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
               isFirstChange = false;
               return;
             }
-            props.onChange && props.onChange(html);
+            props.onChange && props.onChange(html, mediaInfo);
           };
         })()}
         style={{
