@@ -1,4 +1,13 @@
-## [0.4.21](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.20...component/0.4.21) (2022-11-10)
+# [0.5.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.21...component/0.5.0) (2022-11-10)
+
+
+### Features
+
+* **优化表单刷新逻辑:** 优化表单刷新逻辑 ([23ad8cf](https://github.com/qinshixixing/fortissimo/commit/23ad8cfc5b5bcecbba9335b8b488ef10e488ab09))
+
+
+
+## [v0.4.21](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.20...component/v0.4.21) (2022-11-10)
 
 
 ### Bug Fixes
