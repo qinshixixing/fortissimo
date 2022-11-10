@@ -1,5 +1,4 @@
 import React from 'react';
-import { Divider } from 'antd';
 
 export interface EditorShowConfig {
   height?: string | number;
@@ -12,19 +11,16 @@ export interface EditorShowProps extends EditorShowConfig {
 
 export function Show(props: EditorShowProps) {
   return (
-    <>
-      <Divider />
-      <div
-        style={
-          props.scroll
-            ? {
-                height: props.height || '300px',
-                overflow: 'auto'
-              }
-            : undefined
-        }
-        dangerouslySetInnerHTML={{ __html: props.value || '' }}
-      />
-    </>
+    <div
+      style={
+        props.scroll
+          ? {
+              height: props.height || '300px',
+              overflow: 'auto'
+            }
+          : undefined
+      }
+      dangerouslySetInnerHTML={{ __html: props.value || '' }}
+    />
   );
 }
