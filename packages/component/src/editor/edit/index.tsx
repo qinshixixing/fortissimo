@@ -33,6 +33,7 @@ export interface EditorConfig {
   uploadFn?: (data: File, type: string) => Promise<string>;
   uploadOnInsert?: boolean;
   currentLinkTarget?: boolean;
+  excludeKeys?: string[];
 }
 
 export interface EditorProps extends EditorConfig {
@@ -50,12 +51,11 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
   const mediaInfoRef = useRef<EditorMediaInfo>({});
 
   const toolbarConfig = useMemo<Partial<IToolbarConfig>>(() => {
-    const excludeKeys = ['insertTable', 'codeBlock', 'todo'];
-    if (!props.scroll) excludeKeys.push('fullScreen');
+    const excludeKeys = props.excludeKeys || ['codeBlock'];
     return {
       excludeKeys
     };
-  }, [props.scroll]);
+  }, [props.excludeKeys]);
 
   const editorConfig = useMemo<Partial<IEditorConfig>>(
     () => ({
