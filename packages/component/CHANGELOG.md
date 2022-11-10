@@ -1,4 +1,13 @@
-## [0.4.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.17...component/0.4.18) (2022-11-10)
+## [0.4.19](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.18...component/0.4.19) (2022-11-10)
+
+
+### Features
+
+* **扩展富文本功能:** 扩展富文本功能 ([5f56dbb](https://github.com/qinshixixing/fortissimo/commit/5f56dbbc31b1aebdbbbfea5e76e66c33d2e1904e))
+
+
+
+## [v0.4.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.17...component/v0.4.18) (2022-11-10)
 
 
 ### Features
