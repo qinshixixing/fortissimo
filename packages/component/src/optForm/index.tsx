@@ -123,59 +123,66 @@ export const OptForm = forwardRef(function (
   );
 
   const fieldItems = useCallback(
-    (list: OptFormField[]) =>
-      list.map((item, index) => (
-        <div
-          className={'ft-opt-form-item' + (item.hide ? ' hide' : '')}
-          key={item.key ? String(item.key) : index}
-          style={{
-            width: item.width || `${100 / colNum}%`
-          }}
-        >
-          <Form.Item
-            name={item.isLayout ? undefined : item.key && String(item.key)}
-            label={item.name || ''}
-            hidden={item.hide}
-            labelCol={
-              typeof item.labelCol === 'number'
-                ? { span: item.labelCol }
-                : undefined
-            }
-            wrapperCol={
-              typeof item.labelCol === 'number'
-                ? { span: 24 - item.labelCol }
-                : undefined
-            }
-            required={isShow ? false : item.required}
-            normalize={isShow ? undefined : item.normalize}
-            initialValue={item.defaultValue}
-            valuePropName={valuePropName(item)}
-            extra={item.tip}
-            tooltip={item.labelTip}
-            rules={
-              isShow
-                ? undefined
-                : [
-                    {
-                      validator: (rule: any, checkValue: any) => {
-                        const value = checkValue;
-                        if (item.required && checkFormItemEmpty(value)) {
-                          return Promise.reject(`${item.name}不能为空！`);
-                        }
-                        if (item.validator) {
-                          const result = item.validator(value);
-                          if (result) return Promise.reject(result);
-                        }
-                        return Promise.resolve('');
-                      }
-                    }
-                  ]
-            }
+    (list: OptFormField[]) => {
+      const keyMap: Record<string, number> = {};
+      return list.map((item, index) => {
+        if (!keyMap[item.key]) keyMap[item.key] = 1;
+        else keyMap[item.key] = keyMap[item.key] + 1;
+        const key = `${item.key}${keyMap[item.key]}`;
+        return (
+          <div
+            className={'ft-opt-form-item' + (item.hide ? ' hide' : '')}
+            key={item.key ? key : index}
+            style={{
+              width: item.width || `${100 / colNum}%`
+            }}
           >
-            {fieldItemContent(item)}
-          </Form.Item>
-        </div>
-      )),
+            <Form.Item
+              name={item.isLayout ? undefined : item.key && String(item.key)}
+              label={item.name || ''}
+              hidden={item.hide}
+              labelCol={
+                typeof item.labelCol === 'number'
+                  ? { span: item.labelCol }
+                  : undefined
+              }
+              wrapperCol={
+                typeof item.labelCol === 'number'
+                  ? { span: 24 - item.labelCol }
+                  : undefined
+              }
+              required={isShow ? false : item.required}
+              normalize={isShow ? undefined : item.normalize}
+              initialValue={item.defaultValue}
+              valuePropName={valuePropName(item)}
+              extra={item.tip}
+              tooltip={item.labelTip}
+              rules={
+                isShow
+                  ? undefined
+                  : [
+                      {
+                        validator: (rule: any, checkValue: any) => {
+                          const value = checkValue;
+                          if (item.required && checkFormItemEmpty(value)) {
+                            return Promise.reject(`${item.name}不能为空！`);
+                          }
+                          if (item.validator) {
+                            const result = item.validator(value);
+                            if (result) return Promise.reject(result);
+                          }
+                          return Promise.resolve('');
+                        }
+                      }
+                    ]
+              }
+            >
+              {fieldItemContent(item)}
+            </Form.Item>
+          </div>
+        );
+      });
+    },
     [colNum, isShow, fieldItemContent, valuePropName]
   );
 
