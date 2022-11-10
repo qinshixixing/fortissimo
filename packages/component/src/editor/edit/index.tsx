@@ -3,7 +3,8 @@ import React, {
   useEffect,
   useImperativeHandle,
   forwardRef,
-  useMemo
+  useMemo,
+  useRef
 } from 'react';
 import { DomEditor } from '@wangeditor/editor';
 import { Editor, Toolbar } from '@wangeditor/editor-for-react';
@@ -46,7 +47,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
   const [editor, setEditor] = useState<IDomEditor | null>(null);
   const [toolbar, setToolbar] = useState<IDomToolbar | null>(null);
 
-  const [mediaInfo, setMediaInfo] = useState<MediaInfo>({});
+  const mediaInfoRef = useRef<MediaInfo>({});
 
   const toolbarConfig = useMemo<Partial<IToolbarConfig>>(() => {
     const excludeKeys = ['insertTable', 'codeBlock', 'todo'];
@@ -71,7 +72,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
               url = await props.uploadFn(file, 'img');
             } else {
               url = URL.createObjectURL(file);
-              setMediaInfo((v) => ({ ...v, [url]: { file, type: 'img' } }));
+              mediaInfoRef.current[url] = { file, type: 'img' };
             }
             insertFn(url);
           }
@@ -86,7 +87,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
               url = await props.uploadFn(file, 'video');
             } else {
               url = URL.createObjectURL(file);
-              setMediaInfo((v) => ({ ...v, [url]: { file, type: 'video' } }));
+              mediaInfoRef.current[url] = { file, type: 'video' };
             }
             insertFn(url);
           }
@@ -112,17 +113,17 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
   useImperativeHandle(ref, () => ({
     ...editor,
     getToolbar: () => toolbar,
-    getMediaInfo: () => mediaInfo,
+    getMediaInfo: () => mediaInfoRef.current,
     transData: async () => {
       if (!props.onChange || !editor) return;
       await transData({
         editor,
-        mediaInfo,
+        mediaInfo: mediaInfoRef.current,
         uploadFn: props.uploadFn,
         currentLinkTarget: props.currentLinkTarget
       });
       const html = editor.getHtml();
-      props.onChange(html, mediaInfo);
+      props.onChange(html, mediaInfoRef.current);
     }
   }));
 
@@ -156,7 +157,7 @@ export const Edit = forwardRef((props: EditorProps, ref) => {
               isFirstChange = false;
               return;
             }
-            props.onChange && props.onChange(html, mediaInfo);
+            props.onChange && props.onChange(html, mediaInfoRef.current);
           };
         })()}
         style={{
