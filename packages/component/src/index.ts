@@ -126,6 +126,14 @@ export type {
   PicAvatarProps
 } from './pic';
 
+export * as Video from './video';
+export type {
+  VideoConfig,
+  VideoValue,
+  VideoProps,
+  VideoListProps
+} from './video';
+
 export { Download } from './download';
 export type { DownloadProps } from './download';
 
