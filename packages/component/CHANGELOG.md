@@ -1,4 +1,13 @@
-# [0.5.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.21...component/0.5.0) (2022-11-10)
+## [0.5.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.0...component/0.5.1) (2022-11-18)
+
+
+### Features
+
+* **添加展示视频组件:** 添加展示视频组件 ([577f17d](https://github.com/qinshixixing/fortissimo/commit/577f17d67a6c070de2ffa7acf4f4988ba300e9ef))
+
+
+
+# [v0.5.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.4.21...component/v0.5.0) (2022-11-10)
 
 
 ### Features
