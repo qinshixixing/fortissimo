@@ -16,7 +16,6 @@ export function Drawer(props: OptBoxProps) {
 
   return (
     <AntDrawer
-      closable={Boolean(defaultOptsConfig.cancel)}
       closeIcon={
         <CloseOutlined
           className={

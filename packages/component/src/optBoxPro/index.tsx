@@ -34,8 +34,8 @@ export interface OptBoxProProps<T extends RecordData = RecordData>
   extraContent?: ReactNode;
   type?: OptBoxProType;
   onClose?: () => void;
-  onConfirm?: (data: Partial<T>) => Promise<void> | void;
-  onConfirmBefore?: (data: Partial<T>) => Promise<void> | void;
+  onConfirm?: (data?: Partial<T>) => Promise<void> | void;
+  onConfirmBefore?: (data?: Partial<T>) => Promise<void> | void;
   disableOnEmpty?: boolean;
   spin?: boolean;
   hideOpts?: boolean;
@@ -59,18 +59,25 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
       if (optKey === 'cancel') {
         if (props.onClose) props.onClose();
       }
-      if (optKey === 'ok' && optFormRef.current) {
-        await optFormRef.current.check();
-        setLoading(true);
-        try {
-          if (props.onConfirmBefore)
-            await props.onConfirmBefore(optFormRef.current.getData());
-          if (props.onConfirm)
-            await props.onConfirm(optFormRef.current.getData());
-        } catch (e) {
-          // error
+      if (optKey === 'ok') {
+        if (optFormRef.current) {
+          await optFormRef.current.check();
+          setLoading(true);
+          try {
+            if (props.onConfirmBefore)
+              await props.onConfirmBefore(optFormRef.current.getData());
+            if (props.onConfirm)
+              await props.onConfirm(optFormRef.current.getData());
+          } catch (e) {
+            // error
+          }
+          setLoading(false);
+        } else {
+          setLoading(true);
+          if (props.onConfirmBefore) await props.onConfirmBefore();
+          if (props.onConfirm) await props.onConfirm();
+          setLoading(false);
         }
-        setLoading(false);
       }
     },
     [props, optFormRef]
