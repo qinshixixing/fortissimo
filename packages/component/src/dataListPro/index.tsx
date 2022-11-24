@@ -80,6 +80,7 @@ export interface DataListProProps<
   searchLabelCol?: number | null;
   searchColNum?: number;
   canSelect?: boolean;
+  selectType?: 'checkbox' | 'radio';
   resetPageNo?: boolean;
   hideSizeChanger?: boolean;
   autoHidePage?: boolean;
@@ -104,6 +105,7 @@ export const DataListPro = forwardRef(function (
   const [total, setTotal] = useState(0);
   const [data, setData] = useState<DataListRowData[]>([]);
   const [selectedValue, setSelectedValue] = useState<any[]>([]);
+  const [selectedRows, setSelectedRows] = useState<DataListRowData[]>([]);
 
   const [searchData, setSearchData] = useState<Partial<Record<string, any>>>(
     {}
@@ -142,6 +144,7 @@ export const DataListPro = forwardRef(function (
   const getData = useCallback(
     async (params: DataListProGetDataParams) => {
       setSelectedValue([]);
+      setSelectedRows([]);
       if (!props.onGetData) return;
       const reqPageNo = params.pageNo || pageNo;
       const reqPageSize = params.pageSize || pageSize;
@@ -195,7 +198,9 @@ export const DataListPro = forwardRef(function (
 
   useImperativeHandle(ref, () => ({
     getData,
-    opt
+    opt,
+    getSelectedValue: () => selectedValue,
+    getSelectedRows: () => selectedRows
   }));
 
   useMount(async () => {
@@ -258,6 +263,7 @@ export const DataListPro = forwardRef(function (
         optList={opts.row}
         optWidth={props.optWidth}
         canSelect={props.canSelect}
+        selectType={props.selectType}
         selectedValue={selectedValue}
         disabledSelectedValue={props.disabledCheckedKey}
         emptyText={props.emptyText}
@@ -265,8 +271,9 @@ export const DataListPro = forwardRef(function (
         sticky={props.sticky}
         resizeable={props.resizeable}
         resizeBaseWidth={props.resizeBaseWidth || 150}
-        onSelect={(keys) => {
+        onSelect={(keys, rows) => {
           setSelectedValue(keys || []);
+          setSelectedRows(rows || []);
         }}
         onSort={async (key, sort) => {
           setSortKey(key);

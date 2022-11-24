@@ -37,6 +37,7 @@ export interface DataListTableProps<
   optWidth?: number | string;
   ellipsis?: boolean;
   canSelect?: boolean;
+  selectType?: 'checkbox' | 'radio';
   size?: SizeType;
   sticky?: boolean;
   resizeable?: boolean;
@@ -45,7 +46,7 @@ export interface DataListTableProps<
   disabledSelectedValue?: ValueType<T>[];
   emptyText?: string;
   onSort?: (key: KeyType<T>, type: DataListTableSortType) => void;
-  onSelect?: (rowKeys?: ValueType<T>[]) => void;
+  onSelect?: (rowKeys?: ValueType<T>[], rows?: T[]) => void;
   onOpt?: (optKey: OPTK, rowKey: ValueType<T>, rowData: T) => void;
 }
 
@@ -157,9 +158,10 @@ export function Table(props: DataListTableProps) {
       rowSelection={
         props.canSelect
           ? {
+              type: props.selectType === 'radio' ? 'radio' : 'checkbox',
               selectedRowKeys: props.selectedValue,
-              onChange: (keys) => {
-                props.onSelect && props.onSelect(keys);
+              onChange: (keys, rows) => {
+                props.onSelect && props.onSelect(keys, rows);
               },
               getCheckboxProps: (record) => {
                 return {

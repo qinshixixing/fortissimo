@@ -38,6 +38,7 @@ export interface OptBoxProProps<T extends RecordData = RecordData>
   onConfirmBefore?: (data: Partial<T>) => Promise<void> | void;
   disableOnEmpty?: boolean;
   spin?: boolean;
+  hideOpts?: boolean;
 }
 
 export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
@@ -104,8 +105,16 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
       onOpt={async (optKey) => {
         await handleOpt(optKey as OptBoxDefaultOpt);
       }}
-      okOpt={isShow ? null : { loading: loading, disabled: confirmDisabled }}
-      cancelOpt={{ disabled: loading, ...(isShow ? { name: '确定' } : {}) }}
+      okOpt={
+        props.hideOpts || isShow
+          ? null
+          : { loading: loading, disabled: confirmDisabled }
+      }
+      cancelOpt={
+        props.hideOpts
+          ? null
+          : { disabled: loading, ...(isShow ? { name: '确定' } : {}) }
+      }
       spin={props.spin && loading}
       size={props.size}
     >
