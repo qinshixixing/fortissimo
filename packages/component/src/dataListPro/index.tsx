@@ -80,6 +80,7 @@ export interface DataListProProps<
   searchLabelCol?: number | null;
   searchColNum?: number;
   canSelect?: boolean;
+  defaultSelectedValue?: ValueType<T>[];
   selectType?: 'checkbox' | 'radio';
   resetPageNo?: boolean;
   hideSizeChanger?: boolean;
@@ -104,7 +105,9 @@ export const DataListPro = forwardRef(function (
   const [pageSize, setPageSize] = useState(10);
   const [total, setTotal] = useState(0);
   const [data, setData] = useState<DataListRowData[]>([]);
-  const [selectedValue, setSelectedValue] = useState<any[]>([]);
+  const [selectedValue, setSelectedValue] = useState<any[]>(
+    props.defaultSelectedValue || []
+  );
   const [selectedRows, setSelectedRows] = useState<DataListRowData[]>([]);
 
   const [searchData, setSearchData] = useState<Partial<Record<string, any>>>(
@@ -213,6 +216,11 @@ export const DataListPro = forwardRef(function (
 
   useMount(async () => {
     await getData({ pageNo: 1 });
+    const newData: DataListRowData[] = [];
+    data.forEach((item) => {
+      if (selectedValue.includes(item[props.rowKey])) newData.push(item);
+    });
+    setSelectedRows(newData);
   });
 
   return (
