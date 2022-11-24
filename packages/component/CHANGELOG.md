@@ -1,4 +1,13 @@
-## [0.5.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.0...component/0.5.1) (2022-11-18)
+## [0.5.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.1...component/0.5.2) (2022-11-24)
+
+
+### Features
+
+* **完善组件:** 1、optBoxPro支持无按钮。2、dataListPro选择功能扩展。 ([b42d4f9](https://github.com/qinshixixing/fortissimo/commit/b42d4f990b8092b4a551485dd62676f5c4c3d711))
+
+
+
+## [v0.5.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.0...component/v0.5.1) (2022-11-18)
 
 
 ### Features
