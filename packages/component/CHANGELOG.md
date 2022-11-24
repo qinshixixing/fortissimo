@@ -1,4 +1,13 @@
-## [0.5.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.1...component/0.5.2) (2022-11-24)
+## [0.5.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.2...component/0.5.3) (2022-11-24)
+
+
+### Features
+
+* **优化弹框逻辑:** 1、右上角按钮常显。2、兼容非表单弹框。 ([15c66b2](https://github.com/qinshixixing/fortissimo/commit/15c66b22567dc7aea30e6efc0cd9a33ec331ff36))
+
+
+
+## [v0.5.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.1...component/v0.5.2) (2022-11-24)
 
 
 ### Features
