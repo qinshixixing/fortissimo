@@ -200,7 +200,15 @@ export const DataListPro = forwardRef(function (
     getData,
     opt,
     getSelectedValue: () => selectedValue,
-    getSelectedRows: () => selectedRows
+    getSelectedRows: () => selectedRows,
+    setSelectedValue: (value: any[]) => {
+      setSelectedValue(value);
+      const newData: DataListRowData[] = [];
+      data.forEach((item) => {
+        if (value.includes(item[props.rowKey])) newData.push(item);
+      });
+      setSelectedRows(newData);
+    }
   }));
 
   useMount(async () => {
