@@ -1,4 +1,13 @@
-## [0.5.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.2...component/0.5.3) (2022-11-24)
+## [0.5.4](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.3...component/0.5.4) (2022-11-24)
+
+
+### Features
+
+* **优化表格选择功能:** 优化表格选择功能 ([4dc16db](https://github.com/qinshixixing/fortissimo/commit/4dc16db62b4a7163899e8560be6c773c04145dae))
+
+
+
+## [v0.5.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.2...component/v0.5.3) (2022-11-24)
 
 
 ### Features
