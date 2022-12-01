@@ -16,7 +16,7 @@ export function Line(props: MapLineProps) {
     const data: [number, number][] = [];
     props.value.forEach((item) => {
       if (item.coordinate) data.push(item.coordinate);
-      if (item.longitude && item.latitude)
+      else if (item.longitude && item.latitude)
         data.push([item.longitude, item.latitude]);
     });
     return data;
@@ -83,8 +83,8 @@ export function Line(props: MapLineProps) {
         <Polyline
           path={path}
           showDir={props.showArrow}
-          strokeColor={props.strokeColor}
-          strokeWeight={props.strokeWeight}
+          strokeColor={props.strokeColor || '#409EFF'}
+          strokeWeight={props.strokeWeight || 6}
         />
         {props.showTip && active && (
           <InfoWindow
