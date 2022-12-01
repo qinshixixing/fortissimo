@@ -134,6 +134,9 @@ export type {
   VideoListProps
 } from './video';
 
+export * as Audio from './audio';
+export type { AudioConfig, AudioProps, AudioListProps } from './audio';
+
 export { Download } from './download';
 export type { DownloadProps } from './download';
 

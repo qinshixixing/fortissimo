@@ -49,6 +49,8 @@ export default function() {
 | Pic.Avatar         | 展示头像                | PicAvatarProps         |
 | Video.Item         | 展示视频                | VideoProps             |
 | Video.List         | 展示多个视频              | VideoListProps         |
+| Audio.Item         | 展示音频                | AudioProps             |
+| Audio.List         | 展示多个音频              | AudioListProps         |
 | status             | 生成状态组件              | StatusConfig           |
 | DataListPro        | 表格展示查询操作            | DataListProProps       |
 | DataSimpleListPro  | 列表展示查询操作            | DataSimpleListProProps |
