@@ -25,6 +25,7 @@
     "type"
   ],
   "dependencies": {
+    "@amap/amap-react": "^0.1.5",
     "@fortissimo-deps/react-h5-audio-player": "^1.0.0",
     "@wangeditor/editor": "^5.0.1",
     "@wangeditor/editor-for-react": "^1.0.2",

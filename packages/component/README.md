@@ -73,3 +73,6 @@ export default function() {
 | Layout.Sidebar     | 页面侧边菜单              | LayoutSidebarProps     |
 | Layout.Footer      | 页面底部                | LayoutFooterProps      |
 | AdminLayout        | 后台页面布局模版组件          | LayoutFooterProps      |
+| Map.List           | 地图多个地点显示            | MapListProps           |
+| Map.Item           | 地图单个地点显示            | MapItemProps           |
+| Map.Line           | 地图轨迹显示              | MapLineProps           |

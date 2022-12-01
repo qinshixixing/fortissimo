@@ -185,3 +185,13 @@ export type {
 
 export { AdminLayout } from './adminLayout';
 export type { AdminLayoutProps } from './adminLayout';
+
+export * as Map from './map';
+export type {
+  MapValue,
+  MapConfig,
+  MapPointConfig,
+  MapItemProps,
+  MapListProps,
+  MapLineProps
+} from './map';

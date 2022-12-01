@@ -60,6 +60,10 @@ export function List(props: AudioListProps) {
             const key = item.url || String(index);
             return (
               <H5AudioPlayer
+                style={{
+                  width: props.width,
+                  height: props.height
+                }}
                 key={key}
                 src={item.needSource ? undefined : item.url}
               >
