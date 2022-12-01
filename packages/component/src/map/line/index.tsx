@@ -7,6 +7,7 @@ export interface MapLineProps extends MapConfig {
   showArrow?: boolean;
   strokeColor?: string;
   strokeWeight?: number;
+  showPoint?: boolean;
 }
 
 export function Line(props: MapLineProps) {
@@ -41,11 +42,11 @@ export function Line(props: MapLineProps) {
         height: props.height
       }}
     >
-      <Amap zoom={props.zoom || 15}>
+      <Amap zoom={props.zoom || 15} center={first}>
         {props.headerTip && (
           <div className={'ft-map-header'}>{props.headerTip}</div>
         )}
-        {first && (
+        {props.showPoint && first && (
           <Marker
             position={first}
             icon={props.icon}
@@ -62,7 +63,7 @@ export function Line(props: MapLineProps) {
             }}
           />
         )}
-        {last && (
+        {props.showPoint && last && (
           <Marker
             position={last}
             icon={props.icon}

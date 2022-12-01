@@ -9,7 +9,7 @@ export interface MapListProps extends MapPointConfig {
 export function List(props: MapListProps) {
   const [activePosition, setActivePosition] = useState<
     Partial<MapValue> | undefined
-  >(props.value ? props.value[0] : undefined);
+  >();
   const activeCoordinate = useMemo<number[] | undefined>(() => {
     if (!activePosition) return undefined;
     if (activePosition.coordinate) return activePosition.coordinate;
@@ -17,6 +17,15 @@ export function List(props: MapListProps) {
       return [activePosition.longitude, activePosition.latitude];
     return undefined;
   }, [activePosition]);
+
+  const firstCoordinate = useMemo(() => {
+    if (!props.value) return undefined;
+    const first = props.value[0];
+    if (first.coordinate) return first.coordinate;
+    if (first.longitude && first.latitude)
+      return [first.longitude, first.latitude];
+    return undefined;
+  }, [props.value]);
 
   return (
     <div
@@ -26,7 +35,7 @@ export function List(props: MapListProps) {
         height: props.height
       }}
     >
-      <Amap zoom={props.zoom || 15} center={activeCoordinate}>
+      <Amap zoom={props.zoom || 15} center={firstCoordinate}>
         {props.headerTip && (
           <div className={'ft-map-header'}>{props.headerTip}</div>
         )}
