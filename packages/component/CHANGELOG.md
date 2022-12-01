@@ -1,4 +1,13 @@
-## [0.6.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.1...component/0.6.2) (2022-12-01)
+## [0.6.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.2...component/0.6.3) (2022-12-01)
+
+
+### Features
+
+* **优化地图组件:** 优化地图组件 ([485d70f](https://github.com/qinshixixing/fortissimo/commit/485d70ffd58c850fbffee31a495230866ba571b4))
+
+
+
+## [v0.6.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.1...component/v0.6.2) (2022-12-01)
 
 
 ### Features
