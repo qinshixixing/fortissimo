@@ -1,4 +1,13 @@
-## [0.5.5](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.4...component/0.5.5) (2022-12-01)
+# [0.6.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.5...component/0.6.0) (2022-12-01)
+
+
+### Features
+
+* **新增audio组件:** 新增audio组件 ([3a2b85f](https://github.com/qinshixixing/fortissimo/commit/3a2b85f0d46a7412980dfbdc1ccb765807ad9ef8))
+
+
+
+## [v0.5.5](https://github.com/qinshixixing/fortissimo/compare/component/v0.5.4...component/v0.5.5) (2022-12-01)
 
 
 ### Features
