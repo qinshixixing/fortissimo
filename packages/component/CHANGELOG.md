@@ -1,4 +1,13 @@
-## [0.6.4](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.3...component/0.6.4) (2022-12-01)
+## [0.6.5](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.4...component/0.6.5) (2022-12-02)
+
+
+### Features
+
+* **设置表单关联校验字段:** 设置表单关联校验字段 ([eb6a7ad](https://github.com/qinshixixing/fortissimo/commit/eb6a7ad1466e0d5bb836db12d069c3d38b1719a4))
+
+
+
+## [v0.6.4](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.3...component/v0.6.4) (2022-12-01)
 
 
 ### Features
