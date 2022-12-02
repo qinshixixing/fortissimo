@@ -28,6 +28,7 @@ export interface OptFormFieldDetail<K extends string = string, V = any> {
   defaultValue?: V;
   normalize?: (value: V, preValue: V) => V;
   validator?: (value: V) => string;
+  linkValidatorKeys?: K[];
   width?: string | number;
   labelCol?: number;
   tip?: ReactNode;
@@ -157,6 +158,7 @@ export const OptForm = forwardRef(function (
               valuePropName={valuePropName(item)}
               extra={item.tip}
               tooltip={item.labelTip}
+              dependencies={item.linkValidatorKeys}
               rules={
                 isShow
                   ? undefined
