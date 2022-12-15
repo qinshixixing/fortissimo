@@ -195,3 +195,5 @@ export type {
   MapListProps,
   MapLineProps
 } from './map';
+
+export { Input } from './input';
