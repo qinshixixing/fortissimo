@@ -1,9 +1,9 @@
 import React, { memo, useMemo } from 'react';
-import type { Key } from 'react';
+import type { Key, ReactNode } from 'react';
 import { Select, Switch } from 'antd';
 import type { SelectProps, SwitchProps } from 'antd';
 
-export interface StatusConfig<T extends Key = Key> {
+export interface StatusConfig<T = Key | boolean> {
   key: T;
   text: string;
 }
@@ -21,6 +21,7 @@ export interface SwitchStatusProps<T extends Key = Key>
 
 export interface ShowStatusProps<T extends Key = Key> {
   value?: T;
+  empty?: ReactNode;
 }
 
 export function status<T extends Key = Key>(config: StatusConfig<T>[]) {
@@ -32,21 +33,23 @@ export function status<T extends Key = Key>(config: StatusConfig<T>[]) {
     data.set(item.key, item.text);
   });
 
-  const getStatusText = (status?: T): string => {
-    if (status === undefined) return '未知';
-    return data.get(status) || '未知';
+  const getStatusText = (params: { key?: T; empty?: ReactNode }): ReactNode => {
+    if (params.key === undefined || params.key === null)
+      return params.empty || '';
+    return data.get(params.key) || '未知';
   };
 
   const SelectStatus = memo((props: SelectStatusProps<T>) => {
     return (
       <Select
+        allowClear={true}
         placeholder={'请选择'}
         getPopupContainer={(triggerNode) => triggerNode.parentElement}
         {...props}
       >
         {(props.keys || keys).map((item) => (
           <Select.Option key={item} value={item}>
-            {getStatusText(item)}
+            {getStatusText({ key: item })}
           </Select.Option>
         ))}
       </Select>
@@ -77,7 +80,7 @@ export function status<T extends Key = Key>(config: StatusConfig<T>[]) {
   });
 
   const ShowStatus = memo((props: ShowStatusProps<T>) => {
-    return <>{getStatusText(props.value)}</>;
+    return <>{getStatusText({ key: props.value, empty: props.empty })}</>;
   });
 
   return { SelectStatus, SwitchStatus, ShowStatus };

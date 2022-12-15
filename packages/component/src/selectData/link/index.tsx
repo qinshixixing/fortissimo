@@ -91,8 +91,8 @@ export const Link = forwardRef((props: SelectDataLinkProps, ref) => {
 
         return (
           <Item
-            key={item}
             {...config}
+            key={item}
             ref={(f) => {
               refMap.current[item] = f;
             }}

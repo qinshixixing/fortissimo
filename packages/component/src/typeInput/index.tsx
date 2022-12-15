@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import type { Key } from 'react';
 import { Select, Input } from 'antd';
+import type { SelectProps, InputProps } from 'antd';
 
 export interface TypeListConfig<T extends Key = Key> {
   key: T;
@@ -16,6 +17,8 @@ export interface TypeInputProps<T extends Key = Key> {
   typeList?: TypeListConfig<T>[];
   value?: TypeInputValue<T>;
   onChange?: (value: TypeInputValue) => void;
+  selectProps?: SelectProps<T, TypeListConfig>;
+  inputProps?: InputProps;
 }
 
 export function TypeInput(props: TypeInputProps) {
@@ -34,6 +37,7 @@ export function TypeInput(props: TypeInputProps) {
     <div className={'ft-type-input'}>
       <Select
         className={'ft-type-input-select'}
+        {...props.selectProps}
         value={value.type}
         onChange={(value) => {
           props.onChange &&
@@ -50,7 +54,9 @@ export function TypeInput(props: TypeInputProps) {
         ))}
       </Select>
       <Input
+        allowClear={true}
         className={'ft-type-input-input'}
+        {...props.inputProps}
         value={value.data}
         onChange={(e) => {
           props.onChange &&
