@@ -1,4 +1,13 @@
-# [0.7.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.5...component/0.7.0) (2022-12-15)
+## [0.7.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.0...component/0.7.1) (2022-12-15)
+
+
+### Features
+
+* **新增input组件:** 新增input组件 ([44eb849](https://github.com/qinshixixing/fortissimo/commit/44eb849ce97edccc116a556e8c4fc9c34be14508))
+
+
+
+# [v0.7.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.5...component/v0.7.0) (2022-12-15)
 
 
 ### Features
