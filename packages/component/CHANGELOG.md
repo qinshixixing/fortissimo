@@ -1,4 +1,13 @@
-## [0.7.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.0...component/0.7.1) (2022-12-15)
+## [0.7.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.1...component/0.7.2) (2022-12-15)
+
+
+### Features
+
+* **修复选择器问题:** 修复选择器问题 ([dcc327b](https://github.com/qinshixixing/fortissimo/commit/dcc327bb5bc0d69e9b52fde37a5bd06b45ec2b48))
+
+
+
+## [v0.7.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.0...component/v0.7.1) (2022-12-15)
 
 
 ### Features
