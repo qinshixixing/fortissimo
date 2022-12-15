@@ -1,4 +1,13 @@
-## [0.6.5](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.4...component/0.6.5) (2022-12-02)
+# [0.7.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.5...component/0.7.0) (2022-12-15)
+
+
+### Features
+
+* **优化组件逻辑:** 优化组件逻辑 ([b7e20aa](https://github.com/qinshixixing/fortissimo/commit/b7e20aa2d0b84e04252fcd540463f4395e6364d5))
+
+
+
+## [v0.6.5](https://github.com/qinshixixing/fortissimo/compare/component/v0.6.4...component/v0.6.5) (2022-12-02)
 
 
 ### Features
@@ -1067,12 +1076,20 @@
 
 
 
-## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/9327766b526596302ad0440a96b61db92dd2a09b...component/v0.1.1) (2022-03-11)
+## [v0.1.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.1.0...component/v0.1.1) (2022-03-11)
 
 
 ### Features
 
 * **修改readme.md:** 修改README.md ([fab8ec8](https://github.com/qinshixixing/fortissimo/commit/fab8ec8933c0889337843d4b0e498ab0ec7b8539))
+
+
+
+# [v0.1.0](https://github.com/qinshixixing/fortissimo/compare/9327766b526596302ad0440a96b61db92dd2a09b...component/v0.1.0) (2022-03-11)
+
+
+### Features
+
 * **初始化项目:** 初始化项目 ([9327766](https://github.com/qinshixixing/fortissimo/commit/9327766b526596302ad0440a96b61db92dd2a09b))
 
 
