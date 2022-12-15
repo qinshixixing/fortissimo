@@ -86,7 +86,7 @@ export const Item = forwardRef((props: SelectDataItemProps, ref) => {
             value,
             Array.isArray(item)
               ? item.map((item) => item.itemData)
-              : item.itemData
+              : item && item.itemData
           );
       }}
       onSearch={props.showSearch ? onSearch : undefined}

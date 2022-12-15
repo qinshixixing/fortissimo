@@ -76,3 +76,4 @@ export default function() {
 | Map.List           | 地图多个地点显示            | MapListProps           |
 | Map.Item           | 地图单个地点显示            | MapItemProps           |
 | Map.Line           | 地图轨迹显示              | MapLineProps           |
+| Map.Line           | 地图轨迹显示              | MapLineProps           |
