@@ -30,21 +30,22 @@ export function FileList(props: UploadListProps) {
 
   const value = useMemo<UploadFile[]>(
     () =>
-      (props.value || []).map((item, index) => {
+      (props.value || []).map((item: UploadData, index) => {
         if (typeof item === 'string')
           return { uid: item, name: item, url: item, status: 'done' };
+        const url = item.originFileObj ? getObjUrl(item.originFileObj) : '';
         return {
           ...item,
-          uid: item.uid || item.url || String(-index),
+          uid: item.uid || String(-index),
           name: item.name,
-          url: item.url,
+          url,
           status:
             !props.progress && item.status === 'uploading'
               ? 'done'
               : item.status
         };
       }),
-    [props.value, props.progress]
+    [props.value, props.progress, getObjUrl]
   );
 
   const onFileChange = useCallback(
