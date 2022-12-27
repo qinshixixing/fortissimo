@@ -78,42 +78,44 @@ export function Table(props: DataListTableProps) {
   const columns = useMemo<ColumnsType<DataListRowData>>(() => {
     const data: ColumnsType<DataListRowData> = [];
     if (props.msgList && props.msgList.length)
-      props.msgList.forEach((item) => {
-        data.push({
-          key: item.key,
-          dataIndex: item.key,
-          width:
-            (props.resizeable
-              ? resizeWidth[item.key] ||
-                (typeof item.width === 'number'
-                  ? item.width
-                  : props.resizeBaseWidth)
-              : item.width) || 'auto',
-          title: item.name,
-          ellipsis: Boolean(props.ellipsis),
-          onHeaderCell: props.resizeable
-            ? (
-                column:
-                  | ColumnGroupType<DataListRowData>
-                  | ColumnType<DataListRowData>
-              ) => ({
-                width: column.width,
-                onResize: (e: Event, { size }: any) => {
-                  setResizeWidth({
-                    ...resizeWidth,
-                    [item.key]: size.width
-                  });
-                }
-              })
-            : undefined,
-          render:
-            item.render ||
-            ((data) => {
-              return data || data === 0 ? data : emptyText;
-            }),
-          sorter: item.sort
+      props.msgList
+        .filter((item) => item)
+        .forEach((item) => {
+          data.push({
+            key: item.key,
+            dataIndex: item.key,
+            width:
+              (props.resizeable
+                ? resizeWidth[item.key] ||
+                  (typeof item.width === 'number'
+                    ? item.width
+                    : props.resizeBaseWidth)
+                : item.width) || 'auto',
+            title: item.name,
+            ellipsis: Boolean(props.ellipsis),
+            onHeaderCell: props.resizeable
+              ? (
+                  column:
+                    | ColumnGroupType<DataListRowData>
+                    | ColumnType<DataListRowData>
+                ) => ({
+                  width: column.width,
+                  onResize: (e: Event, { size }: any) => {
+                    setResizeWidth({
+                      ...resizeWidth,
+                      [item.key]: size.width
+                    });
+                  }
+                })
+              : undefined,
+            render:
+              item.render ||
+              ((data) => {
+                return data || data === 0 ? data : emptyText;
+              }),
+            sorter: item.sort
+          });
         });
-      });
     if (props.optList?.length)
       data.push({
         key: 'optItem',

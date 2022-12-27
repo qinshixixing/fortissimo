@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { getBrowserType } from '@fortissimo/util';
 import H5AudioPlayer from '@fortissimo-deps/react-h5-audio-player';
 
@@ -24,6 +24,16 @@ function checkNeedSource(url: string): boolean {
 }
 
 export function List(props: AudioListProps) {
+  const objUrlMap = useRef<Map<File, string>>(new Map());
+  const getObjUrl = useCallback((file: File) => {
+    let objUrl = objUrlMap.current.get(file);
+    if (!objUrl) {
+      objUrl = URL.createObjectURL(file);
+      objUrlMap.current.set(file, objUrl);
+    }
+    return objUrl;
+  }, []);
+
   // 是否有自定义空值
   const hasEmpty = useMemo(
     () => props.empty !== null && props.empty !== undefined,
@@ -35,12 +45,9 @@ export function List(props: AudioListProps) {
     const result: PlayerValue[] = [];
     data.forEach((item) => {
       if (!hasEmpty || Boolean(item)) {
-        const url =
-          typeof item === 'string'
-            ? item
-            : item.originFileObj
-            ? URL.createObjectURL(item.originFileObj)
-            : '';
+        let url = '';
+        if (typeof item === 'string') url = item;
+        else if (item.originFileObj) url = getObjUrl(item.originFileObj);
         result.push({
           url,
           needSource: typeof item === 'string' ? checkNeedSource(url) : false
@@ -51,7 +58,7 @@ export function List(props: AudioListProps) {
     if (hasEmpty) return result;
     if (!result.length) result.push({ url: '', needSource: false });
     return result;
-  }, [props.value, hasEmpty]);
+  }, [props.value, hasEmpty, getObjUrl]);
 
   return (
     <div>

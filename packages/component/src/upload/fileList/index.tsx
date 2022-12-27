@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Upload, Button, Image } from 'antd';
 import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
 import { downloadBlob } from '@fortissimo/util';
@@ -6,12 +6,23 @@ import { downloadBlob } from '@fortissimo/util';
 import type {
   UploadListConfig,
   UploadListValueConfig,
-  UploadFile
+  UploadFile,
+  UploadData
 } from '../index';
 
 export type UploadListProps = UploadListConfig & UploadListValueConfig;
 
 export function FileList(props: UploadListProps) {
+  const objUrlMap = useRef<Map<File, string>>(new Map());
+  const getObjUrl = useCallback((file: File) => {
+    let objUrl = objUrlMap.current.get(file);
+    if (!objUrl) {
+      objUrl = URL.createObjectURL(file);
+      objUrlMap.current.set(file, objUrl);
+    }
+    return objUrl;
+  }, []);
+
   const accept = useMemo(() => {
     if (!props.format) return '';
     return props.format.map((item) => `.${item}`).join(',');
@@ -37,10 +48,10 @@ export function FileList(props: UploadListProps) {
   );
 
   const onFileChange = useCallback(
-    (data: UploadFile[]) => {
+    (data: UploadData[]) => {
       if (!props.onChange) return;
-      const result: UploadFile[] = [];
-      (data || []).forEach((item) => {
+      const result: UploadData[] = [];
+      (data || []).forEach((item: UploadData) => {
         if (typeof item === 'string') result.push(item);
         else if (props.format) {
           const check = props.format.some((format) =>
@@ -60,16 +71,14 @@ export function FileList(props: UploadListProps) {
     async (file) => {
       if (!props.listType || props.listType === 'text') {
         let src = file.url;
-        if (!src) {
-          src = URL.createObjectURL(file.originFileObj);
-        }
+        if (!src) src = getObjUrl(file.originFileObj);
         downloadBlob({ url: src, filename: file.name });
       } else {
         const index = value.findIndex((item) => item.uid === file.uid);
         setImagePreviewIndex(index);
       }
     },
-    [value, props.listType]
+    [props.listType, getObjUrl, value]
   );
 
   return (
@@ -113,8 +122,7 @@ export function FileList(props: UploadListProps) {
           {value.map((item) => {
             let src = '';
             if (item.url) src = item.url;
-            else if (item.originFileObj)
-              src = URL.createObjectURL(item.originFileObj);
+            else if (item.originFileObj) src = getObjUrl(item.originFileObj);
             return <Image key={item.uid} src={src} />;
           })}
         </Image.PreviewGroup>

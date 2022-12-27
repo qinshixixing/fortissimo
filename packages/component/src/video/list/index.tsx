@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import Player from 'griffith';
 
 import type { VideoConfig, VideoValue } from '../index';
@@ -12,6 +12,16 @@ interface GriffithValue extends VideoValue {
 }
 
 export function List(props: VideoListProps) {
+  const objUrlMap = useRef<Map<File, string>>(new Map());
+  const getObjUrl = useCallback((file: File) => {
+    let objUrl = objUrlMap.current.get(file);
+    if (!objUrl) {
+      objUrl = URL.createObjectURL(file);
+      objUrlMap.current.set(file, objUrl);
+    }
+    return objUrl;
+  }, []);
+
   // 是否有自定义空值
   const hasEmpty = useMemo(
     () => props.empty !== null && props.empty !== undefined,
@@ -24,12 +34,9 @@ export function List(props: VideoListProps) {
     data.forEach((item) => {
       const urlData = item && item.url;
       if (!hasEmpty || Boolean(urlData)) {
-        const url =
-          typeof urlData === 'string'
-            ? urlData
-            : urlData.originFileObj
-            ? URL.createObjectURL(urlData.originFileObj)
-            : '';
+        let url = '';
+        if (typeof urlData === 'string') url = urlData;
+        else if (urlData.originFileObj) url = getObjUrl(urlData.originFileObj);
         result.push({
           ...(item || {}),
           url
@@ -40,7 +47,7 @@ export function List(props: VideoListProps) {
     if (hasEmpty) return result;
     if (!result.length) result.push({ url: '' });
     return result;
-  }, [props.value, hasEmpty]);
+  }, [props.value, hasEmpty, getObjUrl]);
 
   return (
     <div>
