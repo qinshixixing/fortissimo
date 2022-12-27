@@ -28,7 +28,7 @@ export function Avatar(props: PicAvatarProps) {
     return props.value.originFileObj
       ? getObjUrl(props.value.originFileObj)
       : '';
-  }, [props.value]);
+  }, [getObjUrl, props.value]);
 
   return !value && props.empty !== null && props.empty !== undefined ? (
     <>{props.empty}</>
