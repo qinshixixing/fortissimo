@@ -2,6 +2,11 @@ import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Upload, Button, Image } from 'antd';
 import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
 import { downloadBlob } from '@fortissimo/util';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import update from 'immutability-helper';
+
+import { DraggableUploadListItem } from './draggableUploadListItem';
 
 import type {
   UploadListConfig,
@@ -82,35 +87,72 @@ export function FileList(props: UploadListProps) {
     [props.listType, getObjUrl, value]
   );
 
+  const onMove = useCallback(
+    (dragIndex: number, hoverIndex: number) => {
+      const newValue = [...value];
+      const dragRow = newValue[dragIndex];
+      props.onChange &&
+        props.onChange(
+          update(newValue, {
+            $splice: [
+              [dragIndex, 1],
+              [hoverIndex, 0, dragRow]
+            ]
+          })
+        );
+    },
+    [props, value]
+  );
+
+  const uploadContent = (
+    <Upload
+      accept={accept}
+      multiple={props.multiple}
+      fileList={value}
+      maxCount={props.maxNum}
+      directory={props.directory}
+      listType={props.listType}
+      beforeUpload={() => {
+        return false;
+      }}
+      onPreview={previewFile}
+      onChange={(data) => {
+        onFileChange(data.fileList);
+      }}
+      itemRender={
+        props.draggable
+          ? (originNode, file, currFileList) => (
+              <DraggableUploadListItem
+                originNode={originNode}
+                file={file}
+                fileList={currFileList}
+                moveRow={onMove}
+              />
+            )
+          : undefined
+      }
+    >
+      {(props.selectAlways ||
+        typeof props.maxNum !== 'number' ||
+        props.maxNum > value.length) &&
+        (props.listType === 'picture-card' ? (
+          <div>
+            <PlusOutlined />
+            <div>{props.text || '上传'}</div>
+          </div>
+        ) : (
+          <Button icon={<UploadOutlined />}>{props.text || '上传'}</Button>
+        ))}
+    </Upload>
+  );
+
   return (
     <>
-      <Upload
-        accept={accept}
-        multiple={props.multiple}
-        fileList={value}
-        maxCount={props.maxNum}
-        directory={props.directory}
-        listType={props.listType}
-        beforeUpload={() => {
-          return false;
-        }}
-        onPreview={previewFile}
-        onChange={(data) => {
-          onFileChange(data.fileList);
-        }}
-      >
-        {(props.selectAlways ||
-          typeof props.maxNum !== 'number' ||
-          props.maxNum > value.length) &&
-          (props.listType === 'picture-card' ? (
-            <div>
-              <PlusOutlined />
-              <div>{props.text || '上传'}</div>
-            </div>
-          ) : (
-            <Button icon={<UploadOutlined />}>{props.text || '上传'}</Button>
-          ))}
-      </Upload>
+      {props.draggable ? (
+        <DndProvider backend={HTML5Backend}>{uploadContent}</DndProvider>
+      ) : (
+        uploadContent
+      )}
       <div style={{ display: 'none' }}>
         <Image.PreviewGroup
           preview={{

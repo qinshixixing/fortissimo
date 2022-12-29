@@ -27,6 +27,7 @@ export interface UploadValueConfig {
 export interface UploadListValueConfig {
   value?: UploadData[];
   onChange?: (data: UploadData[]) => void;
+  draggable?: boolean;
 }
 
 export { FileList } from './fileList';
