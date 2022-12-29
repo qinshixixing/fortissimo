@@ -38,7 +38,9 @@ export function FileList(props: UploadListProps) {
       (props.value || []).map((item: UploadData, index) => {
         if (typeof item === 'string')
           return { uid: item, name: item, url: item, status: 'done' };
-        const url = item.originFileObj ? getObjUrl(item.originFileObj) : '';
+        const url = item.originFileObj
+          ? getObjUrl(item.originFileObj)
+          : item.url;
         return {
           ...item,
           uid: item.uid || String(-index),
