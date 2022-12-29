@@ -96,9 +96,7 @@ export interface DataListProProps<
     params: DataListProGetDataParams<S, KeyType<T>>
   ) => Promise<DataListProGetDataRes<T>>;
   onExportData?: (params: Partial<S>) => Promise<void>;
-  onOpt?: (
-    params: DataListProOptParams<OPTK, Partial<T>>
-  ) => Promise<void> | void;
+  onOpt?: (params: DataListProOptParams<OPTK, T>) => Promise<void> | void;
 }
 
 export const DataListPro = forwardRef(function (
