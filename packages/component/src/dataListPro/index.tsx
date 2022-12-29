@@ -38,8 +38,10 @@ export interface DataListProOptParams<
   T extends RecordData = RecordData
 > {
   optKey: K;
-  rowKey: ValueType<T> | ValueType<T>[];
-  rowData?: Partial<T> | Partial<T>[];
+  rowKey?: ValueType<T>;
+  rowsKey: ValueType<T>[];
+  rowData?: Partial<T>;
+  rowsData: Partial<T>[];
 }
 
 export type DataListProMsgConfig<T extends RecordData = RecordData> =
@@ -269,8 +271,8 @@ export const DataListPro = forwardRef(function (
           onOpt={async (optKey) => {
             await opt({
               optKey,
-              rowKey: selectedValue,
-              rowData: selectedRows
+              rowsKey: selectedValue,
+              rowsData: selectedRows
             });
           }}
         />
@@ -309,7 +311,9 @@ export const DataListPro = forwardRef(function (
           await opt({
             optKey,
             rowKey,
-            rowData
+            rowsKey: [rowKey],
+            rowData,
+            rowsData: [rowData]
           });
         }}
       />
