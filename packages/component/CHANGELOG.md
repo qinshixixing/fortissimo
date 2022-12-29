@@ -1,4 +1,13 @@
-## [0.7.5-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.4...component/0.7.5-0) (2022-12-29)
+## [0.7.5-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.5-0...component/0.7.5-1) (2022-12-29)
+
+
+### Bug Fixes
+
+* **修复依赖问题:** 修复依赖问题 ([50325bd](https://github.com/qinshixixing/fortissimo/commit/50325bdf523d7eb08107ada9c8a2f818789721ec))
+
+
+
+## [v0.7.5-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.4...component/v0.7.5-0) (2022-12-29)
 
 
 ### Features
