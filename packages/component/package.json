@@ -31,7 +31,7 @@
     "@wangeditor/editor-for-react": "^1.0.2",
     "griffith": "^1.29.0",
     "immutability-helper": "^3.1.1",
-    "react-dnd": "^16.0.1",
+    "react-dnd": "^15.1.2",
     "react-dnd-html5-backend": "^16.0.1",
     "react-resizable": "^3.0.4"
   }
