@@ -1,4 +1,14 @@
-## [0.7.4](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.3...component/0.7.4) (2022-12-27)
+## [0.7.5-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.4...component/0.7.5-0) (2022-12-29)
+
+
+### Features
+
+* **优化代码:** 优化代码 ([2e3d83c](https://github.com/qinshixixing/fortissimo/commit/2e3d83ce4c31df100ffdbbb9b6fbac3e73f7b23c))
+* **增加上传拖动功能:** 增加上传拖动功能 ([f9a82c0](https://github.com/qinshixixing/fortissimo/commit/f9a82c067e8a022e1b0d05f0e1b1ca972ac7044d))
+
+
+
+## [v0.7.4](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.3...component/v0.7.4) (2022-12-27)
 
 
 ### Features
