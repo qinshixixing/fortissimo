@@ -39,7 +39,7 @@ export interface DataListProOptParams<
 > {
   optKey: K;
   rowKey: ValueType<T> | ValueType<T>[];
-  rowData?: T;
+  rowData?: T | T[];
 }
 
 export type DataListProMsgConfig<T extends RecordData = RecordData> =
@@ -267,7 +267,8 @@ export const DataListPro = forwardRef(function (
           onOpt={async (optKey) => {
             await opt({
               optKey,
-              rowKey: selectedValue
+              rowKey: selectedValue,
+              rowData: selectedRows
             });
           }}
         />
