@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useEffect
 } from 'react';
-import type { ForwardedRef } from 'react';
+import type { ForwardedRef, Key } from 'react';
 import { useMount } from '@fortissimo/hook';
 import { checkFormEmpty } from '@fortissimo/util';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
@@ -38,8 +38,8 @@ export interface DataListProOptParams<
   T extends RecordData = RecordData
 > {
   optKey: K;
-  rowKey?: ValueType<T>;
-  rowsKey: ValueType<T>[];
+  rowKey?: Key;
+  rowsKey: Key[];
   rowData?: T;
   rowsData: T[];
 }
@@ -73,7 +73,7 @@ export interface DataListProProps<
 > {
   msgs: DataListProMsgConfig<Partial<T>>[];
   rowKey: KeyType<T>;
-  disabledCheckedKey?: ValueType<T>;
+  disabledCheckedKey?: Key[];
   opts?: DataListProOptConfig<OPTK, T>[];
   optWidth?: number | string;
   search?: DataListProSearchConfig<S>[];

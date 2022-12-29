@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import type { ReactNode } from 'react';
+import type { ReactNode, Key } from 'react';
 import { Resizable } from 'react-resizable';
 import type { ResizableProps } from 'react-resizable';
 import { Table as AntTable } from 'antd';
@@ -43,7 +43,7 @@ export interface DataListTableProps<
   resizeable?: boolean;
   resizeBaseWidth?: number;
   selectedValue?: ValueType<T>[];
-  disabledSelectedValue?: ValueType<T>[];
+  disabledSelectedValue?: Key[];
   emptyText?: string;
   onSort?: (key: KeyType<T>, type: DataListTableSortType) => void;
   onSelect?: (rowKeys?: ValueType<T>[], rows?: T[]) => void;
