@@ -1,14 +1,11 @@
-import type { OperationItemConfig, RecordData } from '../index';
+import type { OperationItemConfig } from '../index';
 
-export type DataListOptConfig<
-  K extends string = string,
-  T extends RecordData = RecordData
-> = Omit<OperationItemConfig<K, T>, 'type' | 'data'>;
+export type DataListOptConfig<K extends string = string, T = any> = Omit<
+  OperationItemConfig<K, T>,
+  'type' | 'data'
+>;
 
-export interface DataListOptProps<
-  K extends string = string,
-  T extends RecordData = RecordData
-> {
+export interface DataListOptProps<K extends string = string, T = any> {
   list: DataListOptConfig<K, T>[];
   emptyText?: string;
   onOpt?: (key: K) => void;
