@@ -1,4 +1,13 @@
-## [0.7.11](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.10...component/0.7.11) (2022-12-29)
+## [0.7.12](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.11...component/0.7.12) (2023-01-02)
+
+
+### Bug Fixes
+
+* **修复类型错误:** 修复类型错误 ([7da01a1](https://github.com/qinshixixing/fortissimo/commit/7da01a1318eee08b93619a2892563823f6b7424d))
+
+
+
+## [v0.7.11](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.10...component/v0.7.11) (2022-12-29)
 
 
 ### Features
