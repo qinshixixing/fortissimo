@@ -1,4 +1,13 @@
-# [0.4.0](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.0-0...util/0.4.0) (2022-08-23)
+## [0.4.1](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.0...util/0.4.1) (2023-01-12)
+
+
+### Features
+
+* **下载文件错误处理:** 下载文件错误处理 ([76b26a6](https://github.com/qinshixixing/fortissimo/commit/76b26a6ccaf9c7ab6155d90d149371333f8d43d7))
+
+
+
+# [v0.4.0](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.0-0...util/v0.4.0) (2022-08-23)
 
 
 
