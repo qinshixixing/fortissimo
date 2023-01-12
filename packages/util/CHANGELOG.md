@@ -1,4 +1,13 @@
-## [0.4.1](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.0...util/0.4.1) (2023-01-12)
+## [0.4.2](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.1...util/0.4.2) (2023-01-12)
+
+
+### Features
+
+* **获取文件错误处理:** 获取文件错误处理 ([163c709](https://github.com/qinshixixing/fortissimo/commit/163c7093e202165e55450e381e705154793c2db3))
+
+
+
+## [v0.4.1](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.0...util/v0.4.1) (2023-01-12)
 
 
 ### Features
