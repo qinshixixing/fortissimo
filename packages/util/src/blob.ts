@@ -19,16 +19,18 @@ export function getBlob(url: string, token?: string): Promise<Blob> {
     xhr.onload = () => {
       if (xhr.status === 200) {
         resolve(xhr.response);
+      } else {
+        reject(xhr.response);
       }
     };
     xhr.onabort = () => {
-      reject();
+      reject(xhr.response);
     };
     xhr.ontimeout = () => {
-      reject();
+      reject(xhr.response);
     };
     xhr.onerror = () => {
-      reject();
+      reject(xhr.response);
     };
     xhr.send();
   });
