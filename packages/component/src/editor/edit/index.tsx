@@ -30,7 +30,7 @@ export interface EditorConfig {
   scroll?: boolean;
   imageFormat?: string[];
   videoFormat?: string[];
-  uploadFn?: (data: File, type: string) => Promise<string>;
+  uploadFn?: (data: File | Blob, type: string) => Promise<string>;
   uploadOnInsert?: boolean;
   currentLinkTarget?: boolean;
   excludeKeys?: string[];

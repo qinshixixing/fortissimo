@@ -8,7 +8,7 @@ declare global {
 export type ReadResult = string | ArrayBuffer | null;
 
 export function getBlob(url: string, token?: string): Promise<Blob> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
     xhr.open('GET', url, true);
@@ -20,6 +20,15 @@ export function getBlob(url: string, token?: string): Promise<Blob> {
       if (xhr.status === 200) {
         resolve(xhr.response);
       }
+    };
+    xhr.onabort = () => {
+      reject();
+    };
+    xhr.ontimeout = () => {
+      reject();
+    };
+    xhr.onerror = () => {
+      reject();
     };
     xhr.send();
   });
