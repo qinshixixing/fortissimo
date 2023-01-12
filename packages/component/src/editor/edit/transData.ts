@@ -4,7 +4,7 @@ import type { IDomEditor } from '@wangeditor/editor';
 export type EditorMediaInfo = Record<
   string,
   {
-    file: File;
+    file: File | Blob;
     type: string;
   }
 >;
@@ -12,7 +12,7 @@ export type EditorMediaInfo = Record<
 export interface EditorTransDataConfig {
   editor: IDomEditor;
   mediaInfo: EditorMediaInfo;
-  uploadFn?: (data: File, type: string) => Promise<string>;
+  uploadFn?: (data: File | Blob, type: string) => Promise<string>;
   currentLinkTarget?: boolean;
 }
 
