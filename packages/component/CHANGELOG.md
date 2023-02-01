@@ -1,4 +1,13 @@
-## [0.7.14-4](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.14-3...component/0.7.14-4) (2023-02-01)
+## [0.7.14](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.14-4...component/0.7.14) (2023-02-01)
+
+
+### Features
+
+* **修改图片样式:** 修改图片样式 ([d1833c4](https://github.com/qinshixixing/fortissimo/commit/d1833c430767a2dcee9cb01b49c7a5d7543fe14c))
+
+
+
+## [v0.7.14-4](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.14-3...component/v0.7.14-4) (2023-02-01)
 
 
 ### Features
