@@ -8,7 +8,13 @@
   height: @ft-pic-item-size;
   padding: 8px;
 
+  &:not(:last-of-type) {
+    margin-right: 8px;
+  }
+
   .ant-image-img {
     object-fit: contain;
+    max-height: 100%;
+    max-width: 100%;
   }
 }
