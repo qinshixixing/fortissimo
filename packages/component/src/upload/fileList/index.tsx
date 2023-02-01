@@ -123,15 +123,22 @@ export function FileList(props: UploadListProps) {
       }}
       itemRender={
         props.draggable
-          ? (originNode, file, currFileList) => (
-              <DraggableUploadListItem
-                originNode={originNode}
-                file={file}
-                fileList={currFileList}
-                moveRow={onMove}
-              />
-            )
-          : undefined
+          ? (originNode, file, currFileList, actions) => {
+              const node = props.itemRender ? (
+                <>{props.itemRender(originNode, file, currFileList, actions)}</>
+              ) : (
+                originNode
+              );
+              return (
+                <DraggableUploadListItem
+                  originNode={node}
+                  file={file}
+                  fileList={currFileList}
+                  moveRow={onMove}
+                />
+              );
+            }
+          : props.itemRender
       }
     >
       {(props.selectAlways ||

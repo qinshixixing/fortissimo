@@ -3,7 +3,7 @@ import type { UploadData } from '../index';
 
 export interface VideoValue {
   url: UploadData;
-  cover?: string;
+  cover?: UploadData;
   duration?: number | string;
   size?: number | string;
   width?: number | string;

@@ -114,7 +114,10 @@ export type {
   UploadProps,
   UploadListProps,
   UploadImageProps,
-  UploadImageListProps
+  UploadImageListProps,
+  UploadVideoConfig,
+  UploadVideoValueConfig,
+  UploadVideoProps
 } from './upload';
 
 export * as Pic from './pic';

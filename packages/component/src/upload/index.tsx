@@ -1,4 +1,5 @@
 import type { UploadFile } from 'antd/lib/upload/interface';
+import type { UploadProps } from 'antd';
 
 export { UploadFile };
 export type UploadData = UploadFile | string;
@@ -10,6 +11,7 @@ export interface UploadConfig {
   directory?: boolean;
   format?: string[];
   listType?: 'text' | 'picture' | 'picture-card';
+  itemRender?: UploadProps['itemRender'];
 }
 
 export interface UploadListConfig extends UploadConfig {
@@ -41,3 +43,10 @@ export type { UploadImageListConfig, UploadImageListProps } from './imageList';
 
 export { Image } from './image';
 export type { UploadImageConfig, UploadImageProps } from './image';
+
+export { Video } from './video';
+export type {
+  UploadVideoConfig,
+  UploadVideoValueConfig,
+  UploadVideoProps
+} from './video';

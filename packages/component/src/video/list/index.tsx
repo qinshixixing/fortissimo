@@ -9,6 +9,7 @@ export interface VideoListProps extends VideoConfig {
 
 interface GriffithValue extends VideoValue {
   url: string;
+  cover?: string;
 }
 
 export function List(props: VideoListProps) {
@@ -32,14 +33,23 @@ export function List(props: VideoListProps) {
     const data = props.value || [];
     const result: GriffithValue[] = [];
     data.forEach((item) => {
-      const urlData = item && item.url;
+      if (!item) return;
+      const urlData = item.url;
       if (!hasEmpty || Boolean(urlData)) {
         let url = '';
+        let cover = '';
         if (typeof urlData === 'string') url = urlData;
         else if (urlData.originFileObj) url = getObjUrl(urlData.originFileObj);
+        const coverUrlData = item.cover;
+        if (coverUrlData) {
+          if (typeof coverUrlData === 'string') cover = coverUrlData;
+          else if (coverUrlData.originFileObj)
+            cover = getObjUrl(coverUrlData.originFileObj);
+        }
         result.push({
           ...(item || {}),
-          url
+          url,
+          cover
         });
       }
     });
