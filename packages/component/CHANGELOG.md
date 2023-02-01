@@ -1,4 +1,13 @@
-## [0.7.13](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.12...component/0.7.13) (2023-01-12)
+## [0.7.14-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.13...component/0.7.14-0) (2023-02-01)
+
+
+### Features
+
+* **视频上传功能和视频展示优化:** 视频上传功能和视频展示优化 ([c49e0cc](https://github.com/qinshixixing/fortissimo/commit/c49e0cc47d6f9e3c112f5bcf0c0b91f5047c5510))
+
+
+
+## [v0.7.13](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.12...component/v0.7.13) (2023-01-12)
 
 
 ### Features
