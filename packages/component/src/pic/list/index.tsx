@@ -66,6 +66,7 @@ export function List(props: PicListProps) {
         ? value.map((item, index) => (
             <Image
               key={item || index}
+              className={'ft-pic-item ' + (imgConfig.className || '')}
               {...imgConfig}
               src={item}
               fallback={fallback}

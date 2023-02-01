@@ -1,10 +1,10 @@
 import React from 'react';
 import { DeleteOutlined } from '@ant-design/icons';
 import { getRandomString } from '@fortissimo/util';
-import { Item } from '../../video';
+import { Video as VideoC } from '../../index';
 
-import { FileList, UploadData } from '../index';
-import type { UploadConfig, UploadFormatKey } from '../index';
+import { File as FileC } from '../index';
+import type { UploadConfig, UploadFormatKey, UploadData } from '../index';
 import type { VideoValue } from '../../index';
 
 export type UploadVideoConfig = Omit<UploadConfig, UploadFormatKey>;
@@ -32,11 +32,7 @@ function getVideoCover(video: HTMLVideoElement): Promise<UploadData> {
             ...file,
             uid,
             size: blob.size,
-            originFileObj: {
-              uid,
-              lastModifiedDate: new Date(file.lastModified),
-              ...file
-            }
+            originFileObj: file as any
           });
         } else reject('');
       });
@@ -46,18 +42,21 @@ function getVideoCover(video: HTMLVideoElement): Promise<UploadData> {
 
 function getVideoInfo(file: File): Promise<VideoValue> {
   const videoEl = document.createElement('video');
+  const src = URL.createObjectURL(file);
+  videoEl.src = src;
   videoEl.preload = 'auto';
   return new Promise((resolve) => {
     videoEl.oncanplay = async () => {
       videoEl.width = videoEl.videoWidth;
       videoEl.height = videoEl.videoHeight;
+      const cover = await getVideoCover(videoEl);
       resolve({
-        url: URL.createObjectURL(file),
+        url: src,
         size: file.size,
         duration: videoEl.duration,
         width: videoEl.width,
         height: videoEl.height,
-        cover: await getVideoCover(videoEl)
+        cover
       });
     };
   });
@@ -65,45 +64,41 @@ function getVideoInfo(file: File): Promise<VideoValue> {
 
 export function Video(props: UploadVideoProps) {
   return (
-    <FileList
+    <FileC
       {...props}
-      maxNum={1}
-      multiple={false}
       format={['mp4']}
       itemRender={(originNode, file, currFileList, { remove }) => {
         return (
           <div className={'ft-upload-video-show'}>
-            <DeleteOutlined
+            <div
               className={'ft-upload-video-delete'}
               onClick={() => {
                 remove();
               }}
-            />
-            <Item value={props.value} />
+            >
+              <DeleteOutlined />
+            </div>
+            <VideoC.Item value={props.value} />
           </div>
         );
       }}
-      value={props.value ? [props.value.url] : []}
+      value={props.value && props.value.url}
       onChange={(data) => {
         if (!props.onChange) return;
-        if (!data || !data.length) props.onChange({ url: '' });
-        const video = data[0];
-        const info = {
-          ...props.value
-        };
-        if (typeof video !== 'string') {
-          const videoFile = video.originFileObj as File;
-          getVideoInfo(videoFile).then((data) => {
+        if (!data) props.onChange({ url: '' });
+        if (typeof data !== 'string') {
+          const videoFile = data.originFileObj as File;
+          getVideoInfo(videoFile).then((info) => {
             props.onChange &&
               props.onChange({
-                ...data,
-                url: video
+                ...info,
+                url: data
               });
           });
         } else
           props.onChange({
-            ...info,
-            url: video
+            ...props.value,
+            url: data
           });
       }}
     />
