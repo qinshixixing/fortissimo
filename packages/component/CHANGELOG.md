@@ -1,4 +1,13 @@
-## [0.7.14-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.13...component/0.7.14-0) (2023-02-01)
+## [0.7.14-1](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.14-0...component/0.7.14-1) (2023-02-01)
+
+
+### Features
+
+* **视频上传:** 视频上传 ([f8d1b26](https://github.com/qinshixixing/fortissimo/commit/f8d1b264c98b54676cde34aaa2efcd7bcb758b49))
+
+
+
+## [v0.7.14-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.13...component/v0.7.14-0) (2023-02-01)
 
 
 ### Features
