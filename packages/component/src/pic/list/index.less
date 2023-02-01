@@ -1,3 +1,14 @@
+@import '../../theme.less';
+
 .ft-pic-item {
-  border: 1px solid red;
+  border: 1px solid @ft-border-color;
+  border-radius: @ft-border-radius;
+  overflow: hidden;
+  width: @ft-pic-item-size;
+  height: @ft-pic-item-size;
+  padding: 8px;
+
+  .ant-image-img {
+    object-fit: contain;
+  }
 }
