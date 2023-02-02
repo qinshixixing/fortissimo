@@ -1,4 +1,13 @@
-## [0.7.14](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.14-4...component/0.7.14) (2023-02-01)
+## [0.7.15](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.14...component/0.7.15) (2023-02-02)
+
+
+### Features
+
+* **新增地图范围组件:** 新增地图范围组件 ([942bf28](https://github.com/qinshixixing/fortissimo/commit/942bf2861a5e1ccfc4f87f89628e9c375c0bc340))
+
+
+
+## [v0.7.14](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.14-4...component/v0.7.14) (2023-02-01)
 
 
 ### Features
