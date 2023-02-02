@@ -43,6 +43,7 @@ export default function() {
 | Upload.FileList    | 上传多个文件              | UploadListProps        |
 | Upload.Image       | 上传图片                | UploadImageProps       |
 | Upload.FileList    | 上传多个图片              | UploadImageListProps   |
+| Upload.Video       | 上传视频                | UploadVideoProps       |
 | Pic.Item           | 展示图片                | PicProps               |
 | Pic.List           | 展示多个图片              | PicListProps           |
 | Pic.Avatar         | 展示头像                | PicAvatarProps         |
@@ -76,4 +77,4 @@ export default function() {
 | Map.List           | 地图多个地点显示            | MapListProps           |
 | Map.Item           | 地图单个地点显示            | MapItemProps           |
 | Map.Line           | 地图轨迹显示              | MapLineProps           |
-| Map.Line           | 地图轨迹显示              | MapLineProps           |
+| Map.Circle         | 地图圆形范围显示            | MapCircleProps         |

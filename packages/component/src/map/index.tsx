@@ -46,3 +46,6 @@ export type { MapItemProps } from './item';
 
 export { Line } from './line';
 export type { MapLineProps } from './line';
+
+export { Circle } from './circle';
+export type { MapCircleValue, MapCircleProps } from './circle';

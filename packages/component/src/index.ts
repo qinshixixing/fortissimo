@@ -196,7 +196,9 @@ export type {
   MapPointConfig,
   MapItemProps,
   MapListProps,
-  MapLineProps
+  MapLineProps,
+  MapCircleValue,
+  MapCircleProps
 } from './map';
 
 export { Input } from './input';
