@@ -39,6 +39,7 @@ export interface OptBoxProProps<T extends RecordData = RecordData>
   disableOnEmpty?: boolean;
   spin?: boolean;
   hideOpts?: boolean;
+  hideCancel?: boolean;
 }
 
 export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
@@ -112,13 +113,14 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
       onOpt={async (optKey) => {
         await handleOpt(optKey as OptBoxDefaultOpt);
       }}
+      hideCloseIcon={props.hideCancel}
       okOpt={
         props.hideOpts || isShow
           ? null
           : { loading: loading, disabled: confirmDisabled }
       }
       cancelOpt={
-        props.hideOpts
+        props.hideOpts || props.hideCancel
           ? null
           : { disabled: loading, ...(isShow ? { name: '确定' } : {}) }
       }

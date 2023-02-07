@@ -16,6 +16,7 @@ export function Modal(props: OptBoxProps) {
 
   return (
     <AntModal
+      closable={!props.hideCloseIcon}
       closeIcon={
         <CloseOutlined
           className={

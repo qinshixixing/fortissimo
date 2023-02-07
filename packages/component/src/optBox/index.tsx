@@ -15,6 +15,7 @@ export interface OptBoxProps<K extends string = string> {
   destroyOnClose?: boolean;
   spin?: boolean;
   size?: OperationItemConfig['size'];
+  hideCloseIcon?: boolean;
 }
 
 export { Modal } from './modal';
