@@ -1,4 +1,13 @@
-## [0.7.15](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.14...component/0.7.15) (2023-02-02)
+## [0.7.16](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.15...component/0.7.16) (2023-02-07)
+
+
+### Features
+
+* **操作弹窗隐藏关闭操作:** 操作弹窗隐藏关闭操作 ([84c027c](https://github.com/qinshixixing/fortissimo/commit/84c027c4ecf77234fbac88c8ccfd410db6afc2c1))
+
+
+
+## [v0.7.15](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.14...component/v0.7.15) (2023-02-02)
 
 
 ### Features
