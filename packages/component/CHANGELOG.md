@@ -1,4 +1,13 @@
-## [0.7.16](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.15...component/0.7.16) (2023-02-07)
+## [0.7.17](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.16...component/0.7.17) (2023-02-08)
+
+
+### Features
+
+* **typeinput允许不选择类型:** typeInput允许不选择类型 ([aaea489](https://github.com/qinshixixing/fortissimo/commit/aaea489ba0c3b965fa670802e2faa53375097bda))
+
+
+
+## [v0.7.16](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.15...component/v0.7.16) (2023-02-07)
 
 
 ### Features
