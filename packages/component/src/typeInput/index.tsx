@@ -19,24 +19,31 @@ export interface TypeInputProps<T extends Key = Key> {
   onChange?: (value: TypeInputValue) => void;
   selectProps?: SelectProps<T, TypeListConfig>;
   inputProps?: InputProps;
+  needData?: boolean;
 }
 
 export function TypeInput(props: TypeInputProps) {
   const typeList = useMemo(() => props.typeList || [], [props.typeList]);
 
+  const needData = useMemo(() => {
+    if (typeof props.needData !== 'boolean') return true;
+    return props.needData;
+  }, [props.needData]);
+
   const value = useMemo<TypeInputValue>(
     () =>
       props.value || {
-        type: typeList.length ? typeList[0].key : '',
+        type: needData && typeList.length ? typeList[0].key : '',
         data: ''
       },
-    [props.value, typeList]
+    [needData, props.value, typeList]
   );
 
   return (
     <div className={'ft-type-input'}>
       <Select
         className={'ft-type-input-select'}
+        allowClear={!needData}
         {...props.selectProps}
         value={value.type}
         onChange={(value) => {
@@ -54,10 +61,11 @@ export function TypeInput(props: TypeInputProps) {
         ))}
       </Select>
       <Input
-        allowClear={true}
+        allowClear
         className={'ft-type-input-input'}
         {...props.inputProps}
         value={value.data}
+        disabled={!value.type}
         onChange={(e) => {
           props.onChange &&
             props.onChange({
