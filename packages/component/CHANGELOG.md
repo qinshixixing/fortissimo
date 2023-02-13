@@ -1,4 +1,13 @@
-## [0.7.17](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.16...component/0.7.17) (2023-02-08)
+## [0.7.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.17...component/0.7.18) (2023-02-13)
+
+
+### Features
+
+* **状态组件支持列表展示:** 状态组件支持列表展示 ([6c6007c](https://github.com/qinshixixing/fortissimo/commit/6c6007c329b5e27e7fbdcfc4084231105ac59176))
+
+
+
+## [v0.7.17](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.16...component/v0.7.17) (2023-02-08)
 
 
 ### Features
