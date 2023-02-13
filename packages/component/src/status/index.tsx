@@ -24,6 +24,12 @@ export interface ShowStatusProps<T extends Key = Key> {
   empty?: ReactNode;
 }
 
+export interface ShowStatusListProps<T extends Key = Key> {
+  value?: T[];
+  empty?: ReactNode;
+  split?: string;
+}
+
 export function status<T extends Key = Key>(config: StatusConfig<T>[]) {
   const data: Map<T, string> = new Map();
   const keys: T[] = [];
@@ -83,5 +89,15 @@ export function status<T extends Key = Key>(config: StatusConfig<T>[]) {
     return <>{getStatusText({ key: props.value, empty: props.empty })}</>;
   });
 
-  return { SelectStatus, SwitchStatus, ShowStatus };
+  const ShowStatusList = memo((props: ShowStatusListProps<T>) => {
+    return (
+      <>
+        {(props.value || [])
+          .map((item) => getStatusText({ key: item, empty: props.empty }))
+          .join(props.split || ',')}
+      </>
+    );
+  });
+
+  return { SelectStatus, SwitchStatus, ShowStatus, ShowStatusList };
 }

@@ -147,7 +147,9 @@ export { status } from './status';
 export type {
   StatusConfig,
   SelectStatusProps,
-  SwitchStatusProps
+  SwitchStatusProps,
+  ShowStatusProps,
+  ShowStatusListProps
 } from './status';
 
 export * as Editor from './editor';
