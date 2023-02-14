@@ -92,9 +92,11 @@ export function status<T extends Key = Key>(config: StatusConfig<T>[]) {
   const ShowStatusList = memo((props: ShowStatusListProps<T>) => {
     return (
       <>
-        {(props.value || [])
-          .map((item) => getStatusText({ key: item, empty: props.empty }))
-          .join(props.split || ',')}
+        {props.value
+          ? props.value
+              .map((item) => getStatusText({ key: item, empty: props.empty }))
+              .join(props.split || ',')
+          : props.empty || ''}
       </>
     );
   });
