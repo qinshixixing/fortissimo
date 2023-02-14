@@ -1,4 +1,13 @@
-## [0.7.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.17...component/0.7.18) (2023-02-13)
+## [0.7.19](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.18...component/0.7.19) (2023-02-14)
+
+
+### Features
+
+* **完善状态列表显示逻辑:** 完善状态列表显示逻辑 ([c5a2ce8](https://github.com/qinshixixing/fortissimo/commit/c5a2ce86669076c3e28d8c96e3ecab1cf2fb92b7))
+
+
+
+## [v0.7.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.17...component/v0.7.18) (2023-02-13)
 
 
 ### Features
