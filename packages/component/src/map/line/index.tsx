@@ -42,7 +42,7 @@ export function Line(props: MapLineProps) {
         height: props.height
       }}
     >
-      <Amap zoom={props.zoom || 15} center={first}>
+      <Amap zoom={props.zoom || 15} center={first} onComplete={props.onMapLoad}>
         {props.headerTip && (
           <div className={'ft-map-header'}>{props.headerTip}</div>
         )}

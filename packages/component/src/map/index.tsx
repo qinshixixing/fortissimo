@@ -30,6 +30,7 @@ export interface MapConfig {
   icon?: string;
   showText?: boolean;
   showTip?: boolean;
+  onMapLoad?: (map: AMap.Map_2) => void;
 }
 
 export interface MapPointConfig extends MapConfig {

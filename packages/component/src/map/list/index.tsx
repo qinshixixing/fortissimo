@@ -35,7 +35,11 @@ export function List(props: MapListProps) {
         height: props.height
       }}
     >
-      <Amap zoom={props.zoom || 15} center={firstCoordinate}>
+      <Amap
+        zoom={props.zoom || 15}
+        center={firstCoordinate}
+        onComplete={props.onMapLoad}
+      >
         {props.headerTip && (
           <div className={'ft-map-header'}>{props.headerTip}</div>
         )}

@@ -1,10 +1,4 @@
-import React, {
-  useMemo,
-  useImperativeHandle,
-  forwardRef,
-  useRef,
-  useState
-} from 'react';
+import React, { useMemo, useState } from 'react';
 import { Amap, Circle as AmapCircle, InfoWindow } from '@amap/amap-react';
 import type { MapConfig, MapValue } from '../index';
 
@@ -17,9 +11,7 @@ export interface MapCircleProps extends MapConfig {
   value?: MapCircleValue;
 }
 
-export const Circle = forwardRef((props: MapCircleProps, ref) => {
-  const map = useRef<AMap.Map>();
-
+export function Circle(props: MapCircleProps) {
   const center = useMemo(() => {
     if (!props.value) return undefined;
     const data = props.value.center;
@@ -36,10 +28,6 @@ export const Circle = forwardRef((props: MapCircleProps, ref) => {
 
   const [active, setActive] = useState(false);
 
-  useImperativeHandle(ref, () => ({
-    getMap: () => map.current
-  }));
-
   return (
     <div
       className={'ft-map'}
@@ -48,7 +36,11 @@ export const Circle = forwardRef((props: MapCircleProps, ref) => {
         height: props.height
       }}
     >
-      <Amap ref={map} zoom={props.zoom || 15} center={center}>
+      <Amap
+        zoom={props.zoom || 15}
+        center={center}
+        onComplete={props.onMapLoad}
+      >
         {props.headerTip && (
           <div className={'ft-map-header'}>{props.headerTip}</div>
         )}
@@ -75,4 +67,4 @@ export const Circle = forwardRef((props: MapCircleProps, ref) => {
       </Amap>
     </div>
   );
-});
+}
