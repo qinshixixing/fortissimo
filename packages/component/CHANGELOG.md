@@ -1,4 +1,13 @@
-## [0.7.19](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.18...component/0.7.19) (2023-02-14)
+## [0.7.20-0](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.19...component/0.7.20-0) (2023-02-16)
+
+
+### Features
+
+* **地图支持获取地图实例:** 地图支持获取地图实例 ([5bf26c9](https://github.com/qinshixixing/fortissimo/commit/5bf26c90c65cc331f0896d24f2f651c4ba8e2021))
+
+
+
+## [v0.7.19](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.18...component/v0.7.19) (2023-02-14)
 
 
 ### Features
