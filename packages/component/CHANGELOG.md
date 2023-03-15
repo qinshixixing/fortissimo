@@ -1,4 +1,13 @@
-## [0.7.20](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.20-0...component/0.7.20) (2023-02-16)
+## [0.7.21](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.20...component/0.7.21) (2023-03-15)
+
+
+### Features
+
+* **优化表格分页:** 优化表格分页 ([4a67b16](https://github.com/qinshixixing/fortissimo/commit/4a67b162482faa531c52d280bc0bb1810feba2c8))
+
+
+
+## [v0.7.20](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.20-0...component/v0.7.20) (2023-02-16)
 
 
 ### Features
