@@ -24,6 +24,9 @@ export function Page(props: DataListPageProps) {
     if (props.total > 10) data.push(20);
     if (props.total > 20) data.push(50);
     if (props.total > 50) data.push(100);
+    if (props.total > 100) data.push(200);
+    if (props.total > 200) data.push(500);
+    if (props.total > 500) data.push(1000);
     return data;
   }, [props.total, props.pageSizeOptions]);
 
@@ -45,15 +48,16 @@ export function Page(props: DataListPageProps) {
         `第${range[0]}条-第${range[1]}条  共${total}条`;
     return data;
   }, [
-    pageSizeOptions,
-    props.pageNo,
     props.total,
-    props.pageSize,
     props.hideSizeChanger,
     props.hideQuickJumper,
     props.hideOnSinglePage,
+    props.onChange,
+    props.size,
+    props.pageNo,
+    props.pageSize,
     props.hideTip,
-    props.onChange
+    pageSizeOptions
   ]);
 
   return <Pagination {...componentProps} />;
