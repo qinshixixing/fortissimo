@@ -34,10 +34,12 @@ export function status<T extends Key = Key>(config: StatusConfig<T>[]) {
   const data: Map<T, string> = new Map();
   const keys: T[] = [];
 
-  config.forEach((item) => {
-    keys.push(item.key);
-    data.set(item.key, item.text);
-  });
+  config
+    .filter((item) => item)
+    .forEach((item) => {
+      keys.push(item.key);
+      data.set(item.key, item.text);
+    });
 
   const getStatusText = (params: { key?: T; empty?: ReactNode }): ReactNode => {
     if (params.key === undefined || params.key === null)
