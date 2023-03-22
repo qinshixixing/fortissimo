@@ -88,8 +88,8 @@ export interface DataListProProps<
   hideSizeChanger?: boolean;
   autoHidePage?: boolean;
   size?: SizeType;
-  fixOpt?: boolean;
-  fixHeader?: boolean;
+  unFixOpt?: boolean;
+  unFixHeader?: boolean;
   fixedColumnWidth?: boolean;
   resizeBaseWidth?: number;
   emptyText?: string;
@@ -290,9 +290,9 @@ export const DataListPro = forwardRef(function (
         disabledSelectedValue={props.disabledCheckedKey}
         emptyText={props.emptyText}
         size={props.size}
-        sticky={props.fixHeader}
+        sticky={!props.unFixHeader}
         resizeable={!props.fixedColumnWidth}
-        fixOpt={props.fixOpt}
+        fixOpt={!props.unFixOpt}
         resizeBaseWidth={props.resizeBaseWidth || 150}
         onSelect={(keys, rows) => {
           setSelectedValue(keys || []);
