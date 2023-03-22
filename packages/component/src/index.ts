@@ -1,3 +1,12 @@
+import { OptFormProps } from './optForm';
+
+export interface GlobalConfig {
+  optFormColNum: OptFormProps['colNum'];
+}
+
+export const globalConfig: Partial<GlobalConfig> = {};
+export const globalDefaultConfig: Partial<GlobalConfig> = {};
+
 export type RecordData = Record<string, any>;
 export type KeyType<T extends RecordData> = Extract<keyof T, string>;
 export type ValueType<T extends RecordData> = T[KeyType<T>];

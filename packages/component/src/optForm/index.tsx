@@ -12,6 +12,7 @@ import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 
 import { DefaultShow } from './defaultShow';
 import type { RecordData, KeyType, ValueType } from '../index';
+import { globalConfig, globalDefaultConfig } from '../index';
 
 export interface OptFormFieldDetail<K extends string = string, V = any> {
   key: K;
@@ -82,7 +83,7 @@ export const OptForm = forwardRef(function (
     fields = [],
     fieldGroups = [],
     labelCol = 3,
-    colNum = 1,
+    colNum,
     mode,
     className,
     onValueChange,
@@ -91,6 +92,15 @@ export const OptForm = forwardRef(function (
   ref
 ) {
   const [formRef] = Form.useForm();
+
+  const realColNum = useMemo<number>(
+    () =>
+      globalConfig.optFormColNum ||
+      colNum ||
+      globalDefaultConfig.optFormColNum ||
+      1,
+    [colNum]
+  );
 
   const isShow = useMemo(() => mode === 'show', [mode]);
 
@@ -137,7 +147,7 @@ export const OptForm = forwardRef(function (
               className={'ft-opt-form-item' + (item.hide ? ' hide' : '')}
               key={item.key ? key : index}
               style={{
-                width: item.width || `${100 / colNum}%`
+                width: item.width || `${100 / realColNum}%`
               }}
             >
               <Form.Item
@@ -187,7 +197,7 @@ export const OptForm = forwardRef(function (
           );
         });
     },
-    [colNum, isShow, fieldItemContent, valuePropName]
+    [realColNum, isShow, fieldItemContent, valuePropName]
   );
 
   return (
