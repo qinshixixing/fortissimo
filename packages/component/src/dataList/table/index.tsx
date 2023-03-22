@@ -41,6 +41,7 @@ export interface DataListTableProps<
   size?: SizeType;
   sticky?: boolean;
   resizeable?: boolean;
+  fixOpt?: boolean;
   resizeBaseWidth?: number;
   selectedValue?: ValueType<T>[];
   disabledSelectedValue?: Key[];
@@ -120,6 +121,7 @@ export function Table(props: DataListTableProps) {
       data.push({
         key: 'optItem',
         dataIndex: 'optItem',
+        fixed: props.fixOpt ? 'right' : undefined,
         width:
           (props.resizeable
             ? props.optWidth || props.resizeBaseWidth

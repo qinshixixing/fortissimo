@@ -84,12 +84,13 @@ export interface DataListProProps<
   canSelect?: boolean;
   defaultSelectedValue?: ValueType<T>[];
   selectType?: 'checkbox' | 'radio';
-  resetPageNo?: boolean;
+  keepPageNo?: boolean;
   hideSizeChanger?: boolean;
   autoHidePage?: boolean;
   size?: SizeType;
-  sticky?: boolean;
-  resizeable?: boolean;
+  fixOpt?: boolean;
+  fixHeader?: boolean;
+  fixedColumnWidth?: boolean;
   resizeBaseWidth?: number;
   emptyText?: string;
   onGetData?: (
@@ -289,8 +290,9 @@ export const DataListPro = forwardRef(function (
         disabledSelectedValue={props.disabledCheckedKey}
         emptyText={props.emptyText}
         size={props.size}
-        sticky={props.sticky}
-        resizeable={props.resizeable}
+        sticky={props.fixHeader}
+        resizeable={!props.fixedColumnWidth}
+        fixOpt={props.fixOpt}
         resizeBaseWidth={props.resizeBaseWidth || 150}
         onSelect={(keys, rows) => {
           setSelectedValue(keys || []);
@@ -299,7 +301,7 @@ export const DataListPro = forwardRef(function (
         onSort={async (key, sort) => {
           setSortKey(key);
           setSortType(sort);
-          const pageNoData = props.resetPageNo ? 1 : pageNo;
+          const pageNoData = props.keepPageNo ? pageNo : 1;
           setPageNo(pageNoData);
           await getData({
             pageNo: pageNoData,
@@ -326,7 +328,7 @@ export const DataListPro = forwardRef(function (
         hideOnSinglePage={props.autoHidePage}
         onChange={async (newPageNo, newPageSize) => {
           let pageNoData = newPageNo;
-          if (newPageSize !== pageSize && props.resetPageNo) pageNoData = 1;
+          if (newPageSize !== pageSize && !props.keepPageNo) pageNoData = 1;
           setPageNo(pageNoData);
           setPageSize(newPageSize);
           await getData({
