@@ -47,8 +47,8 @@ export { mapToObj, objToMap } from './mapAndObj';
 
 export { detectIE, getIEVersion, getBrowserType } from './pcEnv';
 
-export { checkPhoneEnv } from './phoneEnv';
-export type { PhoneEnv } from './phoneEnv';
+export { checkEnv } from './checkEnv';
+export type { CheckEnv } from './checkEnv';
 
 export { transKey } from './transKey';
 export type { KeyConfig } from './transKey';
