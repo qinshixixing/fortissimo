@@ -16,10 +16,11 @@ export interface AdminLayoutProps<K extends string = string>
     Omit<LayoutAdminHeaderConfig<K>, 'onCollapsed' | 'menuList' | 'onOpt'> {
   headerMenuList?: LayoutAdminHeaderConfig['menuList'];
   onHeaderMenuOpt?: (optKey: K) => void;
+  defaultCollapsed?: boolean;
 }
 
 export function AdminLayout(props: AdminLayoutProps) {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(Boolean(props.defaultCollapsed));
 
   return (
     <AntLayout className={'ft-admin-layout'}>
