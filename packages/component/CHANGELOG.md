@@ -1,4 +1,13 @@
-## [0.7.23](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.22...component/0.7.23) (2023-03-22)
+## [0.7.24](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.23...component/0.7.24) (2023-03-22)
+
+
+### Features
+
+* **调整表格样式:** 调整表格样式 ([bab429a](https://github.com/qinshixixing/fortissimo/commit/bab429a5286ca678c939a1987fc082f6f61ccb35))
+
+
+
+## [v0.7.23](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.22...component/v0.7.23) (2023-03-22)
 
 
 ### Features
