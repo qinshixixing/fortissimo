@@ -1,4 +1,13 @@
-## [0.4.2](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.1...util/0.4.2) (2023-01-12)
+## [0.4.3](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.2...util/0.4.3) (2023-03-22)
+
+
+### Features
+
+* **增加检查环境逻辑:** 增加检查环境逻辑 ([73c8c31](https://github.com/qinshixixing/fortissimo/commit/73c8c316cd8cc919a46bee075590274ec11b9165))
+
+
+
+## [v0.4.2](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.1...util/v0.4.2) (2023-01-12)
 
 
 ### Features
