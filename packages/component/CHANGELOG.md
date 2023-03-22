@@ -1,4 +1,13 @@
-## [0.7.25](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.24...component/0.7.25) (2023-03-22)
+## [0.7.26](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.25...component/0.7.26) (2023-03-22)
+
+
+### Features
+
+* **增加全局变量:** 增加全局变量 ([db2b96d](https://github.com/qinshixixing/fortissimo/commit/db2b96d338860296e6a03b19303dc517bce7c7ff))
+
+
+
+## [v0.7.25](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.24...component/v0.7.25) (2023-03-22)
 
 
 ### Features
