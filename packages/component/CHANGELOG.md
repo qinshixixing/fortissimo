@@ -1,4 +1,13 @@
-## [0.7.24](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.23...component/0.7.24) (2023-03-22)
+## [0.7.25](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.24...component/0.7.25) (2023-03-22)
+
+
+### Features
+
+* **模版默认配置修改:** 模版默认配置修改 ([199d99a](https://github.com/qinshixixing/fortissimo/commit/199d99add4f88f0869ae76ce7ad984319408dff5))
+
+
+
+## [v0.7.24](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.23...component/v0.7.24) (2023-03-22)
 
 
 ### Features
