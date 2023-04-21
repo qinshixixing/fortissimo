@@ -1,4 +1,13 @@
-## [0.7.26](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.25...component/0.7.26) (2023-03-22)
+## [0.7.27](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.26...component/0.7.27) (2023-04-21)
+
+
+### Features
+
+* **新增optboxoro全局配置:** 新增optBoxOro全局配置 ([20ee325](https://github.com/qinshixixing/fortissimo/commit/20ee325bb125b971343b2c3866fb2329a36ef591))
+
+
+
+## [v0.7.26](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.25...component/v0.7.26) (2023-03-22)
 
 
 ### Features
