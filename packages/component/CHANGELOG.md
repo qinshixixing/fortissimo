@@ -1,4 +1,13 @@
-## [0.7.27](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.26...component/0.7.27) (2023-04-21)
+## [0.7.28](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.27...component/0.7.28) (2023-04-21)
+
+
+### Features
+
+* **新增全局配置:** 新增全局配置 ([7a15560](https://github.com/qinshixixing/fortissimo/commit/7a15560a5e2c5f2d5d11c0aa088eee7a52fd5d5e))
+
+
+
+## [v0.7.27](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.26...component/v0.7.27) (2023-04-21)
 
 
 ### Features
