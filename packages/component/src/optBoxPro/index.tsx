@@ -10,7 +10,7 @@ import React, {
 import type { ReactNode } from 'react';
 import { checkFormEmpty } from '@fortissimo/util';
 
-import { OptForm, OptBox } from '../index';
+import { OptForm, OptBox, globalDefaultConfig, globalConfig } from '../index';
 import type {
   OptFormProps,
   OptBoxProps,
@@ -102,7 +102,16 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
     []
   );
 
-  const Box = props.type === 'drawer' ? OptBox.Drawer : OptBox.Modal;
+  const realType = useMemo<OptBoxProType>(
+    () =>
+      globalConfig.optBoxProType ||
+      props.type ||
+      globalDefaultConfig.optBoxProType ||
+      'modal',
+    [props.type]
+  );
+
+  const Box = realType === 'drawer' ? OptBox.Drawer : OptBox.Modal;
 
   return (
     <Box
