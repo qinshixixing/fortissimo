@@ -102,6 +102,15 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
     []
   );
 
+  const width = useMemo(
+    () =>
+      globalConfig.optBoxProWidth ||
+      props.width ||
+      globalDefaultConfig.optBoxProWidth ||
+      500,
+    [props.width]
+  );
+
   const realType = useMemo<OptBoxProType>(
     () =>
       globalConfig.optBoxProType ||
@@ -118,7 +127,7 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
       show={props.show}
       destroyOnClose
       title={props.title}
-      width={props.width || 500}
+      width={width}
       onOpt={async (optKey) => {
         await handleOpt(optKey as OptBoxDefaultOpt);
       }}

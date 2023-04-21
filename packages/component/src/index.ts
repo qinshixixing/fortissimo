@@ -1,9 +1,10 @@
 import { OptFormProps } from './optForm';
-import { OptBoxProType } from './optBoxPro';
+import { OptBoxProProps } from './optBoxPro';
 
 export interface GlobalConfig {
   optFormColNum: OptFormProps['colNum'];
-  optBoxProType: OptBoxProType;
+  optBoxProType: OptBoxProProps['type'];
+  optBoxProWidth: OptBoxProProps['width'];
 }
 
 export const globalConfig: Partial<GlobalConfig> = {};
