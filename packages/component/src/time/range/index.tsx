@@ -9,6 +9,7 @@ import { useTimeConfig } from '../util';
 export interface TimeRangeProps extends TimeConfig {
   value?: RangePickerProps['value'];
   onChange?: (data: RangePickerProps['value']) => void;
+  ranges?: RangePickerProps['ranges'];
 }
 
 export function Range(props: TimeRangeProps) {
@@ -39,6 +40,7 @@ export function Range(props: TimeRangeProps) {
   return (
     <DatePicker.RangePicker
       {...options}
+      ranges={props.ranges}
       value={props.value}
       onChange={(data) => {
         valueChange(data);
