@@ -1,4 +1,13 @@
-## [0.7.28](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.27...component/0.7.28) (2023-04-21)
+# [0.8.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.28...component/0.8.0) (2023-09-20)
+
+
+### Features
+
+* **添加时间组件特性:** 添加时间组件特性 ([e567778](https://github.com/qinshixixing/fortissimo/commit/e567778a66c7aabe2e52fcec78ec3732f5efc40e))
+
+
+
+## [v0.7.28](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.27...component/v0.7.28) (2023-04-21)
 
 
 ### Features
