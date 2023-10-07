@@ -1,4 +1,13 @@
-# [0.8.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.28...component/0.8.0) (2023-09-20)
+# [0.9.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.8.0...component/0.9.0) (2023-10-07)
+
+
+### Features
+
+* **支持回车搜索:** 支持回车搜索 ([75f346c](https://github.com/qinshixixing/fortissimo/commit/75f346c50d66d237ce81bc7b927dddebf554254e))
+
+
+
+# [v0.8.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.7.28...component/v0.8.0) (2023-09-20)
 
 
 ### Features
