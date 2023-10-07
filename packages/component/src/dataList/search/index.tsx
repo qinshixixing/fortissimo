@@ -112,7 +112,12 @@ export const Search = forwardRef(function (props: DataListSearchProps, ref) {
   }, [opts, props.fields, props.inlineOpt]);
 
   return (
-    <div className={'ft-data-list-search'}>
+    <div
+      className={'ft-data-list-search'}
+      onKeyUp={(data) => {
+        if (data.key === 'Enter' || data.code === 'Enter') handleOpt('search');
+      }}
+    >
       <OptForm
         ref={formRef}
         mode={'edit'}
