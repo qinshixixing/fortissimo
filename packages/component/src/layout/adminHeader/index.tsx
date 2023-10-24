@@ -18,6 +18,7 @@ export interface LayoutAdminHeaderConfig<K extends string = string> {
   userName: string;
   canCollapsed?: boolean;
   onCollapsed?: () => void;
+  centerContent?: React.ReactNode;
 }
 
 export interface LayoutAdminHeaderProps<K extends string = string>
@@ -89,6 +90,7 @@ export function AdminHeader(props: LayoutAdminHeaderProps) {
           />
         )}
       </div>
+      {!!props.centerContent && <div>{props.centerContent}</div>}
       <div className={'ft-layout-admin-header-side-box'}>
         {props.menuList && props.menuList.length > 0 ? (
           <Dropdown
