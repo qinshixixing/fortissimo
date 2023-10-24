@@ -1,6 +1,6 @@
 import React from 'react';
-import { Avatar, Button, Dropdown, Menu, Layout, Image } from 'antd';
-import { MenuOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Button, Dropdown, Menu, Layout, Image, Badge } from 'antd';
+import { MenuOutlined, UserOutlined, BellOutlined } from '@ant-design/icons';
 
 import type { LayoutCollapsedConfig } from '../index';
 
@@ -19,6 +19,9 @@ export interface LayoutAdminHeaderConfig<K extends string = string> {
   canCollapsed?: boolean;
   onCollapsed?: () => void;
   centerContent?: React.ReactNode;
+  showMessage?: boolean;
+  messageNum?: number;
+  onMessageDetail?: () => void;
 }
 
 export interface LayoutAdminHeaderProps<K extends string = string>
@@ -92,6 +95,16 @@ export function AdminHeader(props: LayoutAdminHeaderProps) {
       </div>
       {!!props.centerContent && props.centerContent}
       <div className={'ft-layout-admin-header-side-box'}>
+        {props.showMessage && (
+          <Badge count={props.messageNum || 0} size={'small'}>
+            <BellOutlined
+              className={'ft-layout-admin-header-message'}
+              onClick={() => {
+                props.onMessageDetail && props.onMessageDetail();
+              }}
+            />
+          </Badge>
+        )}
         {props.menuList && props.menuList.length > 0 ? (
           <Dropdown
             overlay={menu}

@@ -39,6 +39,9 @@ export function AdminLayout(props: AdminLayoutProps) {
           setCollapsed(!collapsed);
         }}
         centerContent={props.centerContent}
+        showMessage={props.showMessage}
+        messageNum={props.messageNum}
+        onMessageDetail={props.onMessageDetail}
       />
       <AntLayout>
         <Layout.Sidebar
