@@ -1,4 +1,13 @@
-## [0.10.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.10.0...component/0.10.1) (2023-10-24)
+## [0.10.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.10.1...component/0.10.2) (2023-10-24)
+
+
+### Features
+
+* **修改头部特性:** 修改头部特性 ([c1ee053](https://github.com/qinshixixing/fortissimo/commit/c1ee05346511c1b931f53792ca2d08e393320dc2))
+
+
+
+## [v0.10.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.10.0...component/v0.10.1) (2023-10-24)
 
 
 ### Features
