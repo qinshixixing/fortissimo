@@ -38,6 +38,7 @@ export function AdminLayout(props: AdminLayoutProps) {
         onCollapsed={() => {
           setCollapsed(!collapsed);
         }}
+        centerContent={props.centerContent}
       />
       <AntLayout>
         <Layout.Sidebar
