@@ -96,7 +96,7 @@ export function AdminHeader(props: LayoutAdminHeaderProps) {
       {!!props.centerContent && props.centerContent}
       <div className={'ft-layout-admin-header-side-box'}>
         {props.showMessage && (
-          <Badge count={props.messageNum || 0} size={'small'}>
+          <Badge count={props.messageNum || 0} size={'small'} offset={[10, 0]}>
             <BellOutlined
               className={'ft-layout-admin-header-message'}
               onClick={() => {
