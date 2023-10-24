@@ -90,7 +90,7 @@ export function AdminHeader(props: LayoutAdminHeaderProps) {
           />
         )}
       </div>
-      {!!props.centerContent && <div>{props.centerContent}</div>}
+      {!!props.centerContent && props.centerContent}
       <div className={'ft-layout-admin-header-side-box'}>
         {props.menuList && props.menuList.length > 0 ? (
           <Dropdown
