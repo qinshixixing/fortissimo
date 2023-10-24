@@ -107,6 +107,7 @@ export function AdminHeader(props: LayoutAdminHeaderProps) {
         )}
         {props.menuList && props.menuList.length > 0 ? (
           <Dropdown
+            className={'ft-layout-admin-header-menu'}
             overlay={menu}
             placement='bottom'
             arrow={{ pointAtCenter: true }}
