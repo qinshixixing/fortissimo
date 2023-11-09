@@ -23,7 +23,7 @@ export type OptBoxProType = 'modal' | 'drawer';
 
 type OptBoxProFormProps<T extends RecordData = RecordData> = Pick<
   OptFormProps<T>,
-  'mode' | 'labelCol' | 'colNum' | 'fields' | 'fieldGroups' | 'size'
+  'mode' | 'labelCol' | 'colNum' | 'fields' | 'fieldGroups' | 'size' | 'layout'
 >;
 type OptBoxProBoxProps = Pick<OptBoxProps, 'show' | 'width' | 'title'>;
 
@@ -154,6 +154,7 @@ export const OptBoxPro = forwardRef(function (props: OptBoxProProps, ref) {
           fields={props.fields}
           fieldGroups={props.fieldGroups}
           size={props.size}
+          layout={props.layout}
           onValueChange={(data) => {
             if (!props.disableOnEmpty) return;
             setConfirmDisabled(checkFormEmpty(data));

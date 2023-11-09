@@ -5,7 +5,7 @@ import React, {
   useMemo
 } from 'react';
 import type { ReactNode } from 'react';
-import { Form } from 'antd';
+import { Form, FormProps } from 'antd';
 import type { FormInstance } from 'antd';
 import { trimString, checkFormItemEmpty } from '@fortissimo/util';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
@@ -68,6 +68,7 @@ export interface OptFormProps<T extends RecordData = RecordData> {
   mode: OptFormMode;
   onValueChange?: (data: Partial<T>) => void;
   size?: SizeType;
+  layout?: FormProps['layout'];
 }
 
 export interface OptFormMethods<T extends RecordData = RecordData> {
@@ -87,7 +88,8 @@ export const OptForm = forwardRef(function (
     mode,
     className,
     onValueChange,
-    size
+    size,
+    layout
   }: OptFormProps,
   ref
 ) {
@@ -202,6 +204,7 @@ export const OptForm = forwardRef(function (
 
   return (
     <Form
+      layout={layout}
       className={className}
       form={formRef}
       labelWrap
