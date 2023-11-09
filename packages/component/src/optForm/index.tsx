@@ -69,6 +69,7 @@ export interface OptFormProps<T extends RecordData = RecordData> {
   onValueChange?: (data: Partial<T>) => void;
   size?: SizeType;
   layout?: FormProps['layout'];
+  requiredMark?: FormProps['requiredMark'];
 }
 
 export interface OptFormMethods<T extends RecordData = RecordData> {
@@ -89,7 +90,8 @@ export const OptForm = forwardRef(function (
     className,
     onValueChange,
     size,
-    layout
+    layout,
+    requiredMark
   }: OptFormProps,
   ref
 ) {
@@ -205,6 +207,7 @@ export const OptForm = forwardRef(function (
   return (
     <Form
       layout={layout}
+      requiredMark={requiredMark}
       className={className}
       form={formRef}
       labelWrap
