@@ -159,12 +159,12 @@ export const OptForm = forwardRef(function (
                 label={item.name || ''}
                 hidden={item.hide}
                 labelCol={
-                  typeof item.labelCol === 'number'
+                  layout !== 'vertical' && typeof item.labelCol === 'number'
                     ? { span: item.labelCol }
                     : undefined
                 }
                 wrapperCol={
-                  typeof item.labelCol === 'number'
+                  layout !== 'vertical' && typeof item.labelCol === 'number'
                     ? { span: 24 - item.labelCol }
                     : undefined
                 }
@@ -201,7 +201,7 @@ export const OptForm = forwardRef(function (
           );
         });
     },
-    [realColNum, isShow, fieldItemContent, valuePropName]
+    [realColNum, layout, isShow, valuePropName, fieldItemContent]
   );
 
   return (
@@ -212,9 +212,15 @@ export const OptForm = forwardRef(function (
       form={formRef}
       labelWrap
       size={size}
-      labelCol={typeof labelCol === 'number' ? { span: labelCol } : undefined}
+      labelCol={
+        layout !== 'vertical' && typeof labelCol === 'number'
+          ? { span: labelCol }
+          : undefined
+      }
       wrapperCol={
-        typeof labelCol === 'number' ? { span: 24 - labelCol } : undefined
+        layout !== 'vertical' && typeof labelCol === 'number'
+          ? { span: 24 - labelCol }
+          : undefined
       }
       preserve={false}
       onValuesChange={(changedValues, values) => {
