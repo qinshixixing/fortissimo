@@ -1,4 +1,13 @@
-# [0.13.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.12.0...component/0.13.0) (2023-11-09)
+## [0.13.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.0...component/0.13.1) (2023-12-11)
+
+
+### Features
+
+* **增加组件:** 增加DataListProLocal和DataListProAll组件 ([17c57fa](https://github.com/qinshixixing/fortissimo/commit/17c57fa3058cb361ea35b7e785812c91e898983b))
+
+
+
+# [v0.13.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.12.0...component/v0.13.0) (2023-11-09)
 
 
 ### Features
