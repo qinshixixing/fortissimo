@@ -11,7 +11,7 @@ import { useMount } from '@fortissimo/hook';
 import { checkFormEmpty } from '@fortissimo/util';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 
-import { DataList } from '../index';
+import { DataList, DataListTableProps } from '../index';
 import type {
   DataListTableMsg,
   DataListOptConfig,
@@ -86,6 +86,7 @@ export interface DataListProAllProps<
   onOpt?: (
     params: DataListProAllOptParams<OPTK, Partial<T>>
   ) => Promise<void> | void;
+  onExpand?: DataListTableProps['onExpand'];
 }
 
 export const DataListProAll = forwardRef(function (
@@ -267,6 +268,7 @@ export const DataListProAll = forwardRef(function (
             rowsData: [rowData]
           });
         }}
+        onExpand={props.onExpand}
       />
     </>
   );

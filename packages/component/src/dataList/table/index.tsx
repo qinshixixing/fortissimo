@@ -6,7 +6,8 @@ import { Table as AntTable } from 'antd';
 import type {
   ColumnsType,
   ColumnType,
-  ColumnGroupType
+  ColumnGroupType,
+  ExpandableConfig
 } from 'antd/lib/table/interface';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 
@@ -49,6 +50,7 @@ export interface DataListTableProps<
   onSort?: (key: KeyType<T>, type: DataListTableSortType) => void;
   onSelect?: (rowKeys?: ValueType<T>[], rows?: T[]) => void;
   onOpt?: (optKey: OPTK, rowKey: ValueType<T>, rowData: T) => void;
+  onExpand?: ExpandableConfig<T>['onExpand'];
 }
 
 function ResizeableTitle(props: ResizableProps) {
@@ -184,6 +186,9 @@ export function Table(props: DataListTableProps) {
           props.onSort &&
             props.onSort(info.columnKey as string, info.order || 'none');
         }
+      }}
+      expandable={{
+        onExpand: props.onExpand
       }}
     />
   );
