@@ -1,4 +1,13 @@
-## [0.13.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.0...component/0.13.1) (2023-12-11)
+## [0.13.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.1...component/0.13.2) (2023-12-12)
+
+
+### Features
+
+* **扩展表格功能:** 增加onExpand功能 ([b9ab838](https://github.com/qinshixixing/fortissimo/commit/b9ab8382d9e46fc5ee3ae6c964981e7bc7c741d8))
+
+
+
+## [v0.13.1](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.0...component/v0.13.1) (2023-12-11)
 
 
 ### Features
