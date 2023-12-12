@@ -11,7 +11,7 @@ import { useMount } from '@fortissimo/hook';
 import { checkFormEmpty } from '@fortissimo/util';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 
-import { DataList, DataListTableProps } from '../index';
+import { DataList } from '../index';
 import type {
   DataListTableMsg,
   DataListOptConfig,
@@ -89,7 +89,7 @@ export interface DataListProLocalProps<
   onOpt?: (
     params: DataListProLocalOptParams<OPTK, Partial<T>>
   ) => Promise<void> | void;
-  onExpand?: DataListTableProps['onExpand'];
+  onExpandData?: (params: Partial<T>) => Promise<Partial<T>[]>;
 }
 
 export const DataListProLocal = forwardRef(function (
@@ -286,7 +286,13 @@ export const DataListProLocal = forwardRef(function (
             rowsData: [rowData]
           });
         }}
-        onExpand={props.onExpand}
+        onExpand={async (open, item) => {
+          if (!props.onExpandData) return;
+          if (!open) return;
+          if (item.children?.length > 0) return;
+          item.children = await props.onExpandData(item);
+          setData([...data]);
+        }}
       />
       <DataList.Page
         pageNo={pageNo}
