@@ -1,4 +1,13 @@
-## [0.13.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.1...component/0.13.2) (2023-12-12)
+## [0.13.3](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.2...component/0.13.3) (2023-12-12)
+
+
+### Features
+
+* **优化表格扩展功能:** 增加表格onExpandData属性 ([8c9e85e](https://github.com/qinshixixing/fortissimo/commit/8c9e85ecc7c403d410a9459c344c2ae12542fbc1))
+
+
+
+## [v0.13.2](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.1...component/v0.13.2) (2023-12-12)
 
 
 ### Features
