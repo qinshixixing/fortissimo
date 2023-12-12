@@ -21,6 +21,7 @@ import type {
   KeyType,
   ValueType
 } from '../index';
+import { getChildData } from '../dataList/table';
 
 export type DataListProLocalOptPosition = 'header' | 'row' | 'both';
 
@@ -90,12 +91,14 @@ export interface DataListProLocalProps<
     params: DataListProLocalOptParams<OPTK, Partial<T>>
   ) => Promise<void> | void;
   onExpandData?: (params: Partial<T>) => Promise<Partial<T>[]>;
+  keepChildren?: boolean;
 }
 
 export const DataListProLocal = forwardRef(function (
   props: DataListProLocalProps,
   ref: ForwardedRef<unknown>
 ) {
+  const rowKey = useMemo(() => props.rowKey || 'id', [props.rowKey]);
   const [pageNo, setPageNo] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [total, setTotal] = useState(0);
@@ -145,17 +148,40 @@ export const DataListProLocal = forwardRef(function (
       setSelectedValue([]);
       setSelectedRows([]);
       if (!props.onGetData) return;
-      const data: DataListProLocalGetDataParams = params || searchData;
-      const res = await props.onGetData(data);
+      const res = await props.onGetData(params || searchData);
       const maxPageNo = Math.ceil(res.length / pageSize);
       if (maxPageNo > 0 && maxPageNo < pageNo) {
         setPageNo(maxPageNo);
       } else {
         setTotal(res.length);
+        if (props.keepChildren) {
+          res.forEach((item) => {
+            const originData = data.find((i) => i[rowKey] === item[rowKey]);
+            if (originData) item.children = originData.children;
+          });
+        }
         setData(res);
       }
     },
-    [pageNo, pageSize, searchData, props]
+    [props, searchData, pageSize, pageNo, data, rowKey]
+  );
+
+  // itemData为data中一项
+  const getChild = useCallback(
+    async (itemData: RecordData) => {
+      if (!props.onExpandData) return;
+      const res = await props.onExpandData(itemData);
+      if (props.keepChildren)
+        res.forEach((item) => {
+          const originData = (itemData.children || []).find(
+            (i: RecordData) => i[rowKey] === item[rowKey]
+          );
+          if (originData) item.children = originData.children;
+        });
+      itemData.children = res;
+      setData([...data]);
+    },
+    [data, props, rowKey]
   );
 
   const [exportLoading, setExportLoading] = useState(false);
@@ -188,6 +214,12 @@ export const DataListProLocal = forwardRef(function (
 
   useImperativeHandle(ref, () => ({
     getData,
+    getChildData: async (id: React.Key) => {
+      if (!props.onExpandData) return;
+      const item = getChildData(id, data);
+      if (!item) return;
+      await getChild(item);
+    },
     opt,
     getSelectedValue: () => selectedValue,
     getSelectedRows: () => selectedRows,
@@ -260,7 +292,7 @@ export const DataListProLocal = forwardRef(function (
       <DataList.Table
         data={showData}
         msgList={props.msgs}
-        rowKey={props.rowKey}
+        rowKey={rowKey}
         optList={opts.row}
         optWidth={props.optWidth}
         canSelect={props.canSelect}
@@ -290,8 +322,7 @@ export const DataListProLocal = forwardRef(function (
           if (!props.onExpandData) return;
           if (!open) return;
           if (item.children?.length > 0) return;
-          item.children = await props.onExpandData(item);
-          setData([...data]);
+          await getChild(item);
         }}
       />
       <DataList.Page
