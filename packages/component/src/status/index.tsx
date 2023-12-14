@@ -79,6 +79,7 @@ export function status<T extends Key = Key>(config: StatusConfig<T>[]) {
 
     return (
       <Switch
+        {...props}
         checked={props.value === enableKey}
         onChange={(check) => {
           props.onChange && props.onChange(check ? enableKey : disableKey);
