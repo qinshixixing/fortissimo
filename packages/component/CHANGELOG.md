@@ -1,4 +1,13 @@
-## [0.13.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.6...component/0.13.7) (2023-12-15)
+## [0.13.8](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.7...component/0.13.8) (2023-12-15)
+
+
+### Features
+
+* **优化表格逻辑:** 优化表格逻辑 ([b79bc24](https://github.com/qinshixixing/fortissimo/commit/b79bc247d2f445730454c2ae0466bb9dda56f915))
+
+
+
+## [v0.13.7](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.6...component/v0.13.7) (2023-12-15)
 
 
 ### Features
