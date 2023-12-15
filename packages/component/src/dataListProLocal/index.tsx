@@ -21,7 +21,6 @@ import type {
   KeyType,
   ValueType
 } from '../index';
-import { getChildData } from '../dataList/table';
 
 export type DataListProLocalOptPosition = 'header' | 'row' | 'both';
 
@@ -91,7 +90,6 @@ export interface DataListProLocalProps<
     params: DataListProLocalOptParams<OPTK, Partial<T>>
   ) => Promise<void> | void;
   onExpandData?: (params: Partial<T>) => Promise<Partial<T>[]>;
-  keepChildren?: boolean;
 }
 
 export const DataListProLocal = forwardRef(function (
@@ -154,34 +152,10 @@ export const DataListProLocal = forwardRef(function (
         setPageNo(maxPageNo);
       } else {
         setTotal(res.length);
-        if (props.keepChildren) {
-          res.forEach((item) => {
-            const originData = data.find((i) => i[rowKey] === item[rowKey]);
-            if (originData) item.children = originData.children;
-          });
-        }
         setData(res);
       }
     },
-    [props, searchData, pageSize, pageNo, data, rowKey]
-  );
-
-  // itemData为data中一项
-  const getChild = useCallback(
-    async (itemData: RecordData) => {
-      if (!props.onExpandData) return;
-      const res = await props.onExpandData(itemData);
-      if (props.keepChildren)
-        res.forEach((item) => {
-          const originData = (itemData.children || []).find(
-            (i: RecordData) => i[rowKey] === item[rowKey]
-          );
-          if (originData) item.children = originData.children;
-        });
-      itemData.children = res;
-      setData([...data]);
-    },
-    [data, props, rowKey]
+    [props, searchData, pageSize, pageNo]
   );
 
   const [exportLoading, setExportLoading] = useState(false);
@@ -214,12 +188,6 @@ export const DataListProLocal = forwardRef(function (
 
   useImperativeHandle(ref, () => ({
     getData,
-    getChildData: async (id: React.Key) => {
-      if (!props.onExpandData) return;
-      const item = getChildData(id, data);
-      if (!item) return;
-      await getChild(item);
-    },
     opt,
     getSelectedValue: () => selectedValue,
     getSelectedRows: () => selectedRows,
@@ -322,7 +290,7 @@ export const DataListProLocal = forwardRef(function (
           if (!props.onExpandData) return;
           if (!open) return;
           if (item.children?.length > 0) return;
-          await getChild(item);
+          await props.onExpandData(item);
         }}
       />
       <DataList.Page

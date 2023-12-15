@@ -27,28 +27,6 @@ export interface DataListTableMsg<T extends RecordData = RecordData> {
   render?: (value: ValueType<T>, record: T, index: number) => ReactNode;
 }
 
-export function getChildData(
-  id: React.Key,
-  data: RecordData[],
-  rowKey = 'id'
-): RecordData | undefined {
-  let result;
-  data.some((item) => {
-    if (item[rowKey] === id) {
-      result = item;
-      return true;
-    } else if (Array.isArray(item.children) && item.children.length > 0) {
-      const childResult = getChildData(id, item.children, rowKey);
-      if (childResult) {
-        result = childResult;
-        return true;
-      }
-    }
-    return false;
-  });
-  return result;
-}
-
 export interface DataListTableProps<
   T extends RecordData = RecordData,
   OPTK extends string = string
