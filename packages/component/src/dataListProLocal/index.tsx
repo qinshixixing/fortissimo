@@ -89,7 +89,7 @@ export interface DataListProLocalProps<
   onOpt?: (
     params: DataListProLocalOptParams<OPTK, Partial<T>>
   ) => Promise<void> | void;
-  onExpandData?: (params: Partial<T>) => Promise<Partial<T>[]>;
+  onExpandData?: (params: Partial<T>) => Promise<void>;
 }
 
 export const DataListProLocal = forwardRef(function (

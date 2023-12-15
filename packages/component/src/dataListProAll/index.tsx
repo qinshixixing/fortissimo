@@ -86,7 +86,7 @@ export interface DataListProAllProps<
   onOpt?: (
     params: DataListProAllOptParams<OPTK, Partial<T>>
   ) => Promise<void> | void;
-  onExpandData?: (params: Partial<T>) => Promise<Partial<T>[]>;
+  onExpandData?: (params: Partial<T>) => Promise<void>;
 }
 
 export const DataListProAll = forwardRef(function (
