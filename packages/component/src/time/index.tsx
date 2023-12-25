@@ -1,6 +1,7 @@
 import { TimePrecision } from '@fortissimo/util';
 
 export interface TimeConfig {
+  allowClear?: boolean;
   precision?: TimePrecision;
   disabledPast?: boolean;
   ignorePrecision?: TimePrecision;

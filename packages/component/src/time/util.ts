@@ -40,6 +40,7 @@ export function useTimeConfig(props: TimeConfig) {
 
   const options = useMemo<Common<DatePickerProps, RangePickerProps>>(
     () => ({
+      allowClear: props.allowClear,
       className: props.className,
       format: props.format || getTimeFormat(props.precision),
       picker: showTime ? 'date' : (precision as DatePrecision),
@@ -87,12 +88,13 @@ export function useTimeConfig(props: TimeConfig) {
       showSecond: showTime && precision === 'second'
     }),
     [
-      showTime,
-      precision,
-      props.disabledPast,
+      props.allowClear,
       props.className,
       props.format,
-      props.precision
+      props.precision,
+      props.disabledPast,
+      showTime,
+      precision
     ]
   );
 
