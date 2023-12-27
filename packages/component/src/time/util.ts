@@ -40,7 +40,8 @@ export function useTimeConfig(props: TimeConfig) {
 
   const options = useMemo<Common<DatePickerProps, RangePickerProps>>(
     () => ({
-      allowClear: props.allowClear,
+      allowClear:
+        typeof props.allowClear === 'boolean' ? props.allowClear : true,
       className: props.className,
       format: props.format || getTimeFormat(props.precision),
       picker: showTime ? 'date' : (precision as DatePrecision),
