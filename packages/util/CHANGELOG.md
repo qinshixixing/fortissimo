@@ -1,4 +1,13 @@
-## [0.4.3](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.2...util/0.4.3) (2023-03-22)
+## [0.4.4](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.3...util/0.4.4) (2024-01-04)
+
+
+### Features
+
+* **更新头条环境判断:** 更新头条环境判断 ([7011fda](https://github.com/qinshixixing/fortissimo/commit/7011fda0b77226448a8efd1db88d052329771862))
+
+
+
+## [v0.4.3](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.2...util/v0.4.3) (2023-03-22)
 
 
 ### Features
