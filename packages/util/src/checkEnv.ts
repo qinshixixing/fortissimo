@@ -18,6 +18,6 @@ export function checkEnv(userAgent?: string, platform?: string): CheckEnv {
     isWechat: userAgent.includes('micromessenger'),
     isMobile: /(iphone|ipod|webos|android|blackberry)/i.test(userAgent),
     isWin: platform.startsWith('win'),
-    isZiJie: userAgent.includes('ToutiaoMicroApp')
+    isZiJie: userAgent.includes('toutiaomicroapp')
   };
 }
