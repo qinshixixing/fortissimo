@@ -1,4 +1,13 @@
-## [0.4.4](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.3...util/0.4.4) (2024-01-04)
+## [0.4.5](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.4...util/0.4.5) (2024-01-04)
+
+
+### Features
+
+* **增加环境判断:** 增加环境判断 ([abf34f8](https://github.com/qinshixixing/fortissimo/commit/abf34f8fe5b55af2abab6c282a2c396794a69a9a))
+
+
+
+## [v0.4.4](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.3...util/v0.4.4) (2024-01-04)
 
 
 ### Features
