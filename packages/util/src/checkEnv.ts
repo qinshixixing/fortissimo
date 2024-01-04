@@ -4,6 +4,7 @@ export interface CheckEnv {
   isWechat: boolean;
   isMobile: boolean;
   isWin: boolean;
+  isZiJie: boolean;
 }
 
 export function checkEnv(userAgent?: string, platform?: string): CheckEnv {
@@ -16,6 +17,7 @@ export function checkEnv(userAgent?: string, platform?: string): CheckEnv {
     isAndroid: userAgent.includes('android'),
     isWechat: userAgent.includes('micromessenger'),
     isMobile: /(iphone|ipod|webos|android|blackberry)/i.test(userAgent),
-    isWin: platform.startsWith('win')
+    isWin: platform.startsWith('win'),
+    isZiJie: userAgent.includes('ToutiaoMicroApp')
   };
 }
