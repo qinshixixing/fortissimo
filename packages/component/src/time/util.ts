@@ -39,7 +39,7 @@ export function useTimeConfig(props: TimeConfig) {
         ? {
             defaultValue: props.defaultCurrentTime
               ? undefined
-              : [moment('00:00:00', 'HH:mm:ss'), moment('11:59:59', 'HH:mm:ss')]
+              : [moment('00:00:00', 'HH:mm:ss'), moment('23:59:59', 'HH:mm:ss')]
           }
         : false, // 消除报错
     [precision, props.defaultCurrentTime]
