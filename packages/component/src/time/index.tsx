@@ -7,6 +7,7 @@ export interface TimeConfig {
   ignorePrecision?: TimePrecision;
   className?: string;
   format?: string;
+  defaultCurrentTime?: boolean;
 }
 
 export interface TimeShowConfig {

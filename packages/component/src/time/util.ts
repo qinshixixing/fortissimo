@@ -34,8 +34,15 @@ export function useTimeConfig(props: TimeConfig) {
   );
 
   const showTime = useMemo(
-    () => timePprecision.includes(precision as ClockPrecision), // 消除报错
-    [precision]
+    () =>
+      timePprecision.includes(precision as ClockPrecision)
+        ? {
+            defaultValue: props.defaultCurrentTime
+              ? undefined
+              : [moment('00:00:00', 'HH:mm:ss'), moment('11:59:59', 'HH:mm:ss')]
+          }
+        : false, // 消除报错
+    [precision, props.defaultCurrentTime]
   );
 
   const options = useMemo<Common<DatePickerProps, RangePickerProps>>(
