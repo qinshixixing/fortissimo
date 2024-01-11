@@ -1,4 +1,13 @@
-## [0.13.12](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.11...component/0.13.12) (2024-01-08)
+## [0.13.13](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.12...component/0.13.13) (2024-01-11)
+
+
+### Features
+
+* **修改表格行为:** 修改表格行为 ([5df38e6](https://github.com/qinshixixing/fortissimo/commit/5df38e6ec665c28a67c2d1f3cc02922db0c45a30))
+
+
+
+## [v0.13.12](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.11...component/v0.13.12) (2024-01-08)
 
 
 ### Features
