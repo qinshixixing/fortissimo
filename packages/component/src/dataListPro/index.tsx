@@ -87,6 +87,7 @@ export interface DataListProProps<
   keepPageNo?: boolean;
   hideSizeChanger?: boolean;
   autoHidePage?: boolean;
+  showTopPage?: boolean;
   size?: SizeType;
   unFixOpt?: boolean;
   unFixHeader?: boolean;
@@ -272,24 +273,26 @@ export const DataListPro = forwardRef(function (
           setExportDisabled(checkFormEmpty(value));
         }}
       />
-      <DataList.Page
-        pageNo={pageNo}
-        pageSize={pageSize}
-        total={total}
-        size={props.size}
-        hideSizeChanger={props.hideSizeChanger}
-        hideOnSinglePage
-        onChange={async (newPageNo, newPageSize) => {
-          let pageNoData = newPageNo;
-          if (newPageSize !== pageSize && !props.keepPageNo) pageNoData = 1;
-          setPageNo(pageNoData);
-          setPageSize(newPageSize);
-          await getData({
-            pageNo: pageNoData,
-            pageSize: newPageSize
-          });
-        }}
-      />
+      {props.showTopPage && (
+        <DataList.Page
+          pageNo={pageNo}
+          pageSize={pageSize}
+          total={total}
+          size={props.size}
+          hideSizeChanger={props.hideSizeChanger}
+          hideOnSinglePage
+          onChange={async (newPageNo, newPageSize) => {
+            let pageNoData = newPageNo;
+            if (newPageSize !== pageSize && !props.keepPageNo) pageNoData = 1;
+            setPageNo(pageNoData);
+            setPageSize(newPageSize);
+            await getData({
+              pageNo: pageNoData,
+              pageSize: newPageSize
+            });
+          }}
+        />
+      )}
       <DataList.Table
         data={data}
         msgList={props.msgs}
