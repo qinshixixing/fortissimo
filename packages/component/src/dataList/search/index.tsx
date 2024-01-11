@@ -13,6 +13,7 @@ import type {
   RecordData,
   OptFormProps
 } from '../../index';
+import { HeaderOpt, DataListOptConfig } from '../index';
 
 export type DataListSearchDefaultOpt = 'search' | 'reset' | 'export';
 
@@ -22,12 +23,13 @@ type DataListSearchFormProps<T extends RecordData = RecordData> = Pick<
 >;
 export interface DataListSearchProps<T extends RecordData = RecordData>
   extends DataListSearchFormProps {
-  inlineOpt?: boolean;
   opts?: OperationItemConfig[] | null;
   searchOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
   resetOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
   exportOpt?: Omit<OperationItemConfig<OptBoxDefaultOpt>, 'key'> | null;
   onOpt: (data: Partial<T>, optKey: string) => void;
+  headerOpts?: OperationItemConfig[] | null;
+  onHeaderOpt?: (optKey: string) => void;
 }
 
 export const Search = forwardRef(function (props: DataListSearchProps, ref) {
@@ -43,6 +45,11 @@ export const Search = forwardRef(function (props: DataListSearchProps, ref) {
     },
     [props]
   );
+
+  const hasSearchField = useMemo(() => {
+    if (!props.fields) return false;
+    return props.fields.length > 0;
+  }, [props.fields]);
 
   useImperativeHandle(ref, () => ({
     getData: () => formRef.current && formRef.current.getData(),
@@ -97,39 +104,40 @@ export const Search = forwardRef(function (props: DataListSearchProps, ref) {
     handleOpt
   ]);
 
-  const fields = useMemo(() => {
-    if (!props.inlineOpt) return props.fields;
-    return [
-      ...(props.fields || []),
-      {
-        key: 'opt',
-        name: '',
-        labelCol: 0,
-        isLayout: true,
-        component: opts
-      }
-    ];
-  }, [opts, props.fields, props.inlineOpt]);
-
   return (
     <div
       className={'ft-data-list-search'}
       onKeyUp={(data) => {
+        if (!hasSearchField) return;
         if (data.key === 'Enter' || data.code === 'Enter') handleOpt('search');
       }}
     >
-      <OptForm
-        ref={formRef}
-        mode={'edit'}
-        colNum={typeof props.colNum === 'number' ? props.colNum : 3}
-        labelCol={props.labelCol}
-        fields={fields}
-        onValueChange={props.onValueChange}
-        size={props.size}
-      />
-      {!props.inlineOpt && (
-        <div className={'ft-data-list-search-opt'}>{opts}</div>
+      {hasSearchField && (
+        <OptForm
+          ref={formRef}
+          mode={'edit'}
+          colNum={typeof props.colNum === 'number' ? props.colNum : 3}
+          labelCol={props.labelCol}
+          fields={props.fields}
+          onValueChange={props.onValueChange}
+          size={props.size}
+        />
       )}
+      <div className={'ft-data-list-search-opt'}>
+        <div>
+          {props.headerOpts && props.headerOpts.length > 0 && (
+            <HeaderOpt
+              list={props.headerOpts}
+              size={props.size}
+              onOpt={(optKey) => {
+                if (!props.onHeaderOpt) return;
+                props.onHeaderOpt(optKey);
+              }}
+            />
+          )}
+        </div>
+        <div>{hasSearchField && opts}</div>
+      </div>
     </div>
   );
 });

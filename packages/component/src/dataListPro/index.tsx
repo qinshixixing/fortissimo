@@ -231,54 +231,65 @@ export const DataListPro = forwardRef(function (
 
   return (
     <>
-      {props.search && props.search.length > 0 && (
-        <DataList.Search
-          fields={props.search}
-          labelCol={props.searchLabelCol}
-          colNum={props.searchColNum}
-          size={props.size}
-          exportOpt={
-            props.canExport
-              ? {
-                  loading: exportLoading,
-                  disabled: exportDisabled
-                }
-              : null
-          }
-          onOpt={async (data, optKey) => {
-            setSearchData(data);
-            if (optKey === 'export') await exportData(data);
-            else {
-              if (optKey === 'reset' && !props.canTotalExport) {
-                setExportDisabled(checkFormEmpty(data));
+      <DataList.Search
+        fields={props.search}
+        labelCol={props.searchLabelCol}
+        colNum={props.searchColNum}
+        size={props.size}
+        exportOpt={
+          props.canExport
+            ? {
+                loading: exportLoading,
+                disabled: exportDisabled
               }
-              const resetPageNo = 1;
-              setPageNo(resetPageNo);
-              await getData({
-                pageNo: resetPageNo,
-                searchData: data
-              });
+            : null
+        }
+        onOpt={async (data, optKey) => {
+          setSearchData(data);
+          if (optKey === 'export') await exportData(data);
+          else {
+            if (optKey === 'reset' && !props.canTotalExport) {
+              setExportDisabled(checkFormEmpty(data));
             }
-          }}
-          onValueChange={(value) => {
-            if (props.canTotalExport) return;
-            setExportDisabled(checkFormEmpty(value));
-          }}
-        />
-      )}
-      {opts.header && opts.header.length > 0 && (
-        <DataList.HeaderOpt
-          list={opts.header}
-          size={props.size}
-          onOpt={async (optKey) => {
-            await opt({
-              optKey,
-              rowsKey: selectedValue,
-              rowsData: selectedRows
+            const resetPageNo = 1;
+            setPageNo(resetPageNo);
+            await getData({
+              pageNo: resetPageNo,
+              searchData: data
             });
-          }}
-        />
-      )}
+          }
+        }}
+        headerOpts={opts.header}
+        onHeaderOpt={async (optKey) => {
+          await opt({
+            optKey,
+            rowsKey: selectedValue,
+            rowsData: selectedRows
+          });
+        }}
+        onValueChange={(value) => {
+          if (props.canTotalExport) return;
+          setExportDisabled(checkFormEmpty(value));
+        }}
+      />
+      <DataList.Page
+        pageNo={pageNo}
+        pageSize={pageSize}
+        total={total}
+        size={props.size}
+        hideSizeChanger={props.hideSizeChanger}
+        hideOnSinglePage
+        onChange={async (newPageNo, newPageSize) => {
+          let pageNoData = newPageNo;
+          if (newPageSize !== pageSize && !props.keepPageNo) pageNoData = 1;
+          setPageNo(pageNoData);
+          setPageSize(newPageSize);
+          await getData({
+            pageNo: pageNoData,
+            pageSize: newPageSize
+          });
+        }}
+      />
       <DataList.Table
         data={data}
         msgList={props.msgs}

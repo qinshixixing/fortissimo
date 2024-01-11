@@ -167,56 +167,48 @@ export const DataSimpleListPro = forwardRef(function (
 
   return (
     <>
-      {props.search && (
-        <DataList.Search
-          fields={[
-            {
-              key: 'data',
-              name: '',
-              ...props.search
-            }
-          ]}
-          labelCol={0}
-          colNum={2}
-          size={props.size}
-          inlineOpt
-          exportOpt={
-            props.canExport
-              ? {
-                  loading: exportLoading,
-                  disabled: exportDisabled
-                }
-              : null
+      <DataList.Search
+        fields={[
+          {
+            key: 'data',
+            name: '',
+            ...props.search
           }
-          onOpt={async (formData, optKey) => {
-            const data = formData.data;
-            setSearchData(data);
-            if (optKey === 'export') await exportData(data);
-            else {
-              if (optKey === 'reset' && !props.canTotalExport) {
-                setExportDisabled(!data);
+        ]}
+        labelCol={0}
+        colNum={2}
+        size={props.size}
+        exportOpt={
+          props.canExport
+            ? {
+                loading: exportLoading,
+                disabled: exportDisabled
               }
-              const resetPageNo = 1;
-              setPageNo(resetPageNo);
-              await getData({
-                pageNo: resetPageNo,
-                searchData: data
-              });
+            : null
+        }
+        onOpt={async (formData, optKey) => {
+          const data = formData.data;
+          setSearchData(data);
+          if (optKey === 'export') await exportData(data);
+          else {
+            if (optKey === 'reset' && !props.canTotalExport) {
+              setExportDisabled(!data);
             }
-          }}
-        />
-      )}
-      {opts.header && opts.header.length > 0 && (
-        <DataList.HeaderOpt
-          list={opts.header}
-          size={props.size}
-          onOpt={async (optKey) => {
-            await opt({
-              optKey
+            const resetPageNo = 1;
+            setPageNo(resetPageNo);
+            await getData({
+              pageNo: resetPageNo,
+              searchData: data
             });
-          }}
-        />
-      )}
+          }
+        }}
+        headerOpts={opts.header}
+        onHeaderOpt={async (optKey) => {
+          await opt({
+            optKey
+          });
+        }}
+      />
       <DataList.List
         data={data}
         optList={opts.row}
