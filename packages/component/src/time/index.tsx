@@ -8,6 +8,7 @@ export interface TimeConfig {
   className?: string;
   format?: string;
   defaultCurrentTime?: boolean;
+  isRange?: boolean;
 }
 
 export interface TimeShowConfig {

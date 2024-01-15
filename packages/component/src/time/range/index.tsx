@@ -13,7 +13,10 @@ export interface TimeRangeProps extends TimeConfig {
 }
 
 export function Range(props: TimeRangeProps) {
-  const { precision, options } = useTimeConfig(props);
+  const { precision, options } = useTimeConfig({
+    ...props,
+    isRange: true
+  });
 
   const valueChange = useCallback(
     (time: RangePickerProps['value']) => {

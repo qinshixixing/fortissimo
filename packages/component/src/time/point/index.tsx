@@ -13,7 +13,10 @@ export interface TimePointProps extends TimeConfig {
 }
 
 export function Point(props: TimePointProps) {
-  const { precision, options } = useTimeConfig(props);
+  const { precision, options } = useTimeConfig({
+    ...props,
+    isRange: false
+  });
 
   const strategy = useMemo<TimeStrategy>(
     () => props.strategy || 'none',
