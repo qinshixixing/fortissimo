@@ -16,7 +16,7 @@ export function ImageList(props: UploadImageListProps) {
   return (
     <FileList
       {...props}
-      format={['jpg', 'jpeg', 'png']}
+      format={props.format || ['jpg', 'jpeg', 'png']}
       listType={'picture-card'}
     />
   );

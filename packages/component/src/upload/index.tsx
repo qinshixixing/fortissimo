@@ -19,7 +19,7 @@ export interface UploadListConfig extends UploadConfig {
   maxNum?: number;
 }
 
-export type UploadFormatKey = 'format' | 'listType';
+export type UploadFormatKey = 'listType';
 
 export interface UploadValueConfig {
   value?: UploadData;
