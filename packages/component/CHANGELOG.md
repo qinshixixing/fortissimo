@@ -1,4 +1,13 @@
-## [0.13.15](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.14...component/0.13.15) (2024-01-15)
+## [0.13.16](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.15...component/0.13.16) (2024-04-23)
+
+
+### Features
+
+* **优化图片组件:** 优化图片组件 ([3e7c18e](https://github.com/qinshixixing/fortissimo/commit/3e7c18e6ed1d25921bac45434de2c1e5b0b84ade))
+
+
+
+## [v0.13.15](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.14...component/v0.13.15) (2024-01-15)
 
 
 ### Features
