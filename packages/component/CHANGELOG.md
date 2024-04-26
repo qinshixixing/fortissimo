@@ -1,4 +1,13 @@
-## [0.13.16](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.15...component/0.13.16) (2024-04-23)
+## [0.13.17](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.16...component/0.13.17) (2024-04-26)
+
+
+### Features
+
+* **上传视频封面图逻辑更新:** 上传视频封面图逻辑更新 ([041712a](https://github.com/qinshixixing/fortissimo/commit/041712ad47d425b74c0f057d4db5531014e88a28))
+
+
+
+## [v0.13.16](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.15...component/v0.13.16) (2024-04-23)
 
 
 ### Features
