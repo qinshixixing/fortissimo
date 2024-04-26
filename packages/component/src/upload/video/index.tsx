@@ -26,7 +26,9 @@ function getVideoCover(video: HTMLVideoElement): Promise<UploadData> {
       ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
       canvas.toBlob((blob) => {
         if (blob) {
-          const file = new File([blob], '');
+          const file = new File([blob], '.png', {
+            type: 'image/png'
+          });
           const uid = getRandomString(4);
           resolve({
             ...file,
