@@ -1,4 +1,13 @@
-## [0.13.17](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.16...component/0.13.17) (2024-04-26)
+## [0.13.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.17...component/0.13.18) (2024-04-29)
+
+
+### Features
+
+* **优化视频上传:** 优化视频上传 ([40c0a92](https://github.com/qinshixixing/fortissimo/commit/40c0a9226a6fb222e4efaceb9866d42b07bc071d))
+
+
+
+## [v0.13.17](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.16...component/v0.13.17) (2024-04-26)
 
 
 ### Features
