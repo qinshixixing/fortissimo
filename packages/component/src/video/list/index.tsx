@@ -30,34 +30,29 @@ export function List(props: VideoListProps) {
   );
 
   const value = useMemo(() => {
-    const data = props.value || [];
     const result: GriffithValue[] = [];
-    data.forEach((item) => {
+    (props.value || []).forEach((item) => {
       if (!item) return;
+      if (!item.url) return;
       const urlData = item.url;
-      if (!hasEmpty || Boolean(urlData)) {
-        let url = '';
-        let cover = '';
-        if (typeof urlData === 'string') url = urlData;
-        else if (urlData.originFileObj) url = getObjUrl(urlData.originFileObj);
-        const coverUrlData = item.cover;
-        if (coverUrlData) {
-          if (typeof coverUrlData === 'string') cover = coverUrlData;
-          else if (coverUrlData.originFileObj)
-            cover = getObjUrl(coverUrlData.originFileObj);
-        }
-        result.push({
-          ...(item || {}),
-          url,
-          cover
-        });
+      let url = '';
+      let cover = '';
+      if (typeof urlData === 'string') url = urlData;
+      else if (urlData.originFileObj) url = getObjUrl(urlData.originFileObj);
+      const coverUrlData = item.cover;
+      if (coverUrlData) {
+        if (typeof coverUrlData === 'string') cover = coverUrlData;
+        else if (coverUrlData.originFileObj)
+          cover = getObjUrl(coverUrlData.originFileObj);
       }
+      result.push({
+        ...(item || {}),
+        url,
+        cover
+      });
     });
-
-    if (hasEmpty) return result;
-    if (!result.length) result.push({ url: '' });
     return result;
-  }, [props.value, hasEmpty, getObjUrl]);
+  }, [props.value, getObjUrl]);
 
   return (
     <div>
@@ -89,7 +84,9 @@ export function List(props: VideoListProps) {
               </div>
             );
           })
-        : props.empty}
+        : hasEmpty
+        ? props.empty
+        : ''}
     </div>
   );
 }

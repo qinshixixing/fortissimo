@@ -11,7 +11,7 @@ export type UploadVideoConfig = Omit<UploadConfig, UploadFormatKey>;
 
 export interface UploadVideoValueConfig {
   value?: VideoValue;
-  onChange?: (data: VideoValue) => void;
+  onChange?: (data: VideoValue | null) => void;
 }
 
 export type UploadVideoProps = UploadVideoConfig & UploadVideoValueConfig;
@@ -87,7 +87,10 @@ export function Video(props: UploadVideoProps) {
       value={props.value && props.value.url}
       onChange={(data) => {
         if (!props.onChange) return;
-        if (!data) props.onChange({ url: '' });
+        if (!data) {
+          props.onChange(null);
+          return;
+        }
         if (typeof data !== 'string') {
           const videoFile = data.originFileObj as File;
           getVideoInfo(videoFile).then((info) => {
