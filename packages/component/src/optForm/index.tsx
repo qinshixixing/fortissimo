@@ -34,6 +34,7 @@ export interface OptFormFieldDetail<K extends string = string, V = any> {
   labelCol?: number;
   tip?: ReactNode;
   labelTip?: ReactNode;
+  trim?: boolean;
 }
 
 export type OptFormField<T extends RecordData = RecordData> =
@@ -108,13 +109,29 @@ export const OptForm = forwardRef(function (
 
   const isShow = useMemo(() => mode === 'show', [mode]);
 
+  const noTrimKeys = useMemo(
+    () => fields.filter((item) => item.trim === false).map((item) => item.key),
+    [fields]
+  );
+
   useImperativeHandle(
     ref,
     (): OptFormMethods => ({
       formRef,
       reset: () => formRef.resetFields(),
       check: () => formRef.validateFields(),
-      getData: () => trimString(formRef.getFieldsValue()),
+      getData: () => {
+        const data = formRef.getFieldsValue();
+        let trimData: typeof data = {};
+        Object.keys(data).forEach((key) => {
+          if (!noTrimKeys.includes(key)) trimData[key] = data[key];
+        });
+        trimData = trimString(trimData);
+        return {
+          ...data,
+          ...trimData
+        };
+      },
       setData: (data) => formRef.setFieldsValue(data)
     })
   );
