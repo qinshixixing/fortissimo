@@ -1,4 +1,13 @@
-## [0.13.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.17...component/0.13.18) (2024-04-29)
+## [0.13.19](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.18...component/0.13.19) (2024-08-14)
+
+
+### Features
+
+* **optform新增特性:** optForm增加trim控制 ([b09425b](https://github.com/qinshixixing/fortissimo/commit/b09425b8ff201c76b87594f653ea2bcff1aaba70))
+
+
+
+## [v0.13.18](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.17...component/v0.13.18) (2024-04-29)
 
 
 ### Features
