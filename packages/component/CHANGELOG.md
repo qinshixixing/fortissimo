@@ -1,4 +1,13 @@
-## [0.13.19](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.18...component/0.13.19) (2024-08-14)
+# [0.14.0](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.19...component/0.14.0) (2024-08-16)
+
+
+### Features
+
+* **修复问题:** 修复表单判断问题 ([0088118](https://github.com/qinshixixing/fortissimo/commit/0088118a0483e9e0c7bd112bdde5d37f4d762990))
+
+
+
+## [v0.13.19](https://github.com/qinshixixing/fortissimo/compare/component/v0.13.18...component/v0.13.19) (2024-08-14)
 
 
 ### Features
