@@ -110,7 +110,10 @@ export const OptForm = forwardRef(function (
   const isShow = useMemo(() => mode === 'show', [mode]);
 
   const noTrimKeys = useMemo(
-    () => fields.filter((item) => item.trim === false).map((item) => item.key),
+    () =>
+      fields
+        .filter((item) => item && item.trim === false)
+        .map((item) => item.key),
     [fields]
   );
 
