@@ -91,6 +91,7 @@ export interface DataListProLocalProps<
     params: DataListProLocalOptParams<OPTK, Partial<T>>
   ) => Promise<void> | void;
   onExpandData?: (params: Partial<T>) => Promise<void>;
+  onSelect?: (keys?: any[], rows?: DataListRowData[]) => Promise<void>;
 }
 
 export const DataListProLocal = forwardRef(function (
@@ -286,6 +287,7 @@ export const DataListProLocal = forwardRef(function (
         onSelect={(keys, rows) => {
           setSelectedValue(keys || []);
           setSelectedRows(rows || []);
+          props.onSelect && props.onSelect(keys, rows);
         }}
         onOpt={async (optKey, rowKey, rowData) => {
           await opt({

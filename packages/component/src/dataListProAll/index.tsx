@@ -87,6 +87,7 @@ export interface DataListProAllProps<
     params: DataListProAllOptParams<OPTK, Partial<T>>
   ) => Promise<void> | void;
   onExpandData?: (params: Partial<T>) => Promise<void>;
+  onSelect?: (keys?: any[], rows?: DataListRowData[]) => Promise<void>;
 }
 
 export const DataListProAll = forwardRef(function (
@@ -251,6 +252,7 @@ export const DataListProAll = forwardRef(function (
         onSelect={(keys, rows) => {
           setSelectedValue(keys || []);
           setSelectedRows(rows || []);
+          props.onSelect && props.onSelect(keys, rows);
         }}
         onOpt={async (optKey, rowKey, rowData) => {
           await opt({

@@ -102,6 +102,7 @@ export interface DataListProProps<
     params: DataListProOptParams<OPTK, Partial<T>>
   ) => Promise<void> | void;
   onExpandData?: (params: Partial<T>) => Promise<void>;
+  onSelect?: (keys?: any[], rows?: DataListRowData[]) => Promise<void>;
 }
 
 export const DataListPro = forwardRef(function (
@@ -312,6 +313,7 @@ export const DataListPro = forwardRef(function (
         onSelect={(keys, rows) => {
           setSelectedValue(keys || []);
           setSelectedRows(rows || []);
+          props.onSelect && props.onSelect(keys, rows);
         }}
         onSort={async (key, sort) => {
           setSortKey(key);
