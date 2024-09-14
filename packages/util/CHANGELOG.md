@@ -1,4 +1,13 @@
-## [0.4.6](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.5...util/0.4.6) (2024-01-23)
+# [0.5.0](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.6...util/0.5.0) (2024-09-14)
+
+
+### Features
+
+* **支持鸿蒙检测:** 支持鸿蒙检测 ([44ff9d7](https://github.com/qinshixixing/fortissimo/commit/44ff9d7af0f12c08c903ad862be37d5c063573e8))
+
+
+
+## [v0.4.6](https://github.com/qinshixixing/fortissimo/compare/util/v0.4.5...util/v0.4.6) (2024-01-23)
 
 
 ### Features
