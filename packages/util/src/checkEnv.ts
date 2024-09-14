@@ -6,6 +6,7 @@ export interface CheckEnv {
   isWin: boolean;
   isZiJie: boolean;
   isMiniprogram: boolean;
+  isHarmony: boolean;
 }
 
 export function checkEnv(userAgent?: string, platform?: string): CheckEnv {
@@ -20,6 +21,7 @@ export function checkEnv(userAgent?: string, platform?: string): CheckEnv {
     isMobile: /(iphone|ipod|webos|android|blackberry)/i.test(userAgent),
     isWin: platform.startsWith('win'),
     isZiJie: userAgent.includes('toutiaomicroapp'),
-    isMiniprogram: userAgent.includes('miniprogram')
+    isMiniprogram: userAgent.includes('miniprogram'),
+    isHarmony: userAgent.includes('arkweb')
   };
 }
